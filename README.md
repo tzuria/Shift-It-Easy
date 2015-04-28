@@ -5,3 +5,5 @@
 
 [Wiki home page.](https://github.com/tzuria/Shift-It-Easy/wiki)
 
+##Chat:
+[![Gitter](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/tzuria/Shift-It-Easy)
