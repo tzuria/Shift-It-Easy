@@ -3,6 +3,8 @@ div#header h1{height:0px;line-height:100px;margin:0; color:#595ab2; font-size:65
 div#header h3{height:0px;line-height:250px;margin:0; color:#595ab2; font-size:35}
 div#header img{padding-right:30px}
 
+div#insert h3{height:0px;line-height:75px;margin:0; color:#595ab2; font-size:25}
+
 .CSSTableGenerator {
 	margin-left:55px;padding:0px;margin-top:30px;
 	width:90%;
@@ -214,3 +216,29 @@ div#header img{padding-right:30px}
   background-image: linear-gradient(to bottom, #3cb0fd, #3498db);
   text-decoration: none;
 }
+
+.textox {
+   width: 212px;
+   height: 24px;
+   font-family: Georgia;
+   font-weight: bold;
+   font-style: italic;
+   border: outset 4px #404DC2;
+   border-radius: 9px;
+   font-size: 14px;
+   box-shadow: 0px 1px 2px 0px #9C9C9C;
+   background-color: #FFFFFF;
+   outline: none;
+   color: #000000;
+   text-align: left;
+  }
+.textox:hover  {
+   border: 2px solid #FF00D5;
+  }
+.textox:focus  {
+   border: solid 2px #00D43C;
+   box-shadow: inset 0px 1px 2px 0px #9C9C9C;
+  }
+.textox:active  {
+   border: solid 2px #0043EB;
+  }
