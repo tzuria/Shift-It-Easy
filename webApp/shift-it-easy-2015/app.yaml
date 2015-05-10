@@ -8,9 +8,17 @@ handlers:
 - url: /favicon\.ico
   static_files: favicon.ico
   upload: favicon\.ico
+  
+- url: /static
+  static_dir: web/static
 
-- url: /(.*)
-  script: web.pages.LoginPage.app
+- url: /
+  script: web/pages/main.app
+ 
+- url: //MainManager
+  script: web/pages/MainManager.app
+  
+
 
 libraries:
 - name: webapp2
