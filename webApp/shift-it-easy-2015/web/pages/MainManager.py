@@ -14,17 +14,18 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #
+
 from google.appengine.ext.webapp import template
 import webapp2
 
 class MainHandler(webapp2.RequestHandler):
-    def get(self):
-		template_params = {}
+    def get(self, args=None):
+		template_params = {"args":args}
 		html = template.render("web/templates/MainManager.html", template_params)
 		self.response.write(html)
 		
 
 
 app = webapp2.WSGIApplication([
-    ('/', MainHandler)
+    ('/MainManager', MainHandler)
 ], debug=True)
