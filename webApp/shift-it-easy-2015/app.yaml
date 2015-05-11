@@ -11,12 +11,31 @@ handlers:
   
 - url: /static
   static_dir: web/static
-
-- url: /
-  script: web/pages/main.app
  
 - url: /MainManager
+<<<<<<< HEAD
   script: web/pages/MainManager.app
+=======
+  script: web.pages.MainManager.app
+  
+- url: /MainEmployee
+  script: web.pages.MainEmployee.app
+  
+- url: /CrewAssignment
+  script: web.pages.CrewAssignment.app
+  
+- url: /PreviousSchedule
+  script: web.pages.PreviousSchedule.app
+  
+- url: /AddRemoveEmployee
+  script: web.pages.AddRemoveEmployee.app
+  
+- url: /ConstrainsInputPage
+  script: web.pages.ConstrainsInputPage.app
+  
+- url: /(.*)
+  script: web.pages.LoginPage.app
+>>>>>>> origin/master
   
 libraries:
 - name: webapp2

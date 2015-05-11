@@ -14,18 +14,14 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #
-
-from google.appengine.ext.webapp import template
 import webapp2
 
 class MainHandler(webapp2.RequestHandler):
-    def get(self, args=None):
-		template_params = {"args":args}
-		html = template.render("web/templates/MainManager.html", template_params)
-		self.response.write(html)
+    def get(self):
+        self.response.write('Welcome to Shift-It-Easy Main page')
 		
 
 
 app = webapp2.WSGIApplication([
-    ('/MainManager', MainHandler)
+    ('/', MainHandler)
 ], debug=True)

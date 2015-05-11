@@ -21,11 +21,11 @@ import webapp2
 class MainHandler(webapp2.RequestHandler):
     def get(self, args=None):
 		template_params = {"args":args}
-		html = template.render("web/templates/MainManager.html", template_params)
+		html = template.render("web/templates/MainEmployee.html", template_params)
 		self.response.write(html)
 		
 
 
 app = webapp2.WSGIApplication([
-    ('/MainManager', MainHandler)
+    ('/MainEmployee', MainHandler)
 ], debug=True)
