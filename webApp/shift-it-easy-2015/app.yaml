@@ -15,11 +15,9 @@ handlers:
 - url: /
   script: web/pages/main.app
  
-- url: //MainManager
+- url: /MainManager
   script: web/pages/MainManager.app
   
-
-
 libraries:
 - name: webapp2
-  version: "2.5.2"
+	version: "2.5.2"
