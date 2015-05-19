@@ -14,7 +14,8 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #
-from models.employee import employee
+
+from models.employee import Employee
 from google.appengine.ext.webapp import template
 import webapp2
 
@@ -24,7 +25,7 @@ class MainHandler(webapp2.RequestHandler):
 		html = template.render("web/templates/LoginPage.html", template_params)
 		self.response.write(html)
 		
-		e = employee()
+		e = Employee()
 		e.workerID = "123"
 		e.workerType = "manager"
 		e.firstName = "Tzuria"
