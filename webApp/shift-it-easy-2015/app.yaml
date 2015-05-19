@@ -13,7 +13,7 @@ handlers:
   static_dir: web/static
  
 - url: /MainManager
-  script: web/pages/MainManager.app
+  script: web.pages.MainManager.app
   
 - url: /MainEmployee
   script: web.pages.MainEmployee.app
@@ -35,4 +35,4 @@ handlers:
   
 libraries:
 - name: webapp2
-	version: "2.5.2"
+  version: "2.5.2"
