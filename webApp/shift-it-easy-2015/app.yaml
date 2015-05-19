@@ -13,10 +13,7 @@ handlers:
   static_dir: web/static
  
 - url: /MainManager
-<<<<<<< HEAD
   script: web/pages/MainManager.app
-=======
-  script: web.pages.MainManager.app
   
 - url: /MainEmployee
   script: web.pages.MainEmployee.app
@@ -35,7 +32,6 @@ handlers:
   
 - url: /(.*)
   script: web.pages.LoginPage.app
->>>>>>> origin/master
   
 libraries:
 - name: webapp2
