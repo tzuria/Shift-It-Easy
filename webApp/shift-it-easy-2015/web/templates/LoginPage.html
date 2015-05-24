@@ -1,6 +1,8 @@
 <html>
 <head>
 	<link rel="stylesheet" type="text/css" href="../static/css/CSSstyle.css"/>
+	<script type="application/javascript" src="http://code.jquery.com/jquery-2.1.4.min.js"></script>
+	<script type="application/javascript" src="../static/js/login.js"></script>
 	<title>Shift It Easy | Manager main page</title>
 </head>
 <body>
@@ -10,15 +12,15 @@
 	</div>
 	<div id="insert">
 		<form action="demo_form.asp">
-			<h3><center>Username: <input type="text" class="textox" name="username"></center></h3>
+			<h3><center>Username: <input type="text" class="textox" name="username" id="userName"></center></h3>
 			<br><br><br>
-			<h3><center>Password: <input type="password" class="textox" name="password"></center></h3>
+			<h3><center>Password: <input type="password" class="textox" name="password" id="password"></center></h3>
 		</form>
 		<br><br><br><br>
 		<center><h3> sign in as:</h3><br><br><br><br>
-		<button class="btn" onclick="location.href='MainManager'"> Manager </button>
+		<button class="btn" id="login_as_manager"> Manager </button>
 		&nbsp&nbsp&nbsp&nbsp&nbsp
-		<button class="btn" onclick="location.href='MainEmployee'"> Employee </button></center>
+		<button class="btn" id="login_as_employee"> Employee </button></center>
 	</div>
 </body>
 </html>

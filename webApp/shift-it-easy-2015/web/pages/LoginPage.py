@@ -15,9 +15,10 @@
 # limitations under the License.
 #
 
-from models.employee import Employee
 from google.appengine.ext.webapp import template
+from models.employee import Employee
 import webapp2
+import json
 
 class MainHandler(webapp2.RequestHandler):
     def get(self, args=None):
@@ -25,17 +26,18 @@ class MainHandler(webapp2.RequestHandler):
 		html = template.render("web/templates/LoginPage.html", template_params)
 		self.response.write(html)
 		
-		e = Employee()
-		e.workerID = "123"
-		e.workerType = "manager"
-		e.firstName = "Tzuria"
-		e.lastName = "Rinenberg"
-		e.userName = "Tzurish"
-		e.password = "1234"
-		e.percentJob = 12.5
-		e.shiftHead = True
-		e.put()
+
+class LoginHandler(webapp2.RequestHandler):
+	def get(self):
+		userName = self.request.get('userName')
+		passwore = self.request.get('password')
+		employee = Employee.query(Employee.userName == userName).get()
+		if not employee:
+			return
+		self.response.write(json.dumps({'status':'OK'}))
+		
 		
 app = webapp2.WSGIApplication([
-    ('/(.*)', MainHandler)
+	('/login', LoginHandler),
+	('/', MainHandler)
 ], debug=True)
