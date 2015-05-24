@@ -18,6 +18,7 @@ function login_as_manager() {
         data:{userName: userName, password:password},
 		success:function(data, status, xhr) {
 			alert("success!");
+			document.location.href = '/MainManager';
 		},
 		error:function(xhr, status, error) {
 			alert("failed!");
@@ -36,6 +37,7 @@ function login_as_employee() {
 		dataType:'json',
         data:{userName: userName, password:password},
 		success:function(data, status, xhr) {
+			document.location.href = '/MainEmployee';
 		},
 		error:function(xhr, status, error) {
             alert(xhr.responseText);
