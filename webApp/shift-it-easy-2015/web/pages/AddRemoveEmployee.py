@@ -16,7 +16,9 @@
 #
 
 from google.appengine.ext.webapp import template
+from models.employee import Employee
 import webapp2
+import json
 
 class MainHandler(webapp2.RequestHandler):
     def get(self, args=None):
@@ -25,7 +27,43 @@ class MainHandler(webapp2.RequestHandler):
 		self.response.write(html)
 		
 
+class AddEmployeeHandler(webapp2.RequestHandler):
+	def get(self):
+		employee_id = self.request.get('employee_id')
+		firstName = self.request.get('firstName')
+		lastName = self.request.get('lastName')
+		appointment = self.request.get('appointment')
+		username = self.request.get('username')
+		passwore = self.request.get('password')
+		
+		
+		if not employee_id or not firstName or not lastName or not appointment or not username or not password:
+			self.response.write("one or more fields are empty!")
+			return
+		
+		employee = Employee.query(Employee.username == username).get()
+		
+		if employee:
+			self.response.write('This username already exist!')
+			return
+			
+		employee = Employee()
+		employee.workerID = employee_id
+		employee.firstName = firstName
+		employee.lastName = lastName
+		employee.userName = username
+		employee.setPassword(password)
+		employee.percentJob = appointment
+		employee.shiftHead = False
+		employee.isManager = False
+		employee.put()
+		
+		self.response.write(json.dumps({'status':'OK'}))
+		
+		
+
 
 app = webapp2.WSGIApplication([
+	('/add_new_employee', AddEmployeeHandler),
     ('/AddRemoveEmployee', MainHandler)
 ], debug=True)

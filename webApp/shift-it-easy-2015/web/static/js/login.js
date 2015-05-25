@@ -10,14 +10,12 @@ $(function() {  //this is jQuery's short notation for "fire all this when page i
 function login_as_manager() {
     var userName = $('#userName').val();
     var password = $('#password').val();
-	alert("manager pressed!");
     $.ajax({
-		url:'/login',
+		url:'/login_as__manager',
 		type:'GET',
 		dataType:'json',
         data:{userName: userName, password:password},
 		success:function(data, status, xhr) {
-			alert("success!");
 			document.location.href = '/MainManager';
 		},
 		error:function(xhr, status, error) {
@@ -32,7 +30,7 @@ function login_as_employee() {
     var userName = $('#userName').val();
     var password = $('#password').val();
     $.ajax({
-		url:'/login',
+		url:'/login_as__employee',
 		type:'GET',
 		dataType:'json',
         data:{userName: userName, password:password},

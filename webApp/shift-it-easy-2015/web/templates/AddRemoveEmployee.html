@@ -1,6 +1,8 @@
 <html>
 <head>
 	<link rel="stylesheet" type="text/css" href="../static/css/CSSstyle.css" />
+	<script type="application/javascript" src="http://code.jquery.com/jquery-2.1.4.min.js"></script>
+	<script type="application/javascript" src="../static/js/addRemoveEmployee.js"></script>
 	<title>Shift It Easy | Manager main page</title>
 </head>
 <body>
@@ -11,12 +13,12 @@
 	</div>
 	<br>  
 	<br>
-	<h3>Employee's id: &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp <input type="text" class="textox">&nbsp&nbsp&nbsp&nbsp<input type="submit" value="Remove" class = "btn" name = "id"></h3>
-	<h3>First name: &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp <input type="text" class="textox" name = "firstName"><h3>
-	<h3>Last name:  &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp <input type="text" class="textox" name = "lastName"><h3>
-	<h3>Appointment %: &nbsp&nbsp&nbsp <input type="text" class="textox" name = "appointment"><h3>
-	<h3>Username: &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp <input type="text" class="textox" name = "username"><h3>
-	<h3>Password: &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp <input type="text" class="textox" name = "password"><h3>
+	<h3>Employee's id: &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp <input type="text" class="textox" id="employee_id">&nbsp&nbsp&nbsp&nbsp<input type="submit" value="Remove" class = "btn" name = "id"></h3>
+	<h3>First name: &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp <input type="text" class="textox" id="first_name" name = "firstName"><h3>
+	<h3>Last name:  &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp <input type="text" class="textox" id="last_name" name = "lastName"><h3>
+	<h3>Appointment %: &nbsp&nbsp&nbsp <input type="text" class="textox" id="appointment" name = "appointment"><h3>
+	<h3>Username: &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp <input type="text" class="textox" id="username" name = "username"><h3>
+	<h3>Password: &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp <input type="text" class="textox" id="password" name = "password"><h3>
 	<form>
 	<h2> Can work as a head nurse:
 	<input type="radio" name="action" value="y" name = "radioYes">Yes
@@ -25,7 +27,7 @@
 			
 	<br>
 	
-		<button class = "btn">Add</button>
+		<button class = "btn" id="add_employee">Add</button>
 	
 	&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
 	&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
