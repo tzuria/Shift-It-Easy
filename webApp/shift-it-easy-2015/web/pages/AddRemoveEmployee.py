@@ -26,6 +26,23 @@ class MainHandler(webapp2.RequestHandler):
 		html = template.render("web/templates/AddRemoveEmployee.html", template_params)
 		self.response.write(html)
 		
+class RemoveEmployee(webapp2.RequestHandler):
+	def get(self, args=None):
+		employee_id = self.request.get('employee_id')
+		if not employee_id:
+			self.response.write("the id field is empty!")
+			return
+		
+		employee = Employee.query(Employee.workerID == employee_id).get()
+		
+		if not employee:
+			self.response.write("there is no emloyee with this id number!")
+			return
+			
+		employee.key.delete()
+		
+		self.response.write(json.dumps({'status':'OK'}))
+		
 
 class AddEmployeeHandler(webapp2.RequestHandler):
 	def get(self, args=None):
@@ -66,5 +83,6 @@ class AddEmployeeHandler(webapp2.RequestHandler):
 app = webapp2.WSGIApplication([
 	('/add_new_employee', AddEmployeeHandler),
     ('/AddRemoveEmployee', MainHandler),
+	('/remove_employee', RemoveEmployee),
 	('/', MainHandler)
 ], debug=True)

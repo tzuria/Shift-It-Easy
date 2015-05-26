@@ -1,8 +1,28 @@
 
 $(function() {  //this is jQuery's short notation for "fire all this when page is ready"
     $('#add_employee').on('click', add_Employee);
+	$('#remove').on('click', remove_Employee);
     
 });
+
+function remove_Employee(){
+	var employee_id = $('#employee_id').val();
+	
+	$.ajax({
+		url:'/remove_employee',
+		type:'GET',
+		dataType:'json',
+        data:{employee_id: employee_id},
+		success:function(data, status, xhr) {
+			alert("employee removed successfully");
+		},
+		error:function(xhr, status, error) {
+			alert("failed!");
+            alert(xhr.responseText);
+			console.error(xhr, status, error);
+		}
+	});
+}
 
 function add_Employee() {
     var employee_id = $('#employee_id').val();
