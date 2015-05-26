@@ -20,7 +20,7 @@ function login_as_manager() {
 		},
 		error:function(xhr, status, error) {
 			alert("failed!");
-            alert(xhr.responseText);
+			alert(xhr.responseText);
 			console.error(xhr, status, error);
 		}
 	});

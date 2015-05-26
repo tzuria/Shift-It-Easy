@@ -28,7 +28,7 @@ class MainHandler(webapp2.RequestHandler):
 		
 
 class AddEmployeeHandler(webapp2.RequestHandler):
-	def get(self):
+	def get(self, args=None):
 		employee_id = self.request.get('employee_id')
 		firstName = self.request.get('firstName')
 		lastName = self.request.get('lastName')
@@ -65,5 +65,6 @@ class AddEmployeeHandler(webapp2.RequestHandler):
 
 app = webapp2.WSGIApplication([
 	('/add_new_employee', AddEmployeeHandler),
-    ('/AddRemoveEmployee', MainHandler)
+    ('/AddRemoveEmployee', MainHandler),
+	('/', MainHandler)
 ], debug=True)

@@ -33,8 +33,9 @@ class LoginManagerHandler(webapp2.RequestHandler):
 		userName = self.request.get('userName')
 		password = self.request.get('password')
 		employee = Employee.query(Employee.userName == userName).get()
+		
 		if not employee or not employee.checkPassword(password) or not employee.isManager:
-			self.response.write("Wrong username or password or you are not manager")
+			self.response.write("Wrong username or password")
 			return
 		
 		self.response.write(json.dumps({'status':'OK'}))
@@ -46,7 +47,7 @@ class LoginEmployeeHandler(webapp2.RequestHandler):
 		passwore = self.request.get('password')
 		employee = Employee.query(Employee.userName == userName).get()
 		if not employee or not employee.checkPassword(password) or employee.isManager:
-			self.response.write("Wrong username or password or you are manager")
+			self.response.write("Wrong username or password")
 			return
 		
 		self.response.write(json.dumps({'status':'OK'}))
@@ -54,5 +55,6 @@ class LoginEmployeeHandler(webapp2.RequestHandler):
 app = webapp2.WSGIApplication([
 	('/login_as__manager', LoginManagerHandler),
 	('/login_as__employee', LoginEmployeeHandler),
+	('/LoginPage', MainHandler),
 	('/', MainHandler)
 ], debug=True)
