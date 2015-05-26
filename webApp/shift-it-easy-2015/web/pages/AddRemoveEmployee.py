@@ -34,14 +34,14 @@ class AddEmployeeHandler(webapp2.RequestHandler):
 		lastName = self.request.get('lastName')
 		appointment = self.request.get('appointment')
 		username = self.request.get('username')
-		passwore = self.request.get('password')
+		password = self.request.get('password')
 		
 		
 		if not employee_id or not firstName or not lastName or not appointment or not username or not password:
 			self.response.write("one or more fields are empty!")
 			return
 		
-		employee = Employee.query(Employee.username == username).get()
+		employee = Employee.query(Employee.userName == username).get()
 		
 		if employee:
 			self.response.write('This username already exist!')

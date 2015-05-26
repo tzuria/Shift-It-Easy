@@ -44,7 +44,7 @@ class LoginManagerHandler(webapp2.RequestHandler):
 class LoginEmployeeHandler(webapp2.RequestHandler):
 	def get(self):
 		userName = self.request.get('userName')
-		passwore = self.request.get('password')
+		password = self.request.get('password')
 		employee = Employee.query(Employee.userName == userName).get()
 		if not employee or not employee.checkPassword(password) or employee.isManager:
 			self.response.write("Wrong username or password")

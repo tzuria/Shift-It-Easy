@@ -30,6 +30,9 @@ handlers:
 - url: /ConstrainsInputPage
   script: web.pages.ConstrainsInputPage.app
   
+- url: /add_new_employee
+  script: web.pages.AddRemoveEmployee.app
+  
 - url: /(.*)
   script: web.pages.LoginPage.app
   
