@@ -1,12 +1,14 @@
 <html>
 <head>
 	<link rel="stylesheet" type="text/css" href="../static/css/CSSstyle.css" />
+	<script type="application/javascript" src="http://code.jquery.com/jquery-2.1.4.min.js"></script>
+	<script type="application/javascript" src="../static/js/mainEmployee.js"></script>
 	<title>Shift It Easy | Manager main page</title>
 </head>
 <body>
 	<div id="header">
 		<h1><center> Shift It Easy </center></h1>
-		<h3><center> Welcome Mr.Haim </center></h3><br>
+		<h3><center> Welcome <span id ='userName'> {{userName}} </span> </center></h3><br>
 		<img src="../static/image/logo.jpg" style="width:150;height:150px">
 	</div>
 	<div class="CSSTableGenerator">
@@ -116,7 +118,7 @@
 	&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
 	&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
 	&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
-	<button class = "btn" onclick="location.href='LoginPage'">Logout</button>
+	<button class = "btn" onclick="location.href='/logout'">Logout</button>
 	<br>
     </div> 		
 </body>

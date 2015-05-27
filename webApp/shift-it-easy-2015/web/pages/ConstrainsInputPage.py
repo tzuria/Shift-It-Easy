@@ -16,7 +16,9 @@
 #
 
 from google.appengine.ext.webapp import template
+from models.constrain import Constrain
 import webapp2
+import json
 
 class MainHandler(webapp2.RequestHandler):
     def get(self, args=None):
@@ -24,7 +26,13 @@ class MainHandler(webapp2.RequestHandler):
 		html = template.render("web/templates/ConstrainsInputPage.html", template_params)
 		self.response.write(html)
 		
-
+class AddConstrain(webapp2.RequestHandler):
+	def get(self):
+		constrain_date = self.request.get('constrain_date')
+		if not constrain_date:
+			self.response.write("Choose shift first!") 
+			return
+		
 
 app = webapp2.WSGIApplication([
     ('/ConstrainsInputPage', MainHandler)

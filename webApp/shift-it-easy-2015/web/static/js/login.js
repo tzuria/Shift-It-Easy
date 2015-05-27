@@ -20,7 +20,7 @@ function login_as_manager() {
 		},
 		error:function(xhr, status, error) {
 			alert("failed!");
-			alert(xhr.responseText);
+            alert(xhr.responseText);
 			console.error(xhr, status, error);
 		}
 	});
@@ -35,7 +35,7 @@ function login_as_employee() {
 		dataType:'json',
         data:{userName: userName, password:password},
 		success:function(data, status, xhr) {
-			document.location.href = '/MainEmployee';
+			document.location.href = '/MainEmployee?userName='+userName;
 		},
 		error:function(xhr, status, error) {
             alert(xhr.responseText);

@@ -36,7 +36,7 @@ class RemoveEmployee(webapp2.RequestHandler):
 		employee = Employee.query(Employee.workerID == employee_id).get()
 		
 		if not employee:
-			self.response.write("there is no emloyee with this id number!")
+			self.response.write("there is no employee with this id number!")
 			return
 			
 		employee.key.delete()
@@ -69,9 +69,17 @@ class AddEmployeeHandler(webapp2.RequestHandler):
 		employee.firstName = firstName
 		employee.lastName = lastName
 		employee.userName = username
-		employee.setPassword(password)
+		#employee.setPassword(password)
+		employee.password = password
 		employee.percentJob = appointment
-		employee.shiftHead = False
+		
+		shiftHeadCheck = self.request.get('radio_yes')
+		if not shiftHeadCheck:
+			employee.shiftHead = False
+		
+		if shiftHeadCheck:
+			employee.shiftHead = True
+			
 		employee.isManager = False
 		employee.put()
 		
