@@ -6,7 +6,7 @@
 		dataType:'json',
         data:{userName: userName},
 		success:function(data, status, xhr) {
-			document.location.href = '/MainManager';
+			document.location.href = '/MainEmployee';
 		},
 		error:function(xhr, status, error) {
 			alert("failed!");

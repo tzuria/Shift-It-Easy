@@ -35,7 +35,7 @@ function login_as_employee() {
 		dataType:'json',
         data:{userName: userName, password:password},
 		success:function(data, status, xhr) {
-			document.location.href = '/MainEmployee?userName='+userName;
+			document.location.href = '/MainEmployee';
 		},
 		error:function(xhr, status, error) {
             alert(xhr.responseText);

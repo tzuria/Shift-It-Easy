@@ -19,7 +19,7 @@ from google.appengine.ext.webapp import template
 import webapp2
 
 class MainHandler(webapp2.RequestHandler):
-    def get(self, args=None):
+    def get(self):
 		template_params = {"args":args}
 		html = template.render("web/templates/CrewAssignment.html", template_params)
 		self.response.write(html)

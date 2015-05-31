@@ -320,12 +320,12 @@ input[type=checkbox].css-checkbox {
    text-decoration: none;
 }
 .B_preferNot {
-  background: #f5f500;
-  background-image: -webkit-linear-gradient(top, #f5f500, #f5f500);
-  background-image: -moz-linear-gradient(top, #f5f500, #f5f500);
-  background-image: -ms-linear-gradient(top, #f5f500, #f5f500);
-  background-image: -o-linear-gradient(top, #f5f500, #f5f500);
-  background-image: linear-gradient(to bottom, #f5f500, #f5f500);
+  background: #fdc20c;
+  background-image: -webkit-linear-gradient(top, #fdc20c, #fdc20c);
+  background-image: -moz-linear-gradient(top, #fdc20c, #fdc20c);
+  background-image: -ms-linear-gradient(top, #fdc20c, #fdc20c);
+  background-image: -o-linear-gradient(top, #fdc20c, #fdc20c);
+  background-image: linear-gradient(to bottom, #fdc20c, #fdc20c);
   -webkit-border-radius: 20;
   -moz-border-radius: 20;
   border-radius: 20px;

@@ -21,9 +21,17 @@ import webapp2
 import json
 
 class MainHandler(webapp2.RequestHandler):
-    def get(self, args=None):
-		template_params = {"args":args}
-		html = template.render("web/templates/AddRemoveEmployee.html", template_params)
+    def get(self):
+		userName = None
+		if self.request.cookies.get('our_token'):    #the cookie that should contain the access token!
+			userName = Employee.checkToken(self.request.cookies.get('our_token'))
+
+		template_variables = {}
+		if userName:
+			template_variables['userName'] = userName.userName
+		
+	
+		html = template.render("web/templates/AddRemoveEmployee.html", template_variables)
 		self.response.write(html)
 		
 class RemoveEmployee(webapp2.RequestHandler):
@@ -69,16 +77,10 @@ class AddEmployeeHandler(webapp2.RequestHandler):
 		employee.firstName = firstName
 		employee.lastName = lastName
 		employee.userName = username
-		#employee.setPassword(password)
-		employee.password = password
+		employee.setPassword(password)
 		employee.percentJob = appointment
 		
-		shiftHeadCheck = self.request.get('radio_yes')
-		if not shiftHeadCheck:
-			employee.shiftHead = False
-		
-		if shiftHeadCheck:
-			employee.shiftHead = True
+	
 			
 		employee.isManager = False
 		employee.put()

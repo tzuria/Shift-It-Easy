@@ -17,13 +17,22 @@
 
 from google.appengine.ext.webapp import template
 from models.constrain import Constrain
+from models.employee import Employee
 import webapp2
 import json
 
 class MainHandler(webapp2.RequestHandler):
-    def get(self, args=None):
-		template_params = {"args":args}
-		html = template.render("web/templates/ConstrainsInputPage.html", template_params)
+    def get(self):
+		userName = None
+		if self.request.cookies.get('our_token'):    #the cookie that should contain the access token!
+			userName = Employee.checkToken(self.request.cookies.get('our_token'))
+
+		template_variables = {}
+		if userName:
+			template_variables['userName'] = userName.userName
+		
+		
+		html = template.render("web/templates/ConstrainsInputPage.html", template_variables)
 		self.response.write(html)
 		
 class AddConstrain(webapp2.RequestHandler):

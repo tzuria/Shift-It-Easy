@@ -13,9 +13,9 @@ class Employee(ndb.Model):
 	shiftHead = ndb.BooleanProperty(default=True)
 	isManager = ndb.BooleanProperty(default=False)
 	
-	#def setPassword(self, password):
-		#self.password = hashlib.md5(password).hexdigest()
-		#self.put()
+	def setPassword(self, password):
+		self.password = hashlib.md5(password).hexdigest()
+		self.put()
 		
 	@staticmethod
 	def checkToken(token):
@@ -26,7 +26,7 @@ class Employee(ndb.Model):
 		if not password:
 			return False
 			
-		if self.password == password:
+		if self.password == hashlib.md5(password).hexdigest():
 			return True
 		return False
 			
