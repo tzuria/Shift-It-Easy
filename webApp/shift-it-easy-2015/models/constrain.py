@@ -5,9 +5,9 @@ from employee import Employee
 class Constrain(ndb.Model):
 	employee = ndb.KeyProperty(kind = Employee)
 	constrianDay = ndb.IntegerProperty()
-	constrianMonth = ndb.IntegerProperty()
-	ShiftType = ndb.StringProperty()
-	constrainKind = ndb.StringProperty()
+	constrianWeek = ndb.IntegerProperty()
+	ShiftType = ndb.IntegerProperty()
+	constrainKind = ndb.IntegerProperty()
 	notes = ndb.StringProperty()
 
 		
@@ -17,7 +17,7 @@ class Constrain(ndb.Model):
 	
 		employees = []
 		list = Constrain.query(Constrain.constrainDay == day and Constrain.constrainMonth == month
-								and Constrain.shiftType == shfit, Constrain.constrainKind == satisfactory and Constrain.employee.shiftHead)
+								and Constrain.shiftType == shift, Constrain.constrainKind == satisfactory and Constrain.employee.shiftHead)
 		
 		if list:
 			for l in list:
