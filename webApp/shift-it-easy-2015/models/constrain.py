@@ -4,8 +4,8 @@ from employee import Employee
 
 class Constrain(ndb.Model):
 	employeeUN = ndb.StringProperty()
-	constrianDay = ndb.NumberProperty()
-	constrianWeek = ndb.NumberProperty()
+	constrianDay = ndb.IntegerProperty()
+	constrianWeek = ndb.IntegerProperty()
 	ShiftType = ndb.StringProperty()
 	constrainKind = ndb.StringProperty()
 	notes = ndb.StringProperty()
@@ -19,10 +19,10 @@ class Constrain(ndb.Model):
 			return False
 	
 		employees = []
-		list = Constrain.query(Constrain.constrainWeek = week and Constrain.constrainDay = day and Constrain.shiftType = type)
+		#list = Constrain.query(Constrain.constrainWeek = week and Constrain.constrainDay = day and Constrain.shiftType = type)
 		
-		if list:
-			employees = list
+		#if list:
+			#employees = list
 	
 	
 	

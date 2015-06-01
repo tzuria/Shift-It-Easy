@@ -17,6 +17,7 @@
 
 from google.appengine.ext.webapp import template
 from models.employee import Employee
+from models.constrain import Constrain
 import webapp2
 
 class MainHandler(webapp2.RequestHandler):
@@ -29,8 +30,13 @@ class MainHandler(webapp2.RequestHandler):
 		if userName:
 			template_variables['userName'] = userName.userName
 		
-		html = template.render("web/templates/MainEmployee.html", template_variables)
-		self.response.write(html)
+			html = template.render("web/templates/MainEmployee.html", template_variables)
+			self.response.write(html)
+			
+		if not userName:
+			html = template.render("web/templates/LoginPage.html", template_variables)
+			self.response.write(html)
+	
 		
 
 
