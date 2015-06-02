@@ -18,6 +18,14 @@ class Employee(ndb.Model):
 		self.put()
 		
 	@staticmethod
+	def getEmployeeByUserName(userName):
+		employee = []
+		employee = Employee.query(Employee.userName == userName).get()
+		if employee:
+			return employee
+		return
+		
+	@staticmethod
 	def checkToken(token):
 		userName = Employee.get_by_id(long(token))
 		return userName
