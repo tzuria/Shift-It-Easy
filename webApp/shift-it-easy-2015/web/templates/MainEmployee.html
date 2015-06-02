@@ -4,122 +4,145 @@
 	<script type="application/javascript" src="http://code.jquery.com/jquery-2.1.4.min.js"></script>
 	<script type="application/javascript" src="../static/js/mainEmployee.js"></script>
 	<title>Shift It Easy | Manager main page</title>
+
+	<script>
+		$(document).ready(function() {
+//			var userName = getQueryVariable("userName");
+//			$.ajax({
+//				url:'/MainEmployee',
+//				type:'GET',
+//				dataType:'json',
+//				data:{userName: userName},
+//				success:function(data, status, xhr) {
+//					document.location.href = '/MainManager';
+//				},
+//				error:function(xhr, status, error) {
+//					alert("failed!");
+//					alert(xhr.responseText);
+//					console.error(xhr, status, error);
+//				}
+//			});
+
+		});
+
+	</script>
+
 </head>
 <body>
-	<div id="header">
-		<h1><center> Shift It Easy </center></h1>
-		<h3><center> Welcome <span id ='userName'> {{userName}} </span> </center></h3><br>
-		<img src="../static/image/logo.jpg" style="width:150;height:150px">
-	</div>
-	<div class="CSSTableGenerator">
-		<table>
-            <tr>
-				<td width="9%">	</td>
-                <td width="13%">Sunday</td>
-                <td width="13%">Monday</td>
-				<td width="13%">Tuesday</td>
-				<td width="13%">Wednesday</td>
-				<td width="13%">Thursday</td>
-				<td width="13%">Friday</td>
-				<td width="13%">Saturday</td>
-            </tr>
-		</table>
-	</div>
-	<div class="CSSTableGenerator1">    
-		<table>
-			<tr>
-				<td width="9%">	</td>
-				<td width="13%">03/05</td>
-                <td width="13%">04/05</td>
-				<td width="13%">05/05</td>
-				<td width="13%">06/05</td>
-				<td width="13%">07/05</td>
-				<td width="13%">08/05</td>
-				<td width="13%">09/05</td>
-            </tr>
-            <tr>
-				<td align="right">night</td>
-                <td>	</td>
-				<td>     </td>
-				<td>     </td>
-				<td>     </td>
-				<td>     </td>
-				<td>     </td>
-				<td>     </td>
-            </tr>
-            <tr>
-				<td align="right">morning</td>
-                <td>	</td>
-				<td>     </td>
-				<td>     </td>
-				<td>     </td>
-				<td>     </td>
-				<td>     </td>
-				<td>     </td>
-            </tr>
-			<tr>
-				<td align="right">noon</td>
-                <td>	</td>
-				<td>     </td>
-				<td>     </td>
-				<td>     </td>
-				<td>     </td>
-				<td>     </td>
-				<td>     </td>
-            </tr>
-        </table>
-		<table>
-            <tr>
-				<td width="9%">	</td>
-                <td width="13%">10/05</td>
-                <td width="13%">11/05</td>
-				<td width="13%">12/05</td>
-				<td width="13%">13/05</td>
-				<td width="13%">14/05</td>
-				<td width="13%">15/50</td>
-				<td width="13%">16/05</td>
-            </tr>
-            <tr>
-				<td align="right">night</td>
-                <td>	</td>
-				<td>     </td>
-				<td>     </td>
-				<td>     </td>
-				<td>     </td>
-				<td>     </td>
-				<td>     </td>
-            </tr>
-            <tr>
-				<td align="right">morning</td>
-                <td>	</td>
-				<td>     </td>
-				<td>     </td>
-				<td>     </td>
-				<td>     </td>
-				<td>     </td>
-				<td>     </td>
-            </tr>
-			<tr>
-				<td align="right">noon</td>
-                <td>	</td>
-				<td>     </td>
-				<td>     </td>
-				<td>     </td>
-				<td>     </td>
-				<td>     </td>
-				<td>     </td>
-            </tr>
-        </table>	
-	</div> 
-	<br><br>
-	<button class = "btn" onclick="location.href='ConstrainsInputPage'" >Constrains input</button>
-	&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
-	&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
-	&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
-	&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
-	&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
-	<button class = "btn" onclick="location.href='/logout'">Logout</button>
-	<br>
-    </div> 		
+<div id="header">
+	<h1><center> Shift It Easy </center></h1>
+	<h3><center> Welcome <span id ='userName'> {{userName}} </span> </center></h3><br>
+	<img src="../static/image/logo.jpg" style="width:150;height:150px">
+</div>
+<div class="CSSTableGenerator">
+	<table>
+		<tr>
+			<td width="9%">	</td>
+			<td width="13%">Sunday</td>
+			<td width="13%">Monday</td>
+			<td width="13%">Tuesday</td>
+			<td width="13%">Wednesday</td>
+			<td width="13%">Thursday</td>
+			<td width="13%">Friday</td>
+			<td width="13%">Saturday</td>
+		</tr>
+	</table>
+</div>
+<div class="CSSTableGenerator1">
+	<table>
+		<tr>
+			<td width="9%">	</td>
+				<td width="13%"><span id ='sunday'> {{sunday0}} </span></td>
+                <td width="13%"><span id ='monday'> {{monday0}} </span></td>
+				<td width="13%"><span id ='monday'> {{tuesday0}} </span></td>
+				<td width="13%"><span id ='monday'> {{wednesday0}} </span></td>
+				<td width="13%"><span id ='monday'> {{thursday0}} </span></td>
+				<td width="13%"><span id ='monday'> {{friday0}} </span></td>
+				<td width="13%"><span id ='monday'> {{saturday0}} </span></td>
+		</tr>
+		<tr>
+			<td align="right">night</td>
+			<td>	</td>
+			<td>     </td>
+			<td>     </td>
+			<td>     </td>
+			<td>     </td>
+			<td>     </td>
+			<td>     </td>
+		</tr>
+		<tr>
+			<td align="right">morning</td>
+			<td>	</td>
+			<td>     </td>
+			<td>     </td>
+			<td>     </td>
+			<td>     </td>
+			<td>     </td>
+			<td>     </td>
+		</tr>
+		<tr>
+			<td align="right">noon</td>
+			<td>	</td>
+			<td>     </td>
+			<td>     </td>
+			<td>     </td>
+			<td>     </td>
+			<td>     </td>
+			<td>     </td>
+		</tr>
+	</table>
+	<table>
+		<tr>
+			<td width="9%">	</td>
+				<td width="13%"><span id ='monday'> {{sunday1}} </span></td>
+                <td width="13%"><span id ='monday'> {{monday1}} </span></td>
+				<td width="13%"><span id ='monday'> {{tuesday1}} </span></td>
+				<td width="13%"><span id ='monday'> {{wednesday1}} </span></td>
+				<td width="13%"><span id ='monday'> {{thursday1}} </span></td>
+				<td width="13%"><span id ='monday'> {{friday1}} </span></td>
+				<td width="13%"><span id ='monday'> {{saturday1}} </span></td>
+		</tr>
+		<tr>
+			<td align="right">night</td>
+			<td>	</td>
+			<td>     </td>
+			<td>     </td>
+			<td>     </td>
+			<td>     </td>
+			<td>     </td>
+			<td>     </td>
+		</tr>
+		<tr>
+			<td align="right">morning</td>
+			<td>	</td>
+			<td>     </td>
+			<td>     </td>
+			<td>     </td>
+			<td>     </td>
+			<td>     </td>
+			<td>     </td>
+		</tr>
+		<tr>
+			<td align="right">noon</td>
+			<td>	</td>
+			<td>     </td>
+			<td>     </td>
+			<td>     </td>
+			<td>     </td>
+			<td>     </td>
+			<td>     </td>
+		</tr>
+	</table>
+</div>
+<br><br>
+<button class = "btn" onclick="location.href='ConstrainsInputPage'" >Constrains input</button>
+&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+<button class = "btn" onclick="location.href='/logout'">Logout</button>
+<br>
+</div>
 </body>
 </html>
