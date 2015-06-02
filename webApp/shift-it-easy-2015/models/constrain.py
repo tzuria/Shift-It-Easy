@@ -29,5 +29,3 @@ class Constrain(ndb.Model):
 	
 	
 	
-	
-	
