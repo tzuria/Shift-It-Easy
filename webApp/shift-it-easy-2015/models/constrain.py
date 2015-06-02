@@ -25,4 +25,11 @@ class Constrain(ndb.Model):
 				
 			return employees
 		else:
+<<<<<<< HEAD
 			return None	
+=======
+			return None
+	
+	
+	
+>>>>>>> origin/master
