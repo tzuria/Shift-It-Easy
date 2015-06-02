@@ -1,27 +1,47 @@
+
 from google.appengine.ext import ndb
 from employee import Employee
 
 class Constrain(ndb.Model):
-	employee = ndb.KeyProperty(kind = Employee)
+	employeeUN = ndb.StringProperty()
 	constrianDay = ndb.IntegerProperty()
 	constrianWeek = ndb.IntegerProperty()
 	ShiftType = ndb.IntegerProperty()
 	constrainKind = ndb.IntegerProperty()
 	notes = ndb.StringProperty()
 
-		
-	def getShiftHeads(self, day, month, shift, satisfactory):
-		if not day or not month or not shift or not satisfactory:
-			return False
-	
+	@classmethod
+	def getShiftHeads(self, day, week, shift, satisfactory):
 		employees = []
-		list = Constrain.query(Constrain.constrainDay == day and Constrain.constrainMonth == month
-								and Constrain.shiftType == shift, Constrain.constrainKind == satisfactory and Constrain.employee.shiftHead)
-		
+		list = Constrain.query(Constrain.constrianDay == day , Constrain.constrianWeek == week
+								,Constrain.ShiftType == shift, Constrain.constrainKind == satisfactory).fetch()		
 		if list:
 			for l in list:
-				employees.append(l.employee.userName)
-				
+				shiftHead = Employee.getEmployeeByUserName(l.employeeUN)
+				if shiftHead:
+					if shiftHead.shiftHead:
+						employees.append(shiftHead.userName)		
+			
 			return employees
 		else:
 			return None
+			
+	@classmethod
+	def getCrew(self, day, week, shift, satisfactory):
+		employees = []
+		list = Constrain.query(Constrain.constrianDay == day , Constrain.constrianWeek == week
+								,Constrain.ShiftType == shift, Constrain.constrainKind == satisfactory).fetch()		
+		if list:
+			for l in list:
+				shiftHead = Employee.getEmployeeByUserName(l.employeeUN)
+				if shiftHead:
+					employees.append(shiftHead.userName)		
+			
+			return employees
+		else:
+			return None
+	
+	
+	
+	
+	
