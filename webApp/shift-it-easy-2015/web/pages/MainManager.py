@@ -86,7 +86,6 @@ class MainHandler(webapp2.RequestHandler):
 			tuesday0 = monday0 + timedelta(days=1)
 			wednesday0 = tuesday0 + timedelta(days = 1)
 			
-		
 		if (today.weekday() == 4):
 			friday0 = today
 			saturday0 = friday0 + timedelta(days = 1)
@@ -96,7 +95,6 @@ class MainHandler(webapp2.RequestHandler):
 			wednesday0 = tuesday0 + timedelta(days = 1)
 			thursday0 = wednesday0 + timedelta(days = 1)
 			
-		
 		if (today.weekday() == 5):
 			saturday0 = today
 			sunday0 = saturday0 - timedelta(days = 6)
@@ -105,15 +103,18 @@ class MainHandler(webapp2.RequestHandler):
 			wednesday0 = tuesday0 + timedelta(days = 1)
 			thursday0 = wednesday0 + timedelta(days = 1)
 			friday0 = thursday0 + timedelta(days = 1)		
-
-		sunday1 = saturday0 + timedelta(days=1)
-		monday1 = saturday0 + timedelta(days=2)
-		tuesday1 = saturday0 + timedelta(days=3)
-		wednesday1 = saturday0 + timedelta(days=4)
-		thursday1 = saturday0 + timedelta(days=5)
-		friday1 = saturday0 + timedelta(days=6)
-		saturday1 = saturday0 + timedelta(days=7)
+		
+		if saturday0:
+			sunday1 = saturday0 + timedelta(days=1)
+			monday1 = saturday0 + timedelta(days=2)
+			tuesday1 = saturday0 + timedelta(days=3)
+			wednesday1 = saturday0 + timedelta(days=4)
+			thursday1 = saturday0 + timedelta(days=5)
+			friday1 = saturday0 + timedelta(days=6)
+			saturday1 = saturday0 + timedelta(days=7)
+		
 		template_variables = {}
+		
 		if userName:
 			template_variables['userName'] = userName.userName
 			template_variables['sunday0'] = "%d/%d"%(sunday0.day ,sunday0.month)
@@ -131,12 +132,82 @@ class MainHandler(webapp2.RequestHandler):
 			template_variables['friday1'] = "%d/%d"%(friday1.day ,friday1.month)
 			template_variables['saturday1'] = "%d/%d"%(saturday1.day ,saturday1.month)
 			
+			#Sunday0 night info:
+			head_nurse_want = Constrain.getShiftHeads(sunday0.day,(int(sunday0.strftime("%U"))), 0, 1)
+			head_nurse_dont_care = Constrain.getShiftHeads(sunday0.day,(int(sunday0.strftime("%U"))), 0, 0)
+			head_nurse_prefer_not = Constrain.getShiftHeads(sunday0.day,(int(sunday0.strftime("%U"))), 0, 2)
+			head_nurse_cant = Constrain.getShiftHeads(sunday0.day,(int(sunday0.strftime("%U"))), 0, 3)
+			
+			want = Constrain.getCrew(sunday0.day,(int(sunday0.strftime("%U"))), 0, 1)
+			dont_care = Constrain.getCrew(sunday0.day,(int(sunday0.strftime("%U"))), 0, 0)
+			prefer_not = Constrain.getCrew(sunday0.day,(int(sunday0.strftime("%U"))), 0, 2)
+			cant = Constrain.getCrew(sunday0.day,(int(sunday0.strftime("%U"))), 0, 3)
+			
+			if head_nurse_want:
+				template_variables['HeadNurseWhoWantSunday0'] = head_nurse_want
+				
+			if head_nurse_dont_care:
+				template_variables['HeadNurseWhoDontCareSunday0Night'] = head_nurse_dont_care
+				
+			if head_nurse_prefer_not:
+				template_variables['HeadNurseWhoPreferNotSunday0Night'] = head_nurse_prefer_not
+				
+			if head_nurse_cant:
+				template_variables['HeadNurseWhoCantSunday0Night'] = head_nurse_cant
+				
+			if want:
+				template_variables['NurseWhoWantSunday0Night'] = want
+				
+			if dont_care:
+				template_variables['NurseWhoDontCareSunday0Night'] = dont_care
+				
+			if prefer_not:
+				template_variables['NurseWhoPreferNotSunday0Night'] = prefer_not
+				
+			if cant:
+				template_variables['NurseWhoCantSunday0Night'] = cant
+				
+			#Sunday0 morning info:
+			head_nurse_want = Constrain.getShiftHeads(monday0.day,(int(monday0.strftime("%U"))), 1, 1)
+			head_nurse_dont_care = Constrain.getShiftHeads(monday0.day,(int(monday0.strftime("%U"))), 1, 0)
+			head_nurse_prefer_not = Constrain.getShiftHeads(monday0.day,(int(monday0.strftime("%U"))), 1, 2)
+			head_nurse_cant = Constrain.getShiftHeads(monday0.day,(int(monday0.strftime("%U"))), 1, 3)
+			
+			want = Constrain.getCrew(sunday0.day,(int(sunday0.strftime("%U"))), 1, 1)
+			dont_care = Constrain.getCrew(sunday0.day,(int(sunday0.strftime("%U"))), 1, 0)
+			prefer_not = Constrain.getCrew(sunday0.day,(int(sunday0.strftime("%U"))), 1, 2)
+			cant = Constrain.getCrew(sunday0.day,(int(sunday0.strftime("%U"))), 1, 3)
+			
+			if head_nurse_want:
+				template_variables['HeadNurseWhoWant'] = head_nurse_want
+				
+			if head_nurse_dont_care:
+				template_variables['HeadNurseWhoDontCare'] = head_nurse_dont_care
+				
+			if head_nurse_prefer_not:
+				template_variables['HeadNurseWhoPreferNot'] = head_nurse_prefer_not
+				
+			if head_nurse_cant:
+				template_variables['HeadNurseWhoCant'] = head_nurse_cant
+				
+			if want:
+				template_variables['NurseWhoWant'] = want
+				
+			if dont_care:
+				template_variables['NurseWhoDontCare'] = dont_care
+				
+			if prefer_not:
+				template_variables['NurseWhoPreferNot'] = prefer_not
+				
+			if cant:
+				template_variables['NurseWhoCant'] = cant
+			
+			html = template.render("web/templates/MainManager.html", template_variables)
+			self.response.write(html)
 		
-		
-		
-		html = template.render("web/templates/MainManager.html", template_variables)
-		self.response.write(html)
-		
+		if not userName:
+			html = template.render("web/templates/LoginPage.html", template_variables)
+			self.response.write(html)
 		
 
 app = webapp2.WSGIApplication([
