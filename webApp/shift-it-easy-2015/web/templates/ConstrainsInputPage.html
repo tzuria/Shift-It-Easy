@@ -1,21 +1,34 @@
 <html>
 <head>
 	<link rel="stylesheet" type="text/css" href="../static/css/CSSstyle.css" />
-	
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
 	<title>Shift It Easy | Manager main page</title>
 
 	<style>
-
-		.CSSTableGenerator1 td{
-			
+		.CSSTableGenerator1 td#cell{
+			padding-right: 80px;
+			padding-top: 80px;
 		}
-
 	</style>
 
 	<!--very important!-->
 	<script>
-		$(document).ready(function() {
+
+		function constrain()
+		{
+			var date, employee, type, kind, notes;
+		};
+
+		var constrainArr = []
+
+		for (var i=0; i<42; i++)
+		{
+			constrainArr.push(new constrain( new Date(), $('.header').find("span").text()) ,null , 0 , null);
+		}
+
+		//cell change color by click
+		$(document).ready(function()
+		{
 			var status = 0;
 			$(function() {
 				$('td#cell').click(function () {
@@ -28,21 +41,54 @@
 						status++;
 					}
 					else if (status % 4 == 2) {
-
 						$(this).css('background', '#00FF00')
 						status++;
 					}
 					else if (status % 4 == 3) {
-
 						$(this).css('background', '#ffffff')
 						status++;
 					}
+					add_constrine(this);
 				});
 			});
 		});
 
 
-		$(function save_table() 
+		//add constrine to constrainArr [obj constrine]
+		var add_constrine = function(obj)
+		{
+			$(function () {
+				var table1 = document.getElementById("table1");
+				var table2 = document.getElementById("table2");
+				var table = $(obj).parent().parent().parent().parent()
+				if (table != null) {
+					if (table === table1) {
+						constrainArr[obj.cellIndex].kind = obj.css("background");
+					}
+					else {
+						constrainArr[obj.cellIndex + 21].kind = obj.css("background");
+					}
+
+				}
+			})
+		}
+		//translate color to type.. "0"-don't matter white by defult 
+		var mapColorsToTypes = function () {
+			switch(color){
+				case '#FFFF00': return 2;//Yellow
+					break;
+				case '#FF0000': return 3;//Red
+					break;
+				case '#00FF00': return 1;//Green
+					break;
+			}
+		}
+		function NeteFunc() {
+			var shiftNote = prompt("Please enter your Note", "");
+
+		}
+/*
+		$(function save_table()
 		{
 			var colorArray = [];
 			$('td').each(function () {
@@ -64,18 +110,15 @@
 				}
 			});
 		});
-
-
+*/
+		
 	</script>
-
-
-
 </head>
 <body>
 <div id="header">
 	<h1><center> Shift It Easy </center></h1>
 	<h3><center> Welcome <span id ='userName'> {{userName}} </span>  </center></h3><br>
-	<img src="../static/image/logo.jpg" style="width:150;height:150px">
+	<img src="../static/image/logo.jpg" style="width:150px;height:150px">
 </div>
 <div class="CSSTableGenerator">
 	<table>
@@ -92,91 +135,91 @@
 	</table>
 </div>
 <div class="CSSTableGenerator1">
-	<table>
+	<table id="table1">
 		<tr>
-				<td width="9%">	</td>
-				<td width="13%"><span id ='sunday'> {{sunday0}} </span></td>
-                <td width="13%"><span id ='monday'> {{monday0}} </span></td>
-				<td width="13%"><span id ='monday'> {{tuesday0}} </span></td>
-				<td width="13%"><span id ='monday'> {{wednesday0}} </span></td>
-				<td width="13%"><span id ='monday'> {{thursday0}} </span></td>
-				<td width="13%"><span id ='monday'> {{friday0}} </span></td>
-				<td width="13%"><span id ='monday'> {{saturday0}} </span></td>
+			<td width="9%">	</td>
+			<td width="13%"><span id ='sunday'> {{sunday0}} </span></td>
+			<td width="13%"><span id ='monday'> {{monday0}} </span></td>
+			<td width="13%"><span id ='monday'> {{tuesday0}} </span></td>
+			<td width="13%"><span id ='monday'> {{wednesday0}} </span></td>
+			<td width="13%"><span id ='monday'> {{thursday0}} </span></td>
+			<td width="13%"><span id ='monday'> {{friday0}} </span></td>
+			<td width="13%"><span id ='monday'> {{saturday0}} </span></td>
 		</tr>
 		<tr>
 			<td>night</td>
-			<td id='cell'><button onclick="myFunction()">Notes</button>		</td>
-			<td id='cell'><button onclick="myFunction()">Notes</button>	    </td>
-			<td id='cell'><button onclick="myFunction()">Notes</button>	    </td>
-			<td id='cell'><button onclick="myFunction()">Notes</button>	    </td>
-			<td id='cell'><button onclick="myFunction()">Notes</button>	    </td>
-			<td id='cell'><button onclick="myFunction()">Notes</button>	    </td>
-			<td id='cell'><button onclick="myFunction()">Notes</button>	    </td>
+			<td id='cell'><button onclick="NeteFunc()">Notes</button>		</td>
+			<td id='cell'><button onclick="NeteFunc()">Notes</button>	    </td>
+			<td id='cell'><button onclick="NeteFunc()">Notes</button>	    </td>
+			<td id='cell'><button onclick="NeteFunc()">Notes</button>	    </td>
+			<td id='cell'><button onclick="NeteFunc()">Notes</button>	    </td>
+			<td id='cell'><button onclick="NeteFunc()">Notes</button>	    </td>
+			<td id='cell'><button onclick="NeteFunc()">Notes</button>	    </td>
 		</tr>
 		<tr>
 			<td>morning</td>
-			<td id='cell'><button onclick="myFunction()">Notes</button>		</td>
-			<td id='cell'><button onclick="myFunction()">Notes</button>		</td>
-			<td id='cell'><button onclick="myFunction()">Notes</button>		</td>
-			<td id='cell'><button onclick="myFunction()">Notes</button>		</td>
-			<td id='cell'><button onclick="myFunction()">Notes</button>		</td>
-			<td id='cell'><button onclick="myFunction()">Notes</button>		</td>
-			<td id='cell'><button onclick="myFunction()">Notes</button>		</td>
+			<td id='cell'><button onclick="NeteFunc()">Notes</button>		</td>
+			<td id='cell'><button onclick="NeteFunc()">Notes</button>		</td>
+			<td id='cell'><button onclick="NeteFunc()">Notes</button>		</td>
+			<td id='cell'><button onclick="NeteFunc()">Notes</button>		</td>
+			<td id='cell'><button onclick="NeteFunc()">Notes</button>		</td>
+			<td id='cell'><button onclick="NeteFunc()">Notes</button>		</td>
+			<td id='cell'><button onclick="NeteFunc()">Notes</button>		</td>
 		</tr>
 		<tr>
 			<td>noon</td>
-			<td id='cell'><button onclick="myFunction()">Notes</button>		</td>
-			<td id='cell'><button onclick="myFunction()">Notes</button>		</td>
-			<td id='cell'><button onclick="myFunction()">Notes</button>		</td>
-			<td id='cell'><button onclick="myFunction()">Notes</button>		</td>
-			<td id='cell'><button onclick="myFunction()">Notes</button>		</td>
-			<td id='cell'><button onclick="myFunction()">Notes</button>		</td>
-			<td id='cell'><button onclick="myFunction()">Notes</button>		</td>
+			<td id='cell'><button onclick="NeteFunc()">Notes</button>		</td>
+			<td id='cell'><button onclick="NeteFunc()">Notes</button>		</td>
+			<td id='cell'><button onclick="NeteFunc()">Notes</button>		</td>
+			<td id='cell'><button onclick="NeteFunc()">Notes</button>		</td>
+			<td id='cell'><button onclick="NeteFunc()">Notes</button>		</td>
+			<td id='cell'><button onclick="NeteFunc()">Notes</button>		</td>
+			<td id='cell'><button onclick="NeteFunc()">Notes</button>		</td>
 
 		</tr>
 	</table>
-	<table>
+	<table id="table2">
 		<tr>
-				<td width="9%">	</td>
-				<td width="13%"><span id ='monday'> {{sunday1}} </span></td>
-                <td width="13%"><span id ='monday'> {{monday1}} </span></td>
-				<td width="13%"><span id ='monday'> {{tuesday1}} </span></td>
-				<td width="13%"><span id ='monday'> {{wednesday1}} </span></td>
-				<td width="13%"><span id ='monday'> {{thursday1}} </span></td>
-				<td width="13%"><span id ='monday'> {{friday1}} </span></td>
-				<td width="13%"><span id ='monday'> {{saturday1}} </span></td>
+			<td width="9%">	</td>
+			<td width="13%"><span id ='monday'> {{sunday1}} </span></td>
+			<td width="13%"><span id ='monday'> {{monday1}} </span></td>
+			<td width="13%"><span id ='monday'> {{tuesday1}} </span></td>
+			<td width="13%"><span id ='monday'> {{wednesday1}} </span></td>
+			<td width="13%"><span id ='monday'> {{thursday1}} </span></td>
+			<td width="13%"><span id ='monday'> {{friday1}} </span></td>
+			<td width="13%"><span id ='monday'> {{saturday1}} </span></td>
 		</tr>
 		<tr>
 			<td>night</td>
-			<td id='cell'><button onclick="myFunction()">Notes</button>		</td>
-			<td id='cell'><button onclick="myFunction()">Notes</button>		</td>
-			<td id='cell'><button onclick="myFunction()">Notes</button>		</td>
-			<td id='cell'><button onclick="myFunction()">Notes</button>		</td>
-			<td id='cell'><button onclick="myFunction()">Notes</button>		</td>
-			<td id='cell'><button onclick="myFunction()">Notes</button>		</td>
-			<td id='cell'><button onclick="myFunction()">Notes</button>		</td>
+			<td id='cell'><button onclick="NeteFunc()">Notes</button>		</td>
+			<td id='cell'><button onclick="NeteFunc()">Notes</button>		</td>
+			<td id='cell'><button onclick="NeteFunc()">Notes</button>		</td>
+			<td id='cell'><button onclick="NeteFunc()">Notes</button>		</td>
+			<td id='cell'><button onclick="NeteFunc()">Notes</button>		</td>
+			<td id='cell'><button onclick="NeteFunc()">Notes</button>		</td>
+			<td id='cell'><button onclick="NeteFunc()">Notes</button>		</td>
 
 
 		</tr>
 		<tr>
 			<td>morning</td>
-			<td id='cell'><button onclick="myFunction()">Notes</button>		</td>
-			<td id='cell'><button onclick="myFunction()">Notes</button>		</td>
-			<td id='cell'><button onclick="myFunction()">Notes</button>		</td>
-			<td id='cell'><button onclick="myFunction()">Notes</button>		</td>
-			<td id='cell'><button onclick="myFunction()">Notes</button>		</td>
-			<td id='cell'><button onclick="myFunction()">Notes</button>		</td>
-			<td id='cell'><button onclick="myFunction()">Notes</button>		</td>
+			<td id='cell'><button onclick="NeteFunc()">Notes</button>		</td>
+			<td id='cell'><button onclick="NeteFunc()">Notes</button>		</td>
+			<td id='cell'><button onclick="NeteFunc()">Notes</button>		</td>
+			<td id='cell'><button onclick="NeteFunc()">Notes</button>		</td>
+			<td id='cell'><button onclick="NeteFunc()">Notes</button>		</td>
+			<td id='cell'><button onclick="NeteFunc()">Notes</button>		</td>
+			<td id='cell'><button onclick="NeteFunc()">Notes</button>		</td>
 		</tr>
 		<tr>
 			<td>noon</td>
-			<td id='cell'><button onclick="myFunction()">Notes</button>		</td>
-			<td id='cell'><button onclick="myFunction()">Notes</button>		</td>
-			<td id='cell'><button onclick="myFunction()">Notes</button>		</td>
-			<td id='cell'><button onclick="myFunction()">Notes</button>		</td>
-			<td id='cell'><button onclick="myFunction()">Notes</button>		</td>
-			<td id='cell'><button onclick="myFunction()">Notes</button>		</td>
-			<td id='cell'><button onclick="myFunction()">Notes</button>		</td>
+			<td id='cell'><button onclick="NeteFunc()">Notes</button>		</td>
+			<td id='cell'><button onclick="NeteFunc()">Notes</button>		</td>
+			<td id='cell'><button onclick="NeteFunc()">Notes</button>		</td>
+			<td id='cell'><button onclick="NeteFunc()">Notes</button>		</td>
+			<td id='cell'><button onclick="NeteFunc()">Notes</button>		</td>
+			<td id='cell'><button onclick="NeteFunc()">Notes</button>		</td>
+			<td id='cell'><button onclick="NeteFunc()">Notes</button>		</td>
 		</tr>
 	</table>
 </div>
@@ -190,19 +233,6 @@
 </div>
 </div>
 
-<script>
-	function myFunction() {
-		var shiftNote = prompt("Please enter your Note", "");
-
-		if (shiftNote != null) {
-			document.getElementById("demo").innerHTML =
-					"Hello " + person + "! How are you today?";
-		}
-	}
-</script>
-
-
-
-
 </body>
 </html>
+ 
