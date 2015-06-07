@@ -43,16 +43,8 @@
             <tr>
                 <td>  <!-- Sunday0 night -->
 					<b>Shift head:</b>
-<<<<<<< HEAD
-					<select name="headNurseListSunday1" id="head_nurse_list_sunday1" style="width: 150px">
-						<option style="color: red;">Zero</option>
-						<option style="color: green;">tzuria</option>
-						<option style="color: black;">1111</option>
-						<option style="color: yellow;" value="Employee2">fds</option>
-=======
 					<select name="headNurseListSunday1" id="head_nurse_list_sunday1" style="width: 150px">
 						<option selected> {{Sunday0NightAssignBeforeHead}} </option>
->>>>>>> origin/master
 						{% for h in HeadNurseWhoWantSunday0Night %}
 							<option style="color:green">{{h}}</option>
 						{% endfor %}
@@ -67,25 +59,12 @@
 						
 						{% for h in HeadNurseWhoCantSunday0Night %}
 							<option style="color:red">{{h}}</option>
-<<<<<<< HEAD
-						{% endfor %}
-						<option selected></option>
-					</select>
-					<br><br>
-					<b>Second nurse:</b>
-					<select name="secondNurseListSunday1" id="second_nurse_list_sunday1" style="width: 150px">
-						<option style="color: red;" value="Employee3">Zero</option>
-						<option style="color: green;" value="Employee2">tzuria</option>
-						<option style="color: black;" value="Employee2">1111</option>
-						<option style="color: yellow;" value="Employee2">fds</option>
-=======
 						{% endfor %}
 					</select>
 					<br><br>
 					<b>Second nurse:</b>
 					<select name="secondNurseListSunday1" id="second_nurse_list_sunday1" style="width: 150px">
 						<option selected> {{Sunday0NightAssignBeforeSecond}} </option>
->>>>>>> origin/master
 						{% for h in NurseWhoWantSunday0Night %}
 							<option style="color:green">{{h}}</option>
 						{% endfor %}
@@ -100,25 +79,12 @@
 						
 						{% for h in NurseWhoCantSunday0Night %}
 							<option style="color:red">{{h}}</option>
-<<<<<<< HEAD
-						{% endfor %}
-						<option selected></option>
-					</select>
-					<br><br>
-					<b>Stand by:</b>
-					<select name="standByListSunday1" id="stand_by_list_sunday1" style="width: 150px">
-						<option style="color: red;" value="Employee3">Zero</option>
-						<option style="color: green;" value="Employee2">tzuria</option>
-						<option style="color: black;" value="Employee2">1111</option>
-						<option style="color: yellow;" value="Employee2">fds</option>
-=======
 						{% endfor %}
 					</select>
 					<br><br>
 					<b>Stand by:</b>
 					<select name="standByListSunday1" id="stand_by_list_sunday1" style="width: 150px">
 						<option selected> {{Sunday0NightAssignBeforeStandBy}} </option>
->>>>>>> origin/master
 						{% for h in NurseWhoWantSunday0Night %}
 							<option style="color:green">{{h}}</option>
 						{% endfor %}
@@ -133,12 +99,7 @@
 						
 						{% for h in NurseWhoCantSunday0Night %}
 							<option style="color:red">{{h}}</option>
-<<<<<<< HEAD
 						{% endfor %}
-						<option selected></option>
-=======
-						{% endfor %}
->>>>>>> origin/master
 					</select>
 				</td>
 				<td>  <!-- Monday0 night -->
@@ -1422,43 +1383,13 @@
 		
 		
 		<table>
-<<<<<<< HEAD
             <tr>
-                <td width="14%"><span id ='sunday'> {{sunday0}} </span></td>
-                <td width="14%"><span id ='monday'> {{monday0}} </span></td>
-				<td width="14%"><span id ='monday'> {{tuesday0}} </span></td>
-				<td width="14%"><span id ='monday'> {{wednesday0}} </span></td>
-				<td width="14%"><span id ='monday'> {{thursday0}} </span></td>
-				<td width="14%"><span id ='monday'> {{friday0}} </span></td>
-				<td width="14%"><span id ='monday'> {{saturday0}} </span></td>
-=======
-            <tr>
->>>>>>> origin/master
                 <td width="14%"><span id ='sunday1'> {{sunday1}} </span></td>
                 <td width="14%"><span id ='monday1'> {{monday1}} </span></td>
 				<td width="14%"><span id ='tuesday1'> {{tuesday1}} </span></td>
 				<td width="14%"><span id ='wednesday1'> {{wednesday1}} </span></td>
 				<td width="14%"><span id ='thursday1'> {{thursday1}} </span></td>
 				<td width="14%"><span id ='friday1'> {{friday1}} </span></td>
-<<<<<<< HEAD
-				<td width="14%"><span id ='saturday1'> {{saturday1}} </span></td>
-            </tr>
-            <tr>
-                <td>  <!-- Sunday -->
-					<b>Shift head:</b>
-					<select name="headNurseListSunday1" id="head_nurse_list_sunday4" style="width: 150px">
-						<option style="color: red;">Zero</option>
-						<option style="color: green;">tzuria</option>
-						<option style="color: black;">1111</option>
-						<option style="color: yellow;" value="Employee2">fds</option>
-						<option selected></option>
-					<select id="headNurseList" style="width: 150px">
-						<option> hey </option>
-						{% for h in HeadNurseWhoWant %}
-							<option> hey </option>
-							<option value="{{h}}">{{h}}</option>
-						{% endfor %}
-=======
 				<td width="14%"><span id ='saturday1'> {{saturday1}} </span></td>
             </tr>
             <tr>
@@ -1481,7 +1412,6 @@
 						{% for h in HeadNurseWhoCantSunday1Night %}
 							<option style="color:red">{{h}}</option>
 						{% endfor %}
->>>>>>> origin/master
 					</select>
 					<br><br>
 					<b>Second nurse:</b>
