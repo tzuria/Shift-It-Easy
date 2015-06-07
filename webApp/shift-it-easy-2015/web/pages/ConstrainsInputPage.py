@@ -133,6 +133,22 @@ class MainHandler(webapp2.RequestHandler):
 			template_variables['thursday1'] = "%d/%d"%(thursday1.day ,thursday1.month)
 			template_variables['friday1'] = "%d/%d"%(friday1.day ,friday1.month)
 			template_variables['saturday1'] = "%d/%d"%(saturday1.day ,saturday1.month)
+			
+			sunday0date = date(sunday0.year, sunday0.month, sunday0.day)
+			monday0date = date(monday0.year, monday0.month, monday0.day)	
+			tuesday0date = date(tuesday0.year, tuesday0.month, tuesday0.day)
+			wednesday0date = date(wednesday0.year, wednesday0.month, wednesday0.day)
+			thursday0date = date(thursday0.year, thursday0.month, thursday0.day)
+			friday0date = date(friday0.year, friday0.month, friday0.day)
+			saturday0date = date(saturday0.year, saturday0.month, saturday0.day)
+			
+			sunday1date = date(sunday1.year, sunday1.month, sunday1.day)
+			monday1date = date(monday1.year, monday1.month, monday1.day)	
+			tuesday1date = date(tuesday1.year, tuesday1.month, tuesday1.day)
+			wednesday1date = date(wednesday1.year, wednesday1.month, wednesday1.day)
+			thursday1date = date(thursday1.year, thursday1.month, thursday1.day)
+			friday1date = date(friday1.year, friday1.month, friday1.day)
+			saturday1date = date(saturday1.year, saturday1.month, saturday1.day)	
 
 		html = template.render("web/templates/ConstrainsInputPage.html", template_variables)
 		self.response.write(html)
