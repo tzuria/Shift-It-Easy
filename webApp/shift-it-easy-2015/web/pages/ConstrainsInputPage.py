@@ -144,6 +144,7 @@ class AddConstrain(webapp2.RequestHandler):
 			self.response.write("Choose shift first!") 
 			return
 		
+			
 class saveConstrains(webapp2.RequestHandler):
 	def post(self):
 		userName = None
@@ -153,20 +154,17 @@ class saveConstrains(webapp2.RequestHandler):
 		constrain = Constrain()
 		template_variables = {}
 		if userName:
-			constrain.employee = userName.userName
+			constrain.employee = userName.userName		
+		#	constrain.constrianDay = 
+		#	constrain.constrianWeek = 
+		#	constrain.ShiftType = 
+		#	constrain.constrainKind =
+		#	constrain.notes = 
 			
-			#constrain.constrianDay = 
-			#constrain.constrianWeek = 
-			#constrain.ShiftType = 
-			#constrain.constrainKind = 
-			#constrain.notes = 
-			
-		constrains = self.request.get('colors')
 		if not constrains:
 			self.response.write("bad constrains!!") 
 			return
 		else:
-			constrain = Constrain()
 			constrain.put()
 			self.response.write(json.dumps({'status':'OK'}))
 		

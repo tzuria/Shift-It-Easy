@@ -4,17 +4,15 @@ from employee import Employee
 
 class Constrain(ndb.Model):
 	employeeUN = ndb.StringProperty()
-	constrianDay = ndb.IntegerProperty()
-	constrianWeek = ndb.IntegerProperty()
+	constrainDate = ndb.DateProperty()
 	ShiftType = ndb.IntegerProperty()
 	constrainKind = ndb.IntegerProperty()
 	notes = ndb.StringProperty()
 
 	@classmethod
-	def getShiftHeads(self, day, week, shift, satisfactory):
+	def getShiftHeads(self, date, shift, satisfactory):
 		employees = []
-		list = Constrain.query(Constrain.constrianDay == day , Constrain.constrianWeek == week
-								,Constrain.ShiftType == shift, Constrain.constrainKind == satisfactory).fetch()		
+		list = Constrain.query(Constrain.constrainDate == date, Constrain.ShiftType == shift, Constrain.constrainKind == satisfactory).fetch()		
 		if list:
 			for l in list:
 				shiftHead = Employee.getEmployeeByUserName(l.employeeUN)
@@ -27,10 +25,9 @@ class Constrain(ndb.Model):
 			return None
 			
 	@classmethod
-	def getCrew(self, day, week, shift, satisfactory):
+	def getCrew(self, date, shift, satisfactory):
 		employees = []
-		list = Constrain.query(Constrain.constrianDay == day , Constrain.constrianWeek == week
-								,Constrain.ShiftType == shift, Constrain.constrainKind == satisfactory).fetch()		
+		list = Constrain.query(Constrain.constrainDate == date, Constrain.ShiftType == shift, Constrain.constrainKind == satisfactory).fetch()		
 		if list:
 			for l in list:
 				shiftHead = Employee.getEmployeeByUserName(l.employeeUN)
