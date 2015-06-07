@@ -260,8 +260,9 @@ function updateShift(event)
 	{
 		return null;
 	}
-	//alert(event.data.id);
+	alert(event.data.week);
 	
+	alert(event.data.day);
 	
 	var selectedNurse_userName = selectedNurse.options[selectedNurse.selectedIndex].text
 	//alert(selectedNurse_userName);

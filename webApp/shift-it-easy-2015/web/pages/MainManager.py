@@ -23,6 +23,7 @@ import time
 from datetime import date
 from datetime import timedelta
 import webapp2
+import json
 
 class MainHandler(webapp2.RequestHandler):
     def get(self):
@@ -2293,8 +2294,67 @@ class MainHandler(webapp2.RequestHandler):
 		if not userName:
 			html = template.render("web/templates/LoginPage.html", template_variables)
 			self.response.write(html)
+			
+			
+class SaveScheduleHandler(webapp2.RequestHandler):
+    def get(self):
+		selectedNurse_userName = self.request.get('selectedNurse_userName')
+		day = self.request.get('day')
+		shift = self.request.get('shift')
+		week = self.request.get('week')
+		rule = self.request.get('rule')
+		
+		
+		preparingSchedule = PreparingSchedule()
+		preparingSchedule.rule = int(rule)
+		preparingSchedule.nurseUserName = selectedNurse_userName
+		preparingSchedule.ShiftType = int(shift)
+		
+		selectedDate = date.today()
+		
+		selectedDate = selectedDate + timedelta(days = 14)
+		if(int(selectedDate.strftime("%U"))%2 == 0):
+			selectedDate = selectedDate - timedelta(days = 7)
+			
+		
+		
+		if int(week) == 1:
+			selectedDate = selectedDate + timedelta(days = 7)
+			
+		
+		if selectedDate.weekday() != 6:
+			selectedDate = selectedDate - timedelta(days=(selectedDate.weekday()))
+			
+		
+		if selectedDate.weekday() == 6:
+			selectedDate = selectedDate + timedelta(days=1)
+			
+		if int(day) == 6:
+			selectedDate = selectedDate - timedelta(days=1)
+		if int(day) != 6:
+			selectedDate = selectedDate + timedelta(days=int(day))
+		
+			
+		
+		
+		preparingSchedule.date = selectedDate
+		
+		allreadyAssign = preparingSchedule.checkIfAssignAlready1(preparingSchedule.date, int(shift), int(rule))
+		
+		if allreadyAssign:
+			allreadyAssign.key.delete()
+			
+		
+		if preparingSchedule.checkLegalAssign_Night_After_Night():
+			self.response.write("Night After Night") 
+		
+		
+		preparingSchedule.put()
+		
+		self.response.write(json.dumps({'status':'OK'}))
 		
 
 app = webapp2.WSGIApplication([
-    ('/MainManager', MainHandler)
+    ('/MainManager', MainHandler),
+	('/saveSchedule', SaveScheduleHandler)
 ], debug=True)
