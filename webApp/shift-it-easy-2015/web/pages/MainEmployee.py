@@ -30,7 +30,7 @@ class MainHandler(webapp2.RequestHandler):
 			userName = Employee.checkToken(self.request.cookies.get('our_token'))
 
 		today = date.today()
-		today = today + timedelta(days = 14)
+		today = today
 		if(int(today.strftime("%U"))%2 == 0):
 			today = today - timedelta(days = 7)
 		sunday0 = today
