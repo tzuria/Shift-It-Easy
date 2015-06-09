@@ -42,18 +42,85 @@ class PreparingSchedule(ndb.Model):
 		
 	def checkLegalAssign_Night_After_Night(self):
 		assign = []
-		yesturday = self.date - timedelta(days=1)
+		yesterday = self.date - timedelta(days=1)
 		tomorrow = self.date + timedelta(days=1)
 		
 		#Checking if the assign is two sequence nights.
 		if self.ShiftType == 0:
-			nightBefore = PreparingSchedule.query(PreparingSchedule.date == yesturday, PreparingSchedule.ShiftType == 0,PreparingSchedule.nurseUserName == self.nurseUserName ).get()
+			nightBefore = PreparingSchedule.query(PreparingSchedule.date == yesterday, PreparingSchedule.ShiftType == 0,PreparingSchedule.nurseUserName == self.nurseUserName ).get()
 			nightAfter = PreparingSchedule.query(PreparingSchedule.date == tomorrow, PreparingSchedule.ShiftType == 0,PreparingSchedule.nurseUserName == self.nurseUserName ).get()
 			
 			if nightBefore or nightAfter:
 				return False
 		return True
+		
+	def checkLegalAssign_Noon_Morning_Night(self):
+		twoDaysAgo = self.date - timedelta(days=2)
+		yesterday = self.date - timedelta(days=1)
+		tomorrow = self.date + timedelta(days=1)
+		dayAfterTomorrow = self.date + timedelta(days=2)
+		
+		if self.ShiftType == 0: # night shift - if towDaysAgo noon and yesterday morning - Illegal!
+			noonCheck = PreparingSchedule.query(PreparingSchedule.date == twoDaysAgo, PreparingSchedule.ShiftType == 2,PreparingSchedule.nurseUserName == self.nurseUserName ).get()
+			morningCheck = PreparingSchedule.query(PreparingSchedule.date == yesterday, PreparingSchedule.ShiftType == 1,PreparingSchedule.nurseUserName == self.nurseUserName ).get()
 			
+			if noonCheck or morningCheck:
+				return False
+			return True
+				
+		else if self.ShiftType == 1 # morning shift - if yesterday noon and tomorrow night - Illegal!
+			noonCheck = PreparingSchedule.query(PreparingSchedule.date == yesterday, PreparingSchedule.ShiftType == 2,PreparingSchedule.nurseUserName == self.nurseUserName ).get()
+			nightCheck = PreparingSchedule.query(PreparingSchedule.date == tomorrow, PreparingSchedule.ShiftType == 0,PreparingSchedule.nurseUserName == self.nurseUserName ).get()
+			
+			if noonCheck or nightCheck:
+				return False	
+			return True
+			
+		if self.ShiftType == 2: # noon shift - if tomorrow morning and dayAfterTomorrow night - Illegal!
+			nightCheck = PreparingSchedule.query(PreparingSchedule.date == dayAfterTomorrow, PreparingSchedule.ShiftType == 0,PreparingSchedule.nurseUserName == self.nurseUserName ).get()
+			morningCheck = PreparingSchedule.query(PreparingSchedule.date == tomorrow, PreparingSchedule.ShiftType == 1,PreparingSchedule.nurseUserName == self.nurseUserName ).get()
+			
+			if nightCheck or morningCheck:
+				return False
+			return True
+			
+	
+	def checkLegalAssign_Assign_Head_Nurses(self):
+		NumberOfHeadNurses = PreparingSchedule.query(PreparingSchedule.rule == 0).fetch()
+		
+		if len(NumberOfHeadNurses) == 42
+			return True
+		return False
+		
+	def checkLegalAssign_Following_Shifts(self):
+		yesterday = self.date - timedelta(days=1)
+		tomorrow = self.date + timedelta(days=1)
+		
+		if self.ShiftType == 0: # night shift - if noon or morning shift on same day already or noon yesterday - Illegal!
+			noonTodayCheck = PreparingSchedule.query(PreparingSchedule.date == self.date, PreparingSchedule.ShiftType == 2,PreparingSchedule.nurseUserName == self.nurseUserName ).get()
+			noonYesterdayCheck = PreparingSchedule.query(PreparingSchedule.date == yesterday, PreparingSchedule.ShiftType == 2,PreparingSchedule.nurseUserName == self.nurseUserName ).get()
+			morningCheck = PreparingSchedule.query(PreparingSchedule.date == selfdate, PreparingSchedule.ShiftType == 1,PreparingSchedule.nurseUserName == self.nurseUserName ).get()
+			
+			if noonTodayCheck or noonYesterdayCheck or morningCheck:
+				return False
+			return True
+				
+		else if self.ShiftType == 1 # morning shift - if noon or night shift on same day already - Illegal!
+			noonCheck = PreparingSchedule.query(PreparingSchedule.date == self.date, PreparingSchedule.ShiftType == 2,PreparingSchedule.nurseUserName == self.nurseUserName ).get()
+			nightCheck = PreparingSchedule.query(PreparingSchedule.date == self.date, PreparingSchedule.ShiftType == 0,PreparingSchedule.nurseUserName == self.nurseUserName ).get()
+			
+			if noonCheck or nightCheck:
+				return False	
+			return True
+			
+		if self.ShiftType == 2: # noon shift - if night or morning shift on same day already or night tomorrow - Illegal!
+			nightTodayCheck = PreparingSchedule.query(PreparingSchedule.date == self.date, PreparingSchedule.ShiftType == 0,PreparingSchedule.nurseUserName == self.nurseUserName ).get()
+			nightTomorrowCheck = PreparingSchedule.query(PreparingSchedule.date == tomorrow, PreparingSchedule.ShiftType == 0,PreparingSchedule.nurseUserName == self.nurseUserName ).get()
+			morningCheck = PreparingSchedule.query(PreparingSchedule.date == self.date, PreparingSchedule.ShiftType == 1,PreparingSchedule.nurseUserName == self.nurseUserName ).get()
+			
+			if nightTodayCheck or nightTomorrow or morningCheck:
+				return False
+			return True	
 	
 	
 	
