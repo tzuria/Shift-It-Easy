@@ -32,11 +32,24 @@ function add_Employee() {
 	var username = $('#username').val();
 	var password = $('#password').val();
 	
+	var shiftHead = false;
+	
+	shiftHead = document.getElementById("radio_yes").checked
+	
+	var cantShiftHead = document.getElementById("radio_no").checked
+	
+	if(shiftHead == false && cantShiftHead == false)
+	{
+		alert("you didnt select if can work as a head nurse");
+	}
+	
+	
+	
     $.ajax({
 		url:'/add_new_employee',
 		type:'GET',
 		dataType:'json',
-        data:{employee_id: employee_id, firstName: firstName, lastName: lastName, appointment: appointment, username: username, password:password},
+        data:{employee_id: employee_id, firstName: firstName, lastName: lastName, appointment: appointment, username: username, password:password,shiftHead:shiftHead},
 		success:function(data, status, xhr) {
 			alert("employee added successfully");
 		},
