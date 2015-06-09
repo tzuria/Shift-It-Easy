@@ -1,7 +1,7 @@
 <html>
 <head>
 	<link rel="stylesheet" type="text/css" href="../static/css/CSSstyle.css" />
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+	<script type="application/javascript" src="http://code.jquery.com/jquery-2.1.4.min.js"></script>
 	<title>Shift It Easy | Manager main page</title>
 
 	<style>
@@ -10,128 +10,169 @@
 			padding-top: 80px;
 		}
 	</style>
-
-	<!--very important!-->
 	<script>
+		var status = 0;
+		var flag = 0;
+		var notes = [];
+		notes.length = 42;
+		var colors = [];
+		colors.length = 42;
+		var constrains = [];
+		constrains.length = 42;
+		var constrain = [];
+		constrain.length = 2;
 
-		function constrain()
-		{
-			var date, employee, type, kind, notes;
-		};
-
-		var constrainArr = [];
-		//var Notes = [];
-		var flag=0 ;
-
-		for (var i=0; i<42; i++)
-		{
-			constrainArr.push(new constrain( new Date(), $('.header').find("span").text()) ,null , 0 , null);
-		}
-
-		//cell change color by click
-		$(document).ready(function()
-		{
-			var status = 0;
-			$(function() {
-				$('td#cell').click(function () {
-
-					if (status % 4 == 0 &&flag==0) {
-						$(this).css('background', '#ffff00')//Yellow
-						status++
-					}
-					else if (status % 4 == 1 &&flag==0) {
-						$(this).css('background', '#FF0000')//red
-						status++;
-					}
-					else if (status % 4 == 2 &&flag==0) {
-						$(this).css('background', '#00FF00')//green
-						status++;
-					}
-					else if (status % 4 == 3 &&flag==0) {
-						$(this).css('background', '#ffffff')//white
-						status++;
-					}
-					flag=0;
-					add_constrine(this);
-
-				});
-			});
-		});
+	$(function() {  //this is jQuery's short notation for "fire all this when page is ready"
+	//night0
+	$('#sun_night0').bind('click',{row:0, col:0 },saveNote);
+	$('#mond_night0').bind('click',{row:0, col:1 },saveNote);
+	$('#tues_night0').bind('click',{row:0, col:2 },saveNote);
+	$('#wedn_night0').bind('click',{row:0, col:3 },saveNote);
+	$('#thur_night0').bind('click',{row:0, col:4 },saveNote);
+	$('#frid_night0').bind('click',{row:0, col:5 },saveNote);
+	$('#satu_night0').bind('click',{row:0, col:6 },saveNote);
+	//morning0
+	$('#sun_morning0').bind('click',{row:1, col:0 },saveNote);
+	$('#mond_morning0').bind('click',{row:1, col:1 },saveNote);
+	$('#tues_morning0').bind('click',{row:1, col:2 },saveNote);
+	$('#wedn_morning0').bind('click',{row:1, col:3 },saveNote);
+	$('#thur_morning0').bind('click',{row:1, col:4 },saveNote);
+	$('#frid_morning0').bind('click',{row:1, col:5 },saveNote);
+	$('#satu_morning0').bind('click',{row:1, col:6 },saveNote);
+	//noon0
+	$('#sun_noon0').bind('click',{row:2, col:0 },saveNote);
+	$('#mond_noon0').bind('click',{row:2, col:1 },saveNote);
+	$('#tues_noon0').bind('click',{row:2, col:2 },saveNote);
+	$('#wedn_noon0').bind('click',{row:2, col:3 },saveNote);
+	$('#thur_noon0').bind('click',{row:2, col:4 },saveNote);
+	$('#frid_noon0').bind('click',{row:2, col:5 },saveNote);
+	$('#satu_noon0').bind('click',{row:2, col:6 },saveNote);
+	
 
 
-		//add constrine to constrainArr [obj constrine]
-		var add_constrine = function(obj)
-		{
-			$(function () {
-				var table1 = document.getElementById("table1");
-				var table2 = document.getElementById("table2");
-				var table = $(obj).parent().parent().parent().parent()
-				if (table != null) {
-					if (table === table1)
-					{
-						constrainArr[obj.cellIndex].kind = obj.css("background");
-						constrainArr[obj.cellIndex].notes = NeteFunc();
-						alert(constrainArr[1].notes);
-					}
-					else {
-						constrainArr[obj.cellIndex + 21].kind = obj.css("background");
-						constrainArr[obj.cellIndex +21].notes = NeteFunc();
-					}
 
-				}
-			})
-		}
-		//translate color to type.. "0"-don't matter white by defult 
-		var mapColorsToTypes = function ()
-		{
-			switch(color){
-				case '#FFFF00': return 2;//Yellow
-					break;
-				case '#FF0000': return 3;//Red
-					break;
-				case '#00FF00': return 1;//Green
-					break;
-				case '#FFFFFF': return 1;//White
-					break;
+
+    $('td#cell').on('click',changeColor);
+	$('#save').on('click',saveConstrains);
+	});
+
+
+
+
+	function saveNote(event)
+	{
+		notes[7*event.data.row+event.data.col] = prompt("Please enter your Note", "");
+		flag++;
+	}
+
+
+	function changeColor()
+	{
+		//alert(this.toString());
+		if (status % 4 == 0 &&flag==0) {
+			$(this).css('background-color', 'yellow')//Yellow
+			status++;
 			}
-		}
+		else if (status % 4 == 1 &&flag==0) {
+			$(this).css('background-color', 'red')//red
+			status++;
+			}
+		else if (status % 4 == 2 &&flag==0) {
+			$(this).css('background-color', 'green')//green
+			status++;
+			}
+		else if (status % 4 == 3 &&flag==0) {
+			$(this).css('background-color', 'white')//white
+			status++;
+			}
+		flag=0;
+	}
 
-		function NeteFunc() {
-
-			note=true;
-			var shiftNote = prompt("Please enter your Note", "");
-
-
-
-			flag++;
-			return shiftNode;
-		}
-/*
-		$(function save_table()
+	function calculate(color,index,col,row)
+	{
+		alert(color.toString());
+		if(color.toString() == "white")
 		{
-			var colorArray = [];
-			$('td').each(function () {
-				var color = $(this).css('backgroundColor');
-				colorArray.push(color);
-			});
-			$.ajax({
-				url:'/save_constrains',
-				type:'POST',
-				dataType:'json',
-				data:{colors:colorArray},
-				success:function(data, status, xhr) {
-					alert("constrain has successfully saved");
-				},
-				error:function(xhr, status, error) {
-					alert("constrain failed!");
-					alert(xhr.responseText);
-					console.error(xhr, status, error);
-				}
-			});
-		});
-*/
-		
+			b = notes[index];
+			constrain = [0,b];
+		}
+		else if(color.toString() == "green")
+		{
+			b = notes[index];
+			constrain = [1,b];
+		}
+		else if(color.toString() == "yellow")
+		{
+			b = notes[index];
+			constrain = [2,b];
+		}
+		else if(color.toString() == "red")
+		{
+			b = notes[index];
+			constrain = [3,b];
+		}
+		constrains[index] = constrain;
+		alert(constrains[col][row] );
+	}
+
+
+function saveConstrains()
+{						//------------------table1------------------//
+
+	//--------------------------------------cell 0,0--------------------------------------------//
+	calculate(document.getElementsByName("sun_night0_cell")[0].style.backgroundColor,0,0,1);
+	//--------------------------------------cell 0,1--------------------------------------------//
+	calculate(document.getElementsByName("mond_night0_cell")[0].style.backgroundColor,1,0,2);
+	//---------------------------------------cell 0,2-------------------------------------------//
+	calculate(document.getElementsByName("tues_night0_cell")[0].style.backgroundColor,2,0,3);
+	//---------------------------------------cell 0,3-------------------------------------------//
+	calculate(document.getElementsByName("wedn_night0_cell")[0].style.backgroundColor,3,0,4);
+	//---------------------------------------cell 0,4-------------------------------------------//
+	calculate(document.getElementsByName("thur_night0_cell")[0].style.backgroundColor,4,0,5);
+	//---------------------------------------cell 0,5-------------------------------------------//
+	calculate(document.getElementsByName("frid_night0_cell")[0].style.backgroundColor,5,0,6);
+	//---------------------------------------cell 0,6-------------------------------------------//
+	calculate(document.getElementsByName("satu_night0_cell")[0].style.backgroundColor,6,0,7);
+
+
+	//---------------------------------------cell 1,0-------------------------------------------//
+	calculate(document.getElementsByName("sun_morning0_cell")[0].style.backgroundColor,7,1,1);
+	//---------------------------------------cell 1,1-------------------------------------------//
+	calculate(document.getElementsByName("mond_morning0_cell")[0].style.backgroundColor,8,1,2);
+	//---------------------------------------cell 1,2-------------------------------------------//
+	calculate(document.getElementsByName("tues_morning0_cell")[0].style.backgroundColor,9,1,3);
+	//---------------------------------------cell 1,3-------------------------------------------//
+	calculate(document.getElementsByName("wedn_morning0_cell")[0].style.backgroundColor,10,1,4);
+	//---------------------------------------cell 1,4-------------------------------------------//
+	calculate(document.getElementsByName("thur_morning0_cell")[0].style.backgroundColor,11,1,5);
+	//---------------------------------------cell 1,5-------------------------------------------//
+	calculate(document.getElementsByName("frid_morning0_cell")[0].style.backgroundColor,12,1,6);
+	//---------------------------------------cell 1,6-------------------------------------------//
+	calculate(document.getElementsByName("satu_morning0_cell")[0].style.backgroundColor,13,1,7);
+
+
+	//---------------------------------------cell 2,0-------------------------------------------//
+	calculate(document.getElementsByName("sun_noon0_cell")[0].style.backgroundColor,14,2,1);
+	//---------------------------------------cell 2,1-------------------------------------------//
+	calculate(document.getElementsByName("mond_noon0_cell")[0].style.backgroundColor,15,2,2);
+	//---------------------------------------cell 2,2-------------------------------------------//
+	calculate(document.getElementsByName("tues_noon0_cell")[0].style.backgroundColor,16,2,3);
+	//---------------------------------------cell 2,3-------------------------------------------//
+	calculate(document.getElementsByName("wedn_noon0_cell")[0].style.backgroundColor,17,2,4);
+	//---------------------------------------cell 2,4-------------------------------------------//
+	calculate(document.getElementsByName("thur_noon0_cell")[0].style.backgroundColor,18,2,5);
+	//---------------------------------------cell 2,5-------------------------------------------//
+	calculate(document.getElementsByName("frid_noon0_cell")[0].style.backgroundColor,19,2,6);
+	//---------------------------------------cell 2,6-------------------------------------------//
+	calculate(document.getElementsByName("satu_noon0_cell")[0].style.backgroundColor,20,2,7);
+
+
+
+}
+
 	</script>
+	<!--very important!-->
+
 </head>
 <body>
 <div id="header">
@@ -167,33 +208,34 @@
 		</tr>
 		<tr>
 			<td>night</td>
-			<td id='cell'><button onclick="NeteFunc()">Notes</button>		</td>
-			<td id='cell'><button onclick="NeteFunc()">Notes</button>	    </td>
-			<td id='cell'><button onclick="NeteFunc()">Notes</button>	    </td>
-			<td id='cell'><button onclick="NeteFunc()">Notes</button>	    </td>
-			<td id='cell'><button onclick="NeteFunc()">Notes</button>	    </td>
-			<td id='cell'><button onclick="NeteFunc()">Notes</button>	    </td>
-			<td id='cell'><button onclick="NeteFunc()">Notes</button>	    </td>
+			<td id='cell' name="sun_night0_cell"><button onclick="NeteFunc()" id="sun_night0">Notes</button>		</td>
+			<td id='cell' name ="mond_night0_cell"><button onclick="NeteFunc()" id="mond_night0">Notes</button>	    </td>
+			<td id='cell' name="tues_night0_cell"><button onclick="NeteFunc() "id="tues_night0">Notes</button>	    </td>
+			<td id='cell' name ="wedn_night0_cell"><button onclick="NeteFunc()" id="wedn_night0">Notes</button>	    </td>
+			<td id='cell' name ="thur_night0_cell"><button onclick="NeteFunc()" id="thur_night0">Notes</button>	    </td>
+			<td id='cell' name ="frid_night0_cell"><button onclick="NeteFunc()" id="frid_night0">Notes</button>	    </td>
+			<td id='cell' name="satu_night0_cell"><button onclick="NeteFunc()" id="satu_night0">Notes</button>	    </td>
 		</tr>
 		<tr>
 			<td>morning</td>
-			<td id='cell'><button onclick="NeteFunc()">Notes</button>		</td>
-			<td id='cell'><button onclick="NeteFunc()">Notes</button>		</td>
-			<td id='cell'><button onclick="NeteFunc()">Notes</button>		</td>
-			<td id='cell'><button onclick="NeteFunc()">Notes</button>		</td>
-			<td id='cell'><button onclick="NeteFunc()">Notes</button>		</td>
-			<td id='cell'><button onclick="NeteFunc()">Notes</button>		</td>
-			<td id='cell'><button onclick="NeteFunc()">Notes</button>		</td>
+			<td id='cell' name="sun_morning0_cell"><button onclick="NeteFunc()" id="sun_morning0">Notes</button>		</td>
+			<td id='cell' name="mond_morning0_cell"><button onclick="NeteFunc()" id="mond_morning0">Notes</button>		</td>
+			<td id='cell' name="tues_morning0_cell"><button onclick="NeteFunc()" id="tues_morning0">Notes</button>		</td>
+			<td id='cell' name="wedn_morning0_cell"><button onclick="NeteFunc()" id="wedn_morning0">Notes</button>		</td>
+			<td id='cell' name="thur_morning0_cell"><button onclick="NeteFunc()" id= "thur_morning0">Notes</button>		</td>
+			<td id='cell' name="frid_morning0_cell"><button onclick="NeteFunc()" id="frid_morning0">Notes</button>		</td>
+			<td id='cell' name="satu_morning0_cell"><button onclick="NeteFunc()" id="satu_morning0">Notes</button>		</td>
+
 		</tr>
 		<tr>
 			<td>noon</td>
-			<td id='cell'><button onclick="NeteFunc()">Notes</button>		</td>
-			<td id='cell'><button onclick="NeteFunc()">Notes</button>		</td>
-			<td id='cell'><button onclick="NeteFunc()">Notes</button>		</td>
-			<td id='cell'><button onclick="NeteFunc()">Notes</button>		</td>
-			<td id='cell'><button onclick="NeteFunc()">Notes</button>		</td>
-			<td id='cell'><button onclick="NeteFunc()">Notes</button>		</td>
-			<td id='cell'><button onclick="NeteFunc()">Notes</button>		</td>
+			<td id='cell' name="sun_noon0_cell"><button onclick="NeteFunc()" id="sun_noon0">Notes</button>		</td>
+			<td id='cell' name="mond_noon0_cell"><button onclick="NeteFunc()" id="mond_noon0">Notes</button>		</td>
+			<td id='cell' name="tues_noon0_cell"><button onclick="NeteFunc()" id="tues_noon0">Notes</button>		</td>
+			<td id='cell' name="wedn_noon0_cell"><button onclick="NeteFunc()" id="wedn_noon0">Notes</button>		</td>
+			<td id='cell' name="thur_noon0_cell"><button onclick="NeteFunc()" id= "thur_noon0">Notes</button>		</td>
+			<td id='cell' name="frid_noon0_cell"><button onclick="NeteFunc()" id="frid_noon0">Notes</button>		</td>
+			<td id='cell' name="satu_noon0_cell"><button onclick="NeteFunc()" id="satu_noon0">Notes</button>		</td>
 
 		</tr>
 	</table>
@@ -210,41 +252,41 @@
 		</tr>
 		<tr>
 			<td>night</td>
-			<td id='cell'><button onclick="NeteFunc()">Notes</button>		</td>
-			<td id='cell'><button onclick="NeteFunc()">Notes</button>		</td>
-			<td id='cell'><button onclick="NeteFunc()">Notes</button>		</td>
-			<td id='cell'><button onclick="NeteFunc()">Notes</button>		</td>
-			<td id='cell'><button onclick="NeteFunc()">Notes</button>		</td>
-			<td id='cell'><button onclick="NeteFunc()">Notes</button>		</td>
-			<td id='cell'><button onclick="NeteFunc()">Notes</button>		</td>
+			<td id='cell' name="sun_night1_cell"><button onclick="NeteFunc()" id="sun_night1">Notes</button>		</td>
+			<td id='cell' name="mond_night1_cell"><button onclick="NeteFunc()" id="mond_night1">Notes</button>	    </td>
+			<td id='cell' name="tues_night1_cell"><button onclick="NeteFunc() " id="tues_night1">Notes</button>	    </td>
+			<td id='cell' name="wedn_night1_cell"><button onclick="NeteFunc()" id="wedn_night1">Notes</button>	    </td>
+			<td id='cell' name="thur_night1_cell"><button onclick="NeteFunc()" id="thur_night1">Notes</button>	    </td>
+			<td id='cell' name="frid_night1_cell"><button onclick="NeteFunc()" id="frid_night1">Notes</button>	    </td>
+			<td id='cell' name="satu_night1_cell"><button onclick="NeteFunc()" id="satu_night1">Notes</button>	    </td>
 
 
 		</tr>
 		<tr>
 			<td>morning</td>
-			<td id='cell'><button onclick="NeteFunc()">Notes</button>		</td>
-			<td id='cell'><button onclick="NeteFunc()">Notes</button>		</td>
-			<td id='cell'><button onclick="NeteFunc()">Notes</button>		</td>
-			<td id='cell'><button onclick="NeteFunc()">Notes</button>		</td>
-			<td id='cell'><button onclick="NeteFunc()">Notes</button>		</td>
-			<td id='cell'><button onclick="NeteFunc()">Notes</button>		</td>
-			<td id='cell'><button onclick="NeteFunc()">Notes</button>		</td>
+			<td id='cell' name="sun_morning1_cell"><button onclick="NeteFunc()" id="sun_morning1">Notes</button>		</td>
+			<td id='cell' name="mond_morning1_cell"><button onclick="NeteFunc()" id="mond_morning1">Notes</button>		</td>
+			<td id='cell' name="tues_morning1_cell"><button onclick="NeteFunc()" id="tues_morning1">Notes</button>		</td>
+			<td id='cell' name="wedn_morning1_cell"><button onclick="NeteFunc()" id="wedn_morning1">Notes</button>		</td>
+			<td id='cell' name="thur_morning1_cell"><button onclick="NeteFunc()" id="thur_morning1">Notes</button>		</td>
+			<td id='cell' name="frid_morning1_cell"><button onclick="NeteFunc()" id="frid_morning1">Notes</button>		</td>
+			<td id='cell' name="satu_morning1_cell"><button onclick="NeteFunc()" id="satu_morning1">Notes</button>		</td>
 		</tr>
 		<tr>
 			<td>noon</td>
-			<td id='cell'><button onclick="NeteFunc()">Notes</button>		</td>
-			<td id='cell'><button onclick="NeteFunc()">Notes</button>		</td>
-			<td id='cell'><button onclick="NeteFunc()">Notes</button>		</td>
-			<td id='cell'><button onclick="NeteFunc()">Notes</button>		</td>
-			<td id='cell'><button onclick="NeteFunc()">Notes</button>		</td>
-			<td id='cell'><button onclick="NeteFunc()">Notes</button>		</td>
-			<td id='cell'><button onclick="NeteFunc()">Notes</button>		</td>
+			<td id='cell' name="sun_noon1_cell"><button onclick="NeteFunc()" id="sun_noon1">Notes</button>		    </td>
+			<td id='cell' name="mond_noon1_cell"><button onclick="NeteFunc()" id="mond_noon1">Notes</button>		</td>
+			<td id='cell' name="tues_noon1_cell"><button onclick="NeteFunc()" id="tues_noon1">Notes</button>		</td>
+			<td id='cell' name="wedn_noon1_cell"><button onclick="NeteFunc()" id="wedn_noon1">Notes</button>		</td>
+			<td id='cell' name="thur_noon1_cell"><button onclick="NeteFunc()" id="thur_noon1">Notes</button>		</td>
+			<td id='cell' name="frid_noon1_cell"><button onclick="NeteFunc()" id="frid_noon1">Notes</button>		</td>
+			<td id='cell' name="satu_noon1_cell"><button onclick="NeteFunc()" id="satu_noon1">Notes</button>		</td>
 		</tr>
 	</table>
 </div>
 <br><br>
 &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
-<button class = "btn" onclick="alert('Schedule has been saved!')"> Save</button>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+<button class = "btn" id = "save"> Save</button>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
 <button class = "btn" onclick="alert('Constrains have been submitted!')"> Submit</button>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
 &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
 <button class = "btn" onclick="location.href='MainEmployee'"> Back</button>
