@@ -60,6 +60,7 @@ class AddEmployeeHandler(webapp2.RequestHandler):
 		appointment = self.request.get('appointment')
 		username = self.request.get('username')
 		password = self.request.get('password')
+		shiftHead = self.request.get('shiftHead')
 		
 		
 		if not employee_id or not firstName or not lastName or not appointment or not username or not password:
@@ -79,8 +80,10 @@ class AddEmployeeHandler(webapp2.RequestHandler):
 		employee.userName = username
 		employee.setPassword(password)
 		employee.percentJob = appointment
-		
-	
+		if shiftHead == 'true':
+			employee.shiftHead = True
+		if shiftHead == 'false':
+			employee.shiftHead = False
 			
 		employee.isManager = False
 		employee.put()

@@ -2345,8 +2345,14 @@ class SaveScheduleHandler(webapp2.RequestHandler):
 			allreadyAssign.key.delete()
 			
 		
-		if preparingSchedule.checkLegalAssign_Night_After_Night():
-			self.response.write("Night After Night") 
+		if not preparingSchedule.checkLegalAssign_Night_After_Night():
+			self.response.write("Illegal! Night After Night")
+			
+		if not preparingSchedule.checkLegalAssign_Noon_Morning_Night():
+			self.response.write("Illegal! Noon-Morning-Night")
+			
+		if not preparingSchedule.checkLegalAssign_Following_Shifts():
+			self.response.write("Illegal! Following shifts ")
 		
 		
 		preparingSchedule.put()
