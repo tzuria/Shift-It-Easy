@@ -115,6 +115,7 @@ class MainHandler(webapp2.RequestHandler):
 			thursday1 = saturday0 + timedelta(days=5)
 			friday1 = saturday0 + timedelta(days=6)
 			saturday1 = saturday0 + timedelta(days=7)
+		
 		template_variables = {}
 		
 		if userName:
@@ -149,9 +150,10 @@ class MainHandler(webapp2.RequestHandler):
 			thursday1date = date(thursday1.year, thursday1.month, thursday1.day)
 			friday1date = date(friday1.year, friday1.month, friday1.day)
 			saturday1date = date(saturday1.year, saturday1.month, saturday1.day)	
+	
 
-		html = template.render("web/templates/ConstrainsInputPage.html", template_variables)
-		self.response.write(html)
+			html = template.render("web/templates/ConstrainsInputPage.html", template_variables)
+			self.response.write(html)
 		
 class AddConstrain(webapp2.RequestHandler):
 	def get(self):
@@ -159,34 +161,71 @@ class AddConstrain(webapp2.RequestHandler):
 		if not constrain_date:
 			self.response.write("Choose shift first!") 
 			return
-		
-			
-class saveConstrains(webapp2.RequestHandler):
-	def post(self):
+
+class SaveConstrainsHandler(webapp2.RequestHandler):
+	def get(self):
+	
 		userName = None
 		if self.request.cookies.get('our_token'):    #the cookie that should contain the access token!
 			userName = Employee.checkToken(self.request.cookies.get('our_token'))
-
-		constrain = Constrain()
-		template_variables = {}
-		if userName:
-			constrain.employee = userName.userName		
-		#	constrain.constrianDay = 
-		#	constrain.constrianWeek = 
-		#	constrain.ShiftType = 
-		#	constrain.constrainKind =
-		#	constrain.notes = 
+		
+		Constrain.deleteEmployeesConstrains(userName.userName)
+		
+		constrains = json.loads(self.request.get('constrains'))
+		i = 0
+		if constrains:
+			for constrain in constrains:
+				insertConstrain = Constrain()
+				insertConstrain.employeeUN = userName.userName
+				
+				#calculate the date of the constrain
+				day = date.today()
+				day = day + timedelta(days = 14)
+				if(int(day.strftime("%U"))%2 == 0):
+					day = day - timedelta(days = 7)
+				if i > 20:
+					day = day + timedelta(days = 7)
+				if day.weekday() != 6:
+					day = day - timedelta(days=(day.weekday()))
+				
+				if day.weekday() == 6:
+					day = day + timedelta(days=1)
+				if i == 21 or i == 28 or i == 35:
+					day = day - timedelta(days = 1)
+				if i == 23 or i ==30 or i == 37:
+					day = day + timedelta(days = 1)
+				if i == 24 or i ==31 or i == 38:
+					day = day + timedelta(days = 2)
+				if i == 25 or i ==32 or i == 39:
+					day = day + timedelta(days = 3)
+				if i == 26 or i ==33 or i == 40:
+					day = day + timedelta(days = 4)
+				if i == 27 or i ==34 or i == 41:
+					day = day + timedelta(days = 5)
+				
+					
+				insertConstrain.constrainDate = day
+				
+				#calculate the shift type
+				if((i > 34) or (i> 13 and i<21)):
+					insertConstrain.ShiftType = 2
+				if((i>27 and i<35)or(i>6 and i<14)):
+					insertConstrain.ShiftType = 1
+				if((i<7)or(i<28 and i>20)):
+					insertConstrain.ShiftType = 0
+					
+				insertConstrain.constrainKind = constrain[0]
+				insertConstrain.notes = constrain[1]
+				insertConstrain.put()
+				
+				i = i + 1
+			self.response.write(json.dumps({'status':'ok'}))
 			
-		if not constrains:
-			self.response.write("bad constrains!!") 
-			return
-		else:
-			constrain.put()
-			self.response.write(json.dumps({'status':'OK'}))
+
 		
 		
 app = webapp2.WSGIApplication([
     ('/ConstrainsInputPage', MainHandler),
-	('/save_constrains', saveConstrains),
+	('/save_constrains', SaveConstrainsHandler),
 	
 ], debug=True)

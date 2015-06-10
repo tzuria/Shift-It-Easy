@@ -37,8 +37,13 @@ class Constrain(ndb.Model):
 			return employees
 		else:
 			return None
-	
-	
-	
+	@staticmethod	
+	def deleteEmployeesConstrains(userName):
+		constrains = Constrain.query(Constrain.employeeUN == userName).fetch()
+		if constrains:
+			for constrain in constrains:
+				constrain.key.delete()
+		
+		
 	
 	
