@@ -190,17 +190,17 @@ class SaveConstrainsHandler(webapp2.RequestHandler):
 				
 				if day.weekday() == 6:
 					day = day + timedelta(days=1)
-				if i == 21 or i == 28 or i == 35:
+				if i == 21 or i == 28 or i == 35 or i == 0 or i == 7 or i == 14:
 					day = day - timedelta(days = 1)
-				if i == 23 or i ==30 or i == 37:
+				if i == 23 or i ==30 or i == 37 or i == 1 or i == 8 or i == 15:
 					day = day + timedelta(days = 1)
-				if i == 24 or i ==31 or i == 38:
+				if i == 24 or i ==31 or i == 38 or i == 2 or i == 9 or i == 16:
 					day = day + timedelta(days = 2)
-				if i == 25 or i ==32 or i == 39:
+				if i == 25 or i ==32 or i == 39 or i == 3 or i == 10 or i == 17:
 					day = day + timedelta(days = 3)
-				if i == 26 or i ==33 or i == 40:
+				if i == 26 or i ==33 or i == 40 or i == 4 or i == 11 or i == 18:
 					day = day + timedelta(days = 4)
-				if i == 27 or i ==34 or i == 41:
+				if i == 27 or i ==34 or i == 41 or i == 5 or i == 12 or i == 19:
 					day = day + timedelta(days = 5)
 				
 					

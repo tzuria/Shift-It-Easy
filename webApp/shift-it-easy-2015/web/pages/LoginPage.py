@@ -59,14 +59,31 @@ class LoginEmployeeHandler(webapp2.RequestHandler):
 		self.response.set_cookie('our_token', str(employee.key.id()))
 		self.response.write(json.dumps({'status':'OK'}))
 		
+class LoginHandler(webapp2.RequestHandler):
+	def get(self):
+		userName = self.request.get('userName')
+		password = self.request.get('password')
+		employee = Employee.query(Employee.userName == userName).get()
+		if not employee or not employee.checkPassword(password):
+			self.response.write("Wrong username or password")
+			return
+			
+		self.response.set_cookie('our_token', str(employee.key.id()))
+		
+		if employee.isManager:
+			self.response.write(json.dumps({'status':'OK', 'isManager':'Yes'}))
+		else:
+			self.response.write(json.dumps({'status':'OK', 'isManager':'No'}))
+		
 class LogoutHandler(webapp2.RequestHandler):
 	def get(self):
 		self.response.delete_cookie('our_token')
 		self.redirect('/')
 		
 app = webapp2.WSGIApplication([
-	('/login_as__manager', LoginManagerHandler),
-	('/login_as__employee', LoginEmployeeHandler),
+	#('/login_as__manager', LoginManagerHandler),
+	#('/login_as__employee', LoginEmployeeHandler),
+	('/login', LoginHandler),
 	('/LoginPage', MainHandler),
 	('/logout', LogoutHandler),
 	('/', MainHandler)

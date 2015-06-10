@@ -5,7 +5,7 @@ from employee import Employee
 
 class CurrentSchedule(ndb.Model):
 	Date = ndb.DateProperty()
-	ShiftType = ndb.StringProperty()
+	ShiftType = ndb.IntegerProperty()
 	ShiftHead = ndb.KeyProperty(kind = Employee)
 	SimpleNurse = ndb.KeyProperty(kind = Employee)
 	Standby = ndb.KeyProperty(kind = Employee)

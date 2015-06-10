@@ -19,11 +19,11 @@ from google.appengine.ext.webapp import template
 from models.employee import Employee
 from models.constrain import Constrain
 from models.preparingSchdule import PreparingSchedule
+import json
 import time
 from datetime import date
 from datetime import timedelta
 import webapp2
-import json
 
 class MainHandler(webapp2.RequestHandler):
     def get(self):
@@ -2295,7 +2295,6 @@ class MainHandler(webapp2.RequestHandler):
 			html = template.render("web/templates/LoginPage.html", template_variables)
 			self.response.write(html)
 			
-			
 class SaveScheduleHandler(webapp2.RequestHandler):
     def get(self):
 		selectedNurse_userName = self.request.get('selectedNurse_userName')
@@ -2344,15 +2343,22 @@ class SaveScheduleHandler(webapp2.RequestHandler):
 		if allreadyAssign:
 			allreadyAssign.key.delete()
 			
+		if not preparingSchedule.checkLegalAssign_Same_Shift():
+			self.response.write("Illegal! Already assigned today")
+			return
+			
 		
 		if not preparingSchedule.checkLegalAssign_Night_After_Night():
 			self.response.write("Illegal! Night After Night")
+			return
 			
 		if not preparingSchedule.checkLegalAssign_Noon_Morning_Night():
 			self.response.write("Illegal! Noon-Morning-Night")
+			return
 			
 		if not preparingSchedule.checkLegalAssign_Following_Shifts():
 			self.response.write("Illegal! Following shifts ")
+			return
 		
 		
 		preparingSchedule.put()

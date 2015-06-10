@@ -12,6 +12,9 @@ handlers:
 - url: /static
   static_dir: web/static
  
+- url: /saveSchedule
+  script: web.pages.MainManager.app
+  
 - url: /MainManager
   script: web.pages.MainManager.app
   
@@ -35,6 +38,10 @@ handlers:
   
 - url: /add_new_employee
   script: web.pages.AddRemoveEmployee.app
+  
+- url: /remove_employee
+  script: web.pages.AddRemoveEmployee.app
+  
   
 - url: /(.*)
   script: web.pages.LoginPage.app
