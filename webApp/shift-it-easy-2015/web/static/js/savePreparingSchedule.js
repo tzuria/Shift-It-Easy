@@ -278,7 +278,6 @@ function updateShift(event)
 				alert(data.note);
 		},
 		error:function(xhr, status, error) {
-			alert("failed!");
             alert(xhr.responseText);
 			console.error(xhr, status, error);
 		}
