@@ -265,6 +265,8 @@ function updateShift(event)
 	var selectedNurse_userName = selectedNurse.options[selectedNurse.selectedIndex].text
 	//alert(selectedNurse_userName);
 	
+	
+	
 	$.ajax({
 		url:'/saveSchedule',
 		type:'GET',
@@ -272,6 +274,8 @@ function updateShift(event)
         data:{selectedNurse_userName: selectedNurse_userName, day: event.data.day, shift: event.data.shift, week: event.data.week, rule:event.data.rule},
 		success:function(data, status, xhr) {
 			alert("Success");
+			if(data.note != null)
+				alert(data.note);
 		},
 		error:function(xhr, status, error) {
 			alert("failed!");

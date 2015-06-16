@@ -2344,6 +2344,8 @@ class SaveScheduleHandler(webapp2.RequestHandler):
 		if allreadyAssign:
 			allreadyAssign.key.delete()
 			
+		preparingSchedule.put()
+		
 		if not preparingSchedule.checkLegalAssign_Same_Shift():
 			self.response.write("Illegal! Already assigned today")
 			return
@@ -2362,9 +2364,14 @@ class SaveScheduleHandler(webapp2.RequestHandler):
 			return
 		
 		
-		preparingSchedule.put()
 		
-		self.response.write(json.dumps({'status':'OK'}))
+		
+		constrain = Constrain.query(Constrain.employeeUN == preparingSchedule.nurseUserName, Constrain.constrainDate == preparingSchedule.date, Constrain.ShiftType == preparingSchedule.ShiftType).get()
+		if not constrain:
+			return
+		self.response.write(json.dumps({'status':'OK','note':constrain.notes}))
+		
+		
 		
 class SubmitScheduleHandler(webapp2.RequestHandler):
 	def get(self):
