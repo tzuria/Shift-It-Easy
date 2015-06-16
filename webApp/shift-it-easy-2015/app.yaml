@@ -15,6 +15,9 @@ handlers:
 - url: /saveSchedule
   script: web.pages.MainManager.app
   
+- url: /submitSchedule
+  script: web.pages.MainManager.app
+  
 - url: /MainManager
   script: web.pages.MainManager.app
   
@@ -26,6 +29,9 @@ handlers:
   
 - url: /PreviousSchedule
   script: web.pages.PreviousSchedule.app
+  
+- url: /NextSchedule
+  script: web.pages.NextSchedule.app
   
 - url: /AddRemoveEmployee
   script: web.pages.AddRemoveEmployee.app

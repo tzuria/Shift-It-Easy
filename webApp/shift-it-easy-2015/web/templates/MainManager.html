@@ -2732,7 +2732,7 @@
 		&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
 		<button class = "btn" onclick="alert('Schedule has been saved')">Save</button>
 		&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
-		<button class = "btn" onclick="alert('Schedule has been submitted!')">Submit Schedule</button>
+		<button class = "btn" id="submit">Submit Schedule</button>
 		
 		<br><br>
 		&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
@@ -2745,3 +2745,6 @@
 	</div>	
 </body>
 </html>
+
+
+{% if {{userName}} ==  %}

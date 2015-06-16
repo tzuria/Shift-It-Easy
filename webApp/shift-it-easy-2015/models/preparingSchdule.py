@@ -88,9 +88,10 @@ class PreparingSchedule(ndb.Model):
 			if nightCheck and morningCheck:
 				return False
 			return True
-			
-	
-	def checkLegalAssign_Assign_Head_Nurses(self):
+		
+		
+	@staticmethod
+	def checkLegalAssign_Assign_Head_Nurses():
 		NumberOfHeadNurses = PreparingSchedule.query(PreparingSchedule.rule == 0).fetch()
 		
 		
@@ -139,6 +140,14 @@ class PreparingSchedule(ndb.Model):
 		if previousAssignment:
 			return False
 		return True
+		
+	@staticmethod
+	def Get_All_Assignments():
+		allAssignments = PreparingSchedule.query().fetch()
+			
+		if allAssignments:
+			return allAssignments
+		return None
 	
 	
 	

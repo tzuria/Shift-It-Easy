@@ -1,5 +1,6 @@
 $(function() {  //this is jQuery's short notation for "fire all this when page is ready"
     $('#save').on('click', save_Schedule);
+	$('#submit').on('click', submit_Schedule);
 	
 	//assign sunday night
 	$('#head_nurse_list_sunday1').bind('change', {id: "head_nurse_list_sunday1",day: 6, shift: 0, week: 0, rule: 0},updateShift);
@@ -321,7 +322,21 @@ function save_Schedule()
 			console.error(xhr, status, error);
 		}
 	});
-	
-	
+}
 
+function submit_Schedule()
+{
+	$.ajax({
+		url:'/submitSchedule',
+		type:'GET',
+		dataType:'json',
+		data:{},
+		success:function(data, status, xhr) {
+			document.location.href = '/MainManager';
+		},
+		error:function(xhr, status, error) {
+			alert("failed!");
+            alert(xhr.responseText);
+		}
+	});
 }
