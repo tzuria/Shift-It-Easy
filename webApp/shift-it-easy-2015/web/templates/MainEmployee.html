@@ -6,14 +6,14 @@
 	<title>Shift It Easy | Manager main page</title>
 </head>
 <body>
-	<div id="header">
+<div id="header">
 		<h1><center> Shift It Easy </center></h1>
 		<h3><center> Welcome <span id ='userName'> {{userName}} </span> </center></h3><br>
 		<img src="../static/image/logo.jpg" style="width:150;height:150px">
-	</div>
-	<div class="CSSTableGenerator">
-		<table>
-            <tr>
+</div>
+<div class="CSSTableGenerator">
+	<table>
+		<tr>
 				<td width="9%">	</td>
 				<td width="13%">Sunday</td>
 				<td width="13%">Monday</td>
@@ -22,15 +22,15 @@
 				<td width="13%">Thursday</td>
 				<td width="13%">Friday</td>
 				<td width="13%">Saturday</td>
-            </tr>
-		</table>
-	</div>
-	<div class="CSSTableGenerator1">    
+        </tr>
+	</table>
+</div>
+<div class="CSSTableGenerator1">    
 		
 		<!-- First week -->
-		
-		<table>
-			<tr>
+	
+	<table>
+		<tr>
 				<td width="9%">	</td>
 				<td width="13%"><span id ='sunday0'> {{sunday0}} </span></td>
 				<td width="13%"><span id ='monday0'> {{monday0}} </span></td>
@@ -39,863 +39,1392 @@
 				<td width="13%"><span id ='thursday0'> {{thursday0}} </span></td>
 				<td width="13%"><span id ='friday0'> {{friday0}} </span></td>
 				<td width="13%"><span id ='saturday0'> {{saturday0}} </span></td>
-            </tr>
-            <tr>
-				<td align="right">night</td>
-				
-<!----------------------------------------Tabel 1 night------------------------------------------------------>			
-				
-				<td>  
-				
+		</tr>
+		<!----------------------------------------Tabel 1 night------------------------------------------------------>			
+
+		<tr>
+				<td align="right">night</td>				
 				<!-- Sunday0 night -->
-				
+				{% if  Sunday0NightAssignBeforeHead == userName or Sunday0NightAssignBeforeSecond == userName or Sunday0NightAssignBeforeStandBy == userName %}
+					<td style="background-color:FF3333">
 					<b>Shift head:</b>
 					<span  name="headNurseListSunday1" id="head_nurse_list_sunday1" style="width: 150px"> 
 						{{Sunday0NightAssignBeforeHead}} </span>
 					<br><br>
-					
 					<b>Second nurse:</b>
 					<span name="secondNurseListSunday1" id="second_nurse_list_sunday1" style="width: 150px">
 						{{Sunday0NightAssignBeforeSecond}} </span>
 					<br><br>
-					
 					<b>Stand by:</b>
 					<span name="standByListSunday1" id="stand_by_list_sunday1" style="width: 150px">
 						{{Sunday0NightAssignBeforeStandBy}}</span>
-				</td>
-				<td>  
+					</td>
+				{% else %}
+					<td>
+					<b>Shift head:</b>
+					<span  name="headNurseListSunday1" id="head_nurse_list_sunday1" style="width: 150px"> 
+						{{Sunday0NightAssignBeforeHead}} </span>
+					<br><br>
+					<b>Second nurse:</b>
+					<span name="secondNurseListSunday1" id="second_nurse_list_sunday1" style="width: 150px">
+						{{Sunday0NightAssignBeforeSecond}} </span>
+					<br><br>
+					<b>Stand by:</b>
+					<span name="standByListSunday1" id="stand_by_list_sunday1" style="width: 150px">
+						{{Sunday0NightAssignBeforeStandBy}}</span>
+					</td>
+				{% endif %}
 				
 				<!-- Monday0 night -->
-				
+				{% if  Monday0NightAssignBeforeHead == userName or Monday0NightAssignBeforeSecond == userName or Monday0NightAssignBeforeStandBy == userName %}
+					<td style="background-color:FF3333">
 					<b>Shift head:</b>
 					<span name="standByListMonday1" id="head_nurse_list_monday1" style="width: 150px">
 						{{Monday0NightAssignBeforeHead}} </span>
-						
 					<br><br>
 					<b>Second nurse:</b>
 					<span name="headNurseList" id="second_nurse_list_monday1" style="width: 150px">
 						{{Monday0NightAssignBeforeSecond}} </span>
-						
 					<br><br>
 					<b>Stand by:</b>
 					<span name="headNurseList" id="stand_by_list_monday1" style="width: 150px">
 						{{Monday0NightAssignBeforeStandBy}} </span>
-						
-				</td>
-				<td>  
-				
+					</td>
+				{% else %}
+					<td>
+					<b>Shift head:</b>
+					<span name="standByListMonday1" id="head_nurse_list_monday1" style="width: 150px">
+						{{Monday0NightAssignBeforeHead}} </span>
+					<br><br>
+					<b>Second nurse:</b>
+					<span name="headNurseList" id="second_nurse_list_monday1" style="width: 150px">
+						{{Monday0NightAssignBeforeSecond}} </span>
+					<br><br>
+					<b>Stand by:</b>
+					<span name="headNurseList" id="stand_by_list_monday1" style="width: 150px">
+						{{Monday0NightAssignBeforeStandBy}} </span>
+					</td>
+				{% endif %} 
+		
 				<!-- Tuesday0 night -->
-				
+				{% if  Tuesday0NightAssignBeforeHead == userName or Tuesday0NightAssignBeforeSecond == userName or Tuesday0NightAssignBeforeStandBy == userName %}
+					<td style="background-color:FF3333">
 					<b>Shift head:</b>
 					<span name="headNurseList" id="head_nurse_list_tuesday1" style="width: 150px">
-						{{Tuesday0NightAssignBeforeHead}} </span>
-						
+						{{Tuesday0NightAssignBeforeHead}} </span>		
 					<br><br>
 					<b>Second nurse:</b>
 					<span name="headNurseList" id="second_nurse_list_tuesday1" style="width: 150px">
 						{{Tuesday0NightAssignBeforeSecond}} </span>
-						
 					<br><br>
 					<b>Stand by:</b>
 					<span name="headNurseList" id="stand_by_nurse_list_tuesday1" style="width: 150px">
 						{{Tuesday0NightAssignBeforeStandBy}} </span>
-						
-				</td>
-				<td>  
-				
+					</td>
+				{% else %}
+					<td>
+					<b>Shift head:</b>
+					<span name="headNurseList" id="head_nurse_list_tuesday1" style="width: 150px">
+						{{Tuesday0NightAssignBeforeHead}} </span>		
+					<br><br>
+					<b>Second nurse:</b>
+					<span name="headNurseList" id="second_nurse_list_tuesday1" style="width: 150px">
+						{{Tuesday0NightAssignBeforeSecond}} </span>
+					<br><br>
+					<b>Stand by:</b>
+					<span name="headNurseList" id="stand_by_nurse_list_tuesday1" style="width: 150px">
+						{{Tuesday0NightAssignBeforeStandBy}} </span>
+					</td>
+				{% endif %}
 				<!-- Wednesday0 night -->
-				
+				{% if  Wednesday0NightAssignBeforeHead == userName or Wednesday0NightAssignBeforeSecond == userName or Wednesday0NightAssignBeforeStandBy == userName %}
+					<td style="background-color:FF3333">
 					<b>Shift head:</b>
 					<span name="headNurseList" id="head_nurse_list_wednesday1" style="width: 150px">
 						{{Wednesday0NightAssignBeforeHead}} </span>
-						
 					<br><br>
 					<b>Second nurse:</b>
 					<span name="headNurseList" id="second_nurse_list_wednesday1" style="width: 150px">
-						{{Wednesday0NightAssignBeforeSecond}} </span>
-						
+						{{Wednesday0NightAssignBeforeSecond}} </span>		
 					<br><br>
 					<b>Stand by:</b>
 					<span name="headNurseList" id="stand_by_nurse_list_wednesday1" style="width: 150px">
-						{{Wednesday0NightAssignBeforeStandBy}} </span>
-						
-				</td>
-				<td>  
+						{{Wednesday0NightAssignBeforeStandBy}} </span>	
+					</td>
+				{% else %}
+					<td>
+					<b>Shift head:</b>
+					<span name="headNurseList" id="head_nurse_list_wednesday1" style="width: 150px">
+						{{Wednesday0NightAssignBeforeHead}} </span>
+					<br><br>
+					<b>Second nurse:</b>
+					<span name="headNurseList" id="second_nurse_list_wednesday1" style="width: 150px">
+						{{Wednesday0NightAssignBeforeSecond}} </span>		
+					<br><br>
+					<b>Stand by:</b>
+					<span name="headNurseList" id="stand_by_nurse_list_wednesday1" style="width: 150px">
+						{{Wednesday0NightAssignBeforeStandBy}} </span>	
+					</td>
+				{% endif %}
 				
 				<!-- Thursday0 night -->
-				
+				{% if  Thursday0NightAssignBeforeHead == userName or Thursday0NightAssignBeforeSecond == userName or Thursday0NightAssignBeforeStandBy == userName %}
+					<td style="background-color:FF3333">
 					<b>Shift head:</b>
 					<span name="headNurseList" id="head_nurse_list_thursday1" style="width: 150px">
-						{{Thursday0NightAssignBeforeHead}} </span>
-						
+						{{Thursday0NightAssignBeforeHead}} </span>						
 					<br><br>
 					<b>Second nurse:</b>
 					<span name="headNurseList" id="second_nurse_list_thursday1" style="width: 150px">
 						{{Thursday0NightAssignBeforeSecond}} </span>
-						
 					<br><br>
 					<b>Stand by:</b>
 					<span name="headNurseList" id="stand_by_nurse_list_thursday1" style="width: 150px">
 						{{Thursday0NightAssignBeforeStandBy}} </span>
-						
-				</td>
-				<td>  
-					
-				<!-- Friday0 night -->
+					</td>
+				{% else %}
+					<td>
+					<b>Shift head:</b>
+					<span name="headNurseList" id="head_nurse_list_thursday1" style="width: 150px">
+						{{Thursday0NightAssignBeforeHead}} </span>						
+					<br><br>
+					<b>Second nurse:</b>
+					<span name="headNurseList" id="second_nurse_list_thursday1" style="width: 150px">
+						{{Thursday0NightAssignBeforeSecond}} </span>
+					<br><br>
+					<b>Stand by:</b>
+					<span name="headNurseList" id="stand_by_nurse_list_thursday1" style="width: 150px">
+						{{Thursday0NightAssignBeforeStandBy}} </span>
+					</td>
+				{% endif %}
 				
+			  	<!-- Friday0 night -->
+				{% if  Friday0NightAssignBeforeHead == userName or Friday0NightAssignBeforeSecond == userName or Friday0NightAssignBeforeStandBy == userName %}
+					<td style="background-color:FF3333">
 					<b>Shift head:</b>
 					<b><span name="headNurseList" id="head_nurse_list_friday1" style="width: 150px">
 						{{Friday0NightAssignBeforeHead}} </span></b>
-						
 					<br><br>
 					<b>Second nurse:</b>
 					<span name="headNurseList" id="second_nurse_list_friday1" style="width: 150px">
-						{{Friday0NightAssignBeforeSecond}} </span>
-						
+						{{Friday0NightAssignBeforeSecond}} </span>	
 					<br><br>
 					<b>Stand by:</b>
 					<span name="headNurseList" id="stand_by_nurse_list_friday1" style="width: 150px">
 						{{Friday0NightAssignBeforeStandBy}} </span>
-						
-				</td>
-				<td>  
+					</td>
+				{% else %}
+					<td>
+					<b>Shift head:</b>
+					<b><span name="headNurseList" id="head_nurse_list_friday1" style="width: 150px">
+						{{Friday0NightAssignBeforeHead}} </span></b>
+					<br><br>
+					<b>Second nurse:</b>
+					<span name="headNurseList" id="second_nurse_list_friday1" style="width: 150px">
+						{{Friday0NightAssignBeforeSecond}} </span>	
+					<br><br>
+					<b>Stand by:</b>
+					<span name="headNurseList" id="stand_by_nurse_list_friday1" style="width: 150px">
+						{{Friday0NightAssignBeforeStandBy}} </span>
+					</td>
+				{% endif %}
 				
 				<!-- Saturday0 night -->
-				
+				{% if  Saturday0NightAssignBeforeHead == userName or Saturday0NightAssignBeforeSecond == userName or Saturday0NightAssignBeforeStandBy == userName %}
+					<td style="background-color:FF3333">
 					<b>Shift head:</b>
 					<span name="headNurseList" id="head_nurse_list_saturday1" style="width: 150px">
 						{{Saturday0NightAssignBeforeHead}} </span>
-						
 					<br><br>
 					<b>Second nurse:</b>
 					<span name="headNurseList" id="second_nurse_list_saturday1" style="width: 150px">
 						{{Saturday0NightAssignBeforeSecond}} </span>
-						
 					<br><br>
 					<b>Stand by:</b>
 					<span name="headNurseList" id="stand_by_nurse_list_saturday1" style="width: 150px">
-						{{Saturday0NightAssignBeforeStandBy}} </span>
-						
-				</td>
-            </tr>
+						{{Saturday0NightAssignBeforeStandBy}} </span>	
+					</td>
+				{% else %}
+					<td>
+					<b>Shift head:</b>
+					<span name="headNurseList" id="head_nurse_list_saturday1" style="width: 150px">
+						{{Saturday0NightAssignBeforeHead}} </span>
+					<br><br>
+					<b>Second nurse:</b>
+					<span name="headNurseList" id="second_nurse_list_saturday1" style="width: 150px">
+						{{Saturday0NightAssignBeforeSecond}} </span>
+					<br><br>
+					<b>Stand by:</b>
+					<span name="headNurseList" id="stand_by_nurse_list_saturday1" style="width: 150px">
+						{{Saturday0NightAssignBeforeStandBy}} </span>	
+					</td>
+				{% endif %}
+		</tr>
 			
-<!----------------------------------------Tabel 1 morning------------------------------------------------------>			
-			
-            <tr>
-			
-			<!-- Sunday0 morning -->
-			
+<!----------------------------------------Tabel 1 morning------------------------------------------------------>					
+		<tr>
 				<td align="right">morning</td>
-                <td><b>Shift head:</b>
+
+				<!-- Sunday0 morning -->	
+				{% if  Sunday0MorningAssignBeforeHead == userName or Sunday0MorningAssignBeforeSecond == userName or Sunday0MorningAssignBeforeStandBy == userName %}
+					<td style="background-color:FF3333">
+                	<b>Shift head:</b>
 					<span name="headNurseList" id="head_nurse_list_sunday2" style="width: 150px">
 						{{Sunday0MorningAssignBeforeHead}} </span>
-						
 					<br><br>
 					<b>Second nurse:</b>
 					<span name="headNurseList" id="second_nurse_list_sunday2" style="width: 150px">
-						{{Sunday0MorningAssignBeforeSecond}} </span>
-						
+						{{Sunday0MorningAssignBeforeSecond}} </span>	
 					<br><br>
 					<b>Stand by:</b>
 					<span name="headNurseList" id="stand_by_nurse_list_sunday2" style="width: 150px">
 						{{Sunday0MorningAssignBeforeStandBy}} </span>
-					
-				</td>
-				<td> 
-				
+					</td>
+				{% else %} 
+					<td>
+					<b>Shift head:</b>
+					<span name="headNurseList" id="head_nurse_list_sunday2" style="width: 150px">
+						{{Sunday0MorningAssignBeforeHead}} </span>
+					<br><br>
+					<b>Second nurse:</b>
+					<span name="headNurseList" id="second_nurse_list_sunday2" style="width: 150px">
+						{{Sunday0MorningAssignBeforeSecond}} </span>	
+					<br><br>
+					<b>Stand by:</b>
+					<span name="headNurseList" id="stand_by_nurse_list_sunday2" style="width: 150px">
+						{{Sunday0MorningAssignBeforeStandBy}} </span>
+					</td>
+				{% endif %}
+
 				<!-- Monday0 morning -->
-				
+				{% if  Monday0MorningAssignBeforeHead == userName or Monday0MorningAssignBeforeSecond == userName or Monday0MorningAssignBeforeStandBy == userName %}
+					<td style="background-color:FF3333">
 					<b>Shift head:</b>
 					<span name="headNurseList" id="head_nurse_list_monday2" style="width: 150px">
 						{{Monday0MorningAssignBeforeHead}} </span>
-						
 					<br><br>
 					<b>Second nurse:</b>
 					<span name="headNurseList" id="second_nurse_list_monday2" style="width: 150px">
 						{{Monday0MorningAssignBeforeSecond}} </span>
-						
 					<br><br>
 					<b>Stand by:</b>
 					<span name="headNurseList" id="stand_by_nurse_list_monday2" style="width: 150px">
 						{{Monday0MorningAssignBeforeStandBy}} </span>
-						
-				</td>
-				<td>  
-				
+					</td>
+				{% else %}
+					<td>
+					<b>Shift head:</b>
+					<span name="headNurseList" id="head_nurse_list_monday2" style="width: 150px">
+						{{Monday0MorningAssignBeforeHead}} </span>
+					<br><br>
+					<b>Second nurse:</b>
+					<span name="headNurseList" id="second_nurse_list_monday2" style="width: 150px">
+						{{Monday0MorningAssignBeforeSecond}} </span>
+					<br><br>
+					<b>Stand by:</b>
+					<span name="headNurseList" id="stand_by_nurse_list_monday2" style="width: 150px">
+						{{Monday0MorningAssignBeforeStandBy}} </span>
+					</td>
+				{% endif %}
+
 				<!-- Tuesday0 morning -->
-				
+				{% if  Tuesday0MorningAssignBeforeHead == userName or Tuesday0MorningAssignBeforeSecond == userName or Tuesday0MorningAssignBeforeThird == userName or Tuesday0MorningAssignBeforeStandBy == userName %}
+					<td style="background-color:FF3333">
 					<b>Shift head:</b>
 					<span name="headNurseList" id="head_nurse_list_tuesday2" style="width: 150px">
 						{{Tuesday0MorningAssignBeforeHead}} </span>
-						
 					<br><br>
 					<b>Second nurse:</b>
 					<span name="headNurseList" id="second_nurse_list_tuesday2" style="width: 150px">
 						{{Tuesday0MorningAssignBeforeSecond}} </span>
-						
 					<br><br>
 					<b>Third nurse:</b>
 					<span name="headNurseList" id="third_nurse_list_tuesday2" style="width: 150px">
 						{{Tuesday0MorningAssignBeforeThird}} </span>
-						
 					<br><br>
 					<b>Stand by:</b>
 					<span name="headNurseList" id="stand_by_nurse_tuesday2" style="width: 150px">
 						{{Tuesday0MorningAssignBeforeStandBy}} </span>
-						
-				</td>
-				<td>  
-				
+					</td>
+				{% else %}
+					<td>
+					<b>Shift head:</b>
+					<span name="headNurseList" id="head_nurse_list_tuesday2" style="width: 150px">
+						{{Tuesday0MorningAssignBeforeHead}} </span>
+					<br><br>
+					<b>Second nurse:</b>
+					<span name="headNurseList" id="second_nurse_list_tuesday2" style="width: 150px">
+						{{Tuesday0MorningAssignBeforeSecond}} </span>
+					<br><br>
+					<b>Third nurse:</b>
+					<span name="headNurseList" id="third_nurse_list_tuesday2" style="width: 150px">
+						{{Tuesday0MorningAssignBeforeThird}} </span>
+					<br><br>
+					<b>Stand by:</b>
+					<span name="headNurseList" id="stand_by_nurse_tuesday2" style="width: 150px">
+						{{Tuesday0MorningAssignBeforeStandBy}} </span>
+					</td>
+				{% endif %}
+
 				<!-- Wednesday0 morning -->
-				
+				{% if  Wednesday0MorningAssignBeforeHead == userName or Wednesday0MorningAssignBeforeSecond == userName or Wednesday0MorningAssignBeforeStandBy == userName %}
+					<td style="background-color:FF3333">
 					<b>Shift head:</b>
 					<span name="headNurseList" id="head_nurse_list_wednesday2" style="width: 150px">
 						{{Wednesday0MorningAssignBeforeHead}} </span>
-						
 					<br><br>
 					<b>Second nurse:</b>
 					<span name="headNurseList" id="second_nurse_list_wednesday2" style="width: 150px">
 						{{Wednesday0MorningAssignBeforeSecond}} </span>
-						
 					<br><br>
 					<b>Stand by:</b>
 					<span name="headNurseList" id="stand_by_nurse_list_wednesday2" style="width: 150px">
 						{{Wednesday0MorningAssignBeforeStandBy}} </span>
-						
-				</td>
-				<td>  
+					</td>
+				{% else %}
+					<td>
+					<b>Shift head:</b>
+					<span name="headNurseList" id="head_nurse_list_wednesday2" style="width: 150px">
+						{{Wednesday0MorningAssignBeforeHead}} </span>
+					<br><br>
+					<b>Second nurse:</b>
+					<span name="headNurseList" id="second_nurse_list_wednesday2" style="width: 150px">
+						{{Wednesday0MorningAssignBeforeSecond}} </span>
+					<br><br>
+					<b>Stand by:</b>
+					<span name="headNurseList" id="stand_by_nurse_list_wednesday2" style="width: 150px">
+						{{Wednesday0MorningAssignBeforeStandBy}} </span>
+					</td>
+				{% endif %}
 				
 				<!-- Thursday0 morning -->
-				
+				{% if  Thursday0MorningAssignBeforeHead == userName or Thursday0MorningAssignBeforeSecond == userName or Thursday0MorningAssignBeforeThird == userName or Thursday0MorningAssignBeforeStandBy == userName %}
+					<td style="background-color:FF3333">
 					<b>Shift head:</b>
 					<span name="headNurseList" id="head_nurse_list_thursday2" style="width: 150px">
 						{{Thursday0MorningAssignBeforeHead}} </span>
-						
 					<br><br>
 					<b>Second nurse:</b>
 					<span name="headNurseList" id="second_nurse_list_thursday2" style="width: 150px">
 						{{Thursday0MorningAssignBeforeSecond}} </span>
-						
 					<br><br>
 					<b>Third nurse:</b>
 					<span name="headNurseList" id="third_nurse_list_thursday2" style="width: 150px">
 						{{Thursday0MorningAssignBeforeThird}} </span>
-						
 					<br><br>
 					<b>Stand by:</b>
 					<span name="headNurseList" id="stand_by_list_thursday2" style="width: 150px">
 						{{Thursday0MorningAssignBeforeStandBy}} </span>
-						
-				</td>
-				<td>  
+					</td>
+				{% else %}
+					<td>
+					<b>Shift head:</b>
+					<span name="headNurseList" id="head_nurse_list_thursday2" style="width: 150px">
+						{{Thursday0MorningAssignBeforeHead}} </span>
+					<br><br>
+					<b>Second nurse:</b>
+					<span name="headNurseList" id="second_nurse_list_thursday2" style="width: 150px">
+						{{Thursday0MorningAssignBeforeSecond}} </span>
+					<br><br>
+					<b>Third nurse:</b>
+					<span name="headNurseList" id="third_nurse_list_thursday2" style="width: 150px">
+						{{Thursday0MorningAssignBeforeThird}} </span>
+					<br><br>
+					<b>Stand by:</b>
+					<span name="headNurseList" id="stand_by_list_thursday2" style="width: 150px">
+						{{Thursday0MorningAssignBeforeStandBy}} </span>
+					</td>
+				{% endif %}
 				
 				<!-- Friday0 morning -->
-				
+				{% if  Friday0MorningAssignBeforeHead == userName or Friday0MorningAssignBeforeSecond == userName or Friday0MorningAssignBeforeStandBy == userName %}
+					<td style="background-color:FF3333">
 					<b>Shift head:</b>
 					<span name="headNurseList" id="head_nurse_list_friday2" style="width: 150px">
 						{{Friday0MorningAssignBeforeHead}} </span>
-						
 					<br><br>
 					<b>Second nurse:</b>
 					<span name="headNurseList" id="second_nurse_list_friday2" style="width: 150px">
 						{{Friday0MorningAssignBeforeSecond}} </span>
-						
 					<br><br>
 					<b>Stand by:</b>
 					<span name="headNurseList" id="stand_by_nurse_list_friday2" style="width: 150px">
 						{{Friday0MorningAssignBeforeStandBy}} </span>
-						
-				</td>
-				<td>  
+					</td>
+				{% else %}
+					<td>
+					<b>Shift head:</b>
+					<span name="headNurseList" id="head_nurse_list_friday2" style="width: 150px">
+						{{Friday0MorningAssignBeforeHead}} </span>
+					<br><br>
+					<b>Second nurse:</b>
+					<span name="headNurseList" id="second_nurse_list_friday2" style="width: 150px">
+						{{Friday0MorningAssignBeforeSecond}} </span>
+					<br><br>
+					<b>Stand by:</b>
+					<span name="headNurseList" id="stand_by_nurse_list_friday2" style="width: 150px">
+						{{Friday0MorningAssignBeforeStandBy}} </span>				
+					</td>
+				{% endif %}
 				
 				<!-- Saturday0 morning -->
-				
-				
+				{% if  Friday0MorningAssignBeforeHead == userName or Friday0MorningAssignBeforeSecond == userName or Friday0MorningAssignBeforeStandBy == userName %}
+					<td style="background-color:FF3333">
 					<b>Shift head:</b>
 					<span name="headNurseList" id="head_nurse_list_saturday2" style="width: 150px">
 						{{Saturday0MorningAssignBeforeHead}} </span>
-						
 					<br><br>
 					<b>Second nurse:</b>
 					<span name="headNurseList" id="second_nurse_list_saturday2" style="width: 150px">
 						{{Saturday0MorningAssignBeforeSecond}} </span>
-						
 					<br><br>
 					<b>Stand by:</b>
 					<span name="headNurseList" id="stand_by_nurse_list_saturday2" style="width: 150px">
 						{{Saturday0MorningAssignBeforeStandBy}} </span>
-
-				</td>
-            </tr>
+					</td>
+				{% else %}
+					<td>
+					<b>Shift head:</b>
+					<span name="headNurseList" id="head_nurse_list_saturday2" style="width: 150px">
+						{{Saturday0MorningAssignBeforeHead}} </span>
+					<br><br>
+					<b>Second nurse:</b>
+					<span name="headNurseList" id="second_nurse_list_saturday2" style="width: 150px">
+						{{Saturday0MorningAssignBeforeSecond}} </span>
+					<br><br>
+					<b>Stand by:</b>
+					<span name="headNurseList" id="stand_by_nurse_list_saturday2" style="width: 150px">
+						{{Saturday0MorningAssignBeforeStandBy}} </span>
+					</td>
+				{% endif %}
+		</tr>
 			
 			
 <!----------------------------------------Tabel 1 noon------------------------------------------------------>			
-			<tr>
+		<tr>
 				<td align="right">noon</td>
-                <td>  
-				
 				<!-- Sunday0 noon -->
-				
+                {% if  Sunday0NoonAssignBeforeHead == userName or Sunday0NoonAssignBeforeSecond == userName or Sunday0NoonAssignBeforeStandBy == userName %}
+					<td style="background-color:FF3333">
 					<b>Shift head:</b>
 					<span name="headNurseList" id="head_nurse_list_sunday3" style="width: 150px">
-						{{Sunday0NoonAssignBeforeHead}} </span>
-						
+						{{Sunday0NoonAssignBeforeHead}} </span>			
 					<br><br>
 					<b>Second nurse:</b>
 					<span name="headNurseList" id="second_nurse_list_sunday3" style="width: 150px">
 						{{Sunday0NoonAssignBeforeSecond}} </span>
-
 					<br><br>
 					<b>Stand by:</b>
 					<span name="headNurseList" id="stand_by_list_sunday3" style="width: 150px">
-						{{Sunday0NoonAssignBeforeStandBy}} </span>
-						
-				</td>
-				<td>  
+						{{Sunday0NoonAssignBeforeStandBy}} </span>	
+					</td>
+				{% else %}
+					<td>
+					<b>Shift head:</b>
+					<span name="headNurseList" id="head_nurse_list_sunday3" style="width: 150px">
+						{{Sunday0NoonAssignBeforeHead}} </span>			
+					<br><br>
+					<b>Second nurse:</b>
+					<span name="headNurseList" id="second_nurse_list_sunday3" style="width: 150px">
+						{{Sunday0NoonAssignBeforeSecond}} </span>
+					<br><br>
+					<b>Stand by:</b>
+					<span name="headNurseList" id="stand_by_list_sunday3" style="width: 150px">
+						{{Sunday0NoonAssignBeforeStandBy}} </span>	
+					</td>
+				{% endif %}
 				
 				<!-- Monday0 noon -->
-				
+				{% if  Monday0NoonAssignBeforeHead == userName or Monday0NoonAssignBeforeSecond == userName or Monday0NoonAssignBeforeStandBy == userName %}
+					<td style="background-color:FF3333">
 					<b>Shift head:</b>
 					<span name="headNurseList" id="head_nurse_list_monday3" style="width: 150px">
 						{{Monday0NoonAssignBeforeHead}} </span>
-						
 					<br><br>
 					<b>Second nurse:</b>
 					<span name="headNurseList" id="second_nurse_list_monday3" style="width: 150px">
 						{{Monday0NoonAssignBeforeSecond}} </span>
-						
 					<br><br>
 					<b>Stand by:</b>
 					<span name="headNurseList" id="stand_by_nurse_list_monday3" style="width: 150px">
 						{{Monday0NoonAssignBeforeStandBy}} </span>
-						
-				</td>
-				<td>  <!-- Tuesday0 noon -->
+					</td>
+				{% else %}
+					<td>
+					<b>Shift head:</b>
+					<span name="headNurseList" id="head_nurse_list_monday3" style="width: 150px">
+						{{Monday0NoonAssignBeforeHead}} </span>
+					<br><br>
+					<b>Second nurse:</b>
+					<span name="headNurseList" id="second_nurse_list_monday3" style="width: 150px">
+						{{Monday0NoonAssignBeforeSecond}} </span>
+					<br><br>
+					<b>Stand by:</b>
+					<span name="headNurseList" id="stand_by_nurse_list_monday3" style="width: 150px">
+						{{Monday0NoonAssignBeforeStandBy}} </span>
+					</td>
+				{% endif %}
+				
+				<!-- Tuesday0 noon -->
+				{% if  Tuesday0NoonAssignBeforeHead == userName or Tuesday0NoonAssignBeforeSecond == userName or Tuesday0NoonAssignBeforeStandBy == userName %}
+					<td style="background-color:FF3333">
 					<b>Shift head:</b>
 					<span name="headNurseList" id="head_nurse_list_tuesday3" style="width: 150px">
 						{{Tuesday0NoonAssignBeforeHead}} </span>
-						
 					<br><br>
 					<b>Second nurse:</b>
 					<span name="headNurseList" id="second_nurse_list_tuesday3" style="width: 150px">
 						{{Tuesday0NoonAssignBeforeSecond}} </span>
-						
 					<br><br>
 					<b>Stand by:</b>
 					<span name="headNurseList" id="stand_by_nurse_list_tuesday3" style="width: 150px">
 						{{Tuesday0NoonAssignBeforeStandBy}} </span>
-						
-				</td>
-				<td>  <!-- Wednesday0 noon -->
+					</td>
+				{% else %}
+					<td>
+					<b>Shift head:</b>
+					<span name="headNurseList" id="head_nurse_list_tuesday3" style="width: 150px">
+						{{Tuesday0NoonAssignBeforeHead}} </span>
+					<br><br>
+					<b>Second nurse:</b>
+					<span name="headNurseList" id="second_nurse_list_tuesday3" style="width: 150px">
+						{{Tuesday0NoonAssignBeforeSecond}} </span>
+					<br><br>
+					<b>Stand by:</b>
+					<span name="headNurseList" id="stand_by_nurse_list_tuesday3" style="width: 150px">
+						{{Tuesday0NoonAssignBeforeStandBy}} </span>
+					</td>
+				{% endif %}
+				
+				<!-- Wednesday0 noon -->
+				{% if  Wednesday0NoonAssignBeforeHead == userName or Wednesday0NoonAssignBeforeSecond == userName or Wednesday0NoonAssignBeforeStandBy == userName %}
+					<td style="background-color:FF3333">
 					<b>Shift head:</b>
 					<span name="headNurseList" id="head_nurse_list_wednesday3" style="width: 150px">
 						{{Wednesday0NoonAssignBeforeHead}} </span>
-						
 					<br><br>
 					<b>Second nurse:</b>
 					<span name="headNurseList" id="second_nurse_list_wednesday3" style="width: 150px">
 						{{Wednesday0NoonAssignBeforeSecond}} </span>
-						
 					<br><br>
 					<b>Stand by:</b>
 					<span name="headNurseList" id="stand_by_list_wednesday3" style="width: 150px">
 						{{Wednesday0NoonAssignBeforeStandBy}} </span>
-						
-				</td>
-				<td>  <!-- Thursday0 noon -->
+					</td>
+				{% else %}
+					<td>
+					<b>Shift head:</b>
+					<span name="headNurseList" id="head_nurse_list_wednesday3" style="width: 150px">
+						{{Wednesday0NoonAssignBeforeHead}} </span>
+					<br><br>
+					<b>Second nurse:</b>
+					<span name="headNurseList" id="second_nurse_list_wednesday3" style="width: 150px">
+						{{Wednesday0NoonAssignBeforeSecond}} </span>
+					<br><br>
+					<b>Stand by:</b>
+					<span name="headNurseList" id="stand_by_list_wednesday3" style="width: 150px">
+						{{Wednesday0NoonAssignBeforeStandBy}} </span>
+					</td>
+				{% endif %}
+			
+				<!-- Thursday0 noon -->
+				{% if  Thursday0NoonAssignBeforeHead == userName or Thursday0NoonAssignBeforeSecond == userName or Thursday0NoonAssignBeforeStandBy == userName %}
+					<td style="background-color:FF3333">
 					<b>Shift head:</b>
 					<span name="headNurseList" id="head_nurse_list_thursday3" style="width: 150px">
-						{{Thursday0NoonAssignBeforeHead}} </span>
-						
+						{{Thursday0NoonAssignBeforeHead}} </span>			
 					<br><br>
 					<b>Second nurse:</b>
 					<span name="headNurseList" id="second_nurse_list_thursday3" style="width: 150px">
 						{{Thursday0NoonAssignBeforeSecond}} </span>
-						
 					<br><br>
 					<b>Stand by:</b>
 					<span name="headNurseList" id="stand_by_nurse_thursday3" style="width: 150px">
-						{{Thursday0NoonAssignBeforeStandBy}} </span>
-						
-				</td>
-				<td>  <!-- Friday0 noon -->
+						{{Thursday0NoonAssignBeforeStandBy}} </span>	
+					</td>
+				{% else %}
+					<td>
+					<b>Shift head:</b>
+					<span name="headNurseList" id="head_nurse_list_thursday3" style="width: 150px">
+						{{Thursday0NoonAssignBeforeHead}} </span>			
+					<br><br>
+					<b>Second nurse:</b>
+					<span name="headNurseList" id="second_nurse_list_thursday3" style="width: 150px">
+						{{Thursday0NoonAssignBeforeSecond}} </span>
+					<br><br>
+					<b>Stand by:</b>
+					<span name="headNurseList" id="stand_by_nurse_thursday3" style="width: 150px">
+						{{Thursday0NoonAssignBeforeStandBy}} </span>	
+					</td>
+				{% endif %}
+				
+				<!-- Friday0 noon -->
+				{% if  Friday0NoonAssignBeforeHead == userName or Friday0NoonAssignBeforeSecond == userName or Friday0NoonAssignBeforeStandBy == userName %}
+					<td style="background-color:FF3333">
 					<b>Shift head:</b>
 					<span name="headNurseList" id="head_nurse_list_friday3" style="width: 150px">
 						{{Friday0NoonAssignBeforeHead}} </span>
-						
 					<br><br>
 					<b>Second nurse:</b>
 					<span name="headNurseList" id="second_nurse_list_friday3" style="width: 150px">
 						{{Friday0NoonAssignBeforeSecond}} </span>
-						
 					<br><br>
 					<b>Stand by:</b>
 					<span name="headNurseList" id="stand_by_nurse_list_friday3" style="width: 150px">
 						{{Friday0NoonAssignBeforeStandBy}} </span>
-						
-				</td>
-				<td>  <!-- Saturday0 noon -->
+					</td>
+				{% else %}
+					<td>
+					<b>Shift head:</b>
+					<span name="headNurseList" id="head_nurse_list_friday3" style="width: 150px">
+						{{Friday0NoonAssignBeforeHead}} </span>
+					<br><br>
+					<b>Second nurse:</b>
+					<span name="headNurseList" id="second_nurse_list_friday3" style="width: 150px">
+						{{Friday0NoonAssignBeforeSecond}} </span>
+					<br><br>
+					<b>Stand by:</b>
+					<span name="headNurseList" id="stand_by_nurse_list_friday3" style="width: 150px">
+						{{Friday0NoonAssignBeforeStandBy}} </span>
+					</td>
+				{% endif %}
+				
+				<!-- Saturday0 noon -->
+				{% if  Saturday0NoonAssignBeforeHead == userName or Saturday0NoonAssignBeforeSecond == userName or Saturday0NoonAssignBeforeStandBy == userName %}
+					<td style="background-color:FF3333">
 					<b>Shift head:</b>
 					<span name="headNurseList" id="head_nurse_list_saturday3" style="width: 150px">
 						{{Saturday0NoonAssignBeforeHead}} </span>
-						
 					<br><br>
 					<b>Second nurse:</b>
 					<span name="headNurseList" id="second_nurse_list_saturday3" style="width: 150px">
 						{{Saturday0NoonAssignBeforeSecond}} </span>
-						
 					<br><br>
 					<b>Stand by:</b>
 					<span name="headNurseList" id="stand_by_nurse_list_saturday3" style="width: 150px">
-						{{Saturday0NoonAssignBeforeStandBy}} </span>
-						
-				</td>
-            </tr>
-        </table>
-		<table>
-            <tr>
-			
+						{{Saturday0NoonAssignBeforeStandBy}} </span>	
+					</td>
+				{% else %}
+					<td>
+					<b>Shift head:</b>
+					<span name="headNurseList" id="head_nurse_list_saturday3" style="width: 150px">
+						{{Saturday0NoonAssignBeforeHead}} </span>
+					<br><br>
+					<b>Second nurse:</b>
+					<span name="headNurseList" id="second_nurse_list_saturday3" style="width: 150px">
+						{{Saturday0NoonAssignBeforeSecond}} </span>
+					<br><br>
+					<b>Stand by:</b>
+					<span name="headNurseList" id="stand_by_nurse_list_saturday3" style="width: 150px">
+						{{Saturday0NoonAssignBeforeStandBy}} </span>	
+					</td>
+				{% endif %}
+        </tr>
+    </table>	
+	<table>
+        <tr>
 			<!-- Second week -->
-			
 				<td width="9%">	</td>
 				<td width="13%"><span id ='sunday1'> {{sunday1}} </span></td>
 				<td width="13%"><span id ='monday1'> {{monday1}} </span></td>
 				<td width="13%"><span id ='tuesday1'> {{tuesday1}} </span></td>
 				<td width="13%"><span id ='wednesday1'> {{wednesday1}} </span></td>
-				<td width="13%"><span id ='thursday1'> {{thursday1}} </span></td>
+		 		<td width="13%"><span id ='thursday1'> {{thursday1}} </span></td>
 				<td width="13%"><span id ='friday1'> {{friday1}} </span></td>
-				<td width="13%"><span id ='saturday1'> {{saturday1}} </span></td>
-            </tr>
-            <tr>
-				<td align="right">night</td>
+		 		<td width="13%"><span id ='saturday1'> {{saturday1}} </span></td>
+        </tr>
+			
 <!----------------------------------------Tabel 2 night------------------------------------------------------>			
-              
-			  <td>  
-			  
-			  <!-- Sunday1 night -->
-			  
+		<tr>
+				<td align="right">night</td>
+
+			  	<!-- Sunday1 night -->
+				{% if  Sunday1NightAssignBeforeHead == userName or Sunday1NightAssignBeforeSecond == userName or Sunday1NightAssignBeforeStandBy == userName %}
+					<td style="background-color:FF3333">
 					<b>Shift head:</b>
 					<span name="headNurseListSunday1" id="head_nurse_list_sunday4" style="width: 150px">
 						{{Sunday1NightAssignBeforeHead}} </span>
-						
 					<br><br>
 					<b>Second nurse:</b>
 					<span name="secondNurseListSunday1" id="second_nurse_list_sunday4" style="width: 150px">
 						{{Sunday1NightAssignBeforeSecond}} </span>
-						
 					<br><br>
 					<b>Stand by:</b>
 					<span name="standByListSunday1" id="stand_by_list_sunday4" style="width: 150px">
 						{{Sunday1NightAssignBeforeStandBy}} </span>
-						
-				</td>
-				<td>  
-				
+					</td>
+				{% else %}
+					<td>
+					<b>Shift head:</b>
+					<span name="headNurseListSunday1" id="head_nurse_list_sunday4" style="width: 150px">
+						{{Sunday1NightAssignBeforeHead}} </span>
+					<br><br>
+					<b>Second nurse:</b>
+					<span name="secondNurseListSunday1" id="second_nurse_list_sunday4" style="width: 150px">
+						{{Sunday1NightAssignBeforeSecond}} </span>
+					<br><br>
+					<b>Stand by:</b>
+					<span name="standByListSunday1" id="stand_by_list_sunday4" style="width: 150px">
+						{{Sunday1NightAssignBeforeStandBy}} </span>
+					</td>
+				{% endif %}
+
 				<!-- Monday1 night -->
-				
+				{% if  Monday1NightAssignBeforeHead == userName or Monday1NightAssignBeforeSecond == userName or Monday1NightAssignBeforeStandBy == userName %}
+					<td style="background-color:FF3333">
 					<b>Shift head:</b>
 					<span name="standByListMonday1" id="head_nurse_list_monday4" style="width: 150px">
 						{{Monday1NightAssignBeforeHead}} </span>
-						
 					<br><br>
 					<b>Second nurse:</b>
 					<span name="headNurseList" id="second_nurse_list_monday4" style="width: 150px">
 						{{Monday1NightAssignBeforeSecond}} </span>
-						
 					<br><br>
 					<b>Stand by:</b>
 					<span name="headNurseList" id="stand_by_list_monday4" style="width: 150px">
 						{{Monday1NightAssignBeforeStandBy}} </span>
-						
-				</td>
-				<td>  
-				
+					</td>
+				{% else %}
+					<td>
+					<b>Shift head:</b>
+					<span name="standByListMonday1" id="head_nurse_list_monday4" style="width: 150px">
+						{{Monday1NightAssignBeforeHead}} </span>
+					<br><br>
+					<b>Second nurse:</b>
+					<span name="headNurseList" id="second_nurse_list_monday4" style="width: 150px">
+						{{Monday1NightAssignBeforeSecond}} </span>
+					<br><br>
+					<b>Stand by:</b>
+					<span name="headNurseList" id="stand_by_list_monday4" style="width: 150px">
+						{{Monday1NightAssignBeforeStandBy}} </span>
+					</td>
+				{% endif %}
+
 				<!-- Tuesday1 night -->
-				
+				{% if  Tuesday1NightAssignBeforeHead == userName or Tuesday1NightAssignBeforeSecond == userName or Tuesday1NightAssignBeforeStandBy == userName %}
+				<td style="background-color:FF3333">
 					<b>Shift head:</b>
 					<span name="headNurseList" id="head_nurse_list_tuesday4" style="width: 150px">
 						{{Tuesday1NightAssignBeforeHead}} </span>
-						
 					<br><br>
 					<b>Second nurse:</b>
 					<span name="headNurseList" id="second_nurse_list_tuesday4" style="width: 150px">
 						{{Tuesday1NightAssignBeforeSecond}} </span>
-						
 					<br><br>
 					<b>Stand by:</b>
 					<span name="headNurseList" id="stand_by_nurse_list_tuesday4" style="width: 150px">
 						{{Tuesday1NightAssignBeforeStandBy}} </span>
-						
-				</td>
-				<td>  
-				
-				<!-- Wedensday1 night -->
-				
+					</td>
+				{% else %}
+					<td>
+					<b>Shift head:</b>
+					<span name="headNurseList" id="head_nurse_list_tuesday4" style="width: 150px">
+						{{Tuesday1NightAssignBeforeHead}} </span>
+					<br><br>
+					<b>Second nurse:</b>
+					<span name="headNurseList" id="second_nurse_list_tuesday4" style="width: 150px">
+						{{Tuesday1NightAssignBeforeSecond}} </span>
+					<br><br>
+					<b>Stand by:</b>
+					<span name="headNurseList" id="stand_by_nurse_list_tuesday4" style="width: 150px">
+						{{Tuesday1NightAssignBeforeStandBy}} </span>
+					</td>
+				{% endif %}
+
+					<!-- Wedensday1 night -->
+				{% if  Wednesday1NightAssignBeforeHead == userName or Wednesday1NightAssignBeforeSecond == userName or Wednesday1NightAssignBeforeStandBy == userName %}
+					<td style="background-color:FF3333">
 					<b>Shift head:</b>
 					<span name="headNurseList" id="head_nurse_list_wednesday4" style="width: 150px">
 						{{Wednesday1NightAssignBeforeHead}} </span>
-						
 					<br><br>
 					<b>Second nurse:</b>
 					<span name="headNurseList" id="second_nurse_list_wednesday4" style="width: 150px">
 						{{Wednesday1NightAssignBeforeSecond}} </span>
-						
 					<br><br>
 					<b>Stand by:</b>
 					<span name="headNurseList" id="stand_by_nurse_list_wednesday4" style="width: 150px">
 						{{Wednesday1NightAssignBeforeStandBy}} </span>
-						
-				</td>
-				<td>  
-				
+					</td>
+				{% else %}
+					<td>
+					<b>Shift head:</b>
+					<span name="headNurseList" id="head_nurse_list_wednesday4" style="width: 150px">
+						{{Wednesday1NightAssignBeforeHead}} </span>
+					<br><br>
+					<b>Second nurse:</b>
+					<span name="headNurseList" id="second_nurse_list_wednesday4" style="width: 150px">
+						{{Wednesday1NightAssignBeforeSecond}} </span>
+					<br><br>
+					<b>Stand by:</b>
+					<span name="headNurseList" id="stand_by_nurse_list_wednesday4" style="width: 150px">
+						{{Wednesday1NightAssignBeforeStandBy}} </span>
+					</td>
+				{% endif %}
+
 				<!-- Thursday1 night -->
-				
+				{% if  Thursday1NightAssignBeforeHead == userName or Thursday1NightAssignBeforeSecond == userName or Thursday1NightAssignBeforeStandBy == userName %}
+					<td style="background-color:FF3333">
 					<b>Shift head:</b>
 					<span name="headNurseList" id="head_nurse_list_thursday4" style="width: 150px">
 						{{Thursday1NightAssignBeforeHead}} </span>
-						
 					<br><br>
 					<b>Second nurse:</b>
 					<span name="headNurseList" id="second_nurse_list_thursday4" style="width: 150px">
 						{{Thursday1NightAssignBeforeSecond}} </span>
-						
 					<br><br>
 					<b>Stand by:</b>
 					<span name="headNurseList" id="stand_by_nurse_list_thursday4" style="width: 150px">
 						{{Thursday1NightAssignBeforeStandBy}} </span>
-						
-				</td>
-				<td>  
-				
-				<!-- Friday1 night -->
-				
+					</td>
+				{% else %}
+					<td>
+					<b>Shift head:</b>
+					<span name="headNurseList" id="head_nurse_list_thursday4" style="width: 150px">
+						{{Thursday1NightAssignBeforeHead}} </span>
+					<br><br>
+					<b>Second nurse:</b>
+					<span name="headNurseList" id="second_nurse_list_thursday4" style="width: 150px">
+						{{Thursday1NightAssignBeforeSecond}} </span>
+					<br><br>
+					<b>Stand by:</b>
+					<span name="headNurseList" id="stand_by_nurse_list_thursday4" style="width: 150px">
+						{{Thursday1NightAssignBeforeStandBy}} </span>
+					</td>
+				{% endif %}
+
+					<!-- Friday1 night -->
+				{% if  Friday1NightAssignBeforeHead == userName or Friday1NightAssignBeforeSecond == userName or Friday1NightAssignBeforeStandBy == userName %}
+					<td style="background-color:FF3333">
 					<b>Shift head:</b>
 					<span name="headNurseList" id="head_nurse_list_friday4" style="width: 150px">
 						{{Friday1NightAssignBeforeHead}} </span>
-						
 					<br><br>
 					<b>Second nurse:</b>
 					<span name="headNurseList" id="second_nurse_list_friday4" style="width: 150px">
 						{{Friday1NightAssignBeforeSecond}} </span>
-						
 					<br><br>
 					<b>Stand by:</b>
 					<span name="headNurseList" id="stand_by_nurse_list_friday4" style="width: 150px">
 						{{Friday1NightAssignBeforeStandBy}} </span>
-						
-				</td>
-				<td>  
-				
+					</td>
+				{% else %}
+					<td>
+					<b>Shift head:</b>
+					<span name="headNurseList" id="head_nurse_list_friday4" style="width: 150px">
+						{{Friday1NightAssignBeforeHead}} </span>
+					<br><br>
+					<b>Second nurse:</b>
+					<span name="headNurseList" id="second_nurse_list_friday4" style="width: 150px">
+						{{Friday1NightAssignBeforeSecond}} </span>
+					<br><br>
+					<b>Stand by:</b>
+					<span name="headNurseList" id="stand_by_nurse_list_friday4" style="width: 150px">
+						{{Friday1NightAssignBeforeStandBy}} </span>
+					</td>
+				{% endif %}
+
 				<!-- Saturday1 night -->
-				
+				{% if  Saturday1NightAssignBeforeHead == userName or Saturday1NightAssignBeforeSecond == userName or Saturday1NightAssignBeforeStandBy == userName %}
+					<td style="background-color:FF3333">
 					<b>Shift head:</b>
 					<span name="headNurseList" id="head_nurse_list_saturday4" style="width: 150px">
 						{{Saturday1NightAssignBeforeHead}} </span>
-						
 					<br><br>
 					<b>Second nurse:</b>
 					<span name="headNurseList" id="second_nurse_list_saturday4" style="width: 150px">
 						{{Saturday1NightAssignBeforeSecond}} </span>
-						
 					<br><br>
 					<b>Stand by:</b>
 					<span name="headNurseList" id="stand_by_nurse_list_saturday4" style="width: 150px">
 						{{Saturday1NightAssignBeforeStandBy}} </span>						
-				</td>
-            <tr>
+					</td>
+				{% else %}
+					<td>
+					<b>Shift head:</b>
+					<span name="headNurseList" id="head_nurse_list_saturday4" style="width: 150px">
+						{{Saturday1NightAssignBeforeHead}} </span>
+					<br><br>
+					<b>Second nurse:</b>
+					<span name="headNurseList" id="second_nurse_list_saturday4" style="width: 150px">
+						{{Saturday1NightAssignBeforeSecond}} </span>
+					<br><br>
+					<b>Stand by:</b>
+					<span name="headNurseList" id="stand_by_nurse_list_saturday4" style="width: 150px">
+						{{Saturday1NightAssignBeforeStandBy}} </span>
+					</td>
+				{% endif %}
+        </tr>
 <!----------------------------------------Tabel 2 morning------------------------------------------------------>			
-	
+		<tr>
 				<td align="right">morning</td>
-                <td>  
 				
 				<!-- Sunday1 morning -->
-				
+				{% if  Sunday1MorningAssignBeforeHead == userName or Sunday1MorningAssignBeforeSecond == userName or Sunday1MorningAssignBeforeStandBy == userName %}
+					<td style="background-color:FF3333">
 					<b>Shift head:</b>
 					<span name="headNurseList" id="head_nurse_list_sunday5" style="width: 150px">
 						{{Sunday1MorningAssignBeforeHead}} </span>
-						
 					<br><br>
 					<b>Second nurse:</b>
 					<span name="headNurseList" id="second_nurse_list_sunday5" style="width: 150px">
 						{{Sunday1MorningAssignBeforeSecond}} </span>
-						
 					<br><br>
 					<b>Stand by:</b>
 					<span name="headNurseList" id="stand_by_nurse_list_sunday5" style="width: 150px">
 						{{Sunday1MorningAssignBeforeStandBy}} </span>
-						
-				</td>
-				<td>  
-				
+					</td>
+				{% else %}
+					<td>
+					<b>Shift head:</b>
+					<span name="headNurseList" id="head_nurse_list_sunday5" style="width: 150px">
+						{{Sunday1MorningAssignBeforeHead}} </span>
+					<br><br>
+					<b>Second nurse:</b>
+					<span name="headNurseList" id="second_nurse_list_sunday5" style="width: 150px">
+						{{Sunday1MorningAssignBeforeSecond}} </span>
+					<br><br>
+					<b>Stand by:</b>
+					<span name="headNurseList" id="stand_by_nurse_list_sunday5" style="width: 150px">
+						{{Sunday1MorningAssignBeforeStandBy}} </span>
+					</td>
+				{% endif %}
+			
 				<!-- Monday1 morning -->
-				
+				{% if  Monday1MorningAssignBeforeHead == userName or Monday1MorningAssignBeforeSecond == userName or Monday1MorningAssignBeforeStandBy == userName %}
+					<td style="background-color:FF3333">
 					<b>Shift head:</b>
 					<span name="headNurseList" id="head_nurse_list_monday5" style="width: 150px">
 						{{Monday1MorningAssignBeforeHead}} </span>
-						
 					<br><br>
 					<b>Second nurse:</b>
 					<span name="headNurseList" id="second_nurse_list_monday5" style="width: 150px">
 						{{Monday1MorningAssignBeforeSecond}} </span>
-						
 					<br><br>
 					<b>Stand by:</b>
 					<span name="headNurseList" id="stand_by_nurse_list_monday5" style="width: 150px">
 						{{Monday1MorningAssignBeforeStandBy}} </span>
-						
-				</td>
-				<td> 
+					</td>
+				{% else %}
+					<td>
+					<b>Shift head:</b>
+					<span name="headNurseList" id="head_nurse_list_monday5" style="width: 150px">
+						{{Monday1MorningAssignBeforeHead}} </span>
+					<br><br>
+					<b>Second nurse:</b>
+					<span name="headNurseList" id="second_nurse_list_monday5" style="width: 150px">
+						{{Monday1MorningAssignBeforeSecond}} </span>
+					<br><br>
+					<b>Stand by:</b>
+					<span name="headNurseList" id="stand_by_nurse_list_monday5" style="width: 150px">
+						{{Monday1MorningAssignBeforeStandBy}} </span>
+					</td>
+				{% endif %}
 
 				<!-- Tuesday1 morning -->
-				
+				{% if  Tuesday1MorningAssignBeforeHead == userName or Tuesday1MorningAssignBeforeSecond == userName or Tuesday1MorningAssignBeforeThird == userName or Tuesday1MorningAssignBeforeStandBy == userName %}
+					<td style="background-color:FF3333">
 					<b>Shift head:</b>
 					<span name="headNurseList" id="head_nurse_list_tuesday5" style="width: 150px">
 						{{Tuesday1MorningAssignBeforeHead}} </span>
-						
 					<br><br>
 					<b>Second nurse:</b>
 					<span name="headNurseList" id="second_nurse_list_tuesday5" style="width: 150px">
 						{{Tuesday1MorningAssignBeforeSecond}} </span>
-						
 					<br><br>
 					<b>Third nurse:</b>
 					<span name="headNurseList" id="third_nurse_list_tuesday5" style="width: 150px">
 						{{Tuesday1MorningAssignBeforeThird}} </span>
-						
 					<br><br>
 					<b>Stand by:</b>
 					<span name="headNurseList" id="stand_by_nurse_tuesday5" style="width: 150px">
 						{{Tuesday1MorningAssignBeforeStandBy}} </span>
-						
-				</td>
-				<td>  
-				
+					</td>
+				{% else %}
+					<td>
+					<b>Shift head:</b>
+					<span name="headNurseList" id="head_nurse_list_tuesday5" style="width: 150px">
+						{{Tuesday1MorningAssignBeforeHead}} </span>
+					<br><br>
+					<b>Second nurse:</b>
+					<span name="headNurseList" id="second_nurse_list_tuesday5" style="width: 150px">
+						{{Tuesday1MorningAssignBeforeSecond}} </span>
+					<br><br>
+					<b>Third nurse:</b>
+					<span name="headNurseList" id="third_nurse_list_tuesday5" style="width: 150px">
+						{{Tuesday1MorningAssignBeforeThird}} </span>
+					<br><br>
+					<b>Stand by:</b>
+					<span name="headNurseList" id="stand_by_nurse_tuesday5" style="width: 150px">
+						{{Tuesday1MorningAssignBeforeStandBy}} </span>
+					</td>
+				{% endif %}
+
 				<!-- Wednesday1 morning -->
-				
+				{% if  Wednesday1MorningAssignBeforeHead == userName or Wednesday1MorningAssignBeforeSecond == userName or Wednesday1MorningAssignBeforeStandBy == userName %}
+					<td style="background-color:FF3333">
 					<b>Shift head:</b>
 					<span name="headNurseList" id="head_nurse_list_wednesday5" style="width: 150px">
 						{{Wednesday1MorningAssignBeforeHead}} </span>
-						
 					<br><br>
 					<b>Second nurse:</b>
 					<span name="headNurseList" id="second_nurse_list_wednesday5" style="width: 150px">
 						{{Wednesday1MorningAssignBeforeSecond}} </span>
-						
 					<br><br>
 					<b>Stand by:</b>
 					<span name="headNurseList" id="stand_by_nurse_list_wednesday5" style="width: 150px">
 						{{Wednesday1MorningAssignBeforeStandBy}} </span>
-						
-				</td>
-				<td>  
-				
+					</td>
+				{% else %}
+					<td>
+					<b>Shift head:</b>
+					<span name="headNurseList" id="head_nurse_list_wednesday5" style="width: 150px">
+						{{Wednesday1MorningAssignBeforeHead}} </span>
+					<br><br>
+					<b>Second nurse:</b>
+					<span name="headNurseList" id="second_nurse_list_wednesday5" style="width: 150px">
+						{{Wednesday1MorningAssignBeforeSecond}} </span>
+					<br><br>
+					<b>Stand by:</b>
+					<span name="headNurseList" id="stand_by_nurse_list_wednesday5" style="width: 150px">
+						{{Wednesday1MorningAssignBeforeStandBy}} </span>
+					</td>
+				{% endif %}
+
 				<!-- Thursday1 morning -->
-				
+				{% if  Thursday1MorningAssignBeforeHead == userName or Thursday1MorningAssignBeforeSecond == userName or Thursday1MorningAssignBeforeThird == userName or Thursday1MorningAssignBeforeStandBy == userName %}
+					<td style="background-color:FF3333">
 					<b>Shift head:</b>
 					<span name="headNurseList" id="head_nurse_list_thursday5" style="width: 150px">
 						{{Thursday1MorningAssignBeforeHead}} </span>
-						
 					<br><br>
 					<b>Second nurse:</b>
 					<span name="headNurseList" id="second_nurse_list_thursday5" style="width: 150px">
 						{{Thursday1MorningAssignBeforeSecond}} </span>
-						
 					<br><br>
 					<b>Third nurse:</b>
 					<span name="headNurseList" id="third_nurse_list_thursday5" style="width: 150px">
 						{{Thursday1MorningAssignBeforeThird}} </span>
-						
 					<br><br>
 					<b>Stand by:</b>
 					<span name="headNurseList" id="stand_by_list_thursday5" style="width: 150px">
 						{{Thursday1MorningAssignBeforeStandBy}} </span>
-						
-				</td>
-				<td>  
-				
+					</td>
+				{% else %}
+					<td>
+					<b>Shift head:</b>
+					<span name="headNurseList" id="head_nurse_list_thursday5" style="width: 150px">
+						{{Thursday1MorningAssignBeforeHead}} </span>
+					<br><br>
+					<b>Second nurse:</b>
+					<span name="headNurseList" id="second_nurse_list_thursday5" style="width: 150px">
+						{{Thursday1MorningAssignBeforeSecond}} </span>
+					<br><br>
+					<b>Third nurse:</b>
+					<span name="headNurseList" id="third_nurse_list_thursday5" style="width: 150px">
+						{{Thursday1MorningAssignBeforeThird}} </span>
+					<br><br>
+					<b>Stand by:</b>
+					<span name="headNurseList" id="stand_by_list_thursday5" style="width: 150px">
+						{{Thursday1MorningAssignBeforeStandBy}} </span>
+					</td>
+				{% endif %}
+
 				<!-- Friday1 morning -->
-				
+				{% if  Friday1MorningAssignBeforeHead == userName or Friday1MorningAssignBeforeSecond == userName or Friday1MorningAssignBeforeStandBy == userName %}
+					<td style="background-color:FF3333">
 					<b>Shift head:</b>
 					<span name="headNurseList" id="head_nurse_list_friday5" style="width: 150px">
 						{{Friday1MorningAssignBeforeHead}} </span>
-						
 					<br><br>
 					<b>Second nurse:</b>
 					<span name="headNurseList" id="second_nurse_list_friday5" style="width: 150px">
 						{{Friday1MorningAssignBeforeSecond}} </span>
-						
 					<br><br>
 					<b>Stand by:</b>
 					<span name="headNurseList" id="stand_by_nurse_list_friday5" style="width: 150px">
 						{{Friday1MorningAssignBeforeStandBy}} </span>
-						
-				</td>
-				<td>  
-				
+					</td>
+				{% else %}
+					<td>
+					<b>Shift head:</b>
+					<span name="headNurseList" id="head_nurse_list_friday5" style="width: 150px">
+						{{Friday1MorningAssignBeforeHead}} </span>
+					<br><br>
+					<b>Second nurse:</b>
+					<span name="headNurseList" id="second_nurse_list_friday5" style="width: 150px">
+						{{Friday1MorningAssignBeforeSecond}} </span>
+					<br><br>
+					<b>Stand by:</b>
+					<span name="headNurseList" id="stand_by_nurse_list_friday5" style="width: 150px">
+						{{Friday1MorningAssignBeforeStandBy}} </span>
+					</td>
+				{% endif %}
+
 				<!-- Saturday1 morning -->
-				
+				{% if  Saturday1MorningAssignBeforeHead == userName or Saturday1MorningAssignBeforeSecond == userName or Saturday1MorningAssignBeforeStandBy == userName %}
+					<td style="background-color:FF3333">
 					<b>Shift head:</b>
 					<span name="headNurseList" id="head_nurse_list_saturday5" style="width: 150px">
 						{{Saturday1MorningAssignBeforeHead}} </span>
-
 					<br><br>
 					<b>Second nurse:</b>
 					<span name="headNurseList" id="second_nurse_list_saturday5" style="width: 150px">
 						{{Saturday1MorningAssignBeforeSecond}} </span>
-						
 					<br><br>
 					<b>Stand by:</b>
 					<span name="headNurseList" id="stand_by_nurse_list_saturday5" style="width: 150px">
 						{{Saturday1MorningAssignBeforeStandBy}} </span>
-						
-				</td>
-            </tr>
+					</td>
+				{% else %}
+					<td>
+					<b>Shift head:</b>
+					<span name="headNurseList" id="head_nurse_list_saturday5" style="width: 150px">
+						{{Saturday1MorningAssignBeforeHead}} </span>
+					<br><br>
+					<b>Second nurse:</b>
+					<span name="headNurseList" id="second_nurse_list_saturday5" style="width: 150px">
+						{{Saturday1MorningAssignBeforeSecond}} </span>
+					<br><br>
+					<b>Stand by:</b>
+					<span name="headNurseList" id="stand_by_nurse_list_saturday5" style="width: 150px">
+						{{Saturday1MorningAssignBeforeStandBy}} </span>
+					</td>
+				{% endif %}
+        </tr>
 			
-<!----------------------------------------Tabel 2 noon------------------------------------------------------>			
-
-			<tr>
+<!----------------------------------------Tabel 2 noon------------------------------------------------------>
+		<tr>
 				<td align="right">noon</td>
-                <td>  
-				
+
 				<!-- Sunday1 noon -->
-				
+				{% if  Sunday1NoonAssignBeforeHead == userName or Sunday1NoonAssignBeforeSecond == userName or Sunday1NoonAssignBeforeStandBy == userName %}
+					<td style="background-color:FF3333">
 					<b>Shift head:</b>
 					<span name="headNurseList" id="head_nurse_list_sunday6" style="width: 150px">
 						{{Sunday1NoonAssignBeforeHead}} </span>
-						
 					<br><br>
 					<b>Second nurse:</b>
 					<span name="headNurseList" id="second_nurse_list_sunday6" style="width: 150px">
 						{{Sunday1NoonAssignBeforeSecond}} </span>
-						
 					<br><br>
 					<b>Stand by:</b>
 					<span name="headNurseList" id="stand_by_list_sunday6" style="width: 150px">
 						{{Sunday1NoonAssignBeforeStandBy}} </span>
-						
-				</td>
-				<td>  
-				
+					</td>
+				{% else %}
+					<td>
+					<b>Shift head:</b>
+					<span name="headNurseList" id="head_nurse_list_sunday6" style="width: 150px">
+						{{Sunday1NoonAssignBeforeHead}} </span>
+					<br><br>
+					<b>Second nurse:</b>
+					<span name="headNurseList" id="second_nurse_list_sunday6" style="width: 150px">
+						{{Sunday1NoonAssignBeforeSecond}} </span>
+					<br><br>
+					<b>Stand by:</b>
+					<span name="headNurseList" id="stand_by_list_sunday6" style="width: 150px">
+						{{Sunday1NoonAssignBeforeStandBy}} </span>
+					</td>
+				{% endif %}
+
 				<!-- Monday1 noon -->
-				
+				{% if  Monday1NoonAssignBeforeHead == userName or Monday1NoonAssignBeforeSecond == userName or Monday1NoonAssignBeforeStandBy == userName %}
+					<td style="background-color:FF3333">
 					<b>Shift head:</b>
 					<span name="headNurseList" id="head_nurse_list_monday6" style="width: 150px">
 						{{Monday1NoonAssignBeforeHead}} </span>
-						
 					<br><br>
 					<b>Second nurse:</b>
 					<span name="headNurseList" id="second_nurse_list_monday6" style="width: 150px">
 						{{Monday1NoonAssignBeforeSecond}} </span>
-						
 					<br><br>
 					<b>Stand by:</b>
 					<span name="headNurseList" id="stand_by_nurse_list_monday6" style="width: 150px">
 						{{Monday1NoonAssignBeforeStandBy}} </span>
-						
-				</td>
-				<td> 
+					</td>
+				{% else %}
+					<td>
+					<b>Shift head:</b>
+					<span name="headNurseList" id="head_nurse_list_monday6" style="width: 150px">
+						{{Monday1NoonAssignBeforeHead}} </span>
+					<br><br>
+					<b>Second nurse:</b>
+					<span name="headNurseList" id="second_nurse_list_monday6" style="width: 150px">
+						{{Monday1NoonAssignBeforeSecond}} </span>
+					<br><br>
+					<b>Stand by:</b>
+					<span name="headNurseList" id="stand_by_nurse_list_monday6" style="width: 150px">
+						{{Monday1NoonAssignBeforeStandBy}} </span>
+					</td>
+				{% endif %}
 
 				<!-- Tuesday1 noon -->
-				
+				{% if  Tuesday1NoonAssignBeforeHead == userName or Tuesday1NoonAssignBeforeSecond == userName or Tuesday1NoonAssignBeforeStandBy == userName %}
+					<td style="background-color:FF3333">
 					<b>Shift head:</b>
 					<span name="headNurseList" id="head_nurse_list_tuesday6" style="width: 150px">
 						{{Tuesday1NoonAssignBeforeHead}} </span>
-						
 					<br><br>
 					<b>Second nurse:</b>
 					<span name="headNurseList" id="second_nurse_list_tuesday6" style="width: 150px">
 						{{Tuesday1NoonAssignBeforeSecond}} </span>
-						
 					<br><br>
 					<b>Stand by:</b>
 					<span name="headNurseList" id="stand_by_nurse_list_tuesday6" style="width: 150px">
 						{{Tuesday1NoonAssignBeforeStandBy}} </span>
-						
-				</td>
-				<td>  <!-- Wednesday1 noon -->
+					</td>
+				{% else %}
+					<td>
+					<b>Shift head:</b>
+					<span name="headNurseList" id="head_nurse_list_tuesday6" style="width: 150px">
+						{{Tuesday1NoonAssignBeforeHead}} </span>
+					<br><br>
+					<b>Second nurse:</b>
+					<span name="headNurseList" id="second_nurse_list_tuesday6" style="width: 150px">
+						{{Tuesday1NoonAssignBeforeSecond}} </span>
+					<br><br>
+					<b>Stand by:</b>
+					<span name="headNurseList" id="stand_by_nurse_list_tuesday6" style="width: 150px">
+						{{Tuesday1NoonAssignBeforeStandBy}} </span>
+					</td>
+				{% endif %}
+
+				<!-- Wednesday1 noon -->
+				{% if  Wednesday1NoonAssignBeforeHead == userName or Wednesday1NoonAssignBeforeSecond == userName or Wednesday1NoonAssignBeforeStandBy == userName %}
+					<td style="background-color:FF3333">
 					<b>Shift head:</b>
 					<span name="headNurseList" id="head_nurse_list_wednesday6" style="width: 150px">
 						{{Wednesday1NoonAssignBeforeHead}} </span>
-						
 					<br><br>
 					<b>Second nurse:</b>
 					<span name="headNurseList" id="second_nurse_list_wednesday6" style="width: 150px">
 						{{Wednesday1NoonAssignBeforeSecond}} </span>
-						
 					<br><br>
 					<b>Stand by:</b>
 					<span name="headNurseList" id="stand_by_list_wednesday6" style="width: 150px">
 						{{Wednesday1NoonAssignBeforeStandBy}} </span>
-						
-				</td>
-				<td>  
+					</td>
+				{% else %}
+					<td>
+					<b>Shift head:</b>
+					<span name="headNurseList" id="head_nurse_list_wednesday6" style="width: 150px">
+						{{Wednesday1NoonAssignBeforeHead}} </span>
+					<br><br>
+					<b>Second nurse:</b>
+					<span name="headNurseList" id="second_nurse_list_wednesday6" style="width: 150px">
+						{{Wednesday1NoonAssignBeforeSecond}} </span>
+					<br><br>
+					<b>Stand by:</b>
+					<span name="headNurseList" id="stand_by_list_wednesday6" style="width: 150px">
+						{{Wednesday1NoonAssignBeforeStandBy}} </span>
+					</td>
+				{% endif %}
 				
 				<!-- Thursday1 noon -->
-				
+				{% if  Thursday1NoonAssignBeforeHead == userName or Thursday1NoonAssignBeforeSecond == userName or Thursday1NoonAssignBeforeStandBy == userName %}
+					<td style="background-color:FF3333">
 					<b>Shift head:</b>
 					<span name="headNurseList" id="head_nurse_list_thursday6" style="width: 150px">
 						{{Thursday1NoonAssignBeforeHead}} </span>
-						
 					<br><br>
 					<b>Second nurse:</b>
 					<span name="headNurseList" id="second_nurse_list_thursday6" style="width: 150px">
 						{{Thursday1NoonAssignBeforeSecond}} </span>
-						
 					<br><br>
 					<b>Stand by:</b>
 					<span name="headNurseList" id="stand_by_nurse_thursday6" style="width: 150px">
 						{{Thursday1NoonAssignBeforeStandBy}} </span>
-						
-				</td>
-				<td>  
+					</td>
+				{% else %}
+					<td>
+					<b>Shift head:</b>
+					<span name="headNurseList" id="head_nurse_list_thursday6" style="width: 150px">
+						{{Thursday1NoonAssignBeforeHead}} </span>
+					<br><br>
+					<b>Second nurse:</b>
+					<span name="headNurseList" id="second_nurse_list_thursday6" style="width: 150px">
+						{{Thursday1NoonAssignBeforeSecond}} </span>
+					<br><br>
+					<b>Stand by:</b>
+					<span name="headNurseList" id="stand_by_nurse_thursday6" style="width: 150px">
+						{{Thursday1NoonAssignBeforeStandBy}} </span>
+					</td>
+				{% endif %}
 				
 				<!-- Friday1 noon -->
-				
+				{% if  Friday1NoonAssignBeforeHead == userName or Friday1NoonAssignBeforeSecond == userName or Friday1NoonAssignBeforeStandBy == userName %}
+					<td style="background-color:FF3333">
 					<b>Shift head:</b>
 					<span name="headNurseList" id="head_nurse_list_friday6" style="width: 150px">
 						{{Friday1NoonAssignBeforeHead}} </span>
-						
 					<br><br>
 					<b>Second nurse:</b>
 					<span name="headNurseList" id="second_nurse_list_friday6" style="width: 150px">
 						{{Friday1NoonAssignBeforeSecond}} </span>
-						
 					<br><br>
 					<b>Stand by:</b>
 					<span name="headNurseList" id="stand_by_nurse_list_friday6" style="width: 150px">
 						{{Friday1NoonAssignBeforeStandBy}} </span>
-						
-				</td>
-				<td>  
+					</td>
+				{% else %}
+					<td>
+					<b>Shift head:</b>
+					<span name="headNurseList" id="head_nurse_list_friday6" style="width: 150px">
+						{{Friday1NoonAssignBeforeHead}} </span>
+					<br><br>
+					<b>Second nurse:</b>
+					<span name="headNurseList" id="second_nurse_list_friday6" style="width: 150px">
+						{{Friday1NoonAssignBeforeSecond}} </span>
+					<br><br>
+					<b>Stand by:</b>
+					<span name="headNurseList" id="stand_by_nurse_list_friday6" style="width: 150px">
+						{{Friday1NoonAssignBeforeStandBy}} </span>
+					</td>
+				{% endif %}
 				
 				<!-- Saturday1 noon -->
-				
+				{% if  Saturday1NoonAssignBeforeHead == userName or Saturday1NoonAssignBeforeSecond == userName or Saturday1NoonAssignBeforeStandBy == userName %}
+					<td style="background-color:FF3333">
 					<b>Shift head:</b>
 					<span name="headNurseList" id="head_nurse_list_saturday6" style="width: 150px">
 						{{Saturday1NoonAssignBeforeHead}} </span>
-						
 					<br><br>
 					<b>Second nurse:</b>
 					<span name="headNurseList" id="second_nurse_list_saturday6" style="width: 150px">
 						{{Saturday1NoonAssignBeforeSecond}} </span>
-						
 					<br><br>
 					<b>Stand by:</b>
 					<span name="headNurseList" id="stand_by_nurse_list_saturday6" style="width: 150px">
 						{{Saturday1NoonAssignBeforeStandBy}} </span>
-						
-				</td>
-        </table>	
-	</div> 
-	<br><br>
-	<button class = "btn" onclick="location.href='ConstrainsInputPage'" >Constrains input</button>
+					</td>
+				{% else %}
+					<td>
+					<b>Shift head:</b>
+					<span name="headNurseList" id="head_nurse_list_saturday6" style="width: 150px">
+						{{Saturday1NoonAssignBeforeHead}} </span>
+					<br><br>
+					<b>Second nurse:</b>
+					<span name="headNurseList" id="second_nurse_list_saturday6" style="width: 150px">
+						{{Saturday1NoonAssignBeforeSecond}} </span>
+					<br><br>
+					<b>Stand by:</b>
+					<span name="headNurseList" id="stand_by_nurse_list_saturday6" style="width: 150px">
+						{{Saturday1NoonAssignBeforeStandBy}} </span>
+					</td>
+				{% endif %}
+	   	</tr>	  
+	 </table>
+</div> 
+<br><br>
+<button class = "btn" onclick="location.href='ConstrainsInputPage'" >Constrains input</button>
 	&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
 	&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
 	&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
 	&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
 	&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
-	<button class = "btn" onclick="location.href='/logout'">Logout</button>
-	<br>
-    </div> 		
+<button class = "btn" onclick="location.href='/logout'">Logout</button>
+<br>
+ </div> 		
 </body>
 </html>
