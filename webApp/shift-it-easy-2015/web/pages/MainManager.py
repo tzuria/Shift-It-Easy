@@ -19,6 +19,7 @@ from google.appengine.ext.webapp import template
 from models.employee import Employee
 from models.constrain import Constrain
 from models.preparingSchdule import PreparingSchedule
+from models.currentSchedule import CurrentSchedule
 import json
 import time
 from datetime import date
@@ -2342,7 +2343,9 @@ class SaveScheduleHandler(webapp2.RequestHandler):
 		
 		if allreadyAssign:
 			allreadyAssign.key.delete()
-			
+		if preparingSchedule.nurseUserName != "":
+			preparingSchedule.put()
+		
 		if not preparingSchedule.checkLegalAssign_Same_Shift():
 			self.response.write("Illegal! Already assigned today")
 			return
@@ -2361,12 +2364,44 @@ class SaveScheduleHandler(webapp2.RequestHandler):
 			return
 		
 		
-		preparingSchedule.put()
 		
+		
+		constrain = Constrain.query(Constrain.employeeUN == preparingSchedule.nurseUserName, Constrain.constrainDate == preparingSchedule.date, Constrain.ShiftType == preparingSchedule.ShiftType).get()
+		if not constrain:
+			self.response.write("assignment canceled ")
+			return
+		self.response.write(json.dumps({'status':'OK','note':constrain.notes}))
+		
+		
+		
+class SubmitScheduleHandler(webapp2.RequestHandler):
+	def get(self):
+		#if not PreparingSchedule.checkLegalAssign_Assign_Head_Nurses():
+		#	self.response.write("Must assign all head nurses")
+		#	return
+		
+		allNewAssignments = PreparingSchedule.Get_All_Assignments()
+		allOldAssignments = CurrentSchedule.Get_All_Assignments()
+		
+		if allOldAssignments:
+			for a in allOldAssignments:
+				a.deleteItem()
+		
+		if allNewAssignments:
+			for a in allNewAssignments:
+				current = CurrentSchedule()
+				current.date = a.date
+				current.ShiftType = a.ShiftType
+				current.nurseUserName = a.nurseUserName
+				current.rule = a.rule
+				current.put()
+				
 		self.response.write(json.dumps({'status':'OK'}))
+
 		
 
 app = webapp2.WSGIApplication([
     ('/MainManager', MainHandler),
-	('/saveSchedule', SaveScheduleHandler)
+	('/saveSchedule', SaveScheduleHandler),
+	('/submitSchedule', SubmitScheduleHandler)
 ], debug=True)

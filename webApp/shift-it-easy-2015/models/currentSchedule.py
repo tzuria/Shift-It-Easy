@@ -8,7 +8,20 @@ class CurrentSchedule(ndb.Model):
 	ShiftType = ndb.IntegerProperty()
 	nurseUserName = ndb.StringProperty()
 	rule = ndb.IntegerProperty()
-
+	
+	@staticmethod
+	def Get_All_Assignments():
+		allAssignments = CurrentSchedule.query().fetch()
+			
+		if allAssignments:
+			return allAssignments
+		return None
+	
+	
+	def deleteItem(self):
+		self.key.delete()
+		
+	
 	@classmethod
 	def checkIfAssignAlready(self, date, shift, rule):
 		assign = []
@@ -31,4 +44,12 @@ class CurrentSchedule(ndb.Model):
 			
 		else:
 			return None
+
+	
+	
+	
+	
+	
+	
+	
 	
