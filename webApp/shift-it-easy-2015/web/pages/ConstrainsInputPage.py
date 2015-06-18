@@ -20,6 +20,7 @@ from models.constrain import Constrain
 from models.employee import Employee
 import webapp2
 import json
+from Dates import Dates
 import time
 from datetime import date
 from datetime import timedelta
@@ -32,124 +33,14 @@ class MainHandler(webapp2.RequestHandler):
 		if self.request.cookies.get('our_token'):    #the cookie that should contain the access token!
 			userName = Employee.checkToken(self.request.cookies.get('our_token'))
 
-		today = date.today()
-		today = today + timedelta(days = 14)
-		if(int(today.strftime("%U"))%2 == 0):
-			today = today - timedelta(days = 7)
-		sunday0 = today
-		monday0 = today
-		tuesday0 = today
-		wednesday0 = today
-		thursday0 = today
-		friday0 = today
-		saturday0 = today
-		
-		if (today.weekday() == 6):
-			sunday0 = today
-			monday0 = sunday0 + timedelta(days=1)
-			tuesday0 = monday0 + timedelta(days=1)
-			wednesday0 = tuesday0 + timedelta(days = 1)
-			thursday0 = wednesday0 + timedelta(days = 1)
-			friday0 = thursday0 + timedelta(days = 1)
-			saturday0 = friday0 + timedelta(days = 1)
-			
-		if (today.weekday() == 0):
-			monday0 = today
-			tuesday0 = monday0 + timedelta(days=1)
-			wednesday0 = tuesday0 + timedelta(days = 1)
-			thursday0 = wednesday0 + timedelta(days = 1)
-			friday0 = thursday0 + timedelta(days = 1)
-			saturday0 = friday0 + timedelta(days = 1)
-			sunday0 = saturday0 - timedelta(days = 6)
-			
-		if (today.weekday() == 1):
-			tuesday0 = today
-			wednesday0 = tuesday0 + timedelta(days = 1)
-			thursday0 = wednesday0 + timedelta(days = 1)
-			friday0 = thursday0 + timedelta(days = 1)
-			saturday0 = friday0 + timedelta(days = 1)
-			sunday0 = saturday0 - timedelta(days = 6)
-			monday0 = sunday0 + timedelta(days=1)
-			
-		if (today.weekday() == 2):
-			wednesday0 = today
-			thursday0 = wednesday0 + timedelta(days = 1)
-			friday0 = thursday0 + timedelta(days = 1)
-			saturday0 = friday0 + timedelta(days = 1)
-			sunday0 = saturday0 - timedelta(days = 6)
-			monday0 = sunday0 + timedelta(days=1)
-			tuesday0 = monday0 + timedelta(days=1)
-			
-		if (today.weekday() == 3):
-			thursday0 = today
-			friday0 = thursday0 + timedelta(days = 1)
-			saturday0 = friday0 + timedelta(days = 1)
-			sunday0 = saturday0 - timedelta(days = 6)
-			monday0 = sunday0 + timedelta(days=1)
-			tuesday0 = monday0 + timedelta(days=1)
-			wednesday0 = tuesday0 + timedelta(days = 1)
-			
-		if (today.weekday() == 4):
-			friday0 = today
-			saturday0 = friday0 + timedelta(days = 1)
-			sunday0 = saturday0 - timedelta(days = 6)
-			monday0 = sunday0 + timedelta(days=1)
-			tuesday0 = monday0 + timedelta(days=1)
-			wednesday0 = tuesday0 + timedelta(days = 1)
-			thursday0 = wednesday0 + timedelta(days = 1)
-			
-		if (today.weekday() == 5):
-			saturday0 = today
-			sunday0 = saturday0 - timedelta(days = 6)
-			monday0 = sunday0 + timedelta(days=1)
-			tuesday0 = monday0 + timedelta(days=1)
-			wednesday0 = tuesday0 + timedelta(days = 1)
-			thursday0 = wednesday0 + timedelta(days = 1)
-			friday0 = thursday0 + timedelta(days = 1)		
-		
-		if saturday0:
-			sunday1 = saturday0 + timedelta(days=1)
-			monday1 = saturday0 + timedelta(days=2)
-			tuesday1 = saturday0 + timedelta(days=3)
-			wednesday1 = saturday0 + timedelta(days=4)
-			thursday1 = saturday0 + timedelta(days=5)
-			friday1 = saturday0 + timedelta(days=6)
-			saturday1 = saturday0 + timedelta(days=7)
 		
 		template_variables = {}
 		
 		if userName:
 			template_variables['userName'] = userName.userName
-			template_variables['sunday0'] = "%d/%d"%(sunday0.day ,sunday0.month)
-			template_variables['monday0'] = "%d/%d"%(monday0.day ,monday0.month)
-			template_variables['tuesday0'] = "%d/%d"%(tuesday0.day ,tuesday0.month)
-			template_variables['wednesday0'] = "%d/%d"%(wednesday0.day ,wednesday0.month)
-			template_variables['thursday0'] = "%d/%d"%(thursday0.day ,thursday0.month)
-			template_variables['friday0'] = "%d/%d"%(friday0.day ,friday0.month)
-			template_variables['saturday0'] = "%d/%d"%(saturday0.day ,saturday0.month)
-			template_variables['sunday1'] = "%d/%d"%(sunday1.day ,sunday1.month)
-			template_variables['monday1'] = "%d/%d"%(monday1.day ,monday1.month)
-			template_variables['tuesday1'] = "%d/%d"%(tuesday1.day ,tuesday1.month)
-			template_variables['wednesday1'] = "%d/%d"%(wednesday1.day ,wednesday1.month)
-			template_variables['thursday1'] = "%d/%d"%(thursday1.day ,thursday1.month)
-			template_variables['friday1'] = "%d/%d"%(friday1.day ,friday1.month)
-			template_variables['saturday1'] = "%d/%d"%(saturday1.day ,saturday1.month)
-			
-			sunday0date = date(sunday0.year, sunday0.month, sunday0.day)
-			monday0date = date(monday0.year, monday0.month, monday0.day)	
-			tuesday0date = date(tuesday0.year, tuesday0.month, tuesday0.day)
-			wednesday0date = date(wednesday0.year, wednesday0.month, wednesday0.day)
-			thursday0date = date(thursday0.year, thursday0.month, thursday0.day)
-			friday0date = date(friday0.year, friday0.month, friday0.day)
-			saturday0date = date(saturday0.year, saturday0.month, saturday0.day)
-			
-			sunday1date = date(sunday1.year, sunday1.month, sunday1.day)
-			monday1date = date(monday1.year, monday1.month, monday1.day)	
-			tuesday1date = date(tuesday1.year, tuesday1.month, tuesday1.day)
-			wednesday1date = date(wednesday1.year, wednesday1.month, wednesday1.day)
-			thursday1date = date(thursday1.year, thursday1.month, thursday1.day)
-			friday1date = date(friday1.year, friday1.month, friday1.day)
-			saturday1date = date(saturday1.year, saturday1.month, saturday1.day)	
+			dates =  Dates(template_variables)
+			template_variables = dates.nextTwoWeeks()
+				
 	
 
 			html = template.render("web/templates/ConstrainsInputPage.html", template_variables)

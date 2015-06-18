@@ -19,6 +19,7 @@ from google.appengine.ext.webapp import template
 from models.currentSchedule import CurrentSchedule
 from models.employee import Employee
 import json
+from Dates import Dates
 import time
 from datetime import date
 from datetime import timedelta
@@ -29,19 +30,18 @@ class MainHandler(webapp2.RequestHandler):
 		userName = None
 		if self.request.cookies.get('our_token'):    #the cookie that should contain the access token!
 			userName = Employee.checkToken(self.request.cookies.get('our_token'))
-
+		
 		today = date.today()
-		today = today 
 		today = today + timedelta(days = 14)
 		if(int(today.strftime("%U"))%2 == 0):
 			today = today - timedelta(days = 7)
-		sunday0 = today
-		monday0 = today
-		tuesday0 = today
-		wednesday0 = today
-		thursday0 = today
-		friday0 = today
-		saturday0 = today
+			sunday0 = today
+			monday0 = today
+			tuesday0 = today
+			wednesday0 = today
+			thursday0 = today
+			friday0 = today
+			saturday0 = today
 		
 		if (today.weekday() == 6):
 			sunday0 = today
@@ -114,24 +114,14 @@ class MainHandler(webapp2.RequestHandler):
 			thursday1 = saturday0 + timedelta(days=5)
 			friday1 = saturday0 + timedelta(days=6)
 			saturday1 = saturday0 + timedelta(days=7)
+				
+		
 		
 		template_variables = {}
 		if userName:
 			template_variables['userName'] = userName.userName
-			template_variables['sunday0'] = "%d/%d"%(sunday0.day ,sunday0.month)
-			template_variables['monday0'] = "%d/%d"%(monday0.day ,monday0.month)
-			template_variables['tuesday0'] = "%d/%d"%(tuesday0.day ,tuesday0.month)
-			template_variables['wednesday0'] = "%d/%d"%(wednesday0.day ,wednesday0.month)
-			template_variables['thursday0'] = "%d/%d"%(thursday0.day ,thursday0.month)
-			template_variables['friday0'] = "%d/%d"%(friday0.day ,friday0.month)
-			template_variables['saturday0'] = "%d/%d"%(saturday0.day ,saturday0.month)
-			template_variables['sunday1'] = "%d/%d"%(sunday1.day ,sunday1.month)
-			template_variables['monday1'] = "%d/%d"%(monday1.day ,monday1.month)
-			template_variables['tuesday1'] = "%d/%d"%(tuesday1.day ,tuesday1.month)
-			template_variables['wednesday1'] = "%d/%d"%(wednesday1.day ,wednesday1.month)
-			template_variables['thursday1'] = "%d/%d"%(thursday1.day ,thursday1.month)
-			template_variables['friday1'] = "%d/%d"%(friday1.day ,friday1.month)
-			template_variables['saturday1'] = "%d/%d"%(saturday1.day ,saturday1.month)
+			dates =  Dates(template_variables)
+			template_variables = dates.nextTwoWeeks()
 
 			
 

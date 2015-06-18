@@ -20,6 +20,7 @@ from models.currentSchedule import CurrentSchedule
 from models.employee import Employee
 import json
 import time
+from Dates import Dates
 from datetime import date
 from datetime import timedelta
 import webapp2
@@ -117,20 +118,8 @@ class MainHandler(webapp2.RequestHandler):
 		template_variables = {}
 		if userName:
 			template_variables['userName'] = userName.userName
-			template_variables['sunday0'] = "%d/%d"%(sunday0.day ,sunday0.month)
-			template_variables['monday0'] = "%d/%d"%(monday0.day ,monday0.month)
-			template_variables['tuesday0'] = "%d/%d"%(tuesday0.day ,tuesday0.month)
-			template_variables['wednesday0'] = "%d/%d"%(wednesday0.day ,wednesday0.month)
-			template_variables['thursday0'] = "%d/%d"%(thursday0.day ,thursday0.month)
-			template_variables['friday0'] = "%d/%d"%(friday0.day ,friday0.month)
-			template_variables['saturday0'] = "%d/%d"%(saturday0.day ,saturday0.month)
-			template_variables['sunday1'] = "%d/%d"%(sunday1.day ,sunday1.month)
-			template_variables['monday1'] = "%d/%d"%(monday1.day ,monday1.month)
-			template_variables['tuesday1'] = "%d/%d"%(tuesday1.day ,tuesday1.month)
-			template_variables['wednesday1'] = "%d/%d"%(wednesday1.day ,wednesday1.month)
-			template_variables['thursday1'] = "%d/%d"%(thursday1.day ,thursday1.month)
-			template_variables['friday1'] = "%d/%d"%(friday1.day ,friday1.month)
-			template_variables['saturday1'] = "%d/%d"%(saturday1.day ,saturday1.month)
+			dates =  Dates(template_variables)
+			template_variables = dates.theseTwoWeeks()
 
 			
 
