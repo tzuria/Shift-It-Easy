@@ -130,6 +130,14 @@ class MainHandler(webapp2.RequestHandler):
 			
 			sunday0date = date(sunday0.year, sunday0.month, sunday0.day)
 			
+			employee = Employee.query().fetch()
+		
+			if employee:
+				for e in employee:
+					constrains = Constrain.query(Constrain.employeeUN == e.userName).fetch()
+					if not constrains:
+						Constrain.addConstrain(e.userName,sunday0date)
+						
 			# Sunday0 night info:
 			head_nurse_want = Constrain.getShiftHeads(sunday0date, 0, 1)
 			head_nurse_dont_care = Constrain.getShiftHeads(sunday0date, 0, 0)
