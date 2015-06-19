@@ -13,6 +13,15 @@ class Dates():
 	thursday0 = today
 	friday0 = today
 	saturday0 = today
+	
+	sunday1 = today
+	monday1 = today
+	tuesday1 = today
+	wednesday1 = today
+	thursday1 = today
+	friday1 = today
+	saturday1 = today
+	
 	myTemplate = None
 	
 	def __init__(self,template):
@@ -139,6 +148,39 @@ class Dates():
 		self.assignDatesOnTemplate()
 				
 		return self.myTemplate
+		
+		
+	def createDateObject(self, week, day):
+		if week == 0:
+			if day == 1:
+				return date(self.sunday0.year, self.sunday0.month, self.sunday0.day)
+			if day == 2:
+				return date(self.monday0.year, self.monday0.month, self.monday0.day)
+			if day == 3:
+				return date(self.tuesday0.year, self.tuesday0.month, self.tuesday0.day)
+			if day == 4:
+				return date(self.wednesday0.year, self.wednesday0.month, self.wednesday0.day)
+			if day == 5:
+				return date(self.thursday0.year, self.thursday0.month, self.thursday0.day)
+			if day == 6:
+				return date(self.friday0.year, self.friday0.month, self.friday0.day)
+			if day == 7:
+				return date(self.saturday0.year, self.saturday0.month, self.saturday0.day)
+		if week == 1:
+			if day == 1:
+				return date(self.sunday1.year, self.sunday1.month, self.sunday1.day)
+			if day == 2:
+				return date(self.monday1.year, self.monday1.month, self.monday1.day)
+			if day == 3:
+				return date(self.tuesday1.year, self.tuesday1.month, self.tuesday1.day)
+			if day == 4:
+				return date(self.wednesday1.year, self.wednesday1.month, self.wednesday1.day)
+			if day == 5:
+				return date(self.thursday1.year, self.thursday1.month, self.thursday1.day)
+			if day == 6:
+				return date(self.friday1.year, self.friday1.month, self.friday1.day)
+			if day == 7:
+				return date(self.saturday1.year, self.saturday1.month, self.saturday1.day)
 			
 			
 			

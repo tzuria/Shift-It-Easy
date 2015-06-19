@@ -32,90 +32,6 @@ class MainHandler(webapp2.RequestHandler):
 		userName = None
 		if self.request.cookies.get('our_token'):    #the cookie that should contain the access token!
 			userName = Employee.checkToken(self.request.cookies.get('our_token'))
-				
-		today = date.today()
-		today = today + timedelta(days = 14)
-		if(int(today.strftime("%U"))%2 == 0):
-			today = today - timedelta(days = 7)
-		sunday0 = today
-		monday0 = today
-		tuesday0 = today
-		wednesday0 = today
-		thursday0 = today
-		friday0 = today
-		saturday0 = today
-		
-		if (today.weekday() == 6):
-			sunday0 = today
-			monday0 = sunday0 + timedelta(days=1)
-			tuesday0 = monday0 + timedelta(days=1)
-			wednesday0 = tuesday0 + timedelta(days = 1)
-			thursday0 = wednesday0 + timedelta(days = 1)
-			friday0 = thursday0 + timedelta(days = 1)
-			saturday0 = friday0 + timedelta(days = 1)
-			
-		if (today.weekday() == 0):
-			monday0 = today
-			tuesday0 = monday0 + timedelta(days=1)
-			wednesday0 = tuesday0 + timedelta(days = 1)
-			thursday0 = wednesday0 + timedelta(days = 1)
-			friday0 = thursday0 + timedelta(days = 1)
-			saturday0 = friday0 + timedelta(days = 1)
-			sunday0 = saturday0 - timedelta(days = 6)
-			
-		if (today.weekday() == 1):
-			tuesday0 = today
-			wednesday0 = tuesday0 + timedelta(days = 1)
-			thursday0 = wednesday0 + timedelta(days = 1)
-			friday0 = thursday0 + timedelta(days = 1)
-			saturday0 = friday0 + timedelta(days = 1)
-			sunday0 = saturday0 - timedelta(days = 6)
-			monday0 = sunday0 + timedelta(days=1)
-			
-		if (today.weekday() == 2):
-			wednesday0 = today
-			thursday0 = wednesday0 + timedelta(days = 1)
-			friday0 = thursday0 + timedelta(days = 1)
-			saturday0 = friday0 + timedelta(days = 1)
-			sunday0 = saturday0 - timedelta(days = 6)
-			monday0 = sunday0 + timedelta(days=1)
-			tuesday0 = monday0 + timedelta(days=1)
-			
-		if (today.weekday() == 3):
-			thursday0 = today
-			friday0 = thursday0 + timedelta(days = 1)
-			saturday0 = friday0 + timedelta(days = 1)
-			sunday0 = saturday0 - timedelta(days = 6)
-			monday0 = sunday0 + timedelta(days=1)
-			tuesday0 = monday0 + timedelta(days=1)
-			wednesday0 = tuesday0 + timedelta(days = 1)
-			
-		if (today.weekday() == 4):
-			friday0 = today
-			saturday0 = friday0 + timedelta(days = 1)
-			sunday0 = saturday0 - timedelta(days = 6)
-			monday0 = sunday0 + timedelta(days=1)
-			tuesday0 = monday0 + timedelta(days=1)
-			wednesday0 = tuesday0 + timedelta(days = 1)
-			thursday0 = wednesday0 + timedelta(days = 1)
-			
-		if (today.weekday() == 5):
-			saturday0 = today
-			sunday0 = saturday0 - timedelta(days = 6)
-			monday0 = sunday0 + timedelta(days=1)
-			tuesday0 = monday0 + timedelta(days=1)
-			wednesday0 = tuesday0 + timedelta(days = 1)
-			thursday0 = wednesday0 + timedelta(days = 1)
-			friday0 = thursday0 + timedelta(days = 1)		
-		
-		if saturday0:
-			sunday1 = saturday0 + timedelta(days=1)
-			monday1 = saturday0 + timedelta(days=2)
-			tuesday1 = saturday0 + timedelta(days=3)
-			wednesday1 = saturday0 + timedelta(days=4)
-			thursday1 = saturday0 + timedelta(days=5)
-			friday1 = saturday0 + timedelta(days=6)
-			saturday1 = saturday0 + timedelta(days=7)
 		
 		template_variables = {}
 		
@@ -128,16 +44,32 @@ class MainHandler(webapp2.RequestHandler):
 			#### First week ####
 			
 			
-			sunday0date = date(sunday0.year, sunday0.month, sunday0.day)
+			sunday0date = dates.createDateObject(0,1)
+			monday0date = dates.createDateObject(0,2)
+			tuesday0date = dates.createDateObject(0,3)
+			wednesday0date = dates.createDateObject(0,4)
+			thursday0date = dates.createDateObject(0,5)
+			friday0date = dates.createDateObject(0,6)
+			saturday0date = dates.createDateObject(0,7)
 			
-			employee = Employee.query().fetch()
-		
-			if employee:
-				for e in employee:
+			sunday1date = dates.createDateObject(1,1)
+			monday1date = dates.createDateObject(1,2)
+			tuesday1date = dates.createDateObject(1,3)
+			wednesday1date = dates.createDateObject(1,4)
+			thursday1date = dates.createDateObject(1,5)
+			friday1date = dates.createDateObject(1,6)
+			saturday1date = dates.createDateObject(1,7)
+			
+			
+			# Add default "white" constrains to employees who hasn't added constrains on their side.
+			employees = Employee.query().fetch()
+			if employees:
+				for e in employees:
 					constrains = Constrain.query(Constrain.employeeUN == e.userName).fetch()
 					if not constrains:
 						Constrain.addConstrain(e.userName,sunday0date)
-						
+			
+			
 			# Sunday0 night info:
 			head_nurse_want = Constrain.getShiftHeads(sunday0date, 0, 1)
 			head_nurse_dont_care = Constrain.getShiftHeads(sunday0date, 0, 0)
@@ -286,9 +218,7 @@ class MainHandler(webapp2.RequestHandler):
 			if cant:
 				template_variables['NurseWhoCantSunday0Noon'] = cant
 			
-
-			
-			monday0date = date(monday0.year, monday0.month, monday0.day)	
+	
 				
 			# Monday0 night info:
 			head_nurse_want = Constrain.getShiftHeads(monday0date, 0, 1)
@@ -439,8 +369,6 @@ class MainHandler(webapp2.RequestHandler):
 				template_variables['NurseWhoCantMonday0Noon'] = cant
 				
 			
-
-			tuesday0date = date(tuesday0.year, tuesday0.month, tuesday0.day)
 				
 			# Tuesday0 night info:
 			head_nurse_want = Constrain.getShiftHeads(tuesday0date, 0, 1)
@@ -595,9 +523,7 @@ class MainHandler(webapp2.RequestHandler):
 				template_variables['NurseWhoCantTuesday0Noon'] = cant
 				
 			
-			
-			
-			wednesday0date = date(wednesday0.year, wednesday0.month, wednesday0.day)
+
 				
 			# Wednesday0 night info:
 			head_nurse_want = Constrain.getShiftHeads(wednesday0date, 0, 1)
@@ -747,9 +673,7 @@ class MainHandler(webapp2.RequestHandler):
 			if cant:
 				template_variables['NurseWhoCantWednesday0Noon'] = cant
 				
-			
-
-			thursday0date = date(thursday0.year, thursday0.month, thursday0.day)
+		
 				
 			# Thursday0 night info:
 			head_nurse_want = Constrain.getShiftHeads(thursday0date, 0, 1)
@@ -903,9 +827,7 @@ class MainHandler(webapp2.RequestHandler):
 			if cant:
 				template_variables['NurseWhoCantThursday0Noon'] = cant
 				
-			
-
-			friday0date = date(friday0.year, friday0.month, friday0.day)
+	
 				
 			# Friday0 night info:
 			head_nurse_want = Constrain.getShiftHeads(friday0date, 0, 1)
@@ -1056,8 +978,6 @@ class MainHandler(webapp2.RequestHandler):
 				template_variables['NurseWhoCantFriday0Noon'] = cant
 				
 			
-
-			saturday0date = date(saturday0.year, saturday0.month, saturday0.day)
 				
 			# Saturday0 night info:
 			head_nurse_want = Constrain.getShiftHeads(saturday0date, 0, 1)
@@ -1211,7 +1131,6 @@ class MainHandler(webapp2.RequestHandler):
 			#### Second week ####
 				
 
-			sunday1date = date(sunday1.year, sunday1.month, sunday1.day)
 				
 			# Sunday1 night info:
 			head_nurse_want = Constrain.getShiftHeads(sunday1date, 0, 1)
@@ -1362,8 +1281,6 @@ class MainHandler(webapp2.RequestHandler):
 				template_variables['NurseWhoCantSunday1Noon'] = cant
 				
 			
-
-			monday1date = date(monday1.year, monday1.month, monday1.day)	
 				
 			# Monday1 night info:
 			head_nurse_want = Constrain.getShiftHeads(monday1date, 0, 1)
@@ -1514,8 +1431,6 @@ class MainHandler(webapp2.RequestHandler):
 				template_variables['NurseWhoCantMonday1Noon'] = cant
 				
 			
-
-			tuesday1date = date(tuesday1.year, tuesday1.month, tuesday1.day)
 				
 			# Tuesday1 night info:
 			head_nurse_want = Constrain.getShiftHeads(tuesday1date, 0, 1)
@@ -1670,8 +1585,6 @@ class MainHandler(webapp2.RequestHandler):
 				template_variables['NurseWhoCantTuesday1Noon'] = cant
 				
 			
-
-			wednesday1date = date(wednesday1.year, wednesday1.month, wednesday1.day)
 				
 			# Wednesday1 night info:
 			head_nurse_want = Constrain.getShiftHeads(wednesday1date, 0, 1)
@@ -1825,8 +1738,6 @@ class MainHandler(webapp2.RequestHandler):
 				template_variables['NurseWhoCantWednesday1Noon'] = cant
 				
 			
-
-			thursday1date = date(thursday1.year, thursday1.month, thursday1.day)
 				
 			# Thursday1 night info:
 			head_nurse_want = Constrain.getShiftHeads(thursday1date, 0, 1)
@@ -1981,9 +1892,7 @@ class MainHandler(webapp2.RequestHandler):
 				template_variables['NurseWhoCantThursday1Noon'] = cant
 				
 			
-
-			friday1date = date(friday1.year, friday1.month, friday1.day)
-				
+			
 			# Friday1 night info:
 			head_nurse_want = Constrain.getShiftHeads(friday1date, 0, 1)
 			head_nurse_dont_care = Constrain.getShiftHeads(friday1date, 0, 0)
@@ -2133,8 +2042,6 @@ class MainHandler(webapp2.RequestHandler):
 				template_variables['NurseWhoCantFriday1Noon'] = cant
 				
 			
-
-			saturday1date = date(saturday1.year, saturday1.month, saturday1.day)	
 				
 			# Saturday1 night info:
 			head_nurse_want = Constrain.getShiftHeads(saturday1date, 0, 1)
