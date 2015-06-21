@@ -258,6 +258,8 @@ function updateShift(event)
 		dataType:'json',
         data:{selectedNurse_userName: selectedNurse_userName, day: event.data.day, shift: event.data.shift, week: event.data.week, rule:event.data.rule},
 		success:function(data, status, xhr) {
+			if(data.note != null)
+				alert(data.note);
 			alert("Success");
 		},
 		error:function(xhr, status, error) {
