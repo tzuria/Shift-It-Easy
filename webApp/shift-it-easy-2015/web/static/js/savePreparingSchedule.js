@@ -265,8 +265,6 @@ function updateShift(event)
 	var selectedNurse_userName = selectedNurse.options[selectedNurse.selectedIndex].text
 	//alert(selectedNurse_userName);
 	
-	
-	
 	$.ajax({
 		url:'/saveSchedule',
 		type:'GET',
@@ -274,10 +272,9 @@ function updateShift(event)
         data:{selectedNurse_userName: selectedNurse_userName, day: event.data.day, shift: event.data.shift, week: event.data.week, rule:event.data.rule},
 		success:function(data, status, xhr) {
 			alert("Success");
-			if(data.note != null)
-				alert(data.note);
 		},
 		error:function(xhr, status, error) {
+			alert("failed!");
             alert(xhr.responseText);
 			console.error(xhr, status, error);
 		}
@@ -335,6 +332,13 @@ function submit_Schedule()
 		dataType:'json',
 		data:{},
 		success:function(data, status, xhr) {
+			
+			$('#form_spinner').removeClass('hidden'); //we show the spinner when we're about to submit
+			//we simulate form submition with a simple timeout
+			setTimeout(function() {
+				$('#form_spinner').addClass('hidden');
+			}, 50000);
+			
 			document.location.href = '/MainManager';
 		},
 		error:function(xhr, status, error) {
@@ -343,3 +347,10 @@ function submit_Schedule()
 		}
 	});
 }
+
+$body = $("body");
+
+$(document).on({
+    ajaxStart: function() { $body.addClass("loading");    },
+     ajaxStop: function() { $body.removeClass("loading"); }    
+});
