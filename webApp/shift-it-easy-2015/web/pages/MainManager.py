@@ -2303,9 +2303,16 @@ class SubmitScheduleHandler(webapp2.RequestHandler):
 		self.response.write(json.dumps({'status':'OK'}))
 
 		
-
+class deadLinesHandler(webapp2.RequestHandler):
+    def get(self):
+		if Dates.inSubmitingDates():
+			self.response.write(json.dumps({'status':'OK','isSubmitingDates':True}))
+		
+		self.response.write(json.dumps({'status':'OK','isSubmitingDates':False}))
+		
 app = webapp2.WSGIApplication([
     ('/MainManager', MainHandler),
 	('/saveSchedule', SaveScheduleHandler),
-	('/submitSchedule', SubmitScheduleHandler)
+	('/submitSchedule', SubmitScheduleHandler),
+	('/deadLines',deadLinesHandler)
 ], debug=True)

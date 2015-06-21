@@ -11,6 +11,9 @@ handlers:
   
 - url: /static
   static_dir: web/static
+  
+- url: /deadLines
+  script: web.pages.MainManager.app
  
 - url: /saveSchedule
   script: web.pages.MainManager.app

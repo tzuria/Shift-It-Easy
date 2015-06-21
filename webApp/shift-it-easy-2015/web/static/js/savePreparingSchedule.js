@@ -238,19 +238,6 @@ $(function() {  //this is jQuery's short notation for "fire all this when page i
 	
 
 	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
 
 });
 
@@ -347,6 +334,29 @@ function submit_Schedule()
 		}
 	});
 }
+
+$(document).ready(function(){
+	$.ajax({
+		url:'/deadLines',
+		type:'GET',
+		dataType:'json',
+		data:{},
+		success:function(data, status, xhr) {
+			if(data.isSubmitingDates == true)
+			{
+				document.getElementById("submit").setAttribute("disabled", "enabled"); 
+			}
+			else
+			{
+				document.getElementById("submit").setAttribute("disabled", "disabled"); 
+			}
+		},
+		error:function(xhr, status, error) {
+			alert("failed!");
+            alert(xhr.responseText);
+		}
+	});
+});
 
 $body = $("body");
 
