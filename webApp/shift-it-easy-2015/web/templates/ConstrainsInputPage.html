@@ -23,6 +23,28 @@
 		constrains.length = 42;
 		var constrain = [];
 		constrain.length = 2;
+		
+	$(document).ready(function(){
+	
+	var cells = document.getElementById("mytable").getElementsByTagName("td");
+	
+	cells[0].style.backgroundColor = "yellow";
+	
+	$.ajax({
+		url:'/get_constrains',
+		type:'GET',
+		dataType:'json',
+		data:{},
+		success:function(data, status, xhr) {
+			
+				
+		},
+		error:function(xhr, status, error) {
+			alert(xhr.responseText);
+			console.error(xhr, status, error);
+		}
+	});
+});
 
 	$(function() //this is jQuery's short notation for "fire all this when page is ready"
 	{
@@ -78,7 +100,6 @@
 
     $('td#cell').on('click',changeColor);
 	$('#save').on('click',saveConstrains);
-	getConstrain();
 	});
 
 
@@ -101,34 +122,22 @@
 
 	function changeColor()
 	{
-		var color = $(this).css("background-color")
-		
-		if(color){
-			status = 0
-			alert("hello");
-		}
-		else if($(this).css('background-color', 'green')){
-			status = 1
-		}
-		else if($(this).css('background-color', 'yellow')){
-			status = 2
-		}
-		else if($(this).css('background-color', 'red')){
-			status = 3
-		}
-		
 		//alert(this.toString());
-		if (status % 4 == 0 && flag==0) {
+		if (status % 4 == 0 &&flag==0) {
 			$(this).css('background-color', 'yellow')//Yellow
+			status++;
 			}
-		else if (status % 4 == 1 && flag==0) {
+		else if (status % 4 == 1 &&flag==0) {
 			$(this).css('background-color', 'red')//red
+			status++;
 			}
-		else if (status % 4 == 2 && flag==0) {
+		else if (status % 4 == 2 &&flag==0) {
 			$(this).css('background-color', 'green')//green
+			status++;
 			}
-		else if (status % 4 == 3 && flag==0) {
+		else if (status % 4 == 3 &&flag==0) {
 			$(this).css('background-color', 'white')//white
+			status++;
 			}
 		flag=0;
 	}
@@ -290,28 +299,6 @@ function saveConstrains()
 
 }
 
-function getConstrain()
-{
-
-	alert("inside");
-	var cells = document.getElementById("table1").getElementsByTagName("td");
-	
-	cells[20].style.backgroundColor = "yellow";
-	var colors;
-	$.ajax({
-		url:'/get_constrains',
-		type:'GET',
-		dataType:'json',
-		data:{},
-		success:function(data, status, xhr) {
-
-		},
-		error:function(xhr, status, error) {
-			alert(xhr.responseText);
-			console.error(xhr, status, error);
-		}
-	});
-}
 
 	</script>
 	<!--very important!-->
