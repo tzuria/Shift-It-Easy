@@ -42,7 +42,7 @@ handlers:
 - url: /save_constrains
   script: web.pages.ConstrainsInputPage.app
  
-- url: /get_contrains
+- url: /get_constrains
   script: web.pages.ConstrainsInputPage.app
 
 - url: /ConstrainsInputPage

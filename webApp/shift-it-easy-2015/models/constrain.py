@@ -61,7 +61,7 @@ class Constrain(ndb.Model):
 				constrain.put()
 	
 	@staticmethod
-	def getUserConstraint(userName):
+	def getUserConstraints(userName):
 		constrains = Constrain.query(Constrain.employeeUN == userName).fetch()
 		userConstrains = []
 		if constrains:

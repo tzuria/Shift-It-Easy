@@ -53,13 +53,16 @@ class AddConstrain(webapp2.RequestHandler):
 			self.response.write("Choose shift first!") 
 			return
 
-class GetConstrains(webapp2.RequestHandler):
+class GetConstrainsHandler(webapp2.RequestHandler):
 	def get(self):
 		userName = None
 		if self.request.cookies.get('our_token'):    #the cookie that should contain the access token!
 			userName = Employee.checkToken(self.request.cookies.get('our_token'))
 	
-		constr = Constrain.getUserConstraint(userName)
+		constr = Constrain.getUserConstraints(userName)
+		
+		constrainKindStringForm = String(constr)
+	
 		if constr:
 			self.response.write(json.dumps({'status':'ok','color':constr}))
 		else:
@@ -130,5 +133,5 @@ class SaveConstrainsHandler(webapp2.RequestHandler):
 app = webapp2.WSGIApplication([
     ('/ConstrainsInputPage', MainHandler),
 	('/save_constrains', SaveConstrainsHandler),
-	('/get_constrains', GetConstrains),
+	('/get_constrains', GetConstrainsHandler)
 ], debug=True)
