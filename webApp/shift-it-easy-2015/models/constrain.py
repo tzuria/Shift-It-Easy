@@ -15,7 +15,7 @@ class Constrain(ndb.Model):
 	@classmethod
 	def getShiftHeads(self, date, shift, satisfactory):
 		employees = []
-		list = Constrain.query(Constrain.constrainDate == date, Constrain.ShiftType == shift, Constrain.constrainKind == satisfactory).fetch()		
+		list = Constrain.query(Constrain.constrainDate == date, Constrain.ShiftType == shift, Constrain.constrainKind == satisfactory).fetch()
 		if list:
 			for l in list:
 				shiftHead = Employee.getEmployeeByUserName(l.employeeUN)
@@ -62,7 +62,47 @@ class Constrain(ndb.Model):
 	
 	@staticmethod
 	def getUserConstraints(userName):
-		constrains = Constrain.query(Constrain.employeeUN == userName).fetch()
+		constrains = Constrain.query(Constrain.employeeUN == userName.userName).fetch()
+		if constrains is None:
+			return None
+		constrains = sorted(constrains)
+		temp0 = Constrain()
+		temp1 = Constrain()
+		temp2 = Constrain()
+		j = 0
+		for i in range(14):
+			j = i*3
+			if j < 41:
+				if constrains[j].ShiftType == 0:
+					temp0.CopyConstrain(constrains[j])
+				elif constrains[j].ShiftType == 1:
+					temp1.CopyConstrain(constrains[j])
+				elif constrains[j].ShiftType == 2:
+					temp2.CopyConstrain(constrains[j])
+			if j < 40:	
+				if constrains[j+1].ShiftType == 0:
+					temp0.CopyConstrain(constrains[j+1])
+				elif constrains[j+1].ShiftType == 1:
+					temp1.CopyConstrain(constrains[j+1])
+				elif constrains[j+1].ShiftType == 2:
+					temp2.CopyConstrain(constrains[j+1])
+			if j < 39:	
+				if constrains[j+2].ShiftType == 0:
+					temp0.CopyConstrain(constrains[j+2])
+				elif constrains[j+2].ShiftType == 1:
+					temp1.CopyConstrain(constrains[j+2])
+				elif constrains[j+2].ShiftType == 2:
+					temp2.CopyConstrain(constrains[j+2])
+			
+			if j < 41:
+				constrains[j].CopyConstrain(temp0)
+			if j < 40:
+				constrains[j+1].CopyConstrain(temp1)
+			if j < 39:
+				constrains[j+2].CopyConstrain(temp2)
+				
+			
+			
 		userConstrains = []
 		if constrains:
 			for c in constrains:
@@ -71,5 +111,21 @@ class Constrain(ndb.Model):
 		else:
 			return None
 	
+	
+	def __cmp__(self, other):
+		if self.constrainDate > other.constrainDate:
+			return 1
+		elif self.constrainDate < other.constrainDate:
+			return -1
+		else:
+			return 0
+			
+	def CopyConstrain(self,other):
+		self.employeeUN = other.employeeUN
+		self.constrainDate = other.constrainDate
+		self.ShiftType = other.ShiftType
+		self.constrainKind = other.constrainKind
+		self.notes = other.notes
+		
 	
 	
