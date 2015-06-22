@@ -61,7 +61,7 @@ class GetConstrainsHandler(webapp2.RequestHandler):
 	
 		constr = Constrain.getUserConstraints(userName)
 		
-		constrainKindStringForm = String(constr)
+		#constrainKindStringForm = String(constr)
 	
 		if constr:
 			self.response.write(json.dumps({'status':'ok','color':constr}))

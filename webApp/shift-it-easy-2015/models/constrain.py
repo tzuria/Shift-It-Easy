@@ -15,7 +15,7 @@ class Constrain(ndb.Model):
 	@classmethod
 	def getShiftHeads(self, date, shift, satisfactory):
 		employees = []
-		list = Constrain.query(Constrain.constrainDate == date, Constrain.ShiftType == shift, Constrain.constrainKind == satisfactory).fetch()		
+		list = Constrain.query(Constrain.constrainDate == date, Constrain.ShiftType == shift, Constrain.constrainKind == satisfactory).fetch()
 		if list:
 			for l in list:
 				shiftHead = Employee.getEmployeeByUserName(l.employeeUN)
@@ -62,7 +62,8 @@ class Constrain(ndb.Model):
 	
 	@staticmethod
 	def getUserConstraints(userName):
-		constrains = Constrain.query(Constrain.employeeUN == userName).fetch()
+		constrains = Constrain.query(Constrain.employeeUN == userName.userName).fetch()
+		constrains = sorted(constrains)
 		userConstrains = []
 		if constrains:
 			for c in constrains:
@@ -71,5 +72,14 @@ class Constrain(ndb.Model):
 		else:
 			return None
 	
+	
+	def __cmp__(self, other):
+		if self.constrainDate > other.constrainDate:
+			return 1
+		elif self.constrainDate < other.constrainDate:
+			return -1
+		else:
+			return 0
+		
 	
 	
