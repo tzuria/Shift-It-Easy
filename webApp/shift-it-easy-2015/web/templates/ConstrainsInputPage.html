@@ -78,6 +78,7 @@
 
     $('td#cell').on('click',changeColor);
 	$('#save').on('click',saveConstrains);
+	getConstrain();
 	});
 
 
@@ -275,6 +276,30 @@ function saveConstrains()
 		}
 	});
 
+}
+
+function getConstrain()
+{
+
+	var colors;
+	$.ajax({
+		url:'/get_constrains',
+		type:'GET',
+		dataType:'json',
+		data:{colors: JSON.parse(constrains)},
+		success:function(data, status, xhr) {
+			if(data.status =="error")
+				alert("error");
+			else
+				alert("ok");
+				alert(colors);
+				//TODO: input colors
+		},
+		error:function(xhr, status, error) {
+			alert(xhr.responseText);
+			console.error(xhr, status, error);
+		}
+	});
 }
 
 	</script>

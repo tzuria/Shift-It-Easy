@@ -41,14 +41,14 @@ class Constrain(ndb.Model):
 			return employees
 		else:
 			return None
-			
+	
 	@staticmethod	
 	def deleteEmployeesConstrains(userName):
 		constrains = Constrain.query(Constrain.employeeUN == userName).fetch()
 		if constrains:
 			for constrain in constrains:
 				constrain.key.delete()
-				
+	
 	@staticmethod
 	def addConstrain(userName,date):
 		for i in range(14):
@@ -60,7 +60,16 @@ class Constrain(ndb.Model):
 				constrain.constrainKind = 0
 				constrain.put()
 	
-	
+	@staticmethod
+	def getUserConstraint(userName):
+		constrains = Constrain.query(Constrain.employeeUN == userName).fetch()
+		userConstrains = []
+		if constrains:
+			for c in constrains:
+				userConstrains.append(c.constrainKind)
+			return userConstrains
+		else:
+			return None
 	
 	
 	
