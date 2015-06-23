@@ -235,22 +235,6 @@ $(function() {  //this is jQuery's short notation for "fire all this when page i
 	$('#head_nurse_list_saturday6').bind('change', {id: "head_nurse_list_saturday6",day: 5, shift: 2, week: 1, rule: 0},updateShift);
 	$('#second_nurse_list_saturday6').bind('change', {id: "second_nurse_list_saturday6",day: 5, shift: 2, week: 1, rule: 1},updateShift);
 	$('#stand_by_nurse_list_saturday6').bind('change', {id: "stand_by_nurse_list_saturday6",day: 5, shift: 2, week: 1, rule: 3},updateShift);
-	
-
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
 
 });
 
@@ -263,7 +247,7 @@ function updateShift(event)
 	}
 	
 	var selectedNurse_userName = selectedNurse.options[selectedNurse.selectedIndex].text
-	//alert(selectedNurse_userName);
+	
 	
 	$.ajax({
 		url:'/saveSchedule',
