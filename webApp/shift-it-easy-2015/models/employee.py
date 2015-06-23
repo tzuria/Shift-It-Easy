@@ -24,6 +24,13 @@ class Employee(ndb.Model):
 		if employee:
 			return employee
 		return
+	
+	@staticmethod	
+	def Get_All_Employees():
+		employees = Employee.query().fetch()
+		if employees:
+			return employees
+		return
 		
 	@staticmethod
 	def checkToken(token):

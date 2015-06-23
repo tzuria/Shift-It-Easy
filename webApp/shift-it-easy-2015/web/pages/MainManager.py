@@ -19,7 +19,7 @@ from google.appengine.ext.webapp import template
 from models.employee import Employee
 from models.constrain import Constrain
 from models.preparingSchdule import PreparingSchedule
-from models.currentSchedule import CurrentSchedule
+from models.submittedShifts import SubmittedShifts
 import json
 import time
 from datetime import date
@@ -67,7 +67,7 @@ class MainHandler(webapp2.RequestHandler):
 				for e in employees:
 					constrains = Constrain.query(Constrain.employeeUN == e.userName).fetch()
 					if not constrains:
-						Constrain.addConstrain(e.userName,sunday0date)
+						Constrain.addConstrains(e.userName,sunday0date)
 			
 			
 			# Sunday0 night info:
@@ -2247,28 +2247,34 @@ class SaveScheduleHandler(webapp2.RequestHandler):
 		
 		if allreadyAssign:
 			allreadyAssign.key.delete()
-		if preparingSchedule.nurseUserName != "":
-			preparingSchedule.put()
 		
 		if not preparingSchedule.checkLegalAssign_Same_Shift():
 			self.response.write("Illegal! Already assigned today")
+			if preparingSchedule.nurseUserName != "":
+				preparingSchedule.put()
 			return
 			
 		
 		if not preparingSchedule.checkLegalAssign_Night_After_Night():
 			self.response.write("Illegal! Night After Night")
+			if preparingSchedule.nurseUserName != "":
+				preparingSchedule.put()
 			return
 			
 		if not preparingSchedule.checkLegalAssign_Noon_Morning_Night():
 			self.response.write("Illegal! Noon-Morning-Night")
+			if preparingSchedule.nurseUserName != "":
+				preparingSchedule.put()
 			return
 			
 		if not preparingSchedule.checkLegalAssign_Following_Shifts():
 			self.response.write("Illegal! Following shifts ")
+			if preparingSchedule.nurseUserName != "":
+				preparingSchedule.put()
 			return
 		
 		
-		
+		preparingSchedule.put()
 		
 		constrain = Constrain.query(Constrain.employeeUN == preparingSchedule.nurseUserName, Constrain.constrainDate == preparingSchedule.date, Constrain.ShiftType == preparingSchedule.ShiftType).get()
 		if not constrain:
@@ -2280,12 +2286,12 @@ class SaveScheduleHandler(webapp2.RequestHandler):
 		
 class SubmitScheduleHandler(webapp2.RequestHandler):
 	def get(self):
-		#if not PreparingSchedule.checkLegalAssign_Assign_Head_Nurses():
-		#	self.response.write("Must assign all head nurses")
-		#	return
+		if not PreparingSchedule.checkLegalAssign_Assign_Head_Nurses():
+			self.response.write("Must assign all head nurses")
+			return
 		
 		allNewAssignments = PreparingSchedule.Get_All_Assignments()
-		allOldAssignments = CurrentSchedule.Get_All_Assignments()
+		allOldAssignments = SubmittedShifts.Get_All_Assignments()
 		
 		if allOldAssignments:
 			for a in allOldAssignments:
@@ -2293,26 +2299,19 @@ class SubmitScheduleHandler(webapp2.RequestHandler):
 		
 		if allNewAssignments:
 			for a in allNewAssignments:
-				current = CurrentSchedule()
-				current.date = a.date
-				current.ShiftType = a.ShiftType
-				current.nurseUserName = a.nurseUserName
-				current.rule = a.rule
-				current.put()
+				submitted = SubmittedShifts()
+				submitted.date = a.date
+				submitted.ShiftType = a.ShiftType
+				submitted.nurseUserName = a.nurseUserName
+				submitted.rule = a.rule
+				submitted.put()
 				
 		self.response.write(json.dumps({'status':'OK'}))
 
 		
-class deadLinesHandler(webapp2.RequestHandler):
-    def get(self):
-		if Dates.inSubmitingDates():
-			self.response.write(json.dumps({'status':'OK','isSubmitingDates':True}))
-		
-		self.response.write(json.dumps({'status':'OK','isSubmitingDates':False}))
-		
+
 app = webapp2.WSGIApplication([
     ('/MainManager', MainHandler),
 	('/saveSchedule', SaveScheduleHandler),
-	('/submitSchedule', SubmitScheduleHandler),
-	('/deadLines',deadLinesHandler)
+	('/submitSchedule', SubmitScheduleHandler)
 ], debug=True)

@@ -16,11 +16,10 @@
 #
 
 from google.appengine.ext.webapp import template
-from models.currentSchedule import CurrentSchedule
+from models.submittedShifts import SubmittedShifts
 from models.employee import Employee
 import json
 import time
-from Dates import Dates
 from datetime import date
 from datetime import timedelta
 import webapp2
@@ -118,8 +117,20 @@ class MainHandler(webapp2.RequestHandler):
 		template_variables = {}
 		if userName:
 			template_variables['userName'] = userName.userName
-			dates =  Dates(template_variables)
-			template_variables = dates.theseTwoWeeks()
+			template_variables['sunday0'] = "%d/%d"%(sunday0.day ,sunday0.month)
+			template_variables['monday0'] = "%d/%d"%(monday0.day ,monday0.month)
+			template_variables['tuesday0'] = "%d/%d"%(tuesday0.day ,tuesday0.month)
+			template_variables['wednesday0'] = "%d/%d"%(wednesday0.day ,wednesday0.month)
+			template_variables['thursday0'] = "%d/%d"%(thursday0.day ,thursday0.month)
+			template_variables['friday0'] = "%d/%d"%(friday0.day ,friday0.month)
+			template_variables['saturday0'] = "%d/%d"%(saturday0.day ,saturday0.month)
+			template_variables['sunday1'] = "%d/%d"%(sunday1.day ,sunday1.month)
+			template_variables['monday1'] = "%d/%d"%(monday1.day ,monday1.month)
+			template_variables['tuesday1'] = "%d/%d"%(tuesday1.day ,tuesday1.month)
+			template_variables['wednesday1'] = "%d/%d"%(wednesday1.day ,wednesday1.month)
+			template_variables['thursday1'] = "%d/%d"%(thursday1.day ,thursday1.month)
+			template_variables['friday1'] = "%d/%d"%(friday1.day ,friday1.month)
+			template_variables['saturday1'] = "%d/%d"%(saturday1.day ,saturday1.month)
 
 			
 
@@ -129,9 +140,9 @@ class MainHandler(webapp2.RequestHandler):
 			sunday0date = date(sunday0.year, sunday0.month, sunday0.day)
 			
 			# Sunday0 night info:
-			assignBeforeHead = CurrentSchedule.checkIfAssignAlready(sunday0date, 0, 0)
-			assignBeforeSecond = CurrentSchedule.checkIfAssignAlready(sunday0date, 0, 1)
-			assignBeforeStandBy = CurrentSchedule.checkIfAssignAlready(sunday0date, 0, 3)
+			assignBeforeHead = SubmittedShifts.checkIfAssignAlready(sunday0date, 0, 0)
+			assignBeforeSecond = SubmittedShifts.checkIfAssignAlready(sunday0date, 0, 1)
+			assignBeforeStandBy = SubmittedShifts.checkIfAssignAlready(sunday0date, 0, 3)
 			
 			if assignBeforeHead:
 				template_variables['Sunday0NightAssignBeforeHead'] = assignBeforeHead
@@ -143,9 +154,9 @@ class MainHandler(webapp2.RequestHandler):
 				template_variables['Sunday0NightAssignBeforeStandBy'] = assignBeforeStandBy
 			
 			# Sunday0 morning info:	
-			assignBeforeHead = CurrentSchedule.checkIfAssignAlready(sunday0date, 1, 0)
-			assignBeforeSecond = CurrentSchedule.checkIfAssignAlready(sunday0date, 1, 1)
-			assignBeforeStandBy = CurrentSchedule.checkIfAssignAlready(sunday0date, 1, 3)
+			assignBeforeHead = SubmittedShifts.checkIfAssignAlready(sunday0date, 1, 0)
+			assignBeforeSecond = SubmittedShifts.checkIfAssignAlready(sunday0date, 1, 1)
+			assignBeforeStandBy = SubmittedShifts.checkIfAssignAlready(sunday0date, 1, 3)
 			
 			if assignBeforeHead:
 				template_variables['Sunday0MorningAssignBeforeHead'] = assignBeforeHead
@@ -158,9 +169,9 @@ class MainHandler(webapp2.RequestHandler):
 
 				
 			# Sunday0 noon info:
-			assignBeforeHead = CurrentSchedule.checkIfAssignAlready(sunday0date, 2, 0)
-			assignBeforeSecond = CurrentSchedule.checkIfAssignAlready(sunday0date, 2, 1)
-			assignBeforeStandBy = CurrentSchedule.checkIfAssignAlready(sunday0date, 2, 3)
+			assignBeforeHead = SubmittedShifts.checkIfAssignAlready(sunday0date, 2, 0)
+			assignBeforeSecond = SubmittedShifts.checkIfAssignAlready(sunday0date, 2, 1)
+			assignBeforeStandBy = SubmittedShifts.checkIfAssignAlready(sunday0date, 2, 3)
 			
 			if assignBeforeHead:
 				template_variables['Sunday0NoonAssignBeforeHead'] = assignBeforeHead
@@ -178,9 +189,9 @@ class MainHandler(webapp2.RequestHandler):
 			
 				
 			# Monday0 night info:
-			assignBeforeHead = CurrentSchedule.checkIfAssignAlready(monday0date, 0, 0)
-			assignBeforeSecond = CurrentSchedule.checkIfAssignAlready(monday0date, 0, 1)
-			assignBeforeStandBy = CurrentSchedule.checkIfAssignAlready(monday0date, 0, 3)
+			assignBeforeHead = SubmittedShifts.checkIfAssignAlready(monday0date, 0, 0)
+			assignBeforeSecond = SubmittedShifts.checkIfAssignAlready(monday0date, 0, 1)
+			assignBeforeStandBy = SubmittedShifts.checkIfAssignAlready(monday0date, 0, 3)
 			
 			if assignBeforeHead:
 				template_variables['Monday0NightAssignBeforeHead'] = assignBeforeHead
@@ -192,9 +203,9 @@ class MainHandler(webapp2.RequestHandler):
 				template_variables['Monday0NightAssignBeforeStandBy'] = assignBeforeStandBy
 				
 			# Monday0 morning info:
-			assignBeforeHead = CurrentSchedule.checkIfAssignAlready(monday0date, 1, 0)
-			assignBeforeSecond = CurrentSchedule.checkIfAssignAlready(monday0date, 1, 1)
-			assignBeforeStandBy = CurrentSchedule.checkIfAssignAlready(monday0date, 1, 3)
+			assignBeforeHead = SubmittedShifts.checkIfAssignAlready(monday0date, 1, 0)
+			assignBeforeSecond = SubmittedShifts.checkIfAssignAlready(monday0date, 1, 1)
+			assignBeforeStandBy = SubmittedShifts.checkIfAssignAlready(monday0date, 1, 3)
 			
 			if assignBeforeHead:
 				template_variables['Monday0MorningAssignBeforeHead'] = assignBeforeHead
@@ -206,9 +217,9 @@ class MainHandler(webapp2.RequestHandler):
 				template_variables['Monday0MorningAssignBeforeStandBy'] = assignBeforeStandBy
 			
 			# Monday0 noon info:		
-			assignBeforeHead = CurrentSchedule.checkIfAssignAlready(monday0date, 2, 0)
-			assignBeforeSecond = CurrentSchedule.checkIfAssignAlready(monday0date, 2, 1)
-			assignBeforeStandBy = CurrentSchedule.checkIfAssignAlready(monday0date, 2, 3)
+			assignBeforeHead = SubmittedShifts.checkIfAssignAlready(monday0date, 2, 0)
+			assignBeforeSecond = SubmittedShifts.checkIfAssignAlready(monday0date, 2, 1)
+			assignBeforeStandBy = SubmittedShifts.checkIfAssignAlready(monday0date, 2, 3)
 			
 			if assignBeforeHead:
 				template_variables['Monday0NoonAssignBeforeHead'] = assignBeforeHead
@@ -225,9 +236,9 @@ class MainHandler(webapp2.RequestHandler):
 			
 				
 			# Tuesday0 night info:
-			assignBeforeHead = CurrentSchedule.checkIfAssignAlready(tuesday0date, 0, 0)
-			assignBeforeSecond = CurrentSchedule.checkIfAssignAlready(tuesday0date, 0, 1)
-			assignBeforeStandBy = CurrentSchedule.checkIfAssignAlready(tuesday0date, 0, 3)
+			assignBeforeHead = SubmittedShifts.checkIfAssignAlready(tuesday0date, 0, 0)
+			assignBeforeSecond = SubmittedShifts.checkIfAssignAlready(tuesday0date, 0, 1)
+			assignBeforeStandBy = SubmittedShifts.checkIfAssignAlready(tuesday0date, 0, 3)
 			
 			if assignBeforeHead:
 				template_variables['Tuesday0NightAssignBeforeHead'] = assignBeforeHead
@@ -239,10 +250,10 @@ class MainHandler(webapp2.RequestHandler):
 				template_variables['Tuesday0NightAssignBeforeStandBy'] = assignBeforeStandBy
 			
 			# Tuesday0 morning info:
-			assignBeforeHead = CurrentSchedule.checkIfAssignAlready(tuesday0date, 1, 0)
-			assignBeforeSecond = CurrentSchedule.checkIfAssignAlready(tuesday0date, 1, 1)
-			assignBeforeThird = CurrentSchedule.checkIfAssignAlready(tuesday0date, 1, 2)
-			assignBeforeStandBy = CurrentSchedule.checkIfAssignAlready(tuesday0date, 1, 3)
+			assignBeforeHead = SubmittedShifts.checkIfAssignAlready(tuesday0date, 1, 0)
+			assignBeforeSecond = SubmittedShifts.checkIfAssignAlready(tuesday0date, 1, 1)
+			assignBeforeThird = SubmittedShifts.checkIfAssignAlready(tuesday0date, 1, 2)
+			assignBeforeStandBy = SubmittedShifts.checkIfAssignAlready(tuesday0date, 1, 3)
 			
 			if assignBeforeHead:
 				template_variables['Tuesday0MorningAssignBeforeHead'] = assignBeforeHead
@@ -257,9 +268,9 @@ class MainHandler(webapp2.RequestHandler):
 				template_variables['Tuesday0MorningAssignBeforeStandBy'] = assignBeforeStandBy
 
 			# Tuesday0 noon info:
-			assignBeforeHead = CurrentSchedule.checkIfAssignAlready(tuesday0date, 2, 0)
-			assignBeforeSecond = CurrentSchedule.checkIfAssignAlready(tuesday0date, 2, 1)
-			assignBeforeStandBy = CurrentSchedule.checkIfAssignAlready(tuesday0date, 2, 3)
+			assignBeforeHead = SubmittedShifts.checkIfAssignAlready(tuesday0date, 2, 0)
+			assignBeforeSecond = SubmittedShifts.checkIfAssignAlready(tuesday0date, 2, 1)
+			assignBeforeStandBy = SubmittedShifts.checkIfAssignAlready(tuesday0date, 2, 3)
 			
 			if assignBeforeHead:
 				template_variables['Tuesday0NoonAssignBeforeHead'] = assignBeforeHead
@@ -276,9 +287,9 @@ class MainHandler(webapp2.RequestHandler):
 		
 		
 			# Wednesday0 night info:	
-			assignBeforeHead = CurrentSchedule.checkIfAssignAlready(wednesday0date, 0, 0)
-			assignBeforeSecond = CurrentSchedule.checkIfAssignAlready(wednesday0date, 0, 1)
-			assignBeforeStandBy = CurrentSchedule.checkIfAssignAlready(wednesday0date, 0, 3)
+			assignBeforeHead = SubmittedShifts.checkIfAssignAlready(wednesday0date, 0, 0)
+			assignBeforeSecond = SubmittedShifts.checkIfAssignAlready(wednesday0date, 0, 1)
+			assignBeforeStandBy = SubmittedShifts.checkIfAssignAlready(wednesday0date, 0, 3)
 			
 			if assignBeforeHead:
 				template_variables['Wednesday0NightAssignBeforeHead'] = assignBeforeHead
@@ -290,9 +301,9 @@ class MainHandler(webapp2.RequestHandler):
 				template_variables['Wednesday0NightAssignBeforeStandBy'] = assignBeforeStandBy
 			
 			# Wednesday0 morning info:
-			assignBeforeHead = CurrentSchedule.checkIfAssignAlready(wednesday0date, 1, 0)
-			assignBeforeSecond = CurrentSchedule.checkIfAssignAlready(wednesday0date, 1, 1)
-			assignBeforeStandBy = CurrentSchedule.checkIfAssignAlready(wednesday0date, 1, 3)
+			assignBeforeHead = SubmittedShifts.checkIfAssignAlready(wednesday0date, 1, 0)
+			assignBeforeSecond = SubmittedShifts.checkIfAssignAlready(wednesday0date, 1, 1)
+			assignBeforeStandBy = SubmittedShifts.checkIfAssignAlready(wednesday0date, 1, 3)
 			
 			if assignBeforeHead:
 				template_variables['Wednesday0MorningAssignBeforeHead'] = assignBeforeHead
@@ -304,9 +315,9 @@ class MainHandler(webapp2.RequestHandler):
 				template_variables['Wednesday0MorningAssignBeforeStandBy'] = assignBeforeStandBy
 			
 			# Wednesday0 noon info:
-			assignBeforeHead = CurrentSchedule.checkIfAssignAlready(wednesday0date, 2, 0)
-			assignBeforeSecond = CurrentSchedule.checkIfAssignAlready(wednesday0date, 2, 1)
-			assignBeforeStandBy = CurrentSchedule.checkIfAssignAlready(wednesday0date, 2, 3)
+			assignBeforeHead = SubmittedShifts.checkIfAssignAlready(wednesday0date, 2, 0)
+			assignBeforeSecond = SubmittedShifts.checkIfAssignAlready(wednesday0date, 2, 1)
+			assignBeforeStandBy = SubmittedShifts.checkIfAssignAlready(wednesday0date, 2, 3)
 			
 			if assignBeforeHead:
 				template_variables['Wednesday0NoonAssignBeforeHead'] = assignBeforeHead
@@ -323,9 +334,9 @@ class MainHandler(webapp2.RequestHandler):
 				
 				
 			# Thursday0 night info:
-			assignBeforeHead = CurrentSchedule.checkIfAssignAlready(thursday0date, 0, 0)
-			assignBeforeSecond = CurrentSchedule.checkIfAssignAlready(thursday0date, 0, 1)
-			assignBeforeStandBy = CurrentSchedule.checkIfAssignAlready(thursday0date, 0, 3)
+			assignBeforeHead = SubmittedShifts.checkIfAssignAlready(thursday0date, 0, 0)
+			assignBeforeSecond = SubmittedShifts.checkIfAssignAlready(thursday0date, 0, 1)
+			assignBeforeStandBy = SubmittedShifts.checkIfAssignAlready(thursday0date, 0, 3)
 			
 			if assignBeforeHead:
 				template_variables['Thursday0NightAssignBeforeHead'] = assignBeforeHead
@@ -337,10 +348,10 @@ class MainHandler(webapp2.RequestHandler):
 				template_variables['Thursday0NightAssignBeforeStandBy'] = assignBeforeStandBy
 				
 			# Thursday0 morning info:
-			assignBeforeHead = CurrentSchedule.checkIfAssignAlready(thursday0date, 1, 0)
-			assignBeforeSecond = CurrentSchedule.checkIfAssignAlready(thursday0date, 1, 1)
-			assignBeforeThird = CurrentSchedule.checkIfAssignAlready(thursday0date, 1, 2)
-			assignBeforeStandBy = CurrentSchedule.checkIfAssignAlready(thursday0date, 1, 3)
+			assignBeforeHead = SubmittedShifts.checkIfAssignAlready(thursday0date, 1, 0)
+			assignBeforeSecond = SubmittedShifts.checkIfAssignAlready(thursday0date, 1, 1)
+			assignBeforeThird = SubmittedShifts.checkIfAssignAlready(thursday0date, 1, 2)
+			assignBeforeStandBy = SubmittedShifts.checkIfAssignAlready(thursday0date, 1, 3)
 			
 			if assignBeforeHead:
 				template_variables['Thursday0MorningAssignBeforeHead'] = assignBeforeHead
@@ -355,9 +366,9 @@ class MainHandler(webapp2.RequestHandler):
 				template_variables['Thursday0MorningAssignBeforeStandBy'] = assignBeforeStandBy
 			
 			# Thursday0 noon info:
-			assignBeforeHead = CurrentSchedule.checkIfAssignAlready(thursday0date, 2, 0)
-			assignBeforeSecond = CurrentSchedule.checkIfAssignAlready(thursday0date, 2, 1)
-			assignBeforeStandBy = CurrentSchedule.checkIfAssignAlready(thursday0date, 2, 3)
+			assignBeforeHead = SubmittedShifts.checkIfAssignAlready(thursday0date, 2, 0)
+			assignBeforeSecond = SubmittedShifts.checkIfAssignAlready(thursday0date, 2, 1)
+			assignBeforeStandBy = SubmittedShifts.checkIfAssignAlready(thursday0date, 2, 3)
 			
 			if assignBeforeHead:
 				template_variables['Thursday0NoonAssignBeforeHead'] = assignBeforeHead
@@ -374,9 +385,9 @@ class MainHandler(webapp2.RequestHandler):
 				
 				
 			# Friday0 night info:
-			assignBeforeHead = CurrentSchedule.checkIfAssignAlready(friday0date, 0, 0)
-			assignBeforeSecond = CurrentSchedule.checkIfAssignAlready(friday0date, 0, 1)
-			assignBeforeStandBy = CurrentSchedule.checkIfAssignAlready(friday0date, 0, 3)
+			assignBeforeHead = SubmittedShifts.checkIfAssignAlready(friday0date, 0, 0)
+			assignBeforeSecond = SubmittedShifts.checkIfAssignAlready(friday0date, 0, 1)
+			assignBeforeStandBy = SubmittedShifts.checkIfAssignAlready(friday0date, 0, 3)
 			
 			if assignBeforeHead:
 				template_variables['Friday0NightAssignBeforeHead'] = assignBeforeHead
@@ -388,9 +399,9 @@ class MainHandler(webapp2.RequestHandler):
 				template_variables['Friday0NighAssignBeforeStandBy'] = assignBeforeStandBy
 			
 			# Friday0 morning info:
-			assignBeforeHead = CurrentSchedule.checkIfAssignAlready(friday0date, 1, 0)
-			assignBeforeSecond = CurrentSchedule.checkIfAssignAlready(friday0date, 1, 1)
-			assignBeforeStandBy = CurrentSchedule.checkIfAssignAlready(friday0date, 1, 3)
+			assignBeforeHead = SubmittedShifts.checkIfAssignAlready(friday0date, 1, 0)
+			assignBeforeSecond = SubmittedShifts.checkIfAssignAlready(friday0date, 1, 1)
+			assignBeforeStandBy = SubmittedShifts.checkIfAssignAlready(friday0date, 1, 3)
 			
 			if assignBeforeHead:
 				template_variables['Friday0MorningAssignBeforeHead'] = assignBeforeHead
@@ -402,9 +413,9 @@ class MainHandler(webapp2.RequestHandler):
 				template_variables['Friday0MorningAssignBeforeStandBy'] = assignBeforeStandBy
 
 			# Friday0 noon info:
-			assignBeforeHead = CurrentSchedule.checkIfAssignAlready(friday0date, 2, 0)
-			assignBeforeSecond = CurrentSchedule.checkIfAssignAlready(friday0date, 2, 1)
-			assignBeforeStandBy = CurrentSchedule.checkIfAssignAlready(friday0date, 2, 3)
+			assignBeforeHead = SubmittedShifts.checkIfAssignAlready(friday0date, 2, 0)
+			assignBeforeSecond = SubmittedShifts.checkIfAssignAlready(friday0date, 2, 1)
+			assignBeforeStandBy = SubmittedShifts.checkIfAssignAlready(friday0date, 2, 3)
 			
 			if assignBeforeHead:
 				template_variables['Friday0NoonAssignBeforeHead'] = assignBeforeHead
@@ -421,9 +432,9 @@ class MainHandler(webapp2.RequestHandler):
 				
 				
 			# Saturday0 night info:
-			assignBeforeHead = CurrentSchedule.checkIfAssignAlready(saturday0date, 0, 0)
-			assignBeforeSecond = CurrentSchedule.checkIfAssignAlready(saturday0date, 0, 1)
-			assignBeforeStandBy = CurrentSchedule.checkIfAssignAlready(saturday0date, 0, 3)
+			assignBeforeHead = SubmittedShifts.checkIfAssignAlready(saturday0date, 0, 0)
+			assignBeforeSecond = SubmittedShifts.checkIfAssignAlready(saturday0date, 0, 1)
+			assignBeforeStandBy = SubmittedShifts.checkIfAssignAlready(saturday0date, 0, 3)
 			
 			if assignBeforeHead:
 				template_variables['Saturday0NightAssignBeforeHead'] = assignBeforeHead
@@ -435,9 +446,9 @@ class MainHandler(webapp2.RequestHandler):
 				template_variables['Saturday0NightAssignBeforeStandBy'] = assignBeforeStandBy
 			
 			# Saturday0 morning info:
-			assignBeforeHead = CurrentSchedule.checkIfAssignAlready(saturday0date, 1, 0)
-			assignBeforeSecond = CurrentSchedule.checkIfAssignAlready(saturday0date, 1, 1)
-			assignBeforeStandBy = CurrentSchedule.checkIfAssignAlready(saturday0date, 1, 3)
+			assignBeforeHead = SubmittedShifts.checkIfAssignAlready(saturday0date, 1, 0)
+			assignBeforeSecond = SubmittedShifts.checkIfAssignAlready(saturday0date, 1, 1)
+			assignBeforeStandBy = SubmittedShifts.checkIfAssignAlready(saturday0date, 1, 3)
 			
 			if assignBeforeHead:
 				template_variables['Saturday0MorningAssignBeforeHead'] = assignBeforeHead
@@ -449,9 +460,9 @@ class MainHandler(webapp2.RequestHandler):
 				template_variables['Saturday0MorningAssignBeforeStandBy'] = assignBeforeStandBy
 			
 			# Saturday0 noon info:
-			assignBeforeHead = CurrentSchedule.checkIfAssignAlready(saturday0date, 2, 0)
-			assignBeforeSecond = CurrentSchedule.checkIfAssignAlready(saturday0date, 2, 1)
-			assignBeforeStandBy = CurrentSchedule.checkIfAssignAlready(saturday0date, 2, 3)
+			assignBeforeHead = SubmittedShifts.checkIfAssignAlready(saturday0date, 2, 0)
+			assignBeforeSecond = SubmittedShifts.checkIfAssignAlready(saturday0date, 2, 1)
+			assignBeforeStandBy = SubmittedShifts.checkIfAssignAlready(saturday0date, 2, 3)
 			
 			if assignBeforeHead:
 				template_variables['Saturday0NoonAssignBeforeHead'] = assignBeforeHead
@@ -469,9 +480,9 @@ class MainHandler(webapp2.RequestHandler):
 			sunday1date = date(sunday1.year, sunday1.month, sunday1.day)
 				
 			# Sunday1 night info:
-			assignBeforeHead = CurrentSchedule.checkIfAssignAlready(sunday1date, 0, 0)
-			assignBeforeSecond = CurrentSchedule.checkIfAssignAlready(sunday1date, 0, 1)
-			assignBeforeStandBy = CurrentSchedule.checkIfAssignAlready(sunday1date, 0, 3)
+			assignBeforeHead = SubmittedShifts.checkIfAssignAlready(sunday1date, 0, 0)
+			assignBeforeSecond = SubmittedShifts.checkIfAssignAlready(sunday1date, 0, 1)
+			assignBeforeStandBy = SubmittedShifts.checkIfAssignAlready(sunday1date, 0, 3)
 			
 			if assignBeforeHead:
 				template_variables['Sunday1NightAssignBeforeHead'] = assignBeforeHead
@@ -483,9 +494,9 @@ class MainHandler(webapp2.RequestHandler):
 				template_variables['Sunday1NightAssignBeforeStandBy'] = assignBeforeStandBy
 			
 			# Sunday1 morning info:
-			assignBeforeHead = CurrentSchedule.checkIfAssignAlready(sunday1date, 1, 0)
-			assignBeforeSecond = CurrentSchedule.checkIfAssignAlready(sunday1date, 1, 1)
-			assignBeforeStandBy = CurrentSchedule.checkIfAssignAlready(sunday1date, 1, 3)
+			assignBeforeHead = SubmittedShifts.checkIfAssignAlready(sunday1date, 1, 0)
+			assignBeforeSecond = SubmittedShifts.checkIfAssignAlready(sunday1date, 1, 1)
+			assignBeforeStandBy = SubmittedShifts.checkIfAssignAlready(sunday1date, 1, 3)
 			
 			if assignBeforeHead:
 				template_variables['Sunday1MorningAssignBeforeHead'] = assignBeforeHead
@@ -497,9 +508,9 @@ class MainHandler(webapp2.RequestHandler):
 				template_variables['Sunday1MorningAssignBeforeStandBy'] = assignBeforeStandBy
 				
 			# Sunday1 noon info:
-			assignBeforeHead = CurrentSchedule.checkIfAssignAlready(sunday1date, 2, 0)
-			assignBeforeSecond = CurrentSchedule.checkIfAssignAlready(sunday1date, 2, 1)
-			assignBeforeStandBy = CurrentSchedule.checkIfAssignAlready(sunday1date, 2, 3)
+			assignBeforeHead = SubmittedShifts.checkIfAssignAlready(sunday1date, 2, 0)
+			assignBeforeSecond = SubmittedShifts.checkIfAssignAlready(sunday1date, 2, 1)
+			assignBeforeStandBy = SubmittedShifts.checkIfAssignAlready(sunday1date, 2, 3)
 			
 			if assignBeforeHead:
 				template_variables['Sunday1NoonAssignBeforeHead'] = assignBeforeHead
@@ -513,9 +524,9 @@ class MainHandler(webapp2.RequestHandler):
 				
 				
 			# Monday1 night info:
-			assignBeforeHead = CurrentSchedule.checkIfAssignAlready(monday1date, 0, 0)
-			assignBeforeSecond = CurrentSchedule.checkIfAssignAlready(monday1date, 0, 1)
-			assignBeforeStandBy = CurrentSchedule.checkIfAssignAlready(monday1date, 0, 3)
+			assignBeforeHead = SubmittedShifts.checkIfAssignAlready(monday1date, 0, 0)
+			assignBeforeSecond = SubmittedShifts.checkIfAssignAlready(monday1date, 0, 1)
+			assignBeforeStandBy = SubmittedShifts.checkIfAssignAlready(monday1date, 0, 3)
 			
 			if assignBeforeHead:
 				template_variables['Monday1NightAssignBeforeHead'] = assignBeforeHead
@@ -524,9 +535,9 @@ class MainHandler(webapp2.RequestHandler):
 				template_variables['Monday1NightAssignBeforeSecond'] = assignBeforeSecond
 			
 			# Monday1 morning info:
-			assignBeforeHead = CurrentSchedule.checkIfAssignAlready(monday1date, 1, 0)
-			assignBeforeSecond = CurrentSchedule.checkIfAssignAlready(monday1date, 1, 1)
-			assignBeforeStandBy = CurrentSchedule.checkIfAssignAlready(monday1date, 1, 3)
+			assignBeforeHead = SubmittedShifts.checkIfAssignAlready(monday1date, 1, 0)
+			assignBeforeSecond = SubmittedShifts.checkIfAssignAlready(monday1date, 1, 1)
+			assignBeforeStandBy = SubmittedShifts.checkIfAssignAlready(monday1date, 1, 3)
 			
 			if assignBeforeHead:
 				template_variables['Monday1MorningAssignBeforeHead'] = assignBeforeHead
@@ -538,9 +549,9 @@ class MainHandler(webapp2.RequestHandler):
 				template_variables['Monday1MorningAssignBeforeStandBy'] = assignBeforeStandBy
 			
 			# Monday1 noon info:
-			assignBeforeHead = CurrentSchedule.checkIfAssignAlready(monday1date, 2, 0)
-			assignBeforeSecond = CurrentSchedule.checkIfAssignAlready(monday1date, 2, 1)
-			assignBeforeStandBy = CurrentSchedule.checkIfAssignAlready(monday1date, 2, 3)
+			assignBeforeHead = SubmittedShifts.checkIfAssignAlready(monday1date, 2, 0)
+			assignBeforeSecond = SubmittedShifts.checkIfAssignAlready(monday1date, 2, 1)
+			assignBeforeStandBy = SubmittedShifts.checkIfAssignAlready(monday1date, 2, 3)
 			
 			if assignBeforeHead:
 				template_variables['Monday1NoonAssignBeforeHead'] = assignBeforeHead
@@ -557,9 +568,9 @@ class MainHandler(webapp2.RequestHandler):
 				
 				
 			# Tuesday1 night info:
-			assignBeforeHead = CurrentSchedule.checkIfAssignAlready(tuesday1date, 0, 0)
-			assignBeforeSecond = CurrentSchedule.checkIfAssignAlready(tuesday1date, 0, 1)
-			assignBeforeStandBy = CurrentSchedule.checkIfAssignAlready(tuesday1date, 0, 3)
+			assignBeforeHead = SubmittedShifts.checkIfAssignAlready(tuesday1date, 0, 0)
+			assignBeforeSecond = SubmittedShifts.checkIfAssignAlready(tuesday1date, 0, 1)
+			assignBeforeStandBy = SubmittedShifts.checkIfAssignAlready(tuesday1date, 0, 3)
 			
 			if assignBeforeHead:
 				template_variables['Tuesday1NightAssignBeforeHead'] = assignBeforeHead
@@ -571,10 +582,10 @@ class MainHandler(webapp2.RequestHandler):
 				template_variables['Tuesday1NightAssignBeforeStandBy'] = assignBeforeStandBy
 			
 			# Tuesday1 morning info:
-			assignBeforeHead = CurrentSchedule.checkIfAssignAlready(tuesday1date, 1, 0)
-			assignBeforeSecond = CurrentSchedule.checkIfAssignAlready(tuesday1date, 1, 1)
-			assignBeforeThird = CurrentSchedule.checkIfAssignAlready(tuesday1date, 1, 2)
-			assignBeforeStandBy = CurrentSchedule.checkIfAssignAlready(tuesday1date, 1, 3)
+			assignBeforeHead = SubmittedShifts.checkIfAssignAlready(tuesday1date, 1, 0)
+			assignBeforeSecond = SubmittedShifts.checkIfAssignAlready(tuesday1date, 1, 1)
+			assignBeforeThird = SubmittedShifts.checkIfAssignAlready(tuesday1date, 1, 2)
+			assignBeforeStandBy = SubmittedShifts.checkIfAssignAlready(tuesday1date, 1, 3)
 			
 			if assignBeforeHead:
 				template_variables['Tuesday1MorningAssignBeforeHead'] = assignBeforeHead
@@ -589,9 +600,9 @@ class MainHandler(webapp2.RequestHandler):
 				template_variables['Tuesday1MorningAssignBeforeStandBy'] = assignBeforeStandBy
 			
 			# Tuesday1 noon info:
-			assignBeforeHead = CurrentSchedule.checkIfAssignAlready(tuesday1date, 2, 0)
-			assignBeforeSecond = CurrentSchedule.checkIfAssignAlready(tuesday1date, 2, 1)
-			assignBeforeStandBy = CurrentSchedule.checkIfAssignAlready(tuesday1date, 2, 3)
+			assignBeforeHead = SubmittedShifts.checkIfAssignAlready(tuesday1date, 2, 0)
+			assignBeforeSecond = SubmittedShifts.checkIfAssignAlready(tuesday1date, 2, 1)
+			assignBeforeStandBy = SubmittedShifts.checkIfAssignAlready(tuesday1date, 2, 3)
 			
 			if assignBeforeHead:
 				template_variables['Tuesday1NoonAssignBeforeHead'] = assignBeforeHead
@@ -608,9 +619,9 @@ class MainHandler(webapp2.RequestHandler):
 			
 			
 			# Wednesday1 night info:
-			assignBeforeHead = CurrentSchedule.checkIfAssignAlready(wednesday1date, 0, 0)
-			assignBeforeSecond = CurrentSchedule.checkIfAssignAlready(wednesday1date, 0, 1)
-			assignBeforeStandBy = CurrentSchedule.checkIfAssignAlready(wednesday1date, 0, 3)
+			assignBeforeHead = SubmittedShifts.checkIfAssignAlready(wednesday1date, 0, 0)
+			assignBeforeSecond = SubmittedShifts.checkIfAssignAlready(wednesday1date, 0, 1)
+			assignBeforeStandBy = SubmittedShifts.checkIfAssignAlready(wednesday1date, 0, 3)
 			
 			if assignBeforeHead:
 				template_variables['Wednesday1NightAssignBeforeHead'] = assignBeforeHead
@@ -622,9 +633,9 @@ class MainHandler(webapp2.RequestHandler):
 				template_variables['Wednesday1NightAssignBeforeStandBy'] = assignBeforeStandBy
 			
 			# Wednesday1 morning info:
-			assignBeforeHead = CurrentSchedule.checkIfAssignAlready(wednesday1date, 1, 0)
-			assignBeforeSecond = CurrentSchedule.checkIfAssignAlready(wednesday1date, 1, 1)
-			assignBeforeStandBy = CurrentSchedule.checkIfAssignAlready(wednesday1date, 1, 3)
+			assignBeforeHead = SubmittedShifts.checkIfAssignAlready(wednesday1date, 1, 0)
+			assignBeforeSecond = SubmittedShifts.checkIfAssignAlready(wednesday1date, 1, 1)
+			assignBeforeStandBy = SubmittedShifts.checkIfAssignAlready(wednesday1date, 1, 3)
 			
 			if assignBeforeHead:
 				template_variables['Wednesday1MorningAssignBeforeHead'] = assignBeforeHead
@@ -636,9 +647,9 @@ class MainHandler(webapp2.RequestHandler):
 				template_variables['Wednesday1MorningAssignBeforeStandBy'] = assignBeforeStandBy
 			
 			# Wednesday1 noon info:
-			assignBeforeHead = CurrentSchedule.checkIfAssignAlready(wednesday1date, 2, 0)
-			assignBeforeSecond = CurrentSchedule.checkIfAssignAlready(wednesday1date, 2, 1)
-			assignBeforeStandBy = CurrentSchedule.checkIfAssignAlready(wednesday1date, 2, 3)
+			assignBeforeHead = SubmittedShifts.checkIfAssignAlready(wednesday1date, 2, 0)
+			assignBeforeSecond = SubmittedShifts.checkIfAssignAlready(wednesday1date, 2, 1)
+			assignBeforeStandBy = SubmittedShifts.checkIfAssignAlready(wednesday1date, 2, 3)
 			
 			if assignBeforeHead:
 				template_variables['Wednesday1NoonAssignBeforeHead'] = assignBeforeHead
@@ -654,9 +665,9 @@ class MainHandler(webapp2.RequestHandler):
 				
 				
 			# Thursday1 night info:
-			assignBeforeHead = CurrentSchedule.checkIfAssignAlready(thursday1date, 0, 0)
-			assignBeforeSecond = CurrentSchedule.checkIfAssignAlready(thursday1date, 0, 1)
-			assignBeforeStandBy = CurrentSchedule.checkIfAssignAlready(thursday1date, 0, 3)
+			assignBeforeHead = SubmittedShifts.checkIfAssignAlready(thursday1date, 0, 0)
+			assignBeforeSecond = SubmittedShifts.checkIfAssignAlready(thursday1date, 0, 1)
+			assignBeforeStandBy = SubmittedShifts.checkIfAssignAlready(thursday1date, 0, 3)
 			
 			if assignBeforeHead:
 				template_variables['Thursday1NightAssignBeforeHead'] = assignBeforeHead
@@ -668,10 +679,10 @@ class MainHandler(webapp2.RequestHandler):
 				template_variables['Thursday1NightAssignBeforeStandBy'] = assignBeforeStandBy
 			
 			# Thursday1 morning info:
-			assignBeforeHead = CurrentSchedule.checkIfAssignAlready(thursday1date, 1, 0)
-			assignBeforeSecond = CurrentSchedule.checkIfAssignAlready(thursday1date, 1, 1)
-			assignBeforeThird = CurrentSchedule.checkIfAssignAlready(thursday1date, 1, 2)
-			assignBeforeStandBy = CurrentSchedule.checkIfAssignAlready(thursday1date, 1, 3)
+			assignBeforeHead = SubmittedShifts.checkIfAssignAlready(thursday1date, 1, 0)
+			assignBeforeSecond = SubmittedShifts.checkIfAssignAlready(thursday1date, 1, 1)
+			assignBeforeThird = SubmittedShifts.checkIfAssignAlready(thursday1date, 1, 2)
+			assignBeforeStandBy = SubmittedShifts.checkIfAssignAlready(thursday1date, 1, 3)
 			
 			if assignBeforeHead:
 				template_variables['Thursday1MorningAssignBeforeHead'] = assignBeforeHead
@@ -686,9 +697,9 @@ class MainHandler(webapp2.RequestHandler):
 				template_variables['Thursday1MorningAssignBeforeStandBy'] = assignBeforeStandBy
 			
 			# Thursday1 noon info:
-			assignBeforeHead = CurrentSchedule.checkIfAssignAlready(thursday1date, 2, 0)
-			assignBeforeSecond = CurrentSchedule.checkIfAssignAlready(thursday1date, 2, 1)
-			assignBeforeStandBy = CurrentSchedule.checkIfAssignAlready(thursday1date, 2, 3)
+			assignBeforeHead = SubmittedShifts.checkIfAssignAlready(thursday1date, 2, 0)
+			assignBeforeSecond = SubmittedShifts.checkIfAssignAlready(thursday1date, 2, 1)
+			assignBeforeStandBy = SubmittedShifts.checkIfAssignAlready(thursday1date, 2, 3)
 			
 			if assignBeforeHead:
 				template_variables['Thursday1NoonAssignBeforeHead'] = assignBeforeHead
@@ -705,9 +716,9 @@ class MainHandler(webapp2.RequestHandler):
 				
 				
 			# Friday1 night info:
-			assignBeforeHead = CurrentSchedule.checkIfAssignAlready(friday1date, 0, 0)
-			assignBeforeSecond = CurrentSchedule.checkIfAssignAlready(friday1date, 0, 1)
-			assignBeforeStandBy = CurrentSchedule.checkIfAssignAlready(friday1date, 0, 3)
+			assignBeforeHead = SubmittedShifts.checkIfAssignAlready(friday1date, 0, 0)
+			assignBeforeSecond = SubmittedShifts.checkIfAssignAlready(friday1date, 0, 1)
+			assignBeforeStandBy = SubmittedShifts.checkIfAssignAlready(friday1date, 0, 3)
 			
 			if assignBeforeHead:
 				template_variables['Friday1NightAssignBeforeHead'] = assignBeforeHead
@@ -719,9 +730,9 @@ class MainHandler(webapp2.RequestHandler):
 				template_variables['Friday1NighAssignBeforeStandBy'] = assignBeforeStandBy
 			
 			# Friday1 morning info:
-			assignBeforeHead = CurrentSchedule.checkIfAssignAlready(friday1date, 1, 0)
-			assignBeforeSecond = CurrentSchedule.checkIfAssignAlready(friday1date, 1, 1)
-			assignBeforeStandBy = CurrentSchedule.checkIfAssignAlready(friday1date, 1, 3)
+			assignBeforeHead = SubmittedShifts.checkIfAssignAlready(friday1date, 1, 0)
+			assignBeforeSecond = SubmittedShifts.checkIfAssignAlready(friday1date, 1, 1)
+			assignBeforeStandBy = SubmittedShifts.checkIfAssignAlready(friday1date, 1, 3)
 			
 			if assignBeforeHead:
 				template_variables['Friday1MorningAssignBeforeHead'] = assignBeforeHead
@@ -733,9 +744,9 @@ class MainHandler(webapp2.RequestHandler):
 				template_variables['Friday1MorningAssignBeforeStandBy'] = assignBeforeStandBy
 			
 			# Friday1 noon info:
-			assignBeforeHead = CurrentSchedule.checkIfAssignAlready(friday1date, 2, 0)
-			assignBeforeSecond = CurrentSchedule.checkIfAssignAlready(friday1date, 2, 1)
-			assignBeforeStandBy = CurrentSchedule.checkIfAssignAlready(friday1date, 2, 3)
+			assignBeforeHead = SubmittedShifts.checkIfAssignAlready(friday1date, 2, 0)
+			assignBeforeSecond = SubmittedShifts.checkIfAssignAlready(friday1date, 2, 1)
+			assignBeforeStandBy = SubmittedShifts.checkIfAssignAlready(friday1date, 2, 3)
 			
 			if assignBeforeHead:
 				template_variables['Friday1NoonAssignBeforeHead'] = assignBeforeHead
@@ -752,9 +763,9 @@ class MainHandler(webapp2.RequestHandler):
 				
 				
 			# Saturday1 night info:
-			assignBeforeHead = CurrentSchedule.checkIfAssignAlready(saturday1date, 0, 0)
-			assignBeforeSecond = CurrentSchedule.checkIfAssignAlready(saturday1date, 0, 1)
-			assignBeforeStandBy = CurrentSchedule.checkIfAssignAlready(saturday1date, 0, 3)
+			assignBeforeHead = SubmittedShifts.checkIfAssignAlready(saturday1date, 0, 0)
+			assignBeforeSecond = SubmittedShifts.checkIfAssignAlready(saturday1date, 0, 1)
+			assignBeforeStandBy = SubmittedShifts.checkIfAssignAlready(saturday1date, 0, 3)
 			
 			if assignBeforeHead:
 				template_variables['Saturday1NightAssignBeforeHead'] = assignBeforeHead
@@ -766,9 +777,9 @@ class MainHandler(webapp2.RequestHandler):
 				template_variables['Saturday1NightAssignBeforeStandBy'] = assignBeforeStandBy
 			
 			# Saturday1 morning info:
-			assignBeforeHead = CurrentSchedule.checkIfAssignAlready(saturday1date, 1, 0)
-			assignBeforeSecond = CurrentSchedule.checkIfAssignAlready(saturday1date, 1, 1)
-			assignBeforeStandBy = CurrentSchedule.checkIfAssignAlready(saturday1date, 1, 3)
+			assignBeforeHead = SubmittedShifts.checkIfAssignAlready(saturday1date, 1, 0)
+			assignBeforeSecond = SubmittedShifts.checkIfAssignAlready(saturday1date, 1, 1)
+			assignBeforeStandBy = SubmittedShifts.checkIfAssignAlready(saturday1date, 1, 3)
 			
 			if assignBeforeHead:
 				template_variables['Saturday1MorningAssignBeforeHead'] = assignBeforeHead
@@ -780,9 +791,9 @@ class MainHandler(webapp2.RequestHandler):
 				template_variables['Saturday1MorningAssignBeforeStandBy'] = assignBeforeStandBy
 			
 			# Saturday1 noon info:
-			assignBeforeHead = CurrentSchedule.checkIfAssignAlready(saturday1date, 2, 0)
-			assignBeforeSecond = CurrentSchedule.checkIfAssignAlready(saturday1date, 2, 1)
-			assignBeforeStandBy = CurrentSchedule.checkIfAssignAlready(saturday1date, 2, 3)
+			assignBeforeHead = SubmittedShifts.checkIfAssignAlready(saturday1date, 2, 0)
+			assignBeforeSecond = SubmittedShifts.checkIfAssignAlready(saturday1date, 2, 1)
+			assignBeforeStandBy = SubmittedShifts.checkIfAssignAlready(saturday1date, 2, 3)
 			
 			if assignBeforeHead:
 				template_variables['Saturday1NoonAssignBeforeHead'] = assignBeforeHead

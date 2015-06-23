@@ -1,32 +1,4 @@
-$(document).ready(function(){
-
-
-	$.ajax({
-		url:'/deadLines',
-		type:'GET',
-		dataType:'json',
-		data:{},
-		success:function(data, status, xhr) {
-			if(data.isSubmitingDates == true)
-			{
-				document.getElementById("constrainInput").disabled = true; 
-				document.getElementById("constrainTime").style.visibility = "visible";
-			}
-			else
-			{
-				document.getElementById("constrainInput").disabled = false; 
-				document.getElementById("constrainTime").style.visibility = "hidden";
-			}
-		},
-		error:function(xhr, status, error) {
-			alert("failed!");
-            alert(xhr.responseText);
-		}
-	});
-});
-
-
-
+<script>
 	var userName = getQueryVariable("userName");
 	  $.ajax({
 		url:'/MainEmployee',
@@ -43,4 +15,4 @@ $(document).ready(function(){
 		}
 	});
 	
-	
+</script>

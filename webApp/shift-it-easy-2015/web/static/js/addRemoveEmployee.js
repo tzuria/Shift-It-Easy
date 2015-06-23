@@ -15,6 +15,8 @@ function remove_Employee(){
         data:{employee_id: employee_id},
 		success:function(data, status, xhr) {
 			alert("employee removed successfully");
+			
+			document.location.href = '/AddRemoveEmployee';
 		},
 		error:function(xhr, status, error) {
 			alert("failed!");

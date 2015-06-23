@@ -2,6 +2,7 @@
 <head>
 	<link rel="stylesheet" type="text/css" href="../static/css/CSSstyle.css" />
 	<script type="application/javascript" src="http://code.jquery.com/jquery-2.1.4.min.js"></script>
+	<script type="application/javascript" src="../static/js/relocation.js"></script>
 
 
 	<title>Shift It Easy | Manager main page</title>
@@ -23,20 +24,24 @@
 		constrains.length = 42;
 		var constrain = [];
 		constrain.length = 2;
+		var cellStatus = [];
+		cellStatus.length = 42;
+		
 		
 	$(document).ready(function(){
-	
-	//var cells = document.getElementById("mytable").getElementsByTagName("td");
-	
-	//cells[0].style.backgroundColor = "yellow";
 	
 	$.ajax({
 		url:'/get_constrains',
 		type:'GET',
 		dataType:'json',
 		data:{},
-		success:function(data, status, xhr) {
-			alert(data.color);
+		success:function(data, status, xhr) {	
+			// Initialize sellStatus array.
+			for(i=0; i<42; i++)
+			{
+				cellStatus[i] = data.color[i];
+			}
+			
 			var cells1 = document.getElementById("table1").getElementsByTagName("td");
 			var cells2 = document.getElementById("table2").getElementsByTagName("td");
 			var j = 0;
@@ -228,7 +233,7 @@
 	$('#satu_noon1').bind('click',{row:2, col:6 ,table:2 },saveNote);
 
 
-    $('td#cell').on('click',changeColor);
+    $('.cell').on('click',changeColor);
 	$('#save').on('click',saveConstrains);
 	});
 
@@ -252,24 +257,158 @@
 
 	function changeColor()
 	{
-		//alert(this.toString());
-		if (status % 4 == 0 &&flag==0) {
-			$(this).css('background-color', 'yellow')//Yellow
-			status++;
+		var index;
+		
+		if($(this).attr('id') == "cell_1"){
+			index = 0;
 			}
-		else if (status % 4 == 1 &&flag==0) {
-			$(this).css('background-color', 'red')//red
-			status++;
+		else if($(this).attr('id') == "cell_2"){
+			index = 1;
 			}
-		else if (status % 4 == 2 &&flag==0) {
+		else if($(this).attr('id') == "cell_3"){
+			index = 2;
+			}
+		else if($(this).attr('id') == "cell_4"){
+			index = 3;
+			}
+		else if($(this).attr('id') == "cell_5"){
+			index = 4;
+			}
+		else if($(this).attr('id') == "cell_6"){
+			index = 5;
+			}
+		else if($(this).attr('id') == "cell_7"){
+			index = 6;
+			}
+		else if($(this).attr('id') == "cell_8"){
+			index = 7;
+			}
+		else if($(this).attr('id') == "cell_9"){
+			index = 8;
+			}
+		else if($(this).attr('id') == "cell_10"){
+			index = 9;
+			}
+		else if($(this).attr('id') == "cell_11"){
+			index = 10;
+			}
+		else if($(this).attr('id') == "cell_12"){
+			index = 11;
+			}
+		else if($(this).attr('id') == "cell_13"){
+			index = 12;
+			}
+		else if($(this).attr('id') == "cell_14"){
+			index = 13;
+			}
+		else if($(this).attr('id') == "cell_15"){
+			index = 14;
+			}
+		else if($(this).attr('id') == "cell_16"){
+			index = 15;
+			}
+		else if($(this).attr('id') == "cell_17"){
+			index = 16;
+			}
+		else if($(this).attr('id') == "cell_18"){
+			index = 17;
+			}
+		else if($(this).attr('id') == "cell_19"){
+			index = 18;
+			}
+		else if($(this).attr('id') == "cell_20"){
+			index = 19;
+			}
+		else if($(this).attr('id') == "cell_21"){
+			index = 20;
+			}
+		else if($(this).attr('id') == "cell_22"){
+			index = 21;
+			}
+		else if($(this).attr('id') == "cell_23"){
+			index = 22;
+			}
+		else if($(this).attr('id') == "cell_24"){
+			index = 23;
+			}
+		else if($(this).attr('id') == "cell_25"){
+			index = 24;
+			}
+		else if($(this).attr('id') == "cell_26"){
+			index = 25;
+			}
+		else if($(this).attr('id') == "cell_27"){
+			index = 26;
+			}
+		else if($(this).attr('id') == "cell_28"){
+			index = 27;
+			}
+		else if($(this).attr('id') == "cell_29"){
+			index = 28;
+			}
+		else if($(this).attr('id') == "cell_30"){
+			index = 29;
+			}
+		else if($(this).attr('id') == "cell_31"){
+			index = 30;
+			}
+		else if($(this).attr('id') == "cell_32"){
+			index = 31;
+			}
+		else if($(this).attr('id') == "cell_33"){
+			index = 32;
+			}
+		else if($(this).attr('id') == "cell_34"){
+			index = 33;
+			}
+		else if($(this).attr('id') == "cell_35"){
+			index = 34;
+			}
+		else if($(this).attr('id') == "cell_36"){
+			index = 35;
+			}
+		else if($(this).attr('id') == "cell_37"){
+			index = 36;
+			}
+		else if($(this).attr('id') == "cell_38"){
+			index = 37;
+			}
+		else if($(this).attr('id') == "cell_39"){
+			index = 38;
+			}
+		else if($(this).attr('id') == "cell_40"){
+			index = 39;
+			}
+		else if($(this).attr('id') == "cell_41"){
+			index = 40;
+			}
+		else if($(this).attr('id') == "cell_42"){
+			index = 41;
+			}
+		
+		status = cellStatus[index];
+		
+		if (status % 4 == 0 && flag==0) {
 			$(this).css('background-color', 'green')//green
 			status++;
 			}
-		else if (status % 4 == 3 &&flag==0) {
+		else if (status % 4 == 1 && flag==0) {
+			$(this).css('background-color', 'yellow')//yellow
+			status++;
+			}
+		else if (status % 4 == 2 && flag==0) {
+			$(this).css('background-color', 'red')//red
+			status++;
+			}
+		else if (status % 4 == 3 && flag==0) {
 			$(this).css('background-color', 'white')//white
 			status++;
 			}
+		
 		flag=0;
+		if(status ==4)
+			status = 0;
+		cellStatus[index] = status;
 	}
 
 	function calculate(color,index)
@@ -308,7 +447,17 @@
 
 
 function saveConstrains()
-{						//------------------table1------------------//
+{
+
+	$('#form_spinner').removeClass('hidden'); //we show the spinner when we're about to submit
+	//we simulate form submition with a simple timeout
+	setTimeout(function() {
+		$('#form_spinner').addClass('hidden');
+	}, 50000);
+
+
+
+						//------------------table1------------------//
 
 	//--------------------------------------cell 0,0--------------------------------------------//
 	calculate(document.getElementsByName("sun_night0_cell")[0].style.backgroundColor,0);
@@ -415,10 +564,7 @@ function saveConstrains()
 		dataType:'json',
 		data:{constrains: JSON.stringify(constrains)},
 		success:function(data, status, xhr) {
-			if(data.status =="error")
-				alert("error");
-			else
-				alert("ok");
+			
 			document.location.href = '/MainEmployee';
 		},
 		error:function(xhr, status, error) {
@@ -468,37 +614,40 @@ function saveConstrains()
 		</tr>
 		<tr>
 			<td>night</td>
-			<td id='cell' name="sun_night0_cell"><button id="sun_night0">Notes</button>		</td>
-			<td id='cell' name ="mond_night0_cell"><button  id="mond_night0">Notes</button>	    </td>
-			<td id='cell' name="tues_night0_cell"><button id="tues_night0">Notes</button>	    </td>
-			<td id='cell' name ="wedn_night0_cell"><button  id="wedn_night0">Notes</button>	    </td>
-			<td id='cell' name ="thur_night0_cell"><button  id="thur_night0">Notes</button>	    </td>
-			<td id='cell' name ="frid_night0_cell"><button  id="frid_night0">Notes</button>	    </td>
-			<td id='cell' name="satu_night0_cell"><button  id="satu_night0">Notes</button>	    </td>
+			<td id='cell_1' class="cell" name="sun_night0_cell"><button id="sun_night0">Notes</button>		</td>
+			<td id='cell_4' class="cell" name ="mond_night0_cell"><button  id="mond_night0">Notes</button>	    </td>
+			<td id='cell_7' class="cell" name="tues_night0_cell"><button id="tues_night0">Notes</button>	    </td>
+			<td id='cell_10' class="cell" name ="wedn_night0_cell"><button  id="wedn_night0">Notes</button>	    </td>
+			<td id='cell_13' class="cell" name ="thur_night0_cell"><button  id="thur_night0">Notes</button>	    </td>
+			<td id='cell_16' class="cell" name ="frid_night0_cell"><button  id="frid_night0">Notes</button>	    </td>
+			<td id='cell_19' class="cell" name="satu_night0_cell"><button  id="satu_night0">Notes</button>	    </td>
 		</tr>
 		<tr>
 			<td>morning</td>
-			<td id='cell' name="sun_morning0_cell"><button  id="sun_morning0">Notes</button>		</td>
-			<td id='cell' name="mond_morning0_cell"><button  id="mond_morning0">Notes</button>		</td>
-			<td id='cell' name="tues_morning0_cell"><button  id="tues_morning0">Notes</button>		</td>
-			<td id='cell' name="wedn_morning0_cell"><button  id="wedn_morning0">Notes</button>		</td>
-			<td id='cell' name="thur_morning0_cell"><button  id= "thur_morning0">Notes</button>		</td>
-			<td id='cell' name="frid_morning0_cell"><button  id="frid_morning0">Notes</button>		</td>
-			<td id='cell' name="satu_morning0_cell"><button  id="satu_morning0">Notes</button>		</td>
+			<td id='cell_2' class="cell" name="sun_morning0_cell"><button  id="sun_morning0">Notes</button>		</td>
+			<td id='cell_5' class="cell" name="mond_morning0_cell"><button  id="mond_morning0">Notes</button>		</td>
+			<td id='cell_8' class="cell" name="tues_morning0_cell"><button  id="tues_morning0">Notes</button>		</td>
+			<td id='cell_11' class="cell" name="wedn_morning0_cell"><button  id="wedn_morning0">Notes</button>		</td>
+			<td id='cell_14' class="cell" name="thur_morning0_cell"><button  id= "thur_morning0">Notes</button>		</td>
+			<td id='cell_17' class="cell" name="frid_morning0_cell"><button  id="frid_morning0">Notes</button>		</td>
+			<td id='cell_20' class="cell" name="satu_morning0_cell"><button  id="satu_morning0">Notes</button>		</td>
 
 		</tr>
 		<tr>
 			<td>noon</td>
-			<td id='cell' name="sun_noon0_cell"><button  id="sun_noon0">Notes</button>		</td>
-			<td id='cell' name="mond_noon0_cell"><button  id="mond_noon0">Notes</button>		</td>
-			<td id='cell' name="tues_noon0_cell"><button  id="tues_noon0">Notes</button>		</td>
-			<td id='cell' name="wedn_noon0_cell"><button  id="wedn_noon0">Notes</button>		</td>
-			<td id='cell' name="thur_noon0_cell"><button  id= "thur_noon0">Notes</button>		</td>
-			<td id='cell' name="frid_noon0_cell"><button  id="frid_noon0">Notes</button>		</td>
-			<td id='cell' name="satu_noon0_cell"><button  id="satu_noon0">Notes</button>		</td>
+			<td id='cell_3' class="cell" name="sun_noon0_cell"><button  id="sun_noon0">Notes</button>		</td>
+			<td id='cell_6' class="cell" name="mond_noon0_cell"><button  id="mond_noon0">Notes</button>		</td>
+			<td id='cell_9' class="cell" name="tues_noon0_cell"><button  id="tues_noon0">Notes</button>		</td>
+			<td id='cell_12' class="cell" name="wedn_noon0_cell"><button  id="wedn_noon0">Notes</button>		</td>
+			<td id='cell_15' class="cell" name="thur_noon0_cell"><button  id= "thur_noon0">Notes</button>		</td>
+			<td id='cell_18' class="cell" name="frid_noon0_cell"><button  id="frid_noon0">Notes</button>		</td>
+			<td id='cell_21' class="cell" name="satu_noon0_cell"><button  id="satu_noon0">Notes</button>		</td>
 
 		</tr>
 	</table>
+	
+	<div id="form_spinner" class="hidden"><div class="spinner"></div></div> <!-- loading spinner -->
+	
 	<table id="table2">
 		<tr>
 			<td width="9%">	</td>
@@ -512,35 +661,35 @@ function saveConstrains()
 		</tr>
 		<tr>
 			<td>night</td>
-			<td id='cell' name="sun_night1_cell"><button id="sun_night1">Notes</button>		</td>
-			<td id='cell' name="mond_night1_cell"><button id="mond_night1">Notes</button>	    </td>
-			<td id='cell' name="tues_night1_cell"><button id="tues_night1">Notes</button>	    </td>
-			<td id='cell' name="wedn_night1_cell"><button id="wedn_night1">Notes</button>	    </td>
-			<td id='cell' name="thur_night1_cell"><button id="thur_night1">Notes</button>	    </td>
-			<td id='cell' name="frid_night1_cell"><button id="frid_night1">Notes</button>	    </td>
-			<td id='cell' name="satu_night1_cell"><button id="satu_night1">Notes</button>	    </td>
+			<td id='cell_22' class="cell" name="sun_night1_cell"><button id="sun_night1">Notes</button>		</td>
+			<td id='cell_25' class="cell" name="mond_night1_cell"><button id="mond_night1">Notes</button>	    </td>
+			<td id='cell_28' class="cell" name="tues_night1_cell"><button id="tues_night1">Notes</button>	    </td>
+			<td id='cell_31' class="cell" name="wedn_night1_cell"><button id="wedn_night1">Notes</button>	    </td>
+			<td id='cell_34' class="cell" name="thur_night1_cell"><button id="thur_night1">Notes</button>	    </td>
+			<td id='cell_37' class="cell" name="frid_night1_cell"><button id="frid_night1">Notes</button>	    </td>
+			<td id='cell_40' class="cell" name="satu_night1_cell"><button id="satu_night1">Notes</button>	    </td>
 
 
 		</tr>
 		<tr>
 			<td>morning</td>
-			<td id='cell' name="sun_morning1_cell"><button id="sun_morning1">Notes</button>		</td>
-			<td id='cell' name="mond_morning1_cell"><button id="mond_morning1">Notes</button>		</td>
-			<td id='cell' name="tues_morning1_cell"><button id="tues_morning1">Notes</button>		</td>
-			<td id='cell' name="wedn_morning1_cell"><button id="wedn_morning1">Notes</button>		</td>
-			<td id='cell' name="thur_morning1_cell"><button id="thur_morning1">Notes</button>		</td>
-			<td id='cell' name="frid_morning1_cell"><button id="frid_morning1">Notes</button>		</td>
-			<td id='cell' name="satu_morning1_cell"><button id="satu_morning1">Notes</button>		</td>
+			<td id='cell_23' class="cell" name="sun_morning1_cell"><button id="sun_morning1">Notes</button>		</td>
+			<td id='cell_26' class="cell" name="mond_morning1_cell"><button id="mond_morning1">Notes</button>		</td>
+			<td id='cell_29' class="cell" name="tues_morning1_cell"><button id="tues_morning1">Notes</button>		</td>
+			<td id='cell_32' class="cell" name="wedn_morning1_cell"><button id="wedn_morning1">Notes</button>		</td>
+			<td id='cell_35' class="cell" name="thur_morning1_cell"><button id="thur_morning1">Notes</button>		</td>
+			<td id='cell_38' class="cell" name="frid_morning1_cell"><button id="frid_morning1">Notes</button>		</td>
+			<td id='cell_41' class="cell" name="satu_morning1_cell"><button id="satu_morning1">Notes</button>		</td>
 		</tr>
 		<tr>
 			<td>noon</td>
-			<td id='cell' name="sun_noon1_cell"><button id="sun_noon1">Notes</button>		    </td>
-			<td id='cell' name="mond_noon1_cell"><button id="mond_noon1">Notes</button>		</td>
-			<td id='cell' name="tues_noon1_cell"><button id="tues_noon1">Notes</button>		</td>
-			<td id='cell' name="wedn_noon1_cell"><button id="wedn_noon1">Notes</button>		</td>
-			<td id='cell' name="thur_noon1_cell"><button id="thur_noon1">Notes</button>		</td>
-			<td id='cell' name="frid_noon1_cell"><button id="frid_noon1">Notes</button>		</td>
-			<td id='cell' name="satu_noon1_cell"><button id="satu_noon1">Notes</button>		</td>
+			<td id='cell_24' class="cell" name="sun_noon1_cell"><button id="sun_noon1">Notes</button>		    </td>
+			<td id='cell_27' class="cell" name="mond_noon1_cell"><button id="mond_noon1">Notes</button>		</td>
+			<td id='cell_30' class="cell" name="tues_noon1_cell"><button id="tues_noon1">Notes</button>		</td>
+			<td id='cell_33' class="cell" name="wedn_noon1_cell"><button id="wedn_noon1">Notes</button>		</td>
+			<td id='cell_36' class="cell" name="thur_noon1_cell"><button id="thur_noon1">Notes</button>		</td>
+			<td id='cell_39' class="cell" name="frid_noon1_cell"><button id="frid_noon1">Notes</button>		</td>
+			<td id='cell_42' class="cell" name="satu_noon1_cell"><button id="satu_noon1">Notes</button>		</td>
 		</tr>
 	</table>
 </div>
@@ -549,7 +698,7 @@ function saveConstrains()
 <button class = "btn" id = "save"> Save</button>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
 <button class = "btn" onclick="alert('Constrains have been submitted!')"> Submit</button>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
 &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
-<button class = "btn" onclick="location.href='MainEmployee'"> Back</button>
+<button class = "btn" id="back_to_main_employee"> Back</button>
 <br>
 </div>
 </div>

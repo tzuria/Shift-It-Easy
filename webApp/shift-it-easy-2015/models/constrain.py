@@ -50,7 +50,7 @@ class Constrain(ndb.Model):
 				constrain.key.delete()
 	
 	@staticmethod
-	def addConstrain(userName,date):
+	def addConstrains(userName,date):
 		for i in range(14):
 			for j in range(3):
 				constrain = Constrain()

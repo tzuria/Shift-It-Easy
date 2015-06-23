@@ -1,7 +1,9 @@
 <html>
 <head>
 	<link rel="stylesheet" type="text/css" href="../static/css/CSSstyle.css" />
-	<title>Shift It Easy | Manager main page</title>
+	<script type="application/javascript" src="http://code.jquery.com/jquery-2.1.4.min.js"></script>
+	<script type="application/javascript" src="../static/js/relocation.js"></script>
+	<title>Shift It Easy | Previous Schedule Page</title>
 </head>
 <body>
 	<div id="header">
@@ -61,6 +63,9 @@
 				<td>     </td>
             </tr>
         </table>
+		
+		<div id="form_spinner" class="hidden"><div class="spinner"></div></div> <!-- loading spinner -->
+		
 		<table>
             <tr>
                 <td width="14%"><span id ='sunday1'> {{sunday1}} </span></td>
@@ -112,7 +117,7 @@
 		&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
 		&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
 		&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
-		<button class = "btn" onclick="location.href='MainManager'">Back</button>
+		<button class = "btn" id="back_to_main_manager"> Back </button>
 	</div>
 </body>
 </html>

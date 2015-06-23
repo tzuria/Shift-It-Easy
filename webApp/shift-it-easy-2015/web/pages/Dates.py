@@ -27,15 +27,6 @@ class Dates():
 	def __init__(self,template):
 		self.myTemplate = template
 		
-	@staticmethod
-	def inSubmitingDates():
-		thisDay = date.today()
-		if(int(thisDay.strftime("%U"))%2 == 0) and (thisDay.weekday() < 6):
-			return True
-		return False
-			
-		
-		
 	def assignDatesOnTemplate(self):
 		self.myTemplate['sunday0'] = "%d/%d"%(self.sunday0.day ,self.sunday0.month)
 		self.myTemplate['monday0'] = "%d/%d"%(self.monday0.day ,self.monday0.month)

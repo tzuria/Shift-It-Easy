@@ -238,6 +238,19 @@ $(function() {  //this is jQuery's short notation for "fire all this when page i
 	
 
 	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 
 });
 
@@ -259,7 +272,9 @@ function updateShift(event)
         data:{selectedNurse_userName: selectedNurse_userName, day: event.data.day, shift: event.data.shift, week: event.data.week, rule:event.data.rule},
 		success:function(data, status, xhr) {
 			if(data.note != null)
+			{
 				alert(data.note);
+			}
 			alert("Success");
 		},
 		error:function(xhr, status, error) {
@@ -336,29 +351,6 @@ function submit_Schedule()
 		}
 	});
 }
-
-$(document).ready(function(){
-	$.ajax({
-		url:'/deadLines',
-		type:'GET',
-		dataType:'json',
-		data:{},
-		success:function(data, status, xhr) {
-			if(data.isSubmitingDates == true)
-			{
-				document.getElementById("submit").setAttribute("disabled", "enabled"); 
-			}
-			else
-			{
-				document.getElementById("submit").setAttribute("disabled", "disabled"); 
-			}
-		},
-		error:function(xhr, status, error) {
-			alert("failed!");
-            alert(xhr.responseText);
-		}
-	});
-});
 
 $body = $("body");
 
