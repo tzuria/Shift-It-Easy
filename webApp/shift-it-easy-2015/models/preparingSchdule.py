@@ -149,9 +149,28 @@ class PreparingSchedule(ndb.Model):
 			return allAssignments
 		return None
 	
+	@staticmethod
+	def checkLegalAssign_66_precent(userName, sunday, saturday):
+		userAssignments66 = PreparingSchedule.query(PreparingSchedule.nurseUserName == userName, PreparingSchedule.date >= sunday, PreparingSchedule.date <= saturday).fetch()
+
+		if len(userAssignments66) == 3:
+			return False
+		return True
 	
+	@staticmethod
+	def checkLegalAssign_88_precent(userName, sunday, saturday):
+		userAssignments88 = PreparingSchedule.query(PreparingSchedule.nurseUserName == userName, PreparingSchedule.date >= sunday, PreparingSchedule.date <= saturday).fetch()
+		
+		if len(userAssignments88) == 4:
+			return False
+		return True
 	
-	
-	
+	@staticmethod
+	def checkLegalAssign_100_precent(userName, sunday, saturday):
+		userAssignments100 = PreparingSchedule.query(PreparingSchedule.nurseUserName == userName, PreparingSchedule.date >= sunday, PreparingSchedule.date <= saturday).fetch()
+		
+		if len(userAssignments100) == 5:
+			return False
+		return True
 	
 	
