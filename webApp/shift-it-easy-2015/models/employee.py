@@ -9,7 +9,7 @@ class Employee(ndb.Model):
 	lastName = ndb.StringProperty()
 	userName = ndb.StringProperty()
 	password = ndb.StringProperty()
-	percentJob = ndb.StringProperty()
+	percentJob = ndb.IntegerProperty()
 	shiftHead = ndb.BooleanProperty(default=True)
 	isManager = ndb.BooleanProperty(default=False)
 	
