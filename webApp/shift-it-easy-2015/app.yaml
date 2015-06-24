@@ -1,0 +1,63 @@
+application: shift-it-easy-2015
+version: 1
+runtime: python27
+api_version: 1
+threadsafe: yes
+
+handlers:
+- url: /favicon\.ico
+  static_files: favicon.ico
+  upload: favicon\.ico
+  
+- url: /static
+  static_dir: web/static
+  
+- url: /deadLines
+  script: web.pages.MainManager.app
+ 
+- url: /saveSchedule
+  script: web.pages.MainManager.app
+  
+- url: /submitSchedule
+  script: web.pages.MainManager.app
+  
+- url: /MainManager
+  script: web.pages.MainManager.app
+  
+- url: /MainEmployee
+  script: web.pages.MainEmployee.app
+  
+- url: /CrewAssignment
+  script: web.pages.CrewAssignment.app
+  
+- url: /PreviousSchedule
+  script: web.pages.PreviousSchedule.app
+  
+- url: /NextSchedule
+  script: web.pages.NextSchedule.app
+  
+- url: /AddRemoveEmployee
+  script: web.pages.AddRemoveEmployee.app
+  
+- url: /save_constrains
+  script: web.pages.ConstrainsInputPage.app
+ 
+- url: /get_constrains
+  script: web.pages.ConstrainsInputPage.app
+
+- url: /ConstrainsInputPage
+  script: web.pages.ConstrainsInputPage.app
+  
+- url: /add_new_employee
+  script: web.pages.AddRemoveEmployee.app
+  
+- url: /remove_employee
+  script: web.pages.AddRemoveEmployee.app
+  
+  
+- url: /(.*)
+  script: web.pages.LoginPage.app
+  
+libraries:
+- name: webapp2
+  version: "2.5.2"

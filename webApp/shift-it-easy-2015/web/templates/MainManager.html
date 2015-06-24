@@ -1,0 +1,2748 @@
+<html>
+<head>
+	<link rel="stylesheet" type="text/css" href="../static/css/CSSstyle.css" />
+	<script type="application/javascript" src="http://code.jquery.com/jquery-2.1.4.min.js"></script>
+	<script type="application/javascript" src="../static/js/relocation.js"></script>
+	<script type="application/javascript" src="../static/js/savePreparingSchedule.js"></script>
+	<script type="application/javascript" src="../static/js/loadingPage.js"></script>
+	
+		
+	
+	<title>Shift It Easy | Manager main page</title>
+</head>
+<body>
+
+	<div id="container">
+	
+	<div id="header">
+		<h1><center> Shift It Easy </center></h1>
+		<h3><center> Welcome <span id ='userName'> {{userName}} </span> </center></h3><br>
+		<img src="../static/image/logo.jpg" style="width:150px;height:150px">
+	</div>
+	<div class="CSSTableGenerator">
+		<table>
+            <tr>
+                <td width="14%">Sunday</td>
+                <td width="14%">Monday</td>
+				<td width="14%">Tuesday</td>
+				<td width="14%">Wednesday</td>
+				<td width="14%">Thursday</td>
+				<td width="14%">Friday</td>
+				<td width="14%">Saturday</td>
+            </tr>
+		</table>
+	</div>
+	<div class="CSSTableGenerator1">
+	
+	
+		<!-- First week -->
+	
+        <table>
+            <tr>
+                <td width="14%"><span id ='sunday0'> {{sunday0}} </span></td>
+                <td width="14%"><span id ='monday0'> {{monday0}} </span></td>
+				<td width="14%"><span id ='tuesday0'> {{tuesday0}} </span></td>
+				<td width="14%"><span id ='wednesday0'> {{wednesday0}} </span></td>
+				<td width="14%"><span id ='thursday0'> {{thursday0}} </span></td>
+				<td width="14%"><span id ='friday0'> {{friday0}} </span></td>
+				<td width="14%"><span id ='saturday0'> {{saturday0}} </span></td>
+            </tr>
+            <tr>
+                <td>  <!-- Sunday0 night -->
+					<b>Shift head:</b>
+					<select name="headNurseListSunday1" id="head_nurse_list_sunday1" style="width: 150px">
+						<option selected> {{Sunday0NightAssignBeforeHead}} </option>
+						{% for h in HeadNurseWhoWantSunday0Night %}
+							<option style="color:green">{{h}}</option>
+						{% endfor %}
+						
+						{% for h in HeadNurseWhoDontCareSunday0Night %}
+							<option style="color:black">{{h}}</option>
+						{% endfor %}
+						
+						{% for h in HeadNurseWhoPreferNotSunday0Night %}
+							<option style="color:#f4b900">{{h}}</option>
+						{% endfor %}
+						
+						{% for h in HeadNurseWhoCantSunday0Night %}
+							<option style="color:red">{{h}}</option>
+						{% endfor %}
+					</select>
+					<br><br>
+					<b>Second nurse:</b>
+					<select name="secondNurseListSunday1" id="second_nurse_list_sunday1" style="width: 150px">
+						<option selected> {{Sunday0NightAssignBeforeSecond}} </option>
+						{% for h in NurseWhoWantSunday0Night %}
+							<option style="color:green">{{h}}</option>
+						{% endfor %}
+						
+						{% for h in NurseWhoDontCareSunday0Night %}
+							<option style="color:black">{{h}}</option>
+						{% endfor %}
+						
+						{% for h in NurseWhoPreferNotSunday0Night %}
+							<option style="color:#f4b900">{{h}}</option>
+						{% endfor %}
+						
+						{% for h in NurseWhoCantSunday0Night %}
+							<option style="color:red">{{h}}</option>
+						{% endfor %}
+					</select>
+					<br><br>
+					<b>Stand by:</b>
+					<select name="standByListSunday1" id="stand_by_list_sunday1" style="width: 150px">
+						<option selected> {{Sunday0NightAssignBeforeStandBy}} </option>
+						{% for h in NurseWhoWantSunday0Night %}
+							<option style="color:green">{{h}}</option>
+						{% endfor %}
+						
+						{% for h in NurseWhoDontCareSunday0Night %}
+							<option style="color:black">{{h}}</option>
+						{% endfor %}
+						
+						{% for h in NurseWhoPreferNotSunday0Night %}
+							<option style="color:#f4b900">{{h}}</option>
+						{% endfor %}
+						
+						{% for h in NurseWhoCantSunday0Night %}
+							<option style="color:red">{{h}}</option>
+						{% endfor %}
+					</select>
+				</td>
+				<td>  <!-- Monday0 night -->
+					<b>Shift head:</b>
+					<select name="standByListMonday1" id="head_nurse_list_monday1" style="width: 150px">
+						<option selected> {{Monday0NightAssignBeforeHead}} </option>
+						{% for h in HeadNurseWhoWantMonday0Night %}
+							<option style="color:green">{{h}}</option>
+						{% endfor %}
+						
+						{% for h in HeadNurseWhoDontCareMonday0Night %}
+							<option style="color:black">{{h}}</option>
+						{% endfor %}
+						
+						{% for h in HeadNurseWhoPreferNotMonday0Night %}
+							<option style="color:#f4b900">{{h}}</option>
+						{% endfor %}
+						
+						{% for h in HeadNurseWhoCantMonday0Night %}
+							<option style="color:red">{{h}}</option>
+						{% endfor %}
+					</select>
+					<br><br>
+					<b>Second nurse:</b>
+					<select name="headNurseList" id="second_nurse_list_monday1" style="width: 150px">
+						<option selected> {{Monday0NightAssignBeforeSecond}} </option>
+						{% for h in NurseWhoWantMonday0Night %}
+							<option style="color:green">{{h}}</option>
+						{% endfor %}
+						
+						{% for h in NurseWhoDontCareMonday0Night %}
+							<option style="color:black">{{h}}</option>
+						{% endfor %}
+						
+						{% for h in NurseWhoPreferNotMonday0Night %}
+							<option style="color:#f4b900">{{h}}</option>
+						{% endfor %}
+						
+						{% for h in NurseWhoCantMonday0Night %}
+							<option style="color:red">{{h}}</option>
+						{% endfor %}
+					</select>
+					<br><br>
+					<b>Stand by:</b>
+					<select name="headNurseList" id="stand_by_list_monday1" style="width: 150px">
+						<option selected> {{Monday0NightAssignBeforeStandBy}} </option>
+						{% for h in NurseWhoWantMonday0Night %}
+							<option style="color:green">{{h}}</option>
+						{% endfor %}
+						
+						{% for h in NurseWhoDontCareMonday0Night %}
+							<option style="color:black">{{h}}</option>
+						{% endfor %}
+						
+						{% for h in NurseWhoPreferNotMonday0Night %}
+							<option style="color:#f4b900">{{h}}</option>
+						{% endfor %}
+						
+						{% for h in NurseWhoCantMonday0Night %}
+							<option style="color:red">{{h}}</option>
+						{% endfor %}
+					</select>
+				</td>
+				<td>  <!-- Tuesday0 night -->
+					<b>Shift head:</b>
+					<select name="headNurseList" id="head_nurse_list_tuesday1" style="width: 150px">
+						<option selected> {{Tuesday0NightAssignBeforeHead}} </option>
+						{% for h in HeadNurseWhoWantTuesday0Night %}
+							<option style="color:green">{{h}}</option>
+						{% endfor %}
+						
+						{% for h in HeadNurseWhoDontCareTuesday0Night %}
+							<option style="color:black">{{h}}</option>
+						{% endfor %}
+						
+						{% for h in HeadNurseWhoPreferNotTuesday0Night %}
+							<option style="color:#f4b900">{{h}}</option>
+						{% endfor %}
+						
+						{% for h in HeadNurseWhoCantTuesday0Night %}
+							<option style="color:red">{{h}}</option>
+						{% endfor %}
+					</select>
+					<br><br>
+					<b>Second nurse:</b>
+					<select name="headNurseList" id="second_nurse_list_tuesday1" style="width: 150px">
+						<option selected> {{Tuesday0NightAssignBeforeSecond}} </option>
+						{% for h in NurseWhoWantTuesday0Night %}
+							<option style="color:green">{{h}}</option>
+						{% endfor %}
+						
+						{% for h in NurseWhoDontCareTuesday0Night %}
+							<option style="color:black">{{h}}</option>
+						{% endfor %}
+						
+						{% for h in NurseWhoPreferNotTuesday0Night %}
+							<option style="color:#f4b900">{{h}}</option>
+						{% endfor %}
+						
+						{% for h in NurseWhoCantTuesday0Night %}
+							<option style="color:red">{{h}}</option>
+						{% endfor %}
+					</select>
+					<br><br>
+					<b>Stand by:</b>
+					<select name="headNurseList" id="stand_by_nurse_list_tuesday1" style="width: 150px">
+						<option selected> {{Tuesday0NightAssignBeforeStandBy}} </option>
+						{% for h in NurseWhoWantTuesday0Night %}
+							<option style="color:green">{{h}}</option>
+						{% endfor %}
+						
+						{% for h in NurseWhoDontCareTuesday0Night %}
+							<option style="color:black">{{h}}</option>
+						{% endfor %}
+						
+						{% for h in NurseWhoPreferNotTuesday0Night %}
+							<option style="color:#f4b900">{{h}}</option>
+						{% endfor %}
+						
+						{% for h in NurseWhoCantTuesday0Night %}
+							<option style="color:red">{{h}}</option>
+						{% endfor %}	
+					</select>
+				</td>
+				<td>  <!-- Wednesday0 night -->
+					<b>Shift head:</b>
+					<select name="headNurseList" id="head_nurse_list_wednesday1" style="width: 150px">
+						<option selected> {{Wednesday0NightAssignBeforeHead}} </option>
+						{% for h in HeadNurseWhoWantWednesday0Night %}
+							<option style="color:green">{{h}}</option>
+						{% endfor %}
+						
+						{% for h in HeadNurseWhoDontCareWednesday0Night %}
+							<option style="color:black">{{h}}</option>
+						{% endfor %}
+						
+						{% for h in HeadNurseWhoPreferNotWednesday0Night %}
+							<option style="color:#f4b900">{{h}}</option>
+						{% endfor %}
+						
+						{% for h in HeadNurseWhoCantWednesday0Night %}
+							<option style="color:red">{{h}}</option>
+						{% endfor %}
+					</select>
+					<br><br>
+					<b>Second nurse:</b>
+					<select name="headNurseList" id="second_nurse_list_wednesday1" style="width: 150px">
+						<option selected> {{Wednesday0NightAssignBeforeSecond}} </option>
+						{% for h in NurseWhoWantWednesday0Night %}
+							<option style="color:green">{{h}}</option>
+						{% endfor %}
+						
+						{% for h in NurseWhoDontCareWednesday0Night %}
+							<option style="color:black">{{h}}</option>
+						{% endfor %}
+						
+						{% for h in NurseWhoPreferNotWednesday0Night %}
+							<option style="color:#f4b900">{{h}}</option>
+						{% endfor %}
+						
+						{% for h in NurseWhoCantWednesday0Night %}
+							<option style="color:red">{{h}}</option>
+						{% endfor %}
+					</select>
+					<br><br>
+					<b>Stand by:</b>
+					<select name="headNurseList" id="stand_by_nurse_list_wednesday1" style="width: 150px">
+						<option selected> {{Wednesday0NightAssignBeforeStandBy}} </option>
+						{% for h in NurseWhoWantWednesday0Night %}
+							<option style="color:green">{{h}}</option>
+						{% endfor %}
+						
+						{% for h in NurseWhoDontCareWednesday0Night %}
+							<option style="color:black">{{h}}</option>
+						{% endfor %}
+						
+						{% for h in NurseWhoPreferNotWednesday0Night %}
+							<option style="color:#f4b900">{{h}}</option>
+						{% endfor %}
+						
+						{% for h in NurseWhoCantWednesday0Night %}
+							<option style="color:red">{{h}}</option>
+						{% endfor %}
+					</select>
+				</td>
+				<td>  <!-- Thursday0 night -->
+					<b>Shift head:</b>
+					<select name="headNurseList" id="head_nurse_list_thursday1" style="width: 150px">
+						<option selected> {{Thursday0NightAssignBeforeHead}} </option>
+						{% for h in HeadNurseWhoWantThursday0Night %}
+							<option style="color:green">{{h}}</option>
+						{% endfor %}
+						
+						{% for h in HeadNurseWhoDontCareThursday0Night %}
+							<option style="color:black">{{h}}</option>
+						{% endfor %}
+						
+						{% for h in HeadNurseWhoPreferNotThursday0Night %}
+							<option style="color:#f4b900">{{h}}</option>
+						{% endfor %}
+						
+						{% for h in HeadNurseWhoCantThursday0Night %}
+							<option style="color:red">{{h}}</option>
+						{% endfor %}
+					</select>
+					<br><br>
+					<b>Second nurse:</b>
+					<select name="headNurseList" id="second_nurse_list_thursday1" style="width: 150px">
+						<option selected> {{Thursday0NightAssignBeforeSecond}} </option>
+						{% for h in NurseWhoWantThursday0Night %}
+							<option style="color:green">{{h}}</option>
+						{% endfor %}
+						
+						{% for h in NurseWhoDontCareThursday0Night %}
+							<option style="color:black">{{h}}</option>
+						{% endfor %}
+						
+						{% for h in NurseWhoPreferNotThursday0Night %}
+							<option style="color:#f4b900">{{h}}</option>
+						{% endfor %}
+						
+						{% for h in NurseWhoCantThursday0Night %}
+							<option style="color:red">{{h}}</option>
+						{% endfor %}
+					</select>
+					<br><br>
+					<b>Stand by:</b>
+					<select name="headNurseList" id="stand_by_nurse_list_thursday1" style="width: 150px">
+						<option selected> {{Thursday0NightAssignBeforeStandBy}} </option>
+						{% for h in NurseWhoWantThursday0Night %}
+							<option style="color:green">{{h}}</option>
+						{% endfor %}
+						
+						{% for h in NurseWhoDontCareThursday0Night %}
+							<option style="color:black">{{h}}</option>
+						{% endfor %}
+						
+						{% for h in NurseWhoPreferNotThursday0Night %}
+							<option style="color:#f4b900">{{h}}</option>
+						{% endfor %}
+						
+						{% for h in NurseWhoCantThursday0Night %}
+							<option style="color:red">{{h}}</option>
+						{% endfor %}
+					</select>
+				</td>
+				<td>  <!-- Friday0 night -->
+					<b>Shift head:</b>
+					<select name="headNurseList" id="head_nurse_list_friday1" style="width: 150px">
+						<option selected> {{Friday0NightAssignBeforeHead}} </option>
+						{% for h in HeadNurseWhoWantFriday0Night %}
+							<option style="color:green">{{h}}</option>
+						{% endfor %}
+						
+						{% for h in HeadNurseWhoDontCareFriday0Night %}
+							<option style="color:black">{{h}}</option>
+						{% endfor %}
+						
+						{% for h in HeadNurseWhoPreferNotFriday0Night %}
+							<option style="color:#f4b900">{{h}}</option>
+						{% endfor %}
+						
+						{% for h in HeadNurseWhoCantFriday0Night %}
+							<option style="color:red">{{h}}</option>
+						{% endfor %}
+					</select>
+					<br><br>
+					<b>Second nurse:</b>
+					<select name="headNurseList" id="second_nurse_list_friday1" style="width: 150px">
+						<option selected> {{Friday0NightAssignBeforeSecond}} </option>
+						{% for h in NurseWhoWantFriday0Night %}
+							<option style="color:green">{{h}}</option>
+						{% endfor %}
+						
+						{% for h in NurseWhoDontCareFriday0Night %}
+							<option style="color:black">{{h}}</option>
+						{% endfor %}
+						
+						{% for h in NurseWhoPreferNotFriday0Night %}
+							<option style="color:#f4b900">{{h}}</option>
+						{% endfor %}
+						
+						{% for h in NurseWhoCantFriday0Night %}
+							<option style="color:red">{{h}}</option>
+						{% endfor %}
+					</select>
+					<br><br>
+					<b>Stand by:</b>
+					<select name="headNurseList" id="stand_by_nurse_list_friday1" style="width: 150px">
+						<option selected> {{Friday0NightAssignBeforeStandBy}} </option>
+						{% for h in NurseWhoWantFriday0Night %}
+							<option style="color:green">{{h}}</option>
+						{% endfor %}
+						
+						{% for h in NurseWhoDontCareFriday0Night %}
+							<option style="color:black">{{h}}</option>
+						{% endfor %}
+						
+						{% for h in NurseWhoPreferNotFriday0Night %}
+							<option style="color:#f4b900">{{h}}</option>
+						{% endfor %}
+						
+						{% for h in NurseWhoCantFriday0Night %}
+							<option style="color:red">{{h}}</option>
+						{% endfor %}
+					</select>
+				</td>
+				<td>  <!-- Saturday0 night -->
+					<b>Shift head:</b>
+					<select name="headNurseList" id="head_nurse_list_saturday1" style="width: 150px">
+						<option selected> {{Saturday0NightAssignBeforeHead}} </option>
+						{% for h in HeadNurseWhoWantSaturday0Night %}
+							<option style="color:green">{{h}}</option>
+						{% endfor %}
+						
+						{% for h in HeadNurseWhoDontCareSaturday0Night %}
+							<option style="color:black">{{h}}</option>
+						{% endfor %}
+						
+						{% for h in HeadNurseWhoPreferNotSaturday0Night %}
+							<option style="color:#f4b900">{{h}}</option>
+						{% endfor %}
+						
+						{% for h in HeadNurseWhoCantSaturday0Night %}
+							<option style="color:red">{{h}}</option>
+						{% endfor %}
+					</select>
+					<br><br>
+					<b>Second nurse:</b>
+					<select name="headNurseList" id="second_nurse_list_saturday1" style="width: 150px">
+						<option selected> {{Saturday0NightAssignBeforeSecond}} </option>
+						{% for h in NurseWhoWantSaturday0Night %}
+							<option style="color:green">{{h}}</option>
+						{% endfor %}
+						
+						{% for h in NurseWhoDontCareSaturday0Night %}
+							<option style="color:black">{{h}}</option>
+						{% endfor %}
+						
+						{% for h in NurseWhoPreferNotSaturday0Night %}
+							<option style="color:#f4b900">{{h}}</option>
+						{% endfor %}
+						
+						{% for h in NurseWhoCantSaturday0Night %}
+							<option style="color:red">{{h}}</option>
+						{% endfor %}	
+					</select>
+					<br><br>
+					<b>Stand by:</b>
+					<select name="headNurseList" id="stand_by_nurse_list_saturday1" style="width: 150px">
+						<option selected> {{Saturday0NightAssignBeforeStandBy}} </option>
+						{% for h in NurseWhoWantSaturday0Night %}
+							<option style="color:green">{{h}}</option>
+						{% endfor %}
+						
+						{% for h in NurseWhoDontCareSaturday0Night %}
+							<option style="color:black">{{h}}</option>
+						{% endfor %}
+						
+						{% for h in NurseWhoPreferNotSaturday0Night %}
+							<option style="color:#f4b900">{{h}}</option>
+						{% endfor %}
+						
+						{% for h in NurseWhoCantSaturday0Night %}
+							<option style="color:red">{{h}}</option>
+						{% endfor %}
+					</select>
+				</td>
+            </tr>
+            <tr>
+                <td>  <!-- Sunday0 morning -->
+					<b>Shift head:</b>
+					<select name="headNurseList" id="head_nurse_list_sunday2" style="width: 150px">
+						<option selected> {{Sunday0MorningAssignBeforeHead}} </option>
+						{% for h in HeadNurseWhoWantSunday0Morning %}
+							<option style="color:green">{{h}}</option>
+						{% endfor %}
+						
+						{% for h in HeadNurseWhoDontCareSunday0Morning %}
+							<option style="color:black">{{h}}</option>
+						{% endfor %}
+						
+						{% for h in HeadNurseWhoPreferNotSunday0Morning  %}
+							<option style="color:#f4b900">{{h}}</option>
+						{% endfor %}
+						
+						{% for h in HeadNurseWhoCantSunday0Morning  %}
+							<option style="color:red">{{h}}</option>
+						{% endfor %}	
+					</select>
+					<br><br>
+					<b>Second nurse:</b>
+					<select name="headNurseList" id="second_nurse_list_sunday2" style="width: 150px">
+						<option selected> {{Sunday0MorningAssignBeforeSecond}} </option>
+						{% for h in NurseWhoWantSunday0Morning  %}
+							<option style="color:green">{{h}}</option>
+						{% endfor %}
+						
+						{% for h in NurseWhoDontCareSunday0Morning  %}
+							<option style="color:black">{{h}}</option>
+						{% endfor %}
+						
+						{% for h in NurseWhoPreferNotSunday0Morning  %}
+							<option style="color:#f4b900">{{h}}</option>
+						{% endfor %}
+						
+						{% for h in NurseWhoCantSunday0Morning  %}
+							<option style="color:red">{{h}}</option>
+						{% endfor %}
+						
+					</select>
+					<br><br>
+					<b>Stand by:</b>
+					<select name="headNurseList" id="stand_by_nurse_list_sunday2" style="width: 150px">
+						<option selected> {{Sunday0MorningAssignBeforeStandBy}} </option>
+						{% for h in NurseWhoWantSunday0Morning  %}
+							<option style="color:green">{{h}}</option>
+						{% endfor %}
+						
+						{% for h in NurseWhoDontCareSunday0Morning  %}
+							<option style="color:black">{{h}}</option>
+						{% endfor %}
+						
+						{% for h in NurseWhoPreferNotSunday0Morning  %}
+							<option style="color:#f4b900">{{h}}</option>
+						{% endfor %}
+						
+						{% for h in NurseWhoCantSunday0Morning  %}
+							<option style="color:red">{{h}}</option>
+						{% endfor %}
+						
+					</select>
+				</td>
+				<td>  <!-- Monday0 morning -->
+					<b>Shift head:</b>
+					<select name="headNurseList" id="head_nurse_list_monday2" style="width: 150px">
+						<option selected> {{Monday0MorningAssignBeforeHead}} </option>
+						{% for h in HeadNurseWhoWantMonday0Morning %}
+							<option style="color:green">{{h}}</option>
+						{% endfor %}
+						
+						{% for h in HeadNurseWhoDontCareMonday0Morning %}
+							<option style="color:black">{{h}}</option>
+						{% endfor %}
+						
+						{% for h in HeadNurseWhoPreferNotMonday0Morning  %}
+							<option style="color:#f4b900">{{h}}</option>
+						{% endfor %}
+						
+						{% for h in HeadNurseWhoCantMonday0Morning  %}
+							<option style="color:red">{{h}}</option>
+						{% endfor %}
+						
+					</select>
+					<br><br>
+					<b>Second nurse:</b>
+					<select name="headNurseList" id="second_nurse_list_monday2" style="width: 150px">
+						<option selected> {{Monday0MorningAssignBeforeSecond}} </option>
+						{% for h in NurseWhoWantMonday0Morning  %}
+							<option style="color:green">{{h}}</option>
+						{% endfor %}
+						
+						{% for h in NurseWhoDontCareMonday0Morning  %}
+							<option style="color:black">{{h}}</option>
+						{% endfor %}
+						
+						{% for h in NurseWhoPreferNotMonday0Morning  %}
+							<option style="color:#f4b900">{{h}}</option>
+						{% endfor %}
+						
+						{% for h in NurseWhoCantMonday0Morning  %}
+							<option style="color:red">{{h}}</option>
+						{% endfor %}
+						
+					</select>
+					<br><br>
+					<b>Stand by:</b>
+					<select name="headNurseList" id="stand_by_nurse_list_monday2" style="width: 150px">
+						<option selected> {{Monday0MorningAssignBeforeStandBy}} </option>
+						{% for h in NurseWhoWantMonday0Morning  %}
+							<option style="color:green">{{h}}</option>
+						{% endfor %}
+						
+						{% for h in NurseWhoDontCareMonday0Morning  %}
+							<option style="color:black">{{h}}</option>
+						{% endfor %}
+						
+						{% for h in NurseWhoPreferNotMonday0Morning  %}
+							<option style="color:#f4b900">{{h}}</option>
+						{% endfor %}
+						
+						{% for h in NurseWhoCantMonday0Morning  %}
+							<option style="color:red">{{h}}</option>
+						{% endfor %}
+						
+					</select>
+				</td>
+				<td>  <!-- Tuesday0 morning -->
+					<b>Shift head:</b>
+					<select name="headNurseList" id="head_nurse_list_tuesday2" style="width: 150px">
+						<option selected> {{Tuesday0MorningAssignBeforeHead}} </option>
+						{% for h in HeadNurseWhoWantTuesday0Morning %}
+							<option style="color:green">{{h}}</option>
+						{% endfor %}
+						
+						{% for h in HeadNurseWhoDontCareTuesday0Morning %}
+							<option style="color:black">{{h}}</option>
+						{% endfor %}
+						
+						{% for h in HeadNurseWhoPreferNotTuesday0Morning  %}
+							<option style="color:#f4b900">{{h}}</option>
+						{% endfor %}
+						
+						{% for h in HeadNurseWhoCantTuesday0Morning  %}
+							<option style="color:red">{{h}}</option>
+						{% endfor %}
+						
+					</select>
+					<br><br>
+					<b>Second nurse:</b>
+					<select name="headNurseList" id="second_nurse_list_tuesday2" style="width: 150px">
+						<option selected> {{Tuesday0MorningAssignBeforeSecond}} </option>
+						{% for h in NurseWhoWantTuesday0Morning  %}
+							<option style="color:green">{{h}}</option>
+						{% endfor %}
+						
+						{% for h in NurseWhoDontCareTuesday0Morning  %}
+							<option style="color:black">{{h}}</option>
+						{% endfor %}
+						
+						{% for h in NurseWhoPreferNotTuesday0Morning  %}
+							<option style="color:#f4b900">{{h}}</option>
+						{% endfor %}
+						
+						{% for h in NurseWhoCantTuesday0Morning  %}
+							<option style="color:red">{{h}}</option>
+						{% endfor %}
+						
+					</select>
+					<br><br>
+					<b>Third nurse:</b>
+					<select name="headNurseList" id="third_nurse_list_tuesday2" style="width: 150px">
+						<option selected> {{Tuesday0MorningAssignBeforeThird}} </option>
+						{% for h in NurseWhoWantTuesday0Morning  %}
+							<option style="color:green">{{h}}</option>
+						{% endfor %}
+						
+						{% for h in NurseWhoDontCareTuesday0Morning  %}
+							<option style="color:black">{{h}}</option>
+						{% endfor %}
+						
+						{% for h in NurseWhoPreferNotTuesday0Morning  %}
+							<option style="color:#f4b900">{{h}}</option>
+						{% endfor %}
+						
+						{% for h in NurseWhoCantTuesday0Morning  %}
+							<option style="color:red">{{h}}</option>
+						{% endfor %}
+						
+					</select>
+					<br><br>
+					<b>Stand by:</b>
+					<select name="headNurseList" id="stand_by_nurse_tuesday2" style="width: 150px">
+						<option selected> {{Tuesday0MorningAssignBeforeStandBy}} </option>
+						{% for h in NurseWhoWantTuesday0Morning  %}
+							<option style="color:green">{{h}}</option>
+						{% endfor %}
+						
+						{% for h in NurseWhoDontCareTuesday0Morning  %}
+							<option style="color:black">{{h}}</option>
+						{% endfor %}
+						
+						{% for h in NurseWhoPreferNotTuesday0Morning  %}
+							<option style="color:#f4b900">{{h}}</option>
+						{% endfor %}
+						
+						{% for h in NurseWhoCantTuesday0Morning  %}
+							<option style="color:red">{{h}}</option>
+						{% endfor %}
+					</select>
+				</td>
+				<td>  <!-- Wednesday0 morning -->
+					<b>Shift head:</b>
+					<select name="headNurseList" id="head_nurse_list_wednesday2" style="width: 150px">
+						<option selected> {{Wednesday0MorningAssignBeforeHead}} </option>
+						{% for h in HeadNurseWhoWantWednesday0Morning %}
+							<option style="color:green">{{h}}</option>
+						{% endfor %}
+						
+						{% for h in HeadNurseWhoDontCareWednesday0Morning %}
+							<option style="color:black">{{h}}</option>
+						{% endfor %}
+						
+						{% for h in HeadNurseWhoPreferNotWednesday0Morning  %}
+							<option style="color:#f4b900">{{h}}</option>
+						{% endfor %}
+						
+						{% for h in HeadNurseWhoCantWednesday0Morning  %}
+							<option style="color:red">{{h}}</option>
+						{% endfor %}
+						
+					</select>
+					<br><br>
+					<b>Second nurse:</b>
+					<select name="headNurseList" id="second_nurse_list_wednesday2" style="width: 150px">
+						<option selected> {{Wednesday0MorningAssignBeforeSecond}} </option>
+						{% for h in NurseWhoWantWednesday0Morning  %}
+							<option style="color:green">{{h}}</option>
+						{% endfor %}
+						
+						{% for h in NurseWhoDontCareWednesday0Morning  %}
+							<option style="color:black">{{h}}</option>
+						{% endfor %}
+						
+						{% for h in NurseWhoPreferNotWednesday0Morning  %}
+							<option style="color:#f4b900">{{h}}</option>
+						{% endfor %}
+						
+						{% for h in NurseWhoCantWednesday0Morning  %}
+							<option style="color:red">{{h}}</option>
+						{% endfor %}
+					</select>
+					<br><br>
+					<b>Stand by:</b>
+					<select name="headNurseList" id="stand_by_nurse_list_wednesday2" style="width: 150px">
+						<option selected> {{Wednesday0MorningAssignBeforeStandBy}} </option>
+						{% for h in NurseWhoWantWednesday0Morning  %}
+							<option style="color:green">{{h}}</option>
+						{% endfor %}
+						
+						{% for h in NurseWhoDontCareWednesday0Morning  %}
+							<option style="color:black">{{h}}</option>
+						{% endfor %}
+						
+						{% for h in NurseWhoPreferNotWednesday0Morning  %}
+							<option style="color:#f4b900">{{h}}</option>
+						{% endfor %}
+						
+						{% for h in NurseWhoCantWednesday0Morning  %}
+							<option style="color:red">{{h}}</option>
+						{% endfor %}
+					</select>
+				</td>
+				<td>  <!-- Thursday0 morning -->
+					<b>Shift head:</b>
+					<select name="headNurseList" id="head_nurse_list_thursday2" style="width: 150px">
+						<option selected> {{Thursday0MorningAssignBeforeHead}} </option>
+						{% for h in HeadNurseWhoWantThursday0Morning %}
+							<option style="color:green">{{h}}</option>
+						{% endfor %}
+						
+						{% for h in HeadNurseWhoDontCareThursday0Morning %}
+							<option style="color:black">{{h}}</option>
+						{% endfor %}
+						
+						{% for h in HeadNurseWhoPreferNotThursday0Morning  %}
+							<option style="color:#f4b900">{{h}}</option>
+						{% endfor %}
+						
+						{% for h in HeadNurseWhoCantThursday0Morning  %}
+							<option style="color:red">{{h}}</option>
+						{% endfor %}
+					</select>
+					<br><br>
+					<b>Second nurse:</b>
+					<select name="headNurseList" id="second_nurse_list_thursday2" style="width: 150px">
+						<option selected> {{Thursday0MorningAssignBeforeSecond}} </option>
+						{% for h in NurseWhoWantThursday0Morning  %}
+							<option style="color:green">{{h}}</option>
+						{% endfor %}
+						
+						{% for h in NurseWhoDontCareThursday0Morning  %}
+							<option style="color:black">{{h}}</option>
+						{% endfor %}
+						
+						{% for h in NurseWhoPreferNotThursday0Morning  %}
+							<option style="color:#f4b900">{{h}}</option>
+						{% endfor %}
+						
+						{% for h in NurseWhoCantThursday0Morning  %}
+							<option style="color:red">{{h}}</option>
+						{% endfor %}
+					</select>
+					<br><br>
+					<b>Third nurse:</b>
+					<select name="headNurseList" id="third_nurse_list_thursday2" style="width: 150px">
+						<option selected> {{Thursday0MorningAssignBeforeThird}} </option>
+						{% for h in NurseWhoWantThursday0Morning  %}
+							<option style="color:green">{{h}}</option>
+						{% endfor %}
+						
+						{% for h in NurseWhoDontCareThursday0Morning  %}
+							<option style="color:black">{{h}}</option>
+						{% endfor %}
+						
+						{% for h in NurseWhoPreferNotThursday0Morning  %}
+							<option style="color:#f4b900">{{h}}</option>
+						{% endfor %}
+						
+						{% for h in NurseWhoCantThursday0Morning  %}
+							<option style="color:red">{{h}}</option>
+						{% endfor %}
+					</select>
+					<br><br>
+					<b>Stand by:</b>
+					<select name="headNurseList" id="stand_by_list_thursday2" style="width: 150px">
+						<option selected> {{Thursday0MorningAssignBeforeStandBy}} </option>
+						{% for h in NurseWhoWantThursday0Morning  %}
+							<option style="color:green">{{h}}</option>
+						{% endfor %}
+						
+						{% for h in NurseWhoDontCareThursday0Morning  %}
+							<option style="color:black">{{h}}</option>
+						{% endfor %}
+						
+						{% for h in NurseWhoPreferNotThursday0Morning  %}
+							<option style="color:#f4b900">{{h}}</option>
+						{% endfor %}
+						
+						{% for h in NurseWhoCantThursday0Morning  %}
+							<option style="color:red">{{h}}</option>
+						{% endfor %}
+					</select>
+				</td>
+				<td>  <!-- Friday0 morning -->
+					<b>Shift head:</b>
+					<select name="headNurseList" id="head_nurse_list_friday2" style="width: 150px">
+						<option selected> {{Friday0MorningAssignBeforeHead}} </option>
+						{% for h in HeadNurseWhoWantFriday0Morning %}
+							<option style="color:green">{{h}}</option>
+						{% endfor %}
+						
+						{% for h in HeadNurseWhoDontCareFriday0Morning %}
+							<option style="color:black">{{h}}</option>
+						{% endfor %}
+						
+						{% for h in HeadNurseWhoPreferNotFriday0Morning  %}
+							<option style="color:#f4b900">{{h}}</option>
+						{% endfor %}
+						
+						{% for h in HeadNurseWhoCantFriday0Morning  %}
+							<option style="color:red">{{h}}</option>
+						{% endfor %}
+					</select>
+					<br><br>
+					<b>Second nurse:</b>
+					<select name="headNurseList" id="second_nurse_list_friday2" style="width: 150px">
+						<option selected> {{Friday0MorningAssignBeforeSecond}} </option>
+						{% for h in NurseWhoWantFriday0Morning  %}
+							<option style="color:green">{{h}}</option>
+						{% endfor %}
+						
+						{% for h in NurseWhoDontCareFriday0Morning  %}
+							<option style="color:black">{{h}}</option>
+						{% endfor %}
+						
+						{% for h in NurseWhoPreferNotFriday0Morning  %}
+							<option style="color:#f4b900">{{h}}</option>
+						{% endfor %}
+						
+						{% for h in NurseWhoCantFriday0Morning  %}
+							<option style="color:red">{{h}}</option>
+						{% endfor %}
+					</select>
+					<br><br>
+					<b>Stand by:</b>
+					<select name="headNurseList" id="stand_by_nurse_list_friday2" style="width: 150px">
+						<option selected> {{Friday0MorningAssignBeforeStandBy}} </option>
+						{% for h in NurseWhoWantFriday0Morning  %}
+							<option style="color:green">{{h}}</option>
+						{% endfor %}
+						
+						{% for h in NurseWhoDontCareFriday0Morning  %}
+							<option style="color:black">{{h}}</option>
+						{% endfor %}
+						
+						{% for h in NurseWhoPreferNotFriday0Morning  %}
+							<option style="color:#f4b900">{{h}}</option>
+						{% endfor %}
+						
+						{% for h in NurseWhoCantFriday0Morning  %}
+							<option style="color:red">{{h}}</option>
+						{% endfor %}
+					</select>
+				</td>
+				<td>  <!-- Saturday0 morning -->
+					<b>Shift head:</b>
+					<select name="headNurseList" id="head_nurse_list_saturday2" style="width: 150px">
+						<option selected> {{Saturday0MorningAssignBeforeHead}} </option>
+						{% for h in HeadNurseWhoWantSaturday0Morning %}
+							<option style="color:green">{{h}}</option>
+						{% endfor %}
+						
+						{% for h in HeadNurseWhoDontCareSaturday0Morning %}
+							<option style="color:black">{{h}}</option>
+						{% endfor %}
+						
+						{% for h in HeadNurseWhoPreferNotSaturday0Morning  %}
+							<option style="color:#f4b900">{{h}}</option>
+						{% endfor %}
+						
+						{% for h in HeadNurseWhoCantSaturday0Morning  %}
+							<option style="color:red">{{h}}</option>
+						{% endfor %}
+					</select>
+					<br><br>
+					<b>Second nurse:</b>
+					<select name="headNurseList" id="second_nurse_list_saturday2" style="width: 150px">
+						<option selected> {{Saturday0MorningAssignBeforeSecond}} </option>
+						{% for h in NurseWhoWantSaturday0Morning  %}
+							<option style="color:green">{{h}}</option>
+						{% endfor %}
+						
+						{% for h in NurseWhoDontCareSaturday0Morning  %}
+							<option style="color:black">{{h}}</option>
+						{% endfor %}
+						
+						{% for h in NurseWhoPreferNotSaturday0Morning  %}
+							<option style="color:#f4b900">{{h}}</option>
+						{% endfor %}
+						
+						{% for h in NurseWhoCantSaturday0Morning  %}
+							<option style="color:red">{{h}}</option>
+						{% endfor %}	
+					</select>
+					<br><br>
+					<b>Stand by:</b>
+					<select name="headNurseList" id="stand_by_nurse_list_saturday2" style="width: 150px">
+						<option selected> {{Saturday0MorningAssignBeforeStandBy}} </option>
+						{% for h in NurseWhoWantSaturday0Morning  %}
+							<option style="color:green">{{h}}</option>
+						{% endfor %}
+						
+						{% for h in NurseWhoDontCareSaturday0Morning  %}
+							<option style="color:black">{{h}}</option>
+						{% endfor %}
+						
+						{% for h in NurseWhoPreferNotSaturday0Morning  %}
+							<option style="color:#f4b900">{{h}}</option>
+						{% endfor %}
+						
+						{% for h in NurseWhoCantSaturday0Morning  %}
+							<option style="color:red">{{h}}</option>
+						{% endfor %}
+					</select>
+				</td>
+            </tr>
+			<tr>
+                <td>  <!-- Sunday0 noon -->
+					<b>Shift head:</b>
+					<select name="headNurseList" id="head_nurse_list_sunday3" style="width: 150px">
+						<option selected> {{Sunday0NoonAssignBeforeHead}} </option>
+						{% for h in HeadNurseWhoWantSunday0Noon %}
+							<option style="color:green">{{h}}</option>
+						{% endfor %}
+						
+						{% for h in HeadNurseWhoDontCareSunday0Noon %}
+							<option style="color:black">{{h}}</option>
+						{% endfor %}
+						
+						{% for h in HeadNurseWhoPreferNotSunday0Noon  %}
+							<option style="color:#f4b900">{{h}}</option>
+						{% endfor %}
+						
+						{% for h in HeadNurseWhoCantSunday0Noon  %}
+							<option style="color:red">{{h}}</option>
+						{% endfor %}
+					</select>
+					<br><br>
+					<b>Second nurse:</b>
+					<select name="headNurseList" id="second_nurse_list_sunday3" style="width: 150px">
+						<option selected> {{Sunday0NoonAssignBeforeSecond}} </option>
+						{% for h in NurseWhoWantSunday0Noon  %}
+							<option style="color:green">{{h}}</option>
+						{% endfor %}
+						
+						{% for h in NurseWhoDontCareSunday0Noon  %}
+							<option style="color:black">{{h}}</option>
+						{% endfor %}
+						
+						{% for h in NurseWhoPreferNotSunday0Noon  %}
+							<option style="color:#f4b900">{{h}}</option>
+						{% endfor %}
+						
+						{% for h in NurseWhoCantSunday0Noon  %}
+							<option style="color:red">{{h}}</option>
+						{% endfor %}
+					</select>
+					<br><br>
+					<b>Stand by:</b>
+					<select name="headNurseList" id="stand_by_list_sunday3" style="width: 150px">
+						<option selected> {{Sunday0NoonAssignBeforeStandBy}} </option>
+						{% for h in NurseWhoWantSunday0Noon  %}
+							<option style="color:green">{{h}}</option>
+						{% endfor %}
+						
+						{% for h in NurseWhoDontCareSunday0Noon  %}
+							<option style="color:black">{{h}}</option>
+						{% endfor %}
+						
+						{% for h in NurseWhoPreferNotSunday0Noon  %}
+							<option style="color:#f4b900">{{h}}</option>
+						{% endfor %}
+						
+						{% for h in NurseWhoCantSunday0Noon  %}
+							<option style="color:red">{{h}}</option>
+						{% endfor %}
+					</select>
+				</td>
+				<td>  <!-- Monday0 noon -->
+					<b>Shift head:</b>
+					<select name="headNurseList" id="head_nurse_list_monday3" style="width: 150px">
+						<option selected> {{Monday0NoonAssignBeforeHead}} </option>
+						{% for h in HeadNurseWhoWantMonday0Noon %}
+							<option style="color:green">{{h}}</option>
+						{% endfor %}
+						
+						{% for h in HeadNurseWhoDontCareMonday0Noon %}
+							<option style="color:black">{{h}}</option>
+						{% endfor %}
+						
+						{% for h in HeadNurseWhoPreferNotMonday0Noon  %}
+							<option style="color:#f4b900">{{h}}</option>
+						{% endfor %}
+						
+						{% for h in HeadNurseWhoCantMonday0Noon  %}
+							<option style="color:red">{{h}}</option>
+						{% endfor %}
+					</select>
+					<br><br>
+					<b>Second nurse:</b>
+					<select name="headNurseList" id="second_nurse_list_monday3" style="width: 150px">
+						<option selected> {{Monday0NoonAssignBeforeSecond}} </option>
+						{% for h in NurseWhoWantMonday0Noon  %}
+							<option style="color:green">{{h}}</option>
+						{% endfor %}
+						
+						{% for h in NurseWhoDontCareMonday0Noon  %}
+							<option style="color:black">{{h}}</option>
+						{% endfor %}
+						
+						{% for h in NurseWhoPreferNotMonday0Noon  %}
+							<option style="color:#f4b900">{{h}}</option>
+						{% endfor %}
+						
+						{% for h in NurseWhoCantMonday0Noon  %}
+							<option style="color:red">{{h}}</option>
+						{% endfor %}
+					</select>
+					<br><br>
+					<b>Stand by:</b>
+					<select name="headNurseList" id="stand_by_nurse_list_monday3" style="width: 150px">
+						<option selected> {{Monday0NoonAssignBeforeStandBy}} </option>
+						{% for h in NurseWhoWantMonday0Noon  %}
+							<option style="color:green">{{h}}</option>
+						{% endfor %}
+						
+						{% for h in NurseWhoDontCareMonday0Noon  %}
+							<option style="color:black">{{h}}</option>
+						{% endfor %}
+						
+						{% for h in NurseWhoPreferNotMonday0Noon  %}
+							<option style="color:#f4b900">{{h}}</option>
+						{% endfor %}
+						
+						{% for h in NurseWhoCantMonday0Noon  %}
+							<option style="color:red">{{h}}</option>
+						{% endfor %}
+					</select>
+				</td>
+				<td>  <!-- Tuesday0 noon -->
+					<b>Shift head:</b>
+					<select name="headNurseList" id="head_nurse_list_tuesday3" style="width: 150px">
+						<option selected> {{Tuesday0NoonAssignBeforeHead}} </option>
+						{% for h in HeadNurseWhoWantTuesday0Noon %}
+							<option style="color:green">{{h}}</option>
+						{% endfor %}
+						
+						{% for h in HeadNurseWhoDontCareTuesday0Noon %}
+							<option style="color:black">{{h}}</option>
+						{% endfor %}
+						
+						{% for h in HeadNurseWhoPreferNotTuesday0Noon  %}
+							<option style="color:#f4b900">{{h}}</option>
+						{% endfor %}
+						
+						{% for h in HeadNurseWhoCantTuesday0Noon  %}
+							<option style="color:red">{{h}}</option>
+						{% endfor %}
+					</select>
+					<br><br>
+					<b>Second nurse:</b>
+					<select name="headNurseList" id="second_nurse_list_tuesday3" style="width: 150px">
+						<option selected> {{Tuesday0NoonAssignBeforeSecond}} </option>
+						{% for h in NurseWhoWantTuesday0Noon  %}
+							<option style="color:green">{{h}}</option>
+						{% endfor %}
+						
+						{% for h in NurseWhoDontCareTuesday0Noon  %}
+							<option style="color:black">{{h}}</option>
+						{% endfor %}
+						
+						{% for h in NurseWhoPreferNotTuesday0Noon  %}
+							<option style="color:#f4b900">{{h}}</option>
+						{% endfor %}
+						
+						{% for h in NurseWhoCantTuesday0Noon  %}
+							<option style="color:red">{{h}}</option>
+						{% endfor %}
+					</select>
+					<br><br>
+					<b>Stand by:</b>
+					<select name="headNurseList" id="stand_by_nurse_list_tuesday3" style="width: 150px">
+						<option selected> {{Tuesday0NoonAssignBeforeStandBy}} </option>
+						{% for h in NurseWhoWantTuesday0Noon  %}
+							<option style="color:green">{{h}}</option>
+						{% endfor %}
+						
+						{% for h in NurseWhoDontCareTuesday0Noon  %}
+							<option style="color:black">{{h}}</option>
+						{% endfor %}
+						
+						{% for h in NurseWhoPreferNotTuesday0Noon  %}
+							<option style="color:#f4b900">{{h}}</option>
+						{% endfor %}
+						
+						{% for h in NurseWhoCantTuesday0Noon  %}
+							<option style="color:red">{{h}}</option>
+						{% endfor %}
+					</select>
+				</td>
+				<td>  <!-- Wednesday0 noon -->
+					<b>Shift head:</b>
+					<select name="headNurseList" id="head_nurse_list_wednesday3" style="width: 150px">
+						<option selected> {{Wednesday0NoonAssignBeforeHead}} </option>
+						{% for h in HeadNurseWhoWantWednesday0Noon %}
+							<option style="color:green">{{h}}</option>
+						{% endfor %}
+						
+						{% for h in HeadNurseWhoDontCareWednesday0Noon %}
+							<option style="color:black">{{h}}</option>
+						{% endfor %}
+						
+						{% for h in HeadNurseWhoPreferNotWednesday0Noon  %}
+							<option style="color:#f4b900">{{h}}</option>
+						{% endfor %}
+						
+						{% for h in HeadNurseWhoCantWednesday0Noon  %}
+							<option style="color:red">{{h}}</option>
+						{% endfor %}
+					</select>
+					<br><br>
+					<b>Second nurse:</b>
+					<select name="headNurseList" id="second_nurse_list_wednesday3" style="width: 150px">
+						<option selected> {{Wednesday0NoonAssignBeforeSecond}} </option>
+						{% for h in NurseWhoWantWednesday0Noon  %}
+							<option style="color:green">{{h}}</option>
+						{% endfor %}
+						
+						{% for h in NurseWhoDontCareWednesday0Noon  %}
+							<option style="color:black">{{h}}</option>
+						{% endfor %}
+						
+						{% for h in NurseWhoPreferNotWednesday0Noon  %}
+							<option style="color:#f4b900">{{h}}</option>
+						{% endfor %}
+						
+						{% for h in NurseWhoCantWednesday0Noon  %}
+							<option style="color:red">{{h}}</option>
+						{% endfor %}
+					</select>
+					<br><br>
+					<b>Stand by:</b>
+					<select name="headNurseList" id="stand_by_list_wednesday3" style="width: 150px">
+						<option selected> {{Wednesday0NoonAssignBeforeStandBy}} </option>
+						{% for h in NurseWhoWantWednesday0Noon  %}
+							<option style="color:green">{{h}}</option>
+						{% endfor %}
+						
+						{% for h in NurseWhoDontCareWednesday0Noon  %}
+							<option style="color:black">{{h}}</option>
+						{% endfor %}
+						
+						{% for h in NurseWhoPreferNotWednesday0Noon  %}
+							<option style="color:#f4b900">{{h}}</option>
+						{% endfor %}
+						
+						{% for h in NurseWhoCantWednesday0Noon  %}
+							<option style="color:red">{{h}}</option>
+						{% endfor %}
+					</select>
+				</td>
+				<td>  <!-- Thursday0 noon -->
+					<b>Shift head:</b>
+					<select name="headNurseList" id="head_nurse_list_thursday3" style="width: 150px">
+						<option selected> {{Thursday0NoonAssignBeforeHead}} </option>
+						{% for h in HeadNurseWhoWantThursday0Noon %}
+							<option style="color:green">{{h}}</option>
+						{% endfor %}
+						
+						{% for h in HeadNurseWhoDontCareThursday0Noon %}
+							<option style="color:black">{{h}}</option>
+						{% endfor %}
+						
+						{% for h in HeadNurseWhoPreferNotThursday0Noon  %}
+							<option style="color:#f4b900">{{h}}</option>
+						{% endfor %}
+						
+						{% for h in HeadNurseWhoCantThursday0Noon  %}
+							<option style="color:red">{{h}}</option>
+						{% endfor %}
+					</select>
+					<br><br>
+					<b>Second nurse:</b>
+					<select name="headNurseList" id="second_nurse_list_thursday3" style="width: 150px">
+						<option selected> {{Thursday0NoonAssignBeforeSecond}} </option>
+						{% for h in NurseWhoWantThursday0Noon  %}
+							<option style="color:green">{{h}}</option>
+						{% endfor %}
+						
+						{% for h in NurseWhoDontCareThursday0Noon  %}
+							<option style="color:black">{{h}}</option>
+						{% endfor %}
+						
+						{% for h in NurseWhoPreferNotThursday0Noon  %}
+							<option style="color:#f4b900">{{h}}</option>
+						{% endfor %}
+						
+						{% for h in NurseWhoCantThursday0Noon  %}
+							<option style="color:red">{{h}}</option>
+						{% endfor %}
+					</select>
+					<br><br>
+					<b>Stand by:</b>
+					<select name="headNurseList" id="stand_by_nurse_thursday3" style="width: 150px">
+						<option selected> {{Thursday0NoonAssignBeforeStandBy}} </option>
+						{% for h in NurseWhoWantThursday0Noon  %}
+							<option style="color:green">{{h}}</option>
+						{% endfor %}
+						
+						{% for h in NurseWhoDontCareThursday0Noon  %}
+							<option style="color:black">{{h}}</option>
+						{% endfor %}
+						
+						{% for h in NurseWhoPreferNotThursday0Noon  %}
+							<option style="color:#f4b900">{{h}}</option>
+						{% endfor %}
+						
+						{% for h in NurseWhoCantThursday0Noon  %}
+							<option style="color:red">{{h}}</option>
+						{% endfor %}
+					</select>
+				</td>
+				<td>  <!-- Friday0 noon -->
+					<b>Shift head:</b>
+					<select name="headNurseList" id="head_nurse_list_friday3" style="width: 150px">
+						<option selected> {{Friday0NoonAssignBeforeHead}} </option>
+						{% for h in HeadNurseWhoWantFriday0Noon %}
+							<option style="color:green">{{h}}</option>
+						{% endfor %}
+						
+						{% for h in HeadNurseWhoDontCareFriday0Noon %}
+							<option style="color:black">{{h}}</option>
+						{% endfor %}
+						
+						{% for h in HeadNurseWhoPreferNotFriday0Noon  %}
+							<option style="color:#f4b900">{{h}}</option>
+						{% endfor %}
+						
+						{% for h in HeadNurseWhoCantFriday0Noon  %}
+							<option style="color:red">{{h}}</option>
+						{% endfor %}
+					</select>
+					<br><br>
+					<b>Second nurse:</b>
+					<select name="headNurseList" id="second_nurse_list_friday3" style="width: 150px">
+						<option selected> {{Friday0NoonAssignBeforeSecond}} </option>
+						{% for h in NurseWhoWantFriday0Noon  %}
+							<option style="color:green">{{h}}</option>
+						{% endfor %}
+						
+						{% for h in NurseWhoDontCareFriday0Noon  %}
+							<option style="color:black">{{h}}</option>
+						{% endfor %}
+						
+						{% for h in NurseWhoPreferNotFriday0Noon  %}
+							<option style="color:#f4b900">{{h}}</option>
+						{% endfor %}
+						
+						{% for h in NurseWhoCantFriday0Noon  %}
+							<option style="color:red">{{h}}</option>
+						{% endfor %}
+					</select>
+					<br><br>
+					<b>Stand by:</b>
+					<select name="headNurseList" id="stand_by_nurse_list_friday3" style="width: 150px">
+						<option selected> {{Friday0NoonAssignBeforeStandBy}} </option>
+						{% for h in NurseWhoWantFriday0Noon  %}
+							<option style="color:green">{{h}}</option>
+						{% endfor %}
+						
+						{% for h in NurseWhoDontCareFriday0Noon  %}
+							<option style="color:black">{{h}}</option>
+						{% endfor %}
+						
+						{% for h in NurseWhoPreferNotFriday0Noon  %}
+							<option style="color:#f4b900">{{h}}</option>
+						{% endfor %}
+						
+						{% for h in NurseWhoCantFriday0Noon  %}
+							<option style="color:red">{{h}}</option>
+						{% endfor %}
+					</select>
+				</td>
+				<td>  <!-- Saturday0 noon -->
+					<b>Shift head:</b>
+					<select name="headNurseList" id="head_nurse_list_saturday3" style="width: 150px">
+						<option selected> {{Saturday0NoonAssignBeforeHead}} </option>
+						{% for h in HeadNurseWhoWantSaturday0Noon %}
+							<option style="color:green">{{h}}</option>
+						{% endfor %}
+						
+						{% for h in HeadNurseWhoDontCareSaturday0Noon %}
+							<option style="color:black">{{h}}</option>
+						{% endfor %}
+						
+						{% for h in HeadNurseWhoPreferNotSaturday0Noon  %}
+							<option style="color:#f4b900">{{h}}</option>
+						{% endfor %}
+						
+						{% for h in HeadNurseWhoCantSaturday0Noon  %}
+							<option style="color:red">{{h}}</option>
+						{% endfor %}	
+					</select>
+					<br><br>
+					<b>Second nurse:</b>
+					<select name="headNurseList" id="second_nurse_list_saturday3" style="width: 150px">
+						<option selected> {{Saturday0NoonAssignBeforeSecond}} </option>
+						{% for h in NurseWhoWantSaturday0Noon  %}
+							<option style="color:green">{{h}}</option>
+						{% endfor %}
+						
+						{% for h in NurseWhoDontCareSaturday0Noon  %}
+							<option style="color:black">{{h}}</option>
+						{% endfor %}
+						
+						{% for h in NurseWhoPreferNotSaturday0Noon  %}
+							<option style="color:#f4b900">{{h}}</option>
+						{% endfor %}
+						
+						{% for h in NurseWhoCantSaturday0Noon  %}
+							<option style="color:red">{{h}}</option>
+						{% endfor %}
+					</select>
+					<br><br>
+					<b>Stand by:</b>
+					<select name="headNurseList" id="stand_by_nurse_list_saturday3" style="width: 150px">
+						<option selected> {{Saturday0NoonAssignBeforeStandBy}} </option>
+						{% for h in NurseWhoWantSaturday0Noon  %}
+							<option style="color:green">{{h}}</option>
+						{% endfor %}
+						
+						{% for h in NurseWhoDontCareSaturday0Noon  %}
+							<option style="color:black">{{h}}</option>
+						{% endfor %}
+						
+						{% for h in NurseWhoPreferNotSaturday0Noon  %}
+							<option style="color:#f4b900">{{h}}</option>
+						{% endfor %}
+						
+						{% for h in NurseWhoCantSaturday0Noon  %}
+							<option style="color:red">{{h}}</option>
+						{% endfor %}
+					</select>
+				</td>
+            </tr>
+        </table>
+		
+		
+		<!-- Second week -->
+		
+		<div id="form_spinner" class="hidden"><div class="spinner"></div></div> <!-- loading spinner -->
+		
+		
+		<table>
+            <tr>
+                <td width="14%"><span id ='sunday1'> {{sunday1}} </span></td>
+                <td width="14%"><span id ='monday1'> {{monday1}} </span></td>
+				<td width="14%"><span id ='tuesday1'> {{tuesday1}} </span></td>
+				<td width="14%"><span id ='wednesday1'> {{wednesday1}} </span></td>
+				<td width="14%"><span id ='thursday1'> {{thursday1}} </span></td>
+				<td width="14%"><span id ='friday1'> {{friday1}} </span></td>
+				<td width="14%"><span id ='saturday1'> {{saturday1}} </span></td>
+            </tr>
+            <tr>
+                <td>  <!-- Sunday1 night -->
+					<b>Shift head:</b>
+					<select name="headNurseListSunday1" id="head_nurse_list_sunday4" style="width: 150px">
+						<option selected> {{Sunday1NightAssignBeforeHead}} </option>
+						{% for h in HeadNurseWhoWantSunday1Night %}
+							<option style="color:green">{{h}}</option>
+						{% endfor %}
+						
+						{% for h in HeadNurseWhoDontCareSunday1Night %}
+							<option style="color:black">{{h}}</option>
+						{% endfor %}
+						
+						{% for h in HeadNurseWhoPreferNotSunday1Night %}
+							<option style="color:#f4b900">{{h}}</option>
+						{% endfor %}
+						
+						{% for h in HeadNurseWhoCantSunday1Night %}
+							<option style="color:red">{{h}}</option>
+						{% endfor %}
+					</select>
+					<br><br>
+					<b>Second nurse:</b>
+					<select name="secondNurseListSunday1" id="second_nurse_list_sunday4" style="width: 150px">
+						<option selected> {{Sunday1NightAssignBeforeSecond}} </option>
+						{% for h in NurseWhoWantSunday1Night %}
+							<option style="color:green">{{h}}</option>
+						{% endfor %}
+						
+						{% for h in NurseWhoDontCareSunday1Night %}
+							<option style="color:black">{{h}}</option>
+						{% endfor %}
+						
+						{% for h in NurseWhoPreferNotSunday1Night %}
+							<option style="color:#f4b900">{{h}}</option>
+						{% endfor %}
+						
+						{% for h in NurseWhoCantSunday1Night %}
+							<option style="color:red">{{h}}</option>
+						{% endfor %}
+					</select>
+					<br><br>
+					<b>Stand by:</b>
+					<select name="standByListSunday1" id="stand_by_list_sunday4" style="width: 150px">
+						<option selected> {{Sunday1NightAssignBeforeStandBy}} </option>
+						{% for h in NurseWhoWantSunday1Night %}
+							<option style="color:green">{{h}}</option>
+						{% endfor %}
+						
+						{% for h in NurseWhoDontCareSunday1Night %}
+							<option style="color:black">{{h}}</option>
+						{% endfor %}
+						
+						{% for h in NurseWhoPreferNotSunday1Night %}
+							<option style="color:#f4b900">{{h}}</option>
+						{% endfor %}
+						
+						{% for h in NurseWhoCantSunday1Night %}
+							<option style="color:red">{{h}}</option>
+						{% endfor %}
+					</select>
+				</td>
+				<td>  <!-- Monday1 night -->
+					<b>Shift head:</b>
+					<select name="standByListMonday1" id="head_nurse_list_monday4" style="width: 150px">
+						<option selected> {{Monday1NightAssignBeforeHead}} </option>
+						{% for h in HeadNurseWhoWantMonday1Night %}
+							<option style="color:green">{{h}}</option>
+						{% endfor %}
+						
+						{% for h in HeadNurseWhoDontCareMonday1Night %}
+							<option style="color:black">{{h}}</option>
+						{% endfor %}
+						
+						{% for h in HeadNurseWhoPreferNotMonday1Night %}
+							<option style="color:#f4b900">{{h}}</option>
+						{% endfor %}
+						
+						{% for h in HeadNurseWhoCantMonday1Night %}
+							<option style="color:red">{{h}}</option>
+						{% endfor %}
+					</select>
+					<br><br>
+					<b>Second nurse:</b>
+					<select name="headNurseList" id="second_nurse_list_monday4" style="width: 150px">
+						<option selected> {{Monday1NightAssignBeforeSecond}} </option>
+						{% for h in NurseWhoWantMonday1Night %}
+							<option style="color:green">{{h}}</option>
+						{% endfor %}
+						
+						{% for h in NurseWhoDontCareMonday1Night %}
+							<option style="color:black">{{h}}</option>
+						{% endfor %}
+						
+						{% for h in NurseWhoPreferNotMonday1Night %}
+							<option style="color:#f4b900">{{h}}</option>
+						{% endfor %}
+						
+						{% for h in NurseWhoCantMonday1Night %}
+							<option style="color:red">{{h}}</option>
+						{% endfor %}
+					</select>
+					<br><br>
+					<b>Stand by:</b>
+					<select name="headNurseList" id="stand_by_list_monday4" style="width: 150px">
+						<option selected> {{Monday1NightAssignBeforeStandBy}} </option>
+						{% for h in NurseWhoWantMonday1Night %}
+							<option style="color:green">{{h}}</option>
+						{% endfor %}
+						
+						{% for h in NurseWhoDontCareMonday1Night %}
+							<option style="color:black">{{h}}</option>
+						{% endfor %}
+						
+						{% for h in NurseWhoPreferNotMonday1Night %}
+							<option style="color:#f4b900">{{h}}</option>
+						{% endfor %}
+						
+						{% for h in NurseWhoCantMonday1Night %}
+							<option style="color:red">{{h}}</option>
+						{% endfor %}
+					</select>
+				</td>
+				<td>  <!-- Tuesday1 night -->
+					<b>Shift head:</b>
+					<select name="headNurseList" id="head_nurse_list_tuesday4" style="width: 150px">
+						<option selected> {{Tuesday1NightAssignBeforeHead}} </option>
+						{% for h in HeadNurseWhoWantTuesday1Night %}
+							<option style="color:green">{{h}}</option>
+						{% endfor %}
+						
+						{% for h in HeadNurseWhoDontCareTuesday1Night %}
+							<option style="color:black">{{h}}</option>
+						{% endfor %}
+						
+						{% for h in HeadNurseWhoPreferNotTuesday1Night %}
+							<option style="color:#f4b900">{{h}}</option>
+						{% endfor %}
+						
+						{% for h in HeadNurseWhoCantTuesday1Night %}
+							<option style="color:red">{{h}}</option>
+						{% endfor %}
+					</select>
+					<br><br>
+					<b>Second nurse:</b>
+					<select name="headNurseList" id="second_nurse_list_tuesday4" style="width: 150px">
+						<option selected> {{Tuesday1NightAssignBeforeSecond}} </option>
+						{% for h in NurseWhoWantTuesday1Night %}
+							<option style="color:green">{{h}}</option>
+						{% endfor %}
+						
+						{% for h in NurseWhoDontCareTuesday1Night %}
+							<option style="color:black">{{h}}</option>
+						{% endfor %}
+						
+						{% for h in NurseWhoPreferNotTuesday1Night %}
+							<option style="color:#f4b900">{{h}}</option>
+						{% endfor %}
+						
+						{% for h in NurseWhoCantTuesday1Night %}
+							<option style="color:red">{{h}}</option>
+						{% endfor %}
+					</select>
+					<br><br>
+					<b>Stand by:</b>
+					<select name="headNurseList" id="stand_by_nurse_list_tuesday4" style="width: 150px">
+						<option selected> {{Tuesday1NightAssignBeforeStandBy}} </option>
+						{% for h in NurseWhoWantTuesday1Night %}
+							<option style="color:green">{{h}}</option>
+						{% endfor %}
+						
+						{% for h in NurseWhoDontCareTuesday1Night %}
+							<option style="color:black">{{h}}</option>
+						{% endfor %}
+						
+						{% for h in NurseWhoPreferNotTuesday1Night %}
+							<option style="color:#f4b900">{{h}}</option>
+						{% endfor %}
+						
+						{% for h in NurseWhoCantTuesday1Night %}
+							<option style="color:red">{{h}}</option>
+						{% endfor %}
+					</select>
+				</td>
+				<td>  <!-- Wedensday1 night -->
+					<b>Shift head:</b>
+					<select name="headNurseList" id="head_nurse_list_wednesday4" style="width: 150px">
+						<option selected> {{Wednesday1NightAssignBeforeHead}} </option>
+						{% for h in HeadNurseWhoWantWednesday1Night %}
+							<option style="color:green">{{h}}</option>
+						{% endfor %}
+						
+						{% for h in HeadNurseWhoDontCareWednesday1Night %}
+							<option style="color:black">{{h}}</option>
+						{% endfor %}
+						
+						{% for h in HeadNurseWhoPreferNotWednesday1Night %}
+							<option style="color:#f4b900">{{h}}</option>
+						{% endfor %}
+						
+						{% for h in HeadNurseWhoCantWednesday1Night %}
+							<option style="color:red">{{h}}</option>
+						{% endfor %}
+					</select>
+					<br><br>
+					<b>Second nurse:</b>
+					<select name="headNurseList" id="second_nurse_list_wednesday4" style="width: 150px">
+						<option selected> {{Wednesday1NightAssignBeforeSecond}} </option>
+						{% for h in NurseWhoWantWednesday1Night %}
+							<option style="color:green">{{h}}</option>
+						{% endfor %}
+						
+						{% for h in NurseWhoDontCareWednesday1Night %}
+							<option style="color:black">{{h}}</option>
+						{% endfor %}
+						
+						{% for h in NurseWhoPreferNotWednesday1Night %}
+							<option style="color:#f4b900">{{h}}</option>
+						{% endfor %}
+						
+						{% for h in NurseWhoCantWednesday1Night %}
+							<option style="color:red">{{h}}</option>
+						{% endfor %}
+					</select>
+					<br><br>
+					<b>Stand by:</b>
+					<select name="headNurseList" id="stand_by_nurse_list_wednesday4" style="width: 150px">
+						<option selected> {{Wednesday1NightAssignBeforeStandBy}} </option>
+						{% for h in NurseWhoWantWednesday1Night %}
+							<option style="color:green">{{h}}</option>
+						{% endfor %}
+						
+						{% for h in NurseWhoDontCareWednesday1Night %}
+							<option style="color:black">{{h}}</option>
+						{% endfor %}
+						
+						{% for h in NurseWhoPreferNotWednesday1Night %}
+							<option style="color:#f4b900">{{h}}</option>
+						{% endfor %}
+						
+						{% for h in NurseWhoCantWednesday1Night %}
+							<option style="color:red">{{h}}</option>
+						{% endfor %}
+					</select>
+				</td>
+				<td>  <!-- Thursday1 night -->
+					<b>Shift head:</b>
+					<select name="headNurseList" id="head_nurse_list_thursday4" style="width: 150px">
+						<option selected> {{Thursday1NightAssignBeforeHead}} </option>
+						{% for h in HeadNurseWhoWantThursday1Night %}
+							<option style="color:green">{{h}}</option>
+						{% endfor %}
+						
+						{% for h in HeadNurseWhoDontCareThursday1Night %}
+							<option style="color:black">{{h}}</option>
+						{% endfor %}
+						
+						{% for h in HeadNurseWhoPreferNotThursday1Night %}
+							<option style="color:#f4b900">{{h}}</option>
+						{% endfor %}
+						
+						{% for h in HeadNurseWhoCantThursday1Night %}
+							<option style="color:red">{{h}}</option>
+						{% endfor %}
+					</select>
+					<br><br>
+					<b>Second nurse:</b>
+					<select name="headNurseList" id="second_nurse_list_thursday4" style="width: 150px">
+						<option selected> {{Thursday1NightAssignBeforeSecond}} </option>
+						{% for h in NurseWhoWantThursday1Night %}
+							<option style="color:green">{{h}}</option>
+						{% endfor %}
+						
+						{% for h in NurseWhoDontCareThursday1Night %}
+							<option style="color:black">{{h}}</option>
+						{% endfor %}
+						
+						{% for h in NurseWhoPreferNotThursday1Night %}
+							<option style="color:#f4b900">{{h}}</option>
+						{% endfor %}
+						
+						{% for h in NurseWhoCantThursday1Night %}
+							<option style="color:red">{{h}}</option>
+						{% endfor %}
+					</select>
+					<br><br>
+					<b>Stand by:</b>
+					<select name="headNurseList" id="stand_by_nurse_list_thursday4" style="width: 150px">
+						<option selected> {{Thursday1NightAssignBeforeStandBy}} </option>
+						{% for h in NurseWhoWantThursday1Night %}
+							<option style="color:green">{{h}}</option>
+						{% endfor %}
+						
+						{% for h in NurseWhoDontCareThursday1Night %}
+							<option style="color:black">{{h}}</option>
+						{% endfor %}
+						
+						{% for h in NurseWhoPreferNotThursday1Night %}
+							<option style="color:#f4b900">{{h}}</option>
+						{% endfor %}
+						
+						{% for h in NurseWhoCantThursday1Night %}
+							<option style="color:red">{{h}}</option>
+						{% endfor %}
+					</select>
+				</td>
+				<td>  <!-- Friday1 night -->
+					<b>Shift head:</b>
+					<select name="headNurseList" id="head_nurse_list_friday4" style="width: 150px">
+						<option selected> {{Friday1NightAssignBeforeHead}} </option>
+						{% for h in HeadNurseWhoWantFriday1Night %}
+							<option style="color:green">{{h}}</option>
+						{% endfor %}
+						
+						{% for h in HeadNurseWhoDontCareFriday1Night %}
+							<option style="color:black">{{h}}</option>
+						{% endfor %}
+						
+						{% for h in HeadNurseWhoPreferNotFriday1Night %}
+							<option style="color:#f4b900">{{h}}</option>
+						{% endfor %}
+						
+						{% for h in HeadNurseWhoCantFriday1Night %}
+							<option style="color:red">{{h}}</option>
+						{% endfor %}
+					</select>
+					<br><br>
+					<b>Second nurse:</b>
+					<select name="headNurseList" id="second_nurse_list_friday4" style="width: 150px">
+						<option selected> {{Friday1NightAssignBeforeSecond}} </option>
+						{% for h in NurseWhoWantFriday1Night %}
+							<option style="color:green">{{h}}</option>
+						{% endfor %}
+						
+						{% for h in NurseWhoDontCareFriday1Night %}
+							<option style="color:black">{{h}}</option>
+						{% endfor %}
+						
+						{% for h in NurseWhoPreferNotFriday1Night %}
+							<option style="color:#f4b900">{{h}}</option>
+						{% endfor %}
+						
+						{% for h in NurseWhoCantFriday1Night %}
+							<option style="color:red">{{h}}</option>
+						{% endfor %}
+					</select>
+					<br><br>
+					<b>Stand by:</b>
+					<select name="headNurseList" id="stand_by_nurse_list_friday4" style="width: 150px">
+						<option selected> {{Friday1NightAssignBeforeStandBy}} </option>
+						{% for h in NurseWhoWantFriday1Night %}
+							<option style="color:green">{{h}}</option>
+						{% endfor %}
+						
+						{% for h in NurseWhoDontCareFriday1Night %}
+							<option style="color:black">{{h}}</option>
+						{% endfor %}
+						
+						{% for h in NurseWhoPreferNotFriday1Night %}
+							<option style="color:#f4b900">{{h}}</option>
+						{% endfor %}
+						
+						{% for h in NurseWhoCantFriday1Night %}
+							<option style="color:red">{{h}}</option>
+						{% endfor %}
+					</select>
+				</td>
+				<td>  <!-- Saturday1 night -->
+					<b>Shift head:</b>
+					<select name="headNurseList" id="head_nurse_list_saturday4" style="width: 150px">
+						<option selected> {{Saturday1NightAssignBeforeHead}} </option>
+						{% for h in HeadNurseWhoWantSaturday1Night %}
+							<option style="color:green">{{h}}</option>
+						{% endfor %}
+						
+						{% for h in HeadNurseWhoDontCareSaturday1Night %}
+							<option style="color:black">{{h}}</option>
+						{% endfor %}
+						
+						{% for h in HeadNurseWhoPreferNotSaturday1Night %}
+							<option style="color:#f4b900">{{h}}</option>
+						{% endfor %}
+						
+						{% for h in HeadNurseWhoCantSaturday1Night %}
+							<option style="color:red">{{h}}</option>
+						{% endfor %}
+					</select>
+					<br><br>
+					<b>Second nurse:</b>
+					<select name="headNurseList" id="second_nurse_list_saturday4" style="width: 150px">
+						<option selected> {{Saturday1NightAssignBeforeSecond}} </option>
+						{% for h in NurseWhoWantSaturday1Night %}
+							<option style="color:green">{{h}}</option>
+						{% endfor %}
+						
+						{% for h in NurseWhoDontCareSaturday1Night %}
+							<option style="color:black">{{h}}</option>
+						{% endfor %}
+						
+						{% for h in NurseWhoPreferNotSaturday1Night %}
+							<option style="color:#f4b900">{{h}}</option>
+						{% endfor %}
+						
+						{% for h in NurseWhoCantSaturday1Night %}
+							<option style="color:red">{{h}}</option>
+						{% endfor %}
+					</select>
+					<br><br>
+					<b>Stand by:</b>
+					<select name="headNurseList" id="stand_by_nurse_list_saturday4" style="width: 150px">
+						<option selected> {{Saturday1NightAssignBeforeStandBy}} </option>
+						{% for h in NurseWhoWantSaturday1Night %}
+							<option style="color:green">{{h}}</option>
+						{% endfor %}
+						
+						{% for h in NurseWhoDontCareSaturday1Night %}
+							<option style="color:black">{{h}}</option>
+						{% endfor %}
+						
+						{% for h in NurseWhoPreferNotSaturday1Night %}
+							<option style="color:#f4b900">{{h}}</option>
+						{% endfor %}
+						
+						{% for h in NurseWhoCantSaturday1Night %}
+							<option style="color:red">{{h}}</option>
+						{% endfor %}
+					</select>
+				</td>
+            </tr>
+            <tr>
+                <td>  <!-- Sunday1 morning -->
+					<b>Shift head:</b>
+					<select name="headNurseList" id="head_nurse_list_sunday5" style="width: 150px">
+						<option selected> {{Sunday1MorningAssignBeforeHead}} </option>
+						{% for h in HeadNurseWhoWantSunday1Morning %}
+							<option style="color:green">{{h}}</option>
+						{% endfor %}
+						
+						{% for h in HeadNurseWhoDontCareSunday1Morning %}
+							<option style="color:black">{{h}}</option>
+						{% endfor %}
+						
+						{% for h in HeadNurseWhoPreferNotSunday1Morning  %}
+							<option style="color:#f4b900">{{h}}</option>
+						{% endfor %}
+						
+						{% for h in HeadNurseWhoCantSunday1Morning  %}
+							<option style="color:red">{{h}}</option>
+						{% endfor %}
+					</select>
+					<br><br>
+					<b>Second nurse:</b>
+					<select name="headNurseList" id="second_nurse_list_sunday5" style="width: 150px">
+						<option selected> {{Sunday1MorningAssignBeforeSecond}} </option>
+						{% for h in NurseWhoWantSunday1Morning  %}
+							<option style="color:green">{{h}}</option>
+						{% endfor %}
+						
+						{% for h in NurseWhoDontCareSunday1Morning  %}
+							<option style="color:black">{{h}}</option>
+						{% endfor %}
+						
+						{% for h in NurseWhoPreferNotSunday1Morning  %}
+							<option style="color:#f4b900">{{h}}</option>
+						{% endfor %}
+						
+						{% for h in NurseWhoCantSunday1Morning  %}
+							<option style="color:red">{{h}}</option>
+						{% endfor %}
+					</select>
+					<br><br>
+					<b>Stand by:</b>
+					<select name="headNurseList" id="stand_by_nurse_list_sunday5" style="width: 150px">
+						<option selected> {{Sunday1MorningAssignBeforeStandBy}} </option>
+						{% for h in NurseWhoWantSunday1Morning  %}
+							<option style="color:green">{{h}}</option>
+						{% endfor %}
+						
+						{% for h in NurseWhoDontCareSunday1Morning  %}
+							<option style="color:black">{{h}}</option>
+						{% endfor %}
+						
+						{% for h in NurseWhoPreferNotSunday1Morning  %}
+							<option style="color:#f4b900">{{h}}</option>
+						{% endfor %}
+						
+						{% for h in NurseWhoCantSunday1Morning  %}
+							<option style="color:red">{{h}}</option>
+						{% endfor %}
+					</select>
+				</td>
+				<td>  <!-- Monday1 morning -->
+					<b>Shift head:</b>
+					<select name="headNurseList" id="head_nurse_list_monday5" style="width: 150px">
+						<option selected> {{Monday1MorningAssignBeforeHead}} </option>
+						{% for h in HeadNurseWhoWantMonday1Morning %}
+							<option style="color:green">{{h}}</option>
+						{% endfor %}
+						
+						{% for h in HeadNurseWhoDontCareMonday1Morning %}
+							<option style="color:black">{{h}}</option>
+						{% endfor %}
+						
+						{% for h in HeadNurseWhoPreferNotMonday1Morning  %}
+							<option style="color:#f4b900">{{h}}</option>
+						{% endfor %}
+						
+						{% for h in HeadNurseWhoCantMonday1Morning  %}
+							<option style="color:red">{{h}}</option>
+						{% endfor %}
+					</select>
+					<br><br>
+					<b>Second nurse:</b>
+					<select name="headNurseList" id="second_nurse_list_monday5" style="width: 150px">
+						<option selected> {{Monday1MorningAssignBeforeSecond}} </option>
+						{% for h in NurseWhoWantMonday1Morning  %}
+							<option style="color:green">{{h}}</option>
+						{% endfor %}
+						
+						{% for h in NurseWhoDontCareMonday1Morning  %}
+							<option style="color:black">{{h}}</option>
+						{% endfor %}
+						
+						{% for h in NurseWhoPreferNotMonday1Morning  %}
+							<option style="color:#f4b900">{{h}}</option>
+						{% endfor %}
+						
+						{% for h in NurseWhoCantMonday1Morning  %}
+							<option style="color:red">{{h}}</option>
+						{% endfor %}
+					</select>
+					<br><br>
+					<b>Stand by:</b>
+					<select name="headNurseList" id="stand_by_nurse_list_monday5" style="width: 150px">
+						<option selected> {{Monday1MorningAssignBeforeStandBy}} </option>
+						{% for h in NurseWhoWantMonday1Morning  %}
+							<option style="color:green">{{h}}</option>
+						{% endfor %}
+						
+						{% for h in NurseWhoDontCareMonday1Morning  %}
+							<option style="color:black">{{h}}</option>
+						{% endfor %}
+						
+						{% for h in NurseWhoPreferNotMonday1Morning  %}
+							<option style="color:#f4b900">{{h}}</option>
+						{% endfor %}
+						
+						{% for h in NurseWhoCantMonday1Morning  %}
+							<option style="color:red">{{h}}</option>
+						{% endfor %}
+					</select>
+				</td>
+				<td>  <!-- Tuesday1 morning -->
+					<b>Shift head:</b>
+					<select name="headNurseList" id="head_nurse_list_tuesday5" style="width: 150px">
+						<option selected> {{Tuesday1MorningAssignBeforeHead}} </option>
+						{% for h in HeadNurseWhoWantTuesday1Morning %}
+							<option style="color:green">{{h}}</option>
+						{% endfor %}
+						
+						{% for h in HeadNurseWhoDontCareTuesday1Morning %}
+							<option style="color:black">{{h}}</option>
+						{% endfor %}
+						
+						{% for h in HeadNurseWhoPreferNotTuesday1Morning  %}
+							<option style="color:#f4b900">{{h}}</option>
+						{% endfor %}
+						
+						{% for h in HeadNurseWhoCantTuesday1Morning  %}
+							<option style="color:red">{{h}}</option>
+						{% endfor %}
+					</select>
+					<br><br>
+					<b>Second nurse:</b>
+					<select name="headNurseList" id="second_nurse_list_tuesday5" style="width: 150px">
+						<option selected> {{Tuesday1MorningAssignBeforeSecond}} </option>
+						{% for h in NurseWhoWantTuesday1Morning  %}
+							<option style="color:green">{{h}}</option>
+						{% endfor %}
+						
+						{% for h in NurseWhoDontCareTuesday1Morning  %}
+							<option style="color:black">{{h}}</option>
+						{% endfor %}
+						
+						{% for h in NurseWhoPreferNotTuesday1Morning  %}
+							<option style="color:#f4b900">{{h}}</option>
+						{% endfor %}
+						
+						{% for h in NurseWhoCantTuesday1Morning  %}
+							<option style="color:red">{{h}}</option>
+						{% endfor %}
+					</select>
+					<br><br>
+					<b>Third nurse:</b>
+					<select name="headNurseList" id="third_nurse_list_tuesday5" style="width: 150px">
+						<option selected> {{Tuesday1MorningAssignBeforeThird}} </option>
+						{% for h in NurseWhoWantTuesday1Morning  %}
+							<option style="color:green">{{h}}</option>
+						{% endfor %}
+						
+						{% for h in NurseWhoDontCareTuesday1Morning  %}
+							<option style="color:black">{{h}}</option>
+						{% endfor %}
+						
+						{% for h in NurseWhoPreferNotTuesday1Morning  %}
+							<option style="color:#f4b900">{{h}}</option>
+						{% endfor %}
+						
+						{% for h in NurseWhoCantTuesday1Morning  %}
+							<option style="color:red">{{h}}</option>
+						{% endfor %}
+					</select>
+					<br><br>
+					<b>Stand by:</b>
+					<select name="headNurseList" id="stand_by_nurse_tuesday5" style="width: 150px">
+						<option selected> {{Tuesday1MorningAssignBeforeStandBy}} </option>
+						{% for h in NurseWhoWantTuesday1Morning  %}
+							<option style="color:green">{{h}}</option>
+						{% endfor %}
+						
+						{% for h in NurseWhoDontCareTuesday1Morning  %}
+							<option style="color:black">{{h}}</option>
+						{% endfor %}
+						
+						{% for h in NurseWhoPreferNotTuesday1Morning  %}
+							<option style="color:#f4b900">{{h}}</option>
+						{% endfor %}
+						
+						{% for h in NurseWhoCantTuesday1Morning  %}
+							<option style="color:red">{{h}}</option>
+						{% endfor %}
+					</select>
+				</td>
+				<td>  <!-- Wednesday1 morning -->
+					<b>Shift head:</b>
+					<select name="headNurseList" id="head_nurse_list_wednesday5" style="width: 150px">
+						<option selected> {{Wednesday1MorningAssignBeforeHead}} </option>
+						{% for h in HeadNurseWhoWantWednesday1Morning %}
+							<option style="color:green">{{h}}</option>
+						{% endfor %}
+						
+						{% for h in HeadNurseWhoDontCareWednesday1Morning %}
+							<option style="color:black">{{h}}</option>
+						{% endfor %}
+						
+						{% for h in HeadNurseWhoPreferNotWednesday1Morning  %}
+							<option style="color:#f4b900">{{h}}</option>
+						{% endfor %}
+						
+						{% for h in HeadNurseWhoCantWednesday1Morning  %}
+							<option style="color:red">{{h}}</option>
+						{% endfor %}
+					</select>
+					<br><br>
+					<b>Second nurse:</b>
+					<select name="headNurseList" id="second_nurse_list_wednesday5" style="width: 150px">
+						<option selected> {{Wednesday1MorningAssignBeforeSecond}} </option>
+						{% for h in NurseWhoWantWednesday1Morning  %}
+							<option style="color:green">{{h}}</option>
+						{% endfor %}
+						
+						{% for h in NurseWhoDontCareWednesday1Morning  %}
+							<option style="color:black">{{h}}</option>
+						{% endfor %}
+						
+						{% for h in NurseWhoPreferNotWednesday1Morning  %}
+							<option style="color:#f4b900">{{h}}</option>
+						{% endfor %}
+						
+						{% for h in NurseWhoCantWednesday1Morning  %}
+							<option style="color:red">{{h}}</option>
+						{% endfor %}
+					</select>
+					<br><br>
+					<b>Stand by:</b>
+					<select name="headNurseList" id="stand_by_nurse_list_wednesday5" style="width: 150px">
+						<option selected> {{Wednesday1MorningAssignBeforeStandBy}} </option>
+						{% for h in NurseWhoWantWednesday1Morning  %}
+							<option style="color:green">{{h}}</option>
+						{% endfor %}
+						
+						{% for h in NurseWhoDontCareWednesday1Morning  %}
+							<option style="color:black">{{h}}</option>
+						{% endfor %}
+						
+						{% for h in NurseWhoPreferNotWednesday1Morning  %}
+							<option style="color:#f4b900">{{h}}</option>
+						{% endfor %}
+						
+						{% for h in NurseWhoCantWednesday1Morning  %}
+							<option style="color:red">{{h}}</option>
+						{% endfor %}
+					</select>
+				</td>
+				<td>  <!-- Thursday1 morning -->
+					<b>Shift head:</b>
+					<select name="headNurseList" id="head_nurse_list_thursday5" style="width: 150px">
+						<option selected> {{Thursday1MorningAssignBeforeHead}} </option>
+						{% for h in HeadNurseWhoWantThursday1Morning %}
+							<option style="color:green">{{h}}</option>
+						{% endfor %}
+						
+						{% for h in HeadNurseWhoDontCareThursday1Morning %}
+							<option style="color:black">{{h}}</option>
+						{% endfor %}
+						
+						{% for h in HeadNurseWhoPreferNotThursday1Morning  %}
+							<option style="color:#f4b900">{{h}}</option>
+						{% endfor %}
+						
+						{% for h in HeadNurseWhoCantThursday1Morning  %}
+							<option style="color:red">{{h}}</option>
+						{% endfor %}
+					</select>
+					<br><br>
+					<b>Second nurse:</b>
+					<select name="headNurseList" id="second_nurse_list_thursday5" style="width: 150px">
+						<option selected> {{Thursday1MorningAssignBeforeSecond}} </option>
+						{% for h in NurseWhoWantThursday1Morning  %}
+							<option style="color:green">{{h}}</option>
+						{% endfor %}
+						
+						{% for h in NurseWhoDontCareThursday1Morning  %}
+							<option style="color:black">{{h}}</option>
+						{% endfor %}
+						
+						{% for h in NurseWhoPreferNotThursday1Morning  %}
+							<option style="color:#f4b900">{{h}}</option>
+						{% endfor %}
+						
+						{% for h in NurseWhoCantThursday1Morning  %}
+							<option style="color:red">{{h}}</option>
+						{% endfor %}
+					</select>
+					<br><br>
+					<b>Third nurse:</b>
+					<select name="headNurseList" id="third_nurse_list_thursday5" style="width: 150px">
+						<option selected> {{Thursday1MorningAssignBeforeThird}} </option>
+						{% for h in NurseWhoWantThursday1Morning  %}
+							<option style="color:green">{{h}}</option>
+						{% endfor %}
+						
+						{% for h in NurseWhoDontCareThursday1Morning  %}
+							<option style="color:black">{{h}}</option>
+						{% endfor %}
+						
+						{% for h in NurseWhoPreferNotThursday1Morning  %}
+							<option style="color:#f4b900">{{h}}</option>
+						{% endfor %}
+						
+						{% for h in NurseWhoCantThursday1Morning  %}
+							<option style="color:red">{{h}}</option>
+						{% endfor %}
+					</select>
+					<br><br>
+					<b>Stand by:</b>
+					<select name="headNurseList" id="stand_by_list_thursday5" style="width: 150px">
+						<option selected> {{Thursday1MorningAssignBeforeStandBy}} </option>
+						{% for h in NurseWhoWantThursday1Morning  %}
+							<option style="color:green">{{h}}</option>
+						{% endfor %}
+						
+						{% for h in NurseWhoDontCareThursday1Morning  %}
+							<option style="color:black">{{h}}</option>
+						{% endfor %}
+						
+						{% for h in NurseWhoPreferNotThursday1Morning  %}
+							<option style="color:#f4b900">{{h}}</option>
+						{% endfor %}
+						
+						{% for h in NurseWhoCantThursday1Morning  %}
+							<option style="color:red">{{h}}</option>
+						{% endfor %}
+					</select>
+				</td>
+				<td>  <!-- Friday1 morning -->
+					<b>Shift head:</b>
+					<select name="headNurseList" id="head_nurse_list_friday5" style="width: 150px">
+						<option selected> {{Friday1MorningAssignBeforeHead}} </option>
+						{% for h in HeadNurseWhoWantFriday1Morning %}
+							<option style="color:green">{{h}}</option>
+						{% endfor %}
+						
+						{% for h in HeadNurseWhoDontCareFriday1Morning %}
+							<option style="color:black">{{h}}</option>
+						{% endfor %}
+						
+						{% for h in HeadNurseWhoPreferNotFriday1Morning  %}
+							<option style="color:#f4b900">{{h}}</option>
+						{% endfor %}
+						
+						{% for h in HeadNurseWhoCantFriday1Morning  %}
+							<option style="color:red">{{h}}</option>
+						{% endfor %}
+					</select>
+					<br><br>
+					<b>Second nurse:</b>
+					<select name="headNurseList" id="second_nurse_list_friday5" style="width: 150px">
+						<option selected> {{Friday1MorningAssignBeforeSecond}} </option>
+						{% for h in NurseWhoWantFriday1Morning  %}
+							<option style="color:green">{{h}}</option>
+						{% endfor %}
+						
+						{% for h in NurseWhoDontCareFriday1Morning  %}
+							<option style="color:black">{{h}}</option>
+						{% endfor %}
+						
+						{% for h in NurseWhoPreferNotFriday1Morning  %}
+							<option style="color:#f4b900">{{h}}</option>
+						{% endfor %}
+						
+						{% for h in NurseWhoCantFriday1Morning  %}
+							<option style="color:red">{{h}}</option>
+						{% endfor %}
+					</select>
+					<br><br>
+					<b>Stand by:</b>
+					<select name="headNurseList" id="stand_by_nurse_list_friday5" style="width: 150px">
+						<option selected> {{Friday1MorningAssignBeforeStandBy}} </option>
+						{% for h in NurseWhoWantFriday1Morning  %}
+							<option style="color:green">{{h}}</option>
+						{% endfor %}
+						
+						{% for h in NurseWhoDontCareFriday1Morning  %}
+							<option style="color:black">{{h}}</option>
+						{% endfor %}
+						
+						{% for h in NurseWhoPreferNotFriday1Morning  %}
+							<option style="color:#f4b900">{{h}}</option>
+						{% endfor %}
+						
+						{% for h in NurseWhoCantFriday1Morning  %}
+							<option style="color:red">{{h}}</option>
+						{% endfor %}
+					</select>
+				</td>
+				<td>  <!-- Saturday1 morning -->
+					<b>Shift head:</b>
+					<select name="headNurseList" id="head_nurse_list_saturday5" style="width: 150px">
+						<option selected> {{Saturday1MorningAssignBeforeHead}} </option>
+						{% for h in HeadNurseWhoWantSaturday1Morning %}
+							<option style="color:green">{{h}}</option>
+						{% endfor %}
+						
+						{% for h in HeadNurseWhoDontCareSaturday1Morning %}
+							<option style="color:black">{{h}}</option>
+						{% endfor %}
+						
+						{% for h in HeadNurseWhoPreferNotSaturday1Morning  %}
+							<option style="color:#f4b900">{{h}}</option>
+						{% endfor %}
+						
+						{% for h in HeadNurseWhoCantSaturday1Morning  %}
+							<option style="color:red">{{h}}</option>
+						{% endfor %}
+					</select>
+					<br><br>
+					<b>Second nurse:</b>
+					<select name="headNurseList" id="second_nurse_list_saturday5" style="width: 150px">
+						<option selected> {{Saturday1MorningAssignBeforeSecond}} </option>
+						{% for h in NurseWhoWantSaturday1Morning  %}
+							<option style="color:green">{{h}}</option>
+						{% endfor %}
+						
+						{% for h in NurseWhoDontCareSaturday1Morning  %}
+							<option style="color:black">{{h}}</option>
+						{% endfor %}
+						
+						{% for h in NurseWhoPreferNotSaturday1Morning  %}
+							<option style="color:#f4b900">{{h}}</option>
+						{% endfor %}
+						
+						{% for h in NurseWhoCantSaturday1Morning  %}
+							<option style="color:red">{{h}}</option>
+						{% endfor %}
+					</select>
+					<br><br>
+					<b>Stand by:</b>
+					<select name="headNurseList" id="stand_by_nurse_list_saturday5" style="width: 150px">
+						<option selected> {{Saturday1MorningAssignBeforeStandBy}} </option>
+						{% for h in NurseWhoWantSaturday1Morning  %}
+							<option style="color:green">{{h}}</option>
+						{% endfor %}
+						
+						{% for h in NurseWhoDontCareSaturday1Morning  %}
+							<option style="color:black">{{h}}</option>
+						{% endfor %}
+						
+						{% for h in NurseWhoPreferNotSaturday1Morning  %}
+							<option style="color:#f4b900">{{h}}</option>
+						{% endfor %}
+						
+						{% for h in NurseWhoCantSaturday1Morning  %}
+							<option style="color:red">{{h}}</option>
+						{% endfor %}
+					</select>
+				</td>
+            </tr>
+			<tr>
+                <td>  <!-- Sunday1 noon -->
+					<b>Shift head:</b>
+					<select name="headNurseList" id="head_nurse_list_sunday6" style="width: 150px">
+						<option selected> {{Sunday1NoonAssignBeforeHead}} </option>
+						{% for h in HeadNurseWhoWantSunday1Noon %}
+							<option style="color:green">{{h}}</option>
+						{% endfor %}
+						
+						{% for h in HeadNurseWhoDontCareSunday1Noon %}
+							<option style="color:black">{{h}}</option>
+						{% endfor %}
+						
+						{% for h in HeadNurseWhoPreferNotSunday1Noon  %}
+							<option style="color:#f4b900">{{h}}</option>
+						{% endfor %}
+						
+						{% for h in HeadNurseWhoCantSunday1Noon  %}
+							<option style="color:red">{{h}}</option>
+						{% endfor %}
+					</select>
+					<br><br>
+					<b>Second nurse:</b>
+					<select name="headNurseList" id="second_nurse_list_sunday6" style="width: 150px">
+						<option selected> {{Sunday1NoonAssignBeforeSecond}} </option>
+						{% for h in NurseWhoWantSunday1Noon  %}
+							<option style="color:green">{{h}}</option>
+						{% endfor %}
+						
+						{% for h in NurseWhoDontCareSunday1Noon  %}
+							<option style="color:black">{{h}}</option>
+						{% endfor %}
+						
+						{% for h in NurseWhoPreferNotSunday1Noon  %}
+							<option style="color:#f4b900">{{h}}</option>
+						{% endfor %}
+						
+						{% for h in NurseWhoCantSunday1Noon  %}
+							<option style="color:red">{{h}}</option>
+						{% endfor %}
+					</select>
+					<br><br>
+					<b>Stand by:</b>
+					<select name="headNurseList" id="stand_by_list_sunday6" style="width: 150px">
+						<option selected> {{Sunday1NoonAssignBeforeStandBy}} </option>
+						{% for h in NurseWhoWantSunday1Noon  %}
+							<option style="color:green">{{h}}</option>
+						{% endfor %}
+						
+						{% for h in NurseWhoDontCareSunday1Noon  %}
+							<option style="color:black">{{h}}</option>
+						{% endfor %}
+						
+						{% for h in NurseWhoPreferNotSunday1Noon  %}
+							<option style="color:#f4b900">{{h}}</option>
+						{% endfor %}
+						
+						{% for h in NurseWhoCantSunday1Noon  %}
+							<option style="color:red">{{h}}</option>
+						{% endfor %}
+					</select>
+				</td>
+				<td>  <!-- Monday1 noon -->
+					<b>Shift head:</b>
+					<select name="headNurseList" id="head_nurse_list_monday6" style="width: 150px">
+						<option selected> {{Monday1NoonAssignBeforeHead}} </option>
+						{% for h in HeadNurseWhoWantMonday1Noon %}
+							<option style="color:green">{{h}}</option>
+						{% endfor %}
+						
+						{% for h in HeadNurseWhoDontCareMonday1Noon %}
+							<option style="color:black">{{h}}</option>
+						{% endfor %}
+						
+						{% for h in HeadNurseWhoPreferNotMonday1Noon  %}
+							<option style="color:#f4b900">{{h}}</option>
+						{% endfor %}
+						
+						{% for h in HeadNurseWhoCantMonday1Noon  %}
+							<option style="color:red">{{h}}</option>
+						{% endfor %}
+					</select>
+					<br><br>
+					<b>Second nurse:</b>
+					<select name="headNurseList" id="second_nurse_list_monday6" style="width: 150px">
+						<option selected> {{Monday1NoonAssignBeforeSecond}} </option>
+						{% for h in NurseWhoWantMonday1Noon  %}
+							<option style="color:green">{{h}}</option>
+						{% endfor %}
+						
+						{% for h in NurseWhoDontCareMonday1Noon  %}
+							<option style="color:black">{{h}}</option>
+						{% endfor %}
+						
+						{% for h in NurseWhoPreferNotMonday1Noon  %}
+							<option style="color:#f4b900">{{h}}</option>
+						{% endfor %}
+						
+						{% for h in NurseWhoCantMonday1Noon  %}
+							<option style="color:red">{{h}}</option>
+						{% endfor %}
+					</select>
+					<br><br>
+					<b>Stand by:</b>
+					<select name="headNurseList" id="stand_by_nurse_list_monday6" style="width: 150px">
+						<option selected> {{Monday1NoonAssignBeforeStandBy}} </option>
+						{% for h in NurseWhoWantMonday1Noon  %}
+							<option style="color:green">{{h}}</option>
+						{% endfor %}
+						
+						{% for h in NurseWhoDontCareMonday1Noon  %}
+							<option style="color:black">{{h}}</option>
+						{% endfor %}
+						
+						{% for h in NurseWhoPreferNotMonday1Noon  %}
+							<option style="color:#f4b900">{{h}}</option>
+						{% endfor %}
+						
+						{% for h in NurseWhoCantMonday1Noon  %}
+							<option style="color:red">{{h}}</option>
+						{% endfor %}
+					</select>
+				</td>
+				<td>  <!-- Tuesday1 noon -->
+					<b>Shift head:</b>
+					<select name="headNurseList" id="head_nurse_list_tuesday6" style="width: 150px">
+						<option selected> {{Tuesday1NoonAssignBeforeHead}} </option>
+						{% for h in HeadNurseWhoWantTuesday1Noon %}
+							<option style="color:green">{{h}}</option>
+						{% endfor %}
+						
+						{% for h in HeadNurseWhoDontCareTuesday1Noon %}
+							<option style="color:black">{{h}}</option>
+						{% endfor %}
+						
+						{% for h in HeadNurseWhoPreferNotTuesday1Noon  %}
+							<option style="color:#f4b900">{{h}}</option>
+						{% endfor %}
+						
+						{% for h in HeadNurseWhoCantTuesday1Noon  %}
+							<option style="color:red">{{h}}</option>
+						{% endfor %}
+					</select>
+					<br><br>
+					<b>Second nurse:</b>
+					<select name="headNurseList" id="second_nurse_list_tuesday6" style="width: 150px">
+						<option selected> {{Tuesday1NoonAssignBeforeSecond}} </option>
+						{% for h in NurseWhoWantTuesday1Noon  %}
+							<option style="color:green">{{h}}</option>
+						{% endfor %}
+						
+						{% for h in NurseWhoDontCareTuesday1Noon  %}
+							<option style="color:black">{{h}}</option>
+						{% endfor %}
+						
+						{% for h in NurseWhoPreferNotTuesday1Noon  %}
+							<option style="color:#f4b900">{{h}}</option>
+						{% endfor %}
+						
+						{% for h in NurseWhoCantTuesday1Noon  %}
+							<option style="color:red">{{h}}</option>
+						{% endfor %}
+					</select>
+					<br><br>
+					<b>Stand by:</b>
+					<select name="headNurseList" id="stand_by_nurse_list_tuesday6" style="width: 150px">
+						<option selected> {{Tuesday1NoonAssignBeforeStandBy}} </option>
+						{% for h in NurseWhoWantTuesday1Noon  %}
+							<option style="color:green">{{h}}</option>
+						{% endfor %}
+						
+						{% for h in NurseWhoDontCareTuesday1Noon  %}
+							<option style="color:black">{{h}}</option>
+						{% endfor %}
+						
+						{% for h in NurseWhoPreferNotTuesday1Noon  %}
+							<option style="color:#f4b900">{{h}}</option>
+						{% endfor %}
+						
+						{% for h in NurseWhoCantTuesday1Noon  %}
+							<option style="color:red">{{h}}</option>
+						{% endfor %}
+					</select>
+				</td>
+				<td>  <!-- Wednesday1 noon -->
+					<b>Shift head:</b>
+					<select name="headNurseList" id="head_nurse_list_wednesday6" style="width: 150px">
+						<option selected> {{Wednesday1NoonAssignBeforeHead}} </option>
+						{% for h in HeadNurseWhoWantWednesday1Noon %}
+							<option style="color:green">{{h}}</option>
+						{% endfor %}
+						
+						{% for h in HeadNurseWhoDontCareWednesday1Noon %}
+							<option style="color:black">{{h}}</option>
+						{% endfor %}
+						
+						{% for h in HeadNurseWhoPreferNotWednesday1Noon  %}
+							<option style="color:#f4b900">{{h}}</option>
+						{% endfor %}
+						
+						{% for h in HeadNurseWhoCantWednesday1Noon  %}
+							<option style="color:red">{{h}}</option>
+						{% endfor %}
+					</select>
+					<br><br>
+					<b>Second nurse:</b>
+					<select name="headNurseList" id="second_nurse_list_wednesday6" style="width: 150px">
+						<option selected> {{Wednesday1NoonAssignBeforeSecond}} </option>
+						{% for h in NurseWhoWantWednesday1Noon  %}
+							<option style="color:green">{{h}}</option>
+						{% endfor %}
+						
+						{% for h in NurseWhoDontCareWednesday1Noon  %}
+							<option style="color:black">{{h}}</option>
+						{% endfor %}
+						
+						{% for h in NurseWhoPreferNotWednesday1Noon  %}
+							<option style="color:#f4b900">{{h}}</option>
+						{% endfor %}
+						
+						{% for h in NurseWhoCantWednesday1Noon  %}
+							<option style="color:red">{{h}}</option>
+						{% endfor %}
+					</select>
+					<br><br>
+					<b>Stand by:</b>
+					<select name="headNurseList" id="stand_by_list_wednesday6" style="width: 150px">
+						<option selected> {{Wednesday1NoonAssignBeforeStandBy}} </option>
+						{% for h in NurseWhoWantWednesday1Noon  %}
+							<option style="color:green">{{h}}</option>
+						{% endfor %}
+						
+						{% for h in NurseWhoDontCareWednesday1Noon  %}
+							<option style="color:black">{{h}}</option>
+						{% endfor %}
+						
+						{% for h in NurseWhoPreferNotWednesday1Noon  %}
+							<option style="color:#f4b900">{{h}}</option>
+						{% endfor %}
+						
+						{% for h in NurseWhoCantWednesday1Noon  %}
+							<option style="color:red">{{h}}</option>
+						{% endfor %}
+					</select>
+				</td>
+				<td>  <!-- Thursday1 noon -->
+					<b>Shift head:</b>
+					<select name="headNurseList" id="head_nurse_list_thursday6" style="width: 150px">
+						<option selected> {{Thursday1NoonAssignBeforeHead}} </option>
+						{% for h in HeadNurseWhoWantThursday1Noon %}
+							<option style="color:green">{{h}}</option>
+						{% endfor %}
+						
+						{% for h in HeadNurseWhoDontCareThursday1Noon %}
+							<option style="color:black">{{h}}</option>
+						{% endfor %}
+						
+						{% for h in HeadNurseWhoPreferNotThursday1Noon  %}
+							<option style="color:#f4b900">{{h}}</option>
+						{% endfor %}
+						
+						{% for h in HeadNurseWhoCantThursday1Noon  %}
+							<option style="color:red">{{h}}</option>
+						{% endfor %}
+					</select>
+					<br><br>
+					<b>Second nurse:</b>
+					<select name="headNurseList" id="second_nurse_list_thursday6" style="width: 150px">
+						<option selected> {{Thursday1NoonAssignBeforeSecond}} </option>
+						{% for h in NurseWhoWantThursday1Noon  %}
+							<option style="color:green">{{h}}</option>
+						{% endfor %}
+						
+						{% for h in NurseWhoDontCareThursday1Noon  %}
+							<option style="color:black">{{h}}</option>
+						{% endfor %}
+						
+						{% for h in NurseWhoPreferNotThursday1Noon  %}
+							<option style="color:#f4b900">{{h}}</option>
+						{% endfor %}
+						
+						{% for h in NurseWhoCantThursday1Noon  %}
+							<option style="color:red">{{h}}</option>
+						{% endfor %}
+					</select>
+					<br><br>
+					<b>Stand by:</b>
+					<select name="headNurseList" id="stand_by_nurse_thursday6" style="width: 150px">
+						<option selected> {{Thursday1NoonAssignBeforeStandBy}} </option>
+						{% for h in NurseWhoWantThursday1Noon  %}
+							<option style="color:green">{{h}}</option>
+						{% endfor %}
+						
+						{% for h in NurseWhoDontCareThursday1Noon  %}
+							<option style="color:black">{{h}}</option>
+						{% endfor %}
+						
+						{% for h in NurseWhoPreferNotThursday1Noon  %}
+							<option style="color:#f4b900">{{h}}</option>
+						{% endfor %}
+						
+						{% for h in NurseWhoCantThursday1Noon  %}
+							<option style="color:red">{{h}}</option>
+						{% endfor %}
+					</select>
+				</td>
+				<td>  <!-- Friday1 noon -->
+					<b>Shift head:</b>
+					<select name="headNurseList" id="head_nurse_list_friday6" style="width: 150px">
+						<option selected> {{Friday1NoonAssignBeforeHead}} </option>
+						{% for h in HeadNurseWhoWantFriday1Noon %}
+							<option style="color:green">{{h}}</option>
+						{% endfor %}
+						
+						{% for h in HeadNurseWhoDontCareFriday1Noon %}
+							<option style="color:black">{{h}}</option>
+						{% endfor %}
+						
+						{% for h in HeadNurseWhoPreferNotFriday1Noon  %}
+							<option style="color:#f4b900">{{h}}</option>
+						{% endfor %}
+						
+						{% for h in HeadNurseWhoCantFriday1Noon  %}
+							<option style="color:red">{{h}}</option>
+						{% endfor %}
+					</select>
+					<br><br>
+					<b>Second nurse:</b>
+					<select name="headNurseList" id="second_nurse_list_friday6" style="width: 150px">
+						<option selected> {{Friday1NoonAssignBeforeSecond}} </option>
+						{% for h in NurseWhoWantFriday1Noon  %}
+							<option style="color:green">{{h}}</option>
+						{% endfor %}
+						
+						{% for h in NurseWhoDontCareFriday1Noon  %}
+							<option style="color:black">{{h}}</option>
+						{% endfor %}
+						
+						{% for h in NurseWhoPreferNotFriday1Noon  %}
+							<option style="color:#f4b900">{{h}}</option>
+						{% endfor %}
+						
+						{% for h in NurseWhoCantFriday1Noon  %}
+							<option style="color:red">{{h}}</option>
+						{% endfor %}
+					</select>
+					<br><br>
+					<b>Stand by:</b>
+					<select name="headNurseList" id="stand_by_nurse_list_friday6" style="width: 150px">
+						<option selected> {{Friday1NoonAssignBeforeStandBy}} </option>
+						{% for h in NurseWhoWantFriday1Noon  %}
+							<option style="color:green">{{h}}</option>
+						{% endfor %}
+						
+						{% for h in NurseWhoDontCareFriday1Noon  %}
+							<option style="color:black">{{h}}</option>
+						{% endfor %}
+						
+						{% for h in NurseWhoPreferNotFriday1Noon  %}
+							<option style="color:#f4b900">{{h}}</option>
+						{% endfor %}
+						
+						{% for h in NurseWhoCantFriday1Noon  %}
+							<option style="color:red">{{h}}</option>
+						{% endfor %}
+					</select>
+				</td>
+				<td>  <!-- Saturday1 noon -->
+					<b>Shift head:</b>
+					<select name="headNurseList" id="head_nurse_list_saturday6" style="width: 150px">
+						<option selected> {{Saturday1NoonAssignBeforeHead}} </option>
+						{% for h in HeadNurseWhoWantSaturday1Noon %}
+							<option style="color:green">{{h}}</option>
+						{% endfor %}
+						
+						{% for h in HeadNurseWhoDontCareSaturday1Noon %}
+							<option style="color:black">{{h}}</option>
+						{% endfor %}
+						
+						{% for h in HeadNurseWhoPreferNotSaturday1Noon  %}
+							<option style="color:#f4b900">{{h}}</option>
+						{% endfor %}
+						
+						{% for h in HeadNurseWhoCantSaturday1Noon  %}
+							<option style="color:red">{{h}}</option>
+						{% endfor %}
+					</select>
+					<br><br>
+					<b>Second nurse:</b>
+					<select name="headNurseList" id="second_nurse_list_saturday6" style="width: 150px">
+						<option selected> {{Saturday1NoonAssignBeforeSecond}} </option>
+						{% for h in NurseWhoWantSaturday1Noon  %}
+							<option style="color:green">{{h}}</option>
+						{% endfor %}
+						
+						{% for h in NurseWhoDontCareSaturday1Noon  %}
+							<option style="color:black">{{h}}</option>
+						{% endfor %}
+						
+						{% for h in NurseWhoPreferNotSaturday1Noon  %}
+							<option style="color:#f4b900">{{h}}</option>
+						{% endfor %}
+						
+						{% for h in NurseWhoCantSaturday1Noon  %}
+							<option style="color:red">{{h}}</option>
+						{% endfor %}
+					</select>
+					<br><br>
+					<b>Stand by:</b>
+					<select name="headNurseList" id="stand_by_nurse_list_saturday6" style="width: 150px">
+						<option selected> {{Saturday1NoonAssignBeforeStandBy}} </option>
+						{% for h in NurseWhoWantSaturday1Noon  %}
+							<option style="color:green">{{h}}</option>
+						{% endfor %}
+						
+						{% for h in NurseWhoDontCareSaturday1Noon  %}
+							<option style="color:black">{{h}}</option>
+						{% endfor %}
+						
+						{% for h in NurseWhoPreferNotSaturday1Noon  %}
+							<option style="color:#f4b900">{{h}}</option>
+						{% endfor %}
+						
+						{% for h in NurseWhoCantSaturday1Noon  %}
+							<option style="color:red">{{h}}</option>
+						{% endfor %}
+						
+					</select>
+				</td>
+            </tr>
+        </table>
+    </div> 
+	<br>
+	<div>	
+		<button class = "btn" id="relocate_to_add_remove">Add/Remove Employee</button>
+		&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+		<button class = "btn" id="to_previous_schedule">Watch Previous Schedule</button>
+		&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+		<button class = "btn" onclick="alert('Schedule has been saved')">Save</button>
+		&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+		<button id="submit" class="btn"> Submit schedule </button>
+		&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+		<button class = "btn" id="relocate_to_login_page" onclick="location.href='/logout'">Logout</button>
+	</div>
+	</div>
+</body>
+</html>
