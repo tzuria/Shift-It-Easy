@@ -2276,97 +2276,50 @@ class SaveScheduleHandler(webapp2.RequestHandler):
 		sunday = date.today()
 		saturday = date.today()
 		
-		if int(week) == 0:
-			if selectedDate.weekday() == 0:
-				sunday = selectedDate - timedelta(days=1)
-				saturday = selectedDate + timedelta(days=5)
-			if selectedDate.weekday() == 1:
-				sunday = selectedDate - timedelta(days=2)
-				saturday = selectedDate + timedelta(days=4)
-			if selectedDate.weekday() == 2:
-				sunday = selectedDate - timedelta(days=3)
-				saturday = selectedDate + timedelta(days=3)
-			if selectedDate.weekday() == 3:
-				sunday = selectedDate - timedelta(days=4)
-				saturday = selectedDate + timedelta(days=2)
-			if selectedDate.weekday() == 4:
-				sunday = selectedDate - timedelta(days=5)
-				saturday = selectedDate + timedelta(days=1)
-			if selectedDate.weekday() == 5:
-				sunday = selectedDate - timedelta(days=6)
-				saturday = selectedDate
-			if selectedDate.weekday() == 6:
-				sunday = selectedDate
-				saturday = selectedDate + timedelta(days=6)
+		if selectedDate.weekday() == 0:
+			sunday = selectedDate - timedelta(days=1)
+			saturday = selectedDate + timedelta(days=5)
+		if selectedDate.weekday() == 1:
+			sunday = selectedDate - timedelta(days=2)
+			saturday = selectedDate + timedelta(days=4)
+		if selectedDate.weekday() == 2:
+			sunday = selectedDate - timedelta(days=3)
+			saturday = selectedDate + timedelta(days=3)
+		if selectedDate.weekday() == 3:
+			sunday = selectedDate - timedelta(days=4)
+			saturday = selectedDate + timedelta(days=2)
+		if selectedDate.weekday() == 4:
+			sunday = selectedDate - timedelta(days=5)
+			saturday = selectedDate + timedelta(days=1)
+		if selectedDate.weekday() == 5:
+			sunday = selectedDate - timedelta(days=6)
+			saturday = selectedDate
+		if selectedDate.weekday() == 6:
+			sunday = selectedDate
+			saturday = selectedDate + timedelta(days=6)
+			
+		if employee:
+			if(employee.percentJob == 66):
+				if not PreparingSchedule.checkLegalAssign_66_precent(employee.userName, sunday, saturday):
+					self.response.write("Illegal! 66% - 3 shifts already")
+					if preparingSchedule.nurseUserName != "":
+						preparingSchedule.put()
+					return
 				
-			if employee:
-				if(employee.percentJob == 66):
-					if not PreparingSchedule.checkLegalAssign_66_precent(employee.userName, sunday, saturday):
-						self.response.write("Illegal! 66% - 3 shifts already")
-						if preparingSchedule.nurseUserName != "":
-							preparingSchedule.put()
-						return
-					
-				if(employee.percentJob == 88):
-					if not PreparingSchedule.checkLegalAssign_88_precent(employee.userName, sunday, saturday):
-						self.response.write("Illegal! 88% - 4 shifts already")
-						if preparingSchedule.nurseUserName != "":
-							preparingSchedule.put()
-						return
-				
-				if(employee.percentJob == 100):
-					if not PreparingSchedule.checkLegalAssign_100_precent(employee.userName, sunday, saturday):
-						self.response.write("Illegal! 100% - 5 shifts already")
-						if preparingSchedule.nurseUserName != "":
-							preparingSchedule.put()
-						return
-				
-		if int(week) == 1:
-			if selectedDate.weekday() == 0:
-				sunday = selectedDate - timedelta(days=1)
-				saturday = selectedDate + timedelta(days=5)
-			if selectedDate.weekday() == 1:
-				sunday = selectedDate - timedelta(days=2)
-				saturday = selectedDate + timedelta(days=4)
-			if selectedDate.weekday() == 2:
-				sunday = selectedDate - timedelta(days=3)
-				saturday = selectedDate + timedelta(days=3)
-			if selectedDate.weekday() == 3:
-				sunday = selectedDate - timedelta(days=4)
-				saturday = selectedDate + timedelta(days=2)
-			if selectedDate.weekday() == 4:
-				sunday = selectedDate - timedelta(days=5)
-				saturday = selectedDate + timedelta(days=1)
-			if selectedDate.weekday() == 5:
-				sunday = selectedDate - timedelta(days=6)
-				saturday = selectedDate
-			if selectedDate.weekday() == 6:
-				sunday = selectedDate
-				saturday = selectedDate + timedelta(days=6)
-		
-			if employee:
-				if(employee.percentJob == 66):
-					if not PreparingSchedule.checkLegalAssign_66_precent(employee.userName, sunday, saturday):
-						self.response.write("Illegal! 66% - 3 shifts already")
-						if preparingSchedule.nurseUserName != "":
-							preparingSchedule.put()
-						return
-					
-				if(employee.percentJob == 88):
-					if not PreparingSchedule.checkLegalAssign_88_precent(employee.userName, sunday, saturday):
-						self.response.write("Illegal! 88% - 4 shifts already")
-						if preparingSchedule.nurseUserName != "":
-							preparingSchedule.put()
-						return
-				
-				if(employee.percentJob == 100):
-					if not PreparingSchedule.checkLegalAssign_100_precent(employee.userName, sunday, saturday):
-						self.response.write("Illegal! 100% - 5 shifts already")
-						if preparingSchedule.nurseUserName != "":
-							preparingSchedule.put()
-						return
-				
-				
+			if(employee.percentJob == 88):
+				if not PreparingSchedule.checkLegalAssign_88_precent(employee.userName, sunday, saturday):
+					self.response.write("Illegal! 88% - 4 shifts already")
+					if preparingSchedule.nurseUserName != "":
+						preparingSchedule.put()
+					return
+			
+			if(employee.percentJob == 100):
+				if not PreparingSchedule.checkLegalAssign_100_precent(employee.userName, sunday, saturday):
+					self.response.write("Illegal! 100% - 5 shifts already")
+					if preparingSchedule.nurseUserName != "":
+						preparingSchedule.put()
+					return
+			
 		
 		preparingSchedule.put()
 		
