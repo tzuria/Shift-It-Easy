@@ -16,7 +16,10 @@ class Employee(ndb.Model):
 	def setPassword(self, password):
 		self.password = hashlib.md5(password).hexdigest()
 		self.put()
-		
+
+	def NewPassword(self, password):
+		self.password = hashlib.md5(password).hexdigest()
+
 	@staticmethod
 	def getEmployeeByUserName(userName):
 		employee = []

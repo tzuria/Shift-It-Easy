@@ -812,6 +812,28 @@ class MainHandler(webapp2.RequestHandler):
 			html = template.render("web/templates/LoginPage.html", template_variables)
 			self.response.write(html)
 
+class ChangeNewPassword(webapp2.RequestHandler):
+	def get(self):
+		userName = None
+		if self.request.cookies.get('our_token'):    #the cookie that should contain the access token!
+			userName = Employee.checkToken(self.request.cookies.get('our_token'))
+
+		newPassword = self.request.get('newPassword')
+
+		if not newPassword or not userName:
+			self.response.write("one or more fields are empty!")
+			return
+
+		employee = Employee.getEmployeeByUserName(userName.userName)
+		if not employee:
+			self.response.write("No employee by this user name!") 
+			return
+
+		employee.NewPassword(newPassword)
+		employee.put()
+		self.response.write(json.dumps({'status':'OK'}))
+
 app = webapp2.WSGIApplication([
-    ('/MainEmployee', MainHandler)
+    ('/MainEmployee', MainHandler),
+	('/change_new_Password', ChangeNewPassword)
 ], debug=True)

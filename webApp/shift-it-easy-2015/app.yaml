@@ -26,7 +26,10 @@ handlers:
   
 - url: /MainEmployee
   script: web.pages.MainEmployee.app
-  
+
+- url: /change_new_Password
+  script: web.pages.MainEmployee.app
+
 - url: /CrewAssignment
   script: web.pages.CrewAssignment.app
   
