@@ -22,8 +22,8 @@ $(function() {
 			
 		},
 		error:function(xhr, status, error) {
-			alert("failed!");
-            alert(xhr.responseText);
+			sweetAlert("failed!");
+            sweetAlert(xhr.responseText);
 			console.error(xhr, status, error);
 		}
 	});

@@ -29,7 +29,7 @@ function login() {
 				document.location.href = '/MainEmployee';
 		},
 		error:function(xhr, status, error) {
-            alert(xhr.responseText);
+            sweetAlert(xhr.responseText);
 			console.error(xhr, status, error);
 		}
 	});

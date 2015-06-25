@@ -27,13 +27,13 @@ function remove_Employee(){
 		dataType:'json',
         data:{employee_id: employee_id},
 		success:function(data, status, xhr) {
-			alert("employee removed successfully");
+			sweetAlert("employee removed successfully");
 			
 			document.location.href = '/AddRemoveEmployee';
 		},
 		error:function(xhr, status, error) {
-			alert("failed-can not remove employee!");
-            alert(xhr.responseText);
+			sweetAlert("failed-can not remove employee!");
+            sweetAlert(xhr.responseText);
 			console.error(xhr, status, error);
 		}
 	});
@@ -78,11 +78,11 @@ function add_Employee() {
 		dataType:'json',
 		data:{employee_id: employee_id, firstName: firstName, lastName: lastName, appointment: appointment, username: username, password:password, shiftHeadable:shiftHeadable},
 		success:function(data, status, xhr) {
-			alert("employee added successfully");
+			sweetAlert("employee added successfully");
 		},
 		error:function(xhr, status, error) {
-			alert("failed-can not add employee!");
-            alert(xhr.responseText);
+			sweetAlert("failed-can not add employee!");
+            sweetAlert(xhr.responseText);
 			console.error(xhr, status, error);
 		}
 	});

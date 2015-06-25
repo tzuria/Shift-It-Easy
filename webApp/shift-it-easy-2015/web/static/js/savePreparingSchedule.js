@@ -253,8 +253,8 @@ $(function() {  //this is jQuery's short notation for "fire all this when page i
 			}
 		},
 		error:function(xhr, status, error) {
-			alert("failed!");
-            alert(xhr.responseText);
+			sweetAlert("failed!");
+            sweetAlert(xhr.responseText);
 			console.error(xhr, status, error);
 		}
 	});
@@ -282,13 +282,13 @@ function updateShift(event)
 		success:function(data, status, xhr) {
 			if(data.note != null)
 			{
-				alert(data.note);
+				sweetAlert(data.note);
 			}
-			alert("Success");
+			sweetAlert("Success");
 		},
 		error:function(xhr, status, error) {
-			alert("failed!");
-            alert(xhr.responseText);
+			sweetAlert("failed!");
+            sweetAlert(xhr.responseText);
 			console.error(xhr, status, error);
 		}
 	});
@@ -308,7 +308,7 @@ function save_Schedule()
     if (head_nurse_list_sunday1.selectedIndex == -1 || second_nurse_list_sunday1 == -1 || stand_by_list_sunday1 == -1
 		|| head_nurse_list_monday1.selectedIndex == -1 || second_nurse_list_monday1 == -1 || stand_by_list_monday1 == -1)
 	{
-		alert("empty fields");
+		sweetAlert("empty fields");
         return null;
 	}
 	
@@ -319,7 +319,7 @@ function save_Schedule()
 	var head_nurse_list_monday1_userName = head_nurse_list_monday1.options[head_nurse_list_monday1.selectedIndex].text
 	var second_nurse_list_monday1_userName = second_nurse_list_monday1.options[second_nurse_list_monday1.selectedIndex].text
 	var stand_by_list_monday1_userName = stand_by_list_monday1.options[stand_by_list_monday1.selectedIndex].text 
-	alert(stand_by_list_monday1_userName);
+	sweetAlert(stand_by_list_monday1_userName);
 	$.ajax({
 		url:'/saveSchedule',
 		type:'GET',
@@ -330,8 +330,8 @@ function save_Schedule()
 			document.location.href = '/MainManager';
 		},
 		error:function(xhr, status, error) {
-			alert("failed!");
-            alert(xhr.responseText);
+			sweetAlert("failed!");
+            sweetAlert(xhr.responseText);
 			console.error(xhr, status, error);
 		}
 	});
@@ -355,8 +355,8 @@ function submit_Schedule()
 			document.location.href = '/MainManager';
 		},
 		error:function(xhr, status, error) {
-			alert("failed!");
-            alert(xhr.responseText);
+			sweetAlert("failed!");
+            sweetAlert(xhr.responseText);
 		}
 	});
 }
