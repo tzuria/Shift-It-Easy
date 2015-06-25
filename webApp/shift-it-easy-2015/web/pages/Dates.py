@@ -2,6 +2,7 @@ from google.appengine.ext.webapp import template
 import time
 from datetime import date
 from datetime import timedelta
+from datetime import datetime
 
 class Dates():
 
@@ -183,4 +184,14 @@ class Dates():
 				return date(self.saturday1.year, self.saturday1.month, self.saturday1.day)
 			
 			
+	@staticmethod
+	def submitSession():
+		now = datetime.now()
+		thisDay = date.today()
+		if(int(thisDay.strftime("%U"))%2 == 0) and thisDay.weekday() == 6 and now.hour > 8:
+			return True
+			
+		elif (int(thisDay.strftime("%U"))%2 == 0) and thisDay.weekday() != 6:
+			return True
+		return False
 			

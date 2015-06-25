@@ -1,12 +1,22 @@
-<script>
-	var userName = getQueryVariable("userName");
-	  $.ajax({
-		url:'/MainEmployee',
+$(function() { 
+	$.ajax({
+		url:'/check_submit_session',
 		type:'GET',
 		dataType:'json',
-        data:{userName: userName},
+        data:{},
 		success:function(data, status, xhr) {
-			document.location.href = '/MainEmployee';
+			if(data.isSubmitSession == true)
+			{
+				$("#to_constrains_input").hide();
+				$("#not_constrain_input_time").show();
+			}
+			else
+			{
+				$("#to_constrains_input").show();
+				$("#not_constrain_input_time").hide();
+			}
+			
+			
 		},
 		error:function(xhr, status, error) {
 			alert("failed!");
@@ -14,5 +24,5 @@
 			console.error(xhr, status, error);
 		}
 	});
-	
-</script>
+
+});

@@ -2324,11 +2324,10 @@ class SaveScheduleHandler(webapp2.RequestHandler):
 		preparingSchedule.put()
 		
 		constrain = Constrain.query(Constrain.employeeUN == preparingSchedule.nurseUserName, Constrain.constrainDate == preparingSchedule.date, Constrain.ShiftType == preparingSchedule.ShiftType).get()
-		if not constrain:
-			self.response.write("assignment canceled ")
-			return
-		self.response.write(json.dumps({'status':'OK','note':constrain.notes}))
-		
+		if constrain:
+			self.response.write(json.dumps({'status':'OK','note':constrain.notes}))
+		elif not constrain:
+			self.response.write(json.dumps({'status':'OK','note':constrain}))
 		
 		
 class SubmitScheduleHandler(webapp2.RequestHandler):
@@ -2356,9 +2355,14 @@ class SubmitScheduleHandler(webapp2.RequestHandler):
 		self.response.write(json.dumps({'status':'OK'}))
 
 		
-
+class checkSubmitSessionHandler(webapp2.RequestHandler):
+	def get(self):
+		isSubmitSession = Dates.submitSession()
+		self.response.write(json.dumps({'status':'OK','isSubmitSession':isSubmitSession}))
+		
 app = webapp2.WSGIApplication([
     ('/MainManager', MainHandler),
 	('/saveSchedule', SaveScheduleHandler),
-	('/submitSchedule', SubmitScheduleHandler)
+	('/submitSchedule', SubmitScheduleHandler),
+	('/check_submit_session', checkSubmitSessionHandler)
 ], debug=True)

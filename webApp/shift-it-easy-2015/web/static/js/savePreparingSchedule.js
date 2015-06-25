@@ -235,8 +235,33 @@ $(function() {  //this is jQuery's short notation for "fire all this when page i
 	$('#head_nurse_list_saturday6').bind('change', {id: "head_nurse_list_saturday6",day: 5, shift: 2, week: 1, rule: 0},updateShift);
 	$('#second_nurse_list_saturday6').bind('change', {id: "second_nurse_list_saturday6",day: 5, shift: 2, week: 1, rule: 1},updateShift);
 	$('#stand_by_nurse_list_saturday6').bind('change', {id: "stand_by_nurse_list_saturday6",day: 5, shift: 2, week: 1, rule: 3},updateShift);
+	
+	
+	$.ajax({
+		url:'/check_submit_session',
+		type:'GET',
+		dataType:'json',
+        data:{},
+		success:function(data, status, xhr) {
+			if(data.isSubmitSession == true)
+			{
+				$("#submit").show();
+			}
+			else
+			{
+				$("#submit").hide();
+			}
+		},
+		error:function(xhr, status, error) {
+			alert("failed!");
+            alert(xhr.responseText);
+			console.error(xhr, status, error);
+		}
+	});
 
 });
+
+
 
 function updateShift(event)
 {
