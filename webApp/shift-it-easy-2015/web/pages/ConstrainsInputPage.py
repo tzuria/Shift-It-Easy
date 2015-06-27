@@ -59,14 +59,12 @@ class GetConstrainsHandler(webapp2.RequestHandler):
 		if self.request.cookies.get('our_token'):    #the cookie that should contain the access token!
 			userName = Employee.checkToken(self.request.cookies.get('our_token'))
 	
-		constr = Constrain.getUserConstraints(userName)
-		
-		#constrainKindStringForm = String(constr)
+		constrNo = Constrain.getUserConstraintsAndNotes(userName)
 	
-		if constr:
-			self.response.write(json.dumps({'status':'ok','color':constr}))
+		if constrNo:
+			self.response.write(json.dumps({'status':'ok','constrainAndNotes':constrNo}))
 		else:
-			self.response.write(json.dumps({'status':'error'}))
+			self.response.write(json.dumps({'status':'error','constrainAndNotes':constrNo}))
 
 class SaveConstrainsHandler(webapp2.RequestHandler):
 	def get(self):
