@@ -70,23 +70,23 @@ class Constrain(ndb.Model):
 			temp1 = Constrain()
 			temp2 = Constrain()
 			j = 0
-			for i in range(14):
+			for i in range(len(constrains)/3):
 				j = i*3
-				if j < 41:
+				if j <= 41:
 					if constrains[j].ShiftType == 0:
 						temp0.CopyConstrain(constrains[j])
 					elif constrains[j].ShiftType == 1:
 						temp1.CopyConstrain(constrains[j])
 					elif constrains[j].ShiftType == 2:
 						temp2.CopyConstrain(constrains[j])
-				if j < 40:	
+				if j <= 40:	
 					if constrains[j+1].ShiftType == 0:
 						temp0.CopyConstrain(constrains[j+1])
 					elif constrains[j+1].ShiftType == 1:
 						temp1.CopyConstrain(constrains[j+1])
 					elif constrains[j+1].ShiftType == 2:
 						temp2.CopyConstrain(constrains[j+1])
-				if j < 39:	
+				if j <= 39:	
 					if constrains[j+2].ShiftType == 0:
 						temp0.CopyConstrain(constrains[j+2])
 					elif constrains[j+2].ShiftType == 1:
@@ -94,11 +94,11 @@ class Constrain(ndb.Model):
 					elif constrains[j+2].ShiftType == 2:
 						temp2.CopyConstrain(constrains[j+2])
 			
-				if j < 41:
+				if j <= 41:
 					constrains[j].CopyConstrain(temp0)
-				if j < 40:
+				if j <= 40:
 					constrains[j+1].CopyConstrain(temp1)
-				if j < 39:
+				if j <= 39:
 					constrains[j+2].CopyConstrain(temp2)
 				
 			

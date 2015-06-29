@@ -43,7 +43,6 @@
 		dataType:'json',
 		data:{},
 		success:function(data, status, xhr) {
-			alert(data.constrainAndNotes[1]);
 			if(data.constrainAndNotes != null)
 			{
 				// Initialize cellStatus array.
@@ -71,7 +70,6 @@
 				}
 			}	
 			
-			alert(notes);
 			var cells1 = document.getElementById("table1").getElementsByTagName("td");
 			var cells2 = document.getElementById("table2").getElementsByTagName("td");
 			var j = 0;
@@ -83,15 +81,15 @@
 				{
 					cells1[i].style.backgroundColor = "white";
 				}
-				if(cellStatus[j] == 1)
+				else if(cellStatus[j] == 1)
 				{
 					cells1[i].style.backgroundColor = "green";
 				}
-				if(cellStatus[j] == 2)
+				else if(cellStatus[j] == 2)
 				{
 					cells1[i].style.backgroundColor = "yellow";
 				}
-				if(cellStatus[j] == 3)
+				else if(cellStatus[j] == 3)
 				{
 					cells1[i].style.backgroundColor = "red";
 				}
@@ -102,15 +100,15 @@
 				{
 					cells1[i+8].style.backgroundColor = "white";
 				}
-				if(cellStatus[j] == 1)
+				else if(cellStatus[j] == 1)
 				{
 					cells1[i+8].style.backgroundColor = "green";
 				}
-				if(cellStatus[j] == 2)
+				else if(cellStatus[j] == 2)
 				{
 					cells1[i+8].style.backgroundColor = "yellow";
 				}
-				if(cellStatus[j] == 3)
+				else if(cellStatus[j] == 3)
 				{
 					cells1[i+8].style.backgroundColor = "red";
 				}
@@ -122,15 +120,15 @@
 				{
 					cells1[i+16].style.backgroundColor = "white";
 				}
-				if(cellStatus[j] == 1)
+				else if(cellStatus[j] == 1)
 				{
 					cells1[i+16].style.backgroundColor = "green";
 				}
-				if(cellStatus[j] == 2)
+				else if(cellStatus[j] == 2)
 				{
 					cells1[i+16].style.backgroundColor = "yellow";
 				}
-				if(cellStatus[j] == 3)
+				else if(cellStatus[j] == 3)
 				{
 					cells1[i+16].style.backgroundColor = "red";
 				}
@@ -144,15 +142,15 @@
 				{
 					cells2[i].style.backgroundColor = "white";
 				}
-				if(cellStatus[j] == 1)
+				else if(cellStatus[j] == 1)
 				{
 					cells2[i].style.backgroundColor = "green";
 				}
-				if(cellStatus[j] == 2)
+				else if(cellStatus[j] == 2)
 				{
 					cells2[i].style.backgroundColor = "yellow";
 				}
-				if(cellStatus[j] == 3)
+				else if(cellStatus[j] == 3)
 				{
 					cells2[i].style.backgroundColor = "red";
 				}
@@ -163,15 +161,15 @@
 				{
 					cells2[i+8].style.backgroundColor = "white";
 				}
-				if(cellStatus[j] == 1)
+				else if(cellStatus[j] == 1)
 				{
 					cells2[i+8].style.backgroundColor = "green";
 				}
-				if(cellStatus[j] == 2)
+				else if(cellStatus[j] == 2)
 				{
 					cells2[i+8].style.backgroundColor = "yellow";
 				}
-				if(cellStatus[j] == 3)
+				else if(cellStatus[j] == 3)
 				{
 					cells2[i+8].style.backgroundColor = "red";
 				}
@@ -183,25 +181,25 @@
 				{
 					cells2[i+16].style.backgroundColor = "white";
 				}
-				if(cellStatus[j] == 1)
+				else if(cellStatus[j] == 1)
 				{
 					cells2[i+16].style.backgroundColor = "green";
 				}
-				if(cellStatus[j] == 2)
+				else if(cellStatus[j] == 2)
 				{
 					cells2[i+16].style.backgroundColor = "yellow";
 				}
-				if(cellStatus[j] == 3)
+				else if(cellStatus[j] == 3)
 				{
 					cells2[i+16].style.backgroundColor = "red";
 				}
 							
 				j++;		
-
-				// print previous constrains notes.
-				printAllPreviousNotes(cells1, cells2, notes);	
-				}
-				
+			}
+			
+			// print previous constrains notes.
+			printAllPreviousNotes(cells1, cells2, notes);
+			
 		},
 		error:function(xhr, status, error) {
 			swal(xhr.responseText);
