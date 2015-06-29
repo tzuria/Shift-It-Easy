@@ -10,8 +10,8 @@ $(function() {
 		success:function(data, status, xhr) {
 			if(data.isSubmitSession == true)
 			{
-				$("#to_constrains_input").hide();
-				$("#not_constrain_input_time").show();
+				//$("#to_constrains_input").hide();
+				//$("#not_constrain_input_time").show();
 			}
 			else
 			{

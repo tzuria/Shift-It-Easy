@@ -249,7 +249,7 @@ $(function() {  //this is jQuery's short notation for "fire all this when page i
 			}
 			else
 			{
-				$("#submit").hide();
+				//$("#submit").hide();
 			}
 		},
 		error:function(xhr, status, error) {
@@ -282,7 +282,7 @@ function updateShift(event)
 		success:function(data, status, xhr) {
 			if(data.note != null)
 			{
-				sweetAlert(data.note);
+				alert(data.note);
 			}
 			sweetAlert("Success");
 		},

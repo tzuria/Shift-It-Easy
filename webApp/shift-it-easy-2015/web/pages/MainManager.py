@@ -2325,7 +2325,7 @@ class SaveScheduleHandler(webapp2.RequestHandler):
 		
 		constrain = Constrain.query(Constrain.employeeUN == preparingSchedule.nurseUserName, Constrain.constrainDate == preparingSchedule.date, Constrain.ShiftType == preparingSchedule.ShiftType).get()
 		if constrain:
-			self.response.write(json.dumps({'status':'OK','note':constrain.notes}))
+			self.response.write(json.dumps({'status':'OK','note': constrain.notes}))
 		elif not constrain:
 			self.response.write(json.dumps({'status':'OK','note':constrain}))
 		
